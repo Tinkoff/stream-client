@@ -9,12 +9,15 @@ os:
   - linux
 
 before_install:
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt update -qq; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew update; fi
+  - sudo apt update -qq
 
 install:
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt install -y build-essential cmake libboost-all-dev libssl-dev; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew install cmake pkg-config icu4c openssl; fi
+  - sudo apt install -y build-essential cmake libssl-dev libboost-all-dev python-dev
+  - wget https://github.com/boostorg/beast/archive/v124.tar.gz
+  - tar -xf v124.tar.gz
+  - cd beast-124/
+  - sudo cp -r include/boost/ /usr/include/
+  - cd ..
 
 script:
   - ./build.sh
