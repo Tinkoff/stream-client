@@ -1,0 +1,22 @@
+language: cpp
+dist: bionic
+
+compiler:
+  - clang
+  - gcc
+
+os:
+  - linux
+
+before_install:
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt update -qq; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew update; fi
+
+install:
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt install -y build-essential cmake libboost-all-dev libssl-dev; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew install cmake pkg-config icu4c openssl; fi
+
+script:
+  - ./build.sh
+  - cd build
+  - ctest --output-on-failure
