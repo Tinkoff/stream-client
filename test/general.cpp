@@ -56,15 +56,6 @@ TYPED_TEST(ConnectedEnv, ClosedOps)
                  boost::system::system_error);
 }
 
-TYPED_TEST(ConnectedEnv, DoubleClose)
-{
-    EXPECT_CODE(this->server_session->close(), boost::system::errc::success);
-    EXPECT_CODE_ONEOF3(this->client_session->close(), boost::system::errc::success,
-                       boost::asio::error::connection_reset, ssl_short_read_err);
-    EXPECT_CODE_ONEOF3(this->client_session->close(), boost::system::errc::success, boost::asio::error::bad_descriptor,
-                       ssl_short_read_err);
-}
-
 TYPED_TEST(TCPUDPConnectedEnv, GetSetOption)
 {
     boost::asio::socket_base::reuse_address reuse_address(true);
