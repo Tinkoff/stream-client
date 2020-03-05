@@ -1,5 +1,9 @@
 # Stream-client
 
+[![Build](https://travis-ci.com/TinkoffCreditSystems/stream-client.svg?branch=master)](https://travis-ci.com/TinkoffCreditSystems/stream-client)
+[![Language C++](https://img.shields.io/badge/language-c++-blue.svg)](https://isocpp.org)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 This is a lightweight, header-only, Boost-based library providing client-side network primitives to easily organize and implement data transmission with remote endpoints.
 
 This library:
