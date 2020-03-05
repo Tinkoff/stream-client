@@ -104,17 +104,17 @@ TYPED_TEST(ConnectedEnv, ClosedReceive)
     if (typeid(protocol_type) == typeid(boost::asio::ip::udp)) {
         EXPECT_CODE(this->error, boost::system::errc::success);
     } else {
-        EXPECT_CODE_ONEOF3(this->error, boost::asio::error::eof, boost::asio::error::connection_reset,
-                           ssl_short_read_err);
+        EXPECT_ERROR(this->error);
     }
 
     EXPECT_EQ(this->recv_bytes, 1);
     EXPECT_EQ(this->send_data[0], this->recv_data[0]);
 
-    EXPECT_CODE_ONEOF2(this->client_session->close(), boost::system::errc::success, ssl_short_read_err);
+    EXPECT_CODE_ONEOF3(this->client_session->close(), boost::system::errc::success,
+                       boost::asio::error::connection_reset, ssl_short_read_err);
     this->recv_bytes = this->client_session->receive(boost::asio::buffer(&this->recv_data[0], this->send_data.size()),
                                                      this->error);
-    EXPECT_CODE_ONEOF3(this->error, boost::asio::error::bad_descriptor, boost::asio::error::eof, ssl_short_read_err);
+    EXPECT_ERROR(this->error);
     EXPECT_EQ(this->recv_bytes, 0);
 }
 
