@@ -67,6 +67,11 @@
         EXPECT_EQ(expression, expected_err);            \
     }
 
+#define EXPECT_ERROR(expression)                                      \
+    {                                                                 \
+        EXPECT_NE(expression, make_ec(boost::system::errc::success)); \
+    }
+
 #define EXPECT_CODE_ONEOF2(expression, expected_ec1, expected_ec2)                                 \
     {                                                                                              \
         const auto expected_err1 = make_ec(expected_ec1);                                          \
