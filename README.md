@@ -183,12 +183,12 @@ sudo apt install build-essential cmake libboost-all-dev libssl-dev
 
 ### macOS dependencies
 
-Since this library used and tested with boost 1.65, it is recommended to use this version. However, brew doesn't have it, that's why custom formula provided ([boost@1.65.1.rb](./boost@1.65.1.rb)) in the repo. If you willing to support a new version, feel free to contribute.
+Since this library used and tested with boost 1.66, it is recommended to use this version. However, brew doesn't have it, that's why custom formula provided ([boost@1.66.rb](./boost@1.66.rb)) in the repo. If you willing to support a new version, feel free to contribute.
 
 ```bash
 brew install cmake pkg-config icu4c openssl
-brew install -s -v ./boost@1.65.1.rb --with-icu4c
-brew link --force --overwrite boost@1.65.1
+brew install -s -v ./boost@1.66.rb --with-icu4c
+brew link --force --overwrite boost@1.66
 ```
 
 ### Build
