@@ -49,30 +49,11 @@ TYPED_TEST(ConnectedEnv, ClosedOps)
     this->client_session->close();
 
     this->InitData(1024);
-    ASSERT_THROW_ONEOF3(
-        {
-            this->send_bytes =
-                this->client_session->send(boost::asio::buffer(this->send_data.data(), this->send_data.size()));
-        },
-        boost::asio::error::bad_descriptor, boost::asio::error::broken_pipe, ssl_error(SSL_R_PROTOCOL_IS_SHUTDOWN));
-    EXPECT_EQ(this->send_bytes, 0);
+    ASSERT_THROW(this->client_session->send(boost::asio::buffer(this->send_data.data(), this->send_data.size())),
+                 boost::system::system_error);
 
-    ASSERT_THROW_ONEOF3(
-        {
-            this->recv_bytes =
-                this->client_session->receive(boost::asio::buffer(&this->recv_data[0], this->send_data.size()));
-        },
-        boost::asio::error::bad_descriptor, boost::asio::error::eof, ssl_short_read_err);
-    EXPECT_EQ(this->recv_bytes, 0);
-}
-
-TYPED_TEST(ConnectedEnv, DoubleClose)
-{
-    EXPECT_CODE(this->server_session->close(), boost::system::errc::success);
-    EXPECT_CODE_ONEOF3(this->client_session->close(), boost::system::errc::success,
-                       boost::asio::error::connection_reset, ssl_short_read_err);
-    EXPECT_CODE_ONEOF3(this->client_session->close(), boost::system::errc::success, boost::asio::error::bad_descriptor,
-                       ssl_short_read_err);
+    ASSERT_THROW(this->client_session->receive(boost::asio::buffer(&this->recv_data[0], this->send_data.size())),
+                 boost::system::system_error);
 }
 
 TYPED_TEST(TCPUDPConnectedEnv, GetSetOption)

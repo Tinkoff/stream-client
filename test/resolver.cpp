@@ -22,7 +22,8 @@ TYPED_TEST(ResolverEnv, Resolve)
     for (const auto& endpoint : endpoints) {
         EXPECT_EQ(endpoint.port(), this->resolve_port);
         if (endpoint.protocol() == protocol_type::v4()) {
-            EXPECT_EQ(endpoint.address(), boost::asio::ip::address_v4::from_string("127.0.0.1"));
+            EXPECT_TRUE(endpoint.address() == boost::asio::ip::address_v4::from_string("127.0.0.1") ||
+                        endpoint.address() == boost::asio::ip::address_v4::from_string("127.0.1.1"));
         } else if (endpoint.protocol() == protocol_type::v6()) {
             EXPECT_EQ(endpoint.address(), boost::asio::ip::address_v6::from_string("::1"));
         } else {

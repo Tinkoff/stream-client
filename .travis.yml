@@ -1,0 +1,29 @@
+language: cpp
+dist: bionic
+
+os:
+  - linux
+  - osx
+
+compiler:
+  - clang
+  - gcc
+
+matrix:
+  exclude:
+    - os:       osx
+      compiler: gcc
+
+before_install:
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt update -qq; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew update; fi
+
+install:
+  - cd ci
+  - ./travis-$TRAVIS_OS_NAME.sh
+  - cd ..
+
+script:
+  - ./build.sh
+  - cd build
+  - ctest --output-on-failure

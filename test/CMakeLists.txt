@@ -51,7 +51,7 @@ add_custom_command(OUTPUT ${SSL_SERVER_CRT}
     DEPENDS ${SSL_SERVER_CSR} ${SSL_ROOT_CRT} ${SSL_ROOT_KEY}
     WORKING_DIRECTORY ${SSL_CERTS_FOLDER})
 add_custom_command(OUTPUT ${SSL_DH_PARAMS}
-    COMMAND openssl dhparam -noout -out ${SSL_DH_PARAMS} 2048 2>/dev/null
+    COMMAND openssl dhparam -dsaparam -out ${SSL_DH_PARAMS} 2048 2>/dev/null
     WORKING_DIRECTORY ${SSL_CERTS_FOLDER})
 
 add_custom_target(ssl_certificates ALL
