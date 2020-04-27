@@ -1,3 +1,9 @@
+## 1.1.4 (2020-04-28)
+
+### Bug Fixes
+
+* TCP options not set in base_socket ctor
+
 ## 1.1.3 (2020-03-03)
 
 ### Bug Fixes
