@@ -36,7 +36,7 @@ base_socket<Socket>::base_socket(const endpoint_type& peer_endpoint, time_durati
     }
 
     set_option(boost::asio::socket_base::keep_alive(true));
-    if (std::is_same<Socket, boost::asio::ip::tcp>::value) {
+    if (std::is_same<protocol_type, boost::asio::ip::tcp>::value) {
         set_option(boost::asio::ip::tcp::no_delay(true));
 #if __linux__
         set_option(boost::asio::detail::socket_option::boolean<IPPROTO_TCP, TCP_QUICKACK>(true));
