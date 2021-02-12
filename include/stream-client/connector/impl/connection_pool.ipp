@@ -15,9 +15,10 @@ base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_dur
 }
 
 template <typename Connector>
-template <typename... ArgN>
-base_connection_pool<Connector>::base_connection_pool(std::size_t size, ArgN&&... argn)
-    : base_connection_pool(size, time_duration_type::max(), std::forward<ArgN>(argn)...)
+template <typename Arg1, typename... ArgN,
+          typename std::enable_if<!std::is_convertible<Arg1, typename Connector::time_duration_type>::value>::type*>
+base_connection_pool<Connector>::base_connection_pool(std::size_t size, Arg1&& arg1, ArgN&&... argn)
+    : base_connection_pool(size, time_duration_type::max(), std::forward<Arg1>(arg1), std::forward<ArgN>(argn)...)
 {
 }
 

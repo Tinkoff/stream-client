@@ -28,9 +28,9 @@ public:
     using stream_type = typename connector_type::stream_type;
     using protocol_type = typename stream_type::protocol_type;
 
-    using clock_type = typename stream_type::clock_type;
-    using time_duration_type = typename stream_type::time_duration_type;
-    using time_point_type = typename stream_type::time_point_type;
+    using clock_type = typename connector_type::clock_type;
+    using time_duration_type = typename connector_type::time_duration_type;
+    using time_point_type = typename connector_type::time_point_type;
 
     /**
      * Parametrized constructor.
@@ -64,8 +64,10 @@ public:
      *      and later you return pulled stream back with return_session().
      * @param[in] ...argn Arguments to pass to @p Connector constructor.
      */
-    template <typename... ArgN>
-    base_connection_pool(std::size_t size, ArgN&&... argn);
+    template <typename Arg1, typename... ArgN,
+              typename std::enable_if<
+                  !std::is_convertible<Arg1, typename Connector::time_duration_type>::value>::type* = nullptr>
+    base_connection_pool(std::size_t size, Arg1&& arg1, ArgN&&... argn);
 
     /// Copy constructor is not permitted.
     base_connection_pool(const base_connection_pool<Connector>& other) = delete;
