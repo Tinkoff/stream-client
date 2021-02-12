@@ -1,3 +1,9 @@
+## 1.1.5 (2021-02-12)
+
+### Features
+
+* Add idle timeout parameter for a pool. If session is sitting idle in the pool for a longer time it will replaced with new one
+
 ## 1.1.4 (2020-04-28)
 
 ### Bug Fixes
