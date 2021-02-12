@@ -5,12 +5,20 @@ namespace connector {
 
 template <typename Connector>
 template <typename... ArgN>
-base_connection_pool<Connector>::base_connection_pool(std::size_t size, ArgN&&... argn)
+base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
     : connector_(std::forward<ArgN>(argn)...)
-    , pool_size_(size)
+    , pool_max_size_(size)
+    , idle_timeout_(idle_timeout)
     , watch_pool(true)
 {
     pool_watcher_ = std::thread([this]() { this->watch_pool_routine(); });
+}
+
+template <typename Connector>
+template <typename... ArgN>
+base_connection_pool<Connector>::base_connection_pool(std::size_t size, ArgN&&... argn)
+    : base_connection_pool(size, time_duration_type::max(), std::forward<ArgN>(argn)...)
+{
 }
 
 template <typename Connector>
@@ -38,7 +46,7 @@ base_connection_pool<Connector>::get_session(boost::system::error_code& ec, cons
         return nullptr;
     }
 
-    std::unique_ptr<stream_type> session = std::move(sesson_pool_.front());
+    std::unique_ptr<stream_type> session = std::move(sesson_pool_.front().second);
     sesson_pool_.pop_front();
     return session;
 }
@@ -56,7 +64,7 @@ void base_connection_pool<Connector>::return_session(std::unique_ptr<stream_type
         return;
     }
 
-    sesson_pool_.emplace_back(std::move(session));
+    sesson_pool_.emplace_back(clock_type::now(), std::move(session));
     pool_lk.unlock();
     pool_cv_.notify_all();
 }
@@ -87,10 +95,18 @@ void base_connection_pool<Connector>::watch_pool_routine()
         if (!pool_lk.try_lock_for(lock_timeout)) {
             continue;
         }
-        int vacant_places = pool_size_ - sesson_pool_.size();
-        if (vacant_places < 0) {
-            vacant_places = 0;
+        // remove session which idling past idle_timeout_
+        std::size_t pool_current_size = 0;
+        for (auto pool_it = sesson_pool_.begin(); pool_it != sesson_pool_.end();) {
+            const auto idle_for = clock_type::now() - pool_it->first;
+            if (idle_for >= idle_timeout_) {
+                pool_it = sesson_pool_.erase(pool_it);
+            } else {
+                ++pool_it;
+                ++pool_current_size;
+            }
         }
+        std::size_t vacant_places = pool_max_size_ - pool_current_size;
 
         // at this point we own pool_mutex_, but we want to get new sessions simultaneously;
         // that's why new mutex to sync adding threads
@@ -102,7 +118,7 @@ void base_connection_pool<Connector>::watch_pool_routine()
                 auto new_session = connector.new_session();
                 // ensure only single session added at time
                 std::unique_lock<std::mutex> add_lk(pool_add);
-                pool.emplace_back(std::move(new_session));
+                pool.emplace_back(clock_type::now(), std::move(new_session));
                 added = true;
             } catch (const boost::system::system_error& e) {
                 // NOOP
@@ -110,7 +126,7 @@ void base_connection_pool<Connector>::watch_pool_routine()
         };
 
         std::list<std::thread> adders;
-        for (int i = 0; i < vacant_places; ++i) {
+        for (std::size_t i = 0; i < vacant_places; ++i) {
             adders.emplace_back(add_session);
         }
         for (auto& a : adders) {
