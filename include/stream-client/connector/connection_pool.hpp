@@ -43,7 +43,25 @@ public:
      * @param[in] size Number of connected sockets to maintain in the pool.
      *      Note that real number of established connections my be @p size + 1.
      *      This happens when you pull a stream with get_session() , the pool establishes new one to replace it,
-     *      and later you return pulled stream back with return_session()/
+     *      and later you return pulled stream back with return_session().
+     * @param[in] idle_timeout sessions which are in the pool for a longer time are replaced with new ones.
+     * @param[in] ...argn Arguments to pass to @p Connector constructor.
+     */
+    template <typename... ArgN>
+    base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn);
+
+    /**
+     * Parametrized constructor.
+     * Constructs pool for desired connector (protocol). Passed @p argn forwarded to @p Connector constructor.
+     * This operation starts background thread to fill the pool with opened sockets,
+     * therefore subsequent get_session() calls may take longer time compared with the state when pool is full.
+     *
+     * @tparam ...ArgN Types of argn.
+     *
+     * @param[in] size Number of connected sockets to maintain in the pool.
+     *      Note that real number of established connections my be @p size + 1.
+     *      This happens when you pull a stream with get_session() , the pool establishes new one to replace it,
+     *      and later you return pulled stream back with return_session().
      * @param[in] ...argn Arguments to pass to @p Connector constructor.
      */
     template <typename... ArgN>
@@ -263,8 +281,10 @@ private:
 
     connector_type connector_; ///< Underlying connector used to establish sockets.
 
-    std::size_t pool_size_; ///< Number of stream to keep in the @p sesson_pool_.
-    std::list<std::unique_ptr<stream_type>> sesson_pool_; ///< The list of established sockets
+    std::size_t pool_max_size_; ///< Number of stream to keep in the @p sesson_pool_.
+    time_duration_type idle_timeout_; ///< Idle timeout for the sessions in the @p sesson_pool_.
+    std::list<std::pair<time_point_type, std::unique_ptr<stream_type>>>
+        sesson_pool_; ///< The list of established sockets.
     mutable std::timed_mutex pool_mutex_; ///< @p sesson_pool_ mutex.
     mutable std::condition_variable_any pool_cv_; ///< @p sesson_pool_ condition variable.
 
