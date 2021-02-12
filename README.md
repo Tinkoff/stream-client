@@ -195,7 +195,7 @@ brew install -s -v ./boost@1.66.rb --with-icu4c
 brew link --force --overwrite boost@1.66
 ```
 
-### Build
+### Test/Install
 
 Prefer [out-of-source](https://gitlab.kitware.com/cmake/community/-/wikis/FAQ#what-is-an-out-of-source-build) building:
 
@@ -204,14 +204,10 @@ mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 make -j$(nproc)
-make install
-```
-
-You may also test it with:
-```bash
 make test
 ```
-Or install (sudo may be required):
+
+To install the lib (sudo may be required):
 ```bash
 make install
 ```
