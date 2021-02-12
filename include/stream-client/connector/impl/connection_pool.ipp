@@ -107,7 +107,8 @@ void base_connection_pool<Connector>::watch_pool_routine()
                 ++pool_current_size;
             }
         }
-        std::size_t vacant_places = pool_max_size_ - pool_current_size;
+        // pool_current_size may be bigger if someone returned previous session
+        std::size_t vacant_places = (pool_max_size_ > pool_current_size) ? pool_max_size_ - pool_current_size : 0;
 
         // at this point we own pool_mutex_, but we want to get new sessions simultaneously;
         // that's why new mutex to sync adding threads
@@ -122,7 +123,7 @@ void base_connection_pool<Connector>::watch_pool_routine()
                 pool.emplace_back(clock_type::now(), std::move(new_session));
                 added = true;
             } catch (const boost::system::system_error& e) {
-                // NOOP
+                // TODO: log errors ?
             }
         };
 
@@ -138,7 +139,7 @@ void base_connection_pool<Connector>::watch_pool_routine()
         if (added) {
             pool_cv_.notify_all();
         } else {
-            // stop cpu spooling if no session has been added
+            // stop cpu spooling if nothing has been added
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }
