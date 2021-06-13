@@ -4,6 +4,11 @@ namespace stream_client {
 namespace http {
 
 template <typename Stream>
+const size_t base_socket<Stream>::kHeaderLimit = 1 << 20; // 1Mb limit
+template <typename Stream>
+const size_t base_socket<Stream>::kBodyLimit = 10 << 20; // 10Mb limit
+
+template <typename Stream>
 template <typename Body, typename Fields>
 boost::optional<boost::beast::http::response<Body, Fields>>
 base_socket<Stream>::perform(const boost::beast::http::request<Body, Fields>& request, boost::system::error_code& ec,
