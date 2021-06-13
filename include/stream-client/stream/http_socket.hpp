@@ -32,9 +32,9 @@ class base_socket
 {
 public:
     /// Headers length limit for internal parser
-    static const size_t kHeaderLimit = 1 << 20; // 1Mb limit
+    static const size_t kHeaderLimit;
     /// Body length limit for internal parser
-    static const size_t kBodyLimit = 10 << 20; // 10Mb limit
+    static const size_t kBodyLimit;
 
     using allocator_type = ::stream_client::stream::detail::static_allocator<char>;
     using next_layer_type = typename std::remove_reference<Stream>::type;
