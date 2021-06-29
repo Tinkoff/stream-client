@@ -1,3 +1,9 @@
+## 1.1.6 (2021-06-29)
+
+### Bug Fixes
+
+* Fix static const undefined reference on some compilers for kHeaderLimit/kBodyLimit
+
 ## 1.1.5 (2021-02-12)
 
 ### Features
