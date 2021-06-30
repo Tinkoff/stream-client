@@ -24,7 +24,7 @@ public:
 
     void destroy()
     {
-        if (refs_--) {
+        if (--refs_) {
             return;
         }
         this->~static_pool();

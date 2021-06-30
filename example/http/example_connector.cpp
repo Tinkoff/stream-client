@@ -60,7 +60,7 @@ struct ParsedURI
 int main(int argc, char* argv[])
 {
     if (argc != 4) {
-        std::cerr << "Usage: client <url> <threads> <requests per thread>\n";
+        std::cerr << "Usage: " << argv[0] << " <url> <threads> <requests per thread>\n";
         return 1;
     }
     int num_threads = std::atoi(argv[2]);
