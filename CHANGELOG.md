@@ -1,3 +1,9 @@
+## 1.1.7 (2021-06-30)
+
+### Bug Fixes
+
+* Fix mem leakage in static_allocator used for HTTP requests
+
 ## 1.1.6 (2021-06-29)
 
 ### Bug Fixes
