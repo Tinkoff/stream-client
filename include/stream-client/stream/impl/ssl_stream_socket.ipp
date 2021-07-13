@@ -16,6 +16,11 @@ stream_socket<Socket>::stream_socket(const endpoint_type& peer_endpoint, time_du
                                                                      std::move(operation_timeout)},
                                                    ssl_context_);
 
+    if (!SSL_set_tlsext_host_name(ssl_stream_->native_handle(), upstream_host.c_str())) {
+        boost::system::error_code ec{static_cast<int>(::ERR_get_error()), boost::asio::error::get_ssl_category()};
+        throw boost::system::system_error{ec};
+    }
+
     if (rfc2818_handshake) {
         ssl_stream_->set_verify_mode(boost::asio::ssl::verify_peer);
         ssl_stream_->set_verify_callback(boost::asio::ssl::rfc2818_verification(upstream_host));
