@@ -1,3 +1,9 @@
+## 1.1.8 (2021-07-14)
+
+### Features
+
+* ssl::stream_socket: set SNI hostname in ctor
+
 ## 1.1.7 (2021-06-30)
 
 ### Bug Fixes
