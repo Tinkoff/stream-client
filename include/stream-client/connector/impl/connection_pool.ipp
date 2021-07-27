@@ -140,14 +140,16 @@ void base_connection_pool<Connector>::watch_pool_routine()
         // creating new sessions may be slow and we want add them simultaneously;
         // that's why we need to sync adding threads and lock pool
         auto add_session = [&connector = this->connector_, &pool = this->sesson_pool_, &pool_mutex = this->pool_mutex_,
-                            &pool_cv = this->pool_cv_]() {
+                            &pool_cv = this->pool_cv_, pool_max_size = this->pool_max_size_]() {
             try {
                 // getting new session is time consuming operation
                 auto new_session = connector.new_session();
 
                 // ensure only single session added at time
                 std::unique_lock<std::timed_mutex> pool_lk(pool_mutex);
-                pool.emplace_back(clock_type::now(), std::move(new_session));
+                if (pool.size() < pool_max_size) {
+                    pool.emplace_back(clock_type::now(), std::move(new_session));
+                }
                 pool_lk.unlock();
 
                 // unblock one waiting thread
