@@ -181,6 +181,35 @@ public:
     }
 
     /**
+     * Try to pull a session (stream) from the pool.
+     * Tries to get stream from the pool until specified deadline is reached.
+     *
+     * @note Unlike the get_session method, this method doesn't wait to fill up the pool in a timeout.
+     *
+     * @param[in] deadline Expiration time-point.
+     * @param[out] ec Set to indicate what error occurred, if any.
+     *
+     * @returns A stream wrapped in std::unique_ptr or nullptr.
+     */
+    std::unique_ptr<stream_type> try_get_session(boost::system::error_code& ec, const time_point_type& deadline);
+
+    /**
+     * Try to pull a session (stream) from the pool.
+     * Tries to get stream from the pool until specified timeout elapsed.
+     *
+     * @note Unlike the get_session method, this method doesn't wait to fill up the pool in a timeout.
+     *
+     * @param[in] timeout Expiration duration.
+     * @param[out] ec Set to indicate what error occurred, if any.
+     *
+     * @returns A stream wrapped in std::unique_ptr or nullptr.
+     */
+    inline std::unique_ptr<stream_type> try_get_session(boost::system::error_code& ec, const time_duration_type& timeout)
+    {
+        return try_get_session(ec, clock_type::now() + timeout);
+    }
+
+    /**
      * Return the session pulled earlier from the pool.
      *
      * @note Is is better to return sessions after successful usage, otherwise pool will try to refill itself and
