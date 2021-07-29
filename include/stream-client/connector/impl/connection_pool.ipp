@@ -134,26 +134,23 @@ void base_connection_pool<Connector>::watch_pool_routine()
         // pool_current_size may be bigger if someone returned previous session
         std::size_t vacant_places = (pool_max_size_ > pool_current_size) ? pool_max_size_ - pool_current_size : 0;
 
-        // release poll mutex after removing old sessions
+        // release pool mutex after removing old sessions
         pool_lk.unlock();
 
         // creating new sessions may be slow and we want add them simultaneously;
         // that's why we need to sync adding threads and lock pool
-        auto add_session = [&connector = this->connector_, &pool = this->sesson_pool_, &pool_mutex = this->pool_mutex_,
-                            &pool_cv = this->pool_cv_, pool_max_size = this->pool_max_size_]() {
+        auto add_session = [this]() {
             try {
                 // getting new session is time consuming operation
-                auto new_session = connector.new_session();
+                auto new_session = this->connector_.new_session();
 
                 // ensure only single session added at time
-                std::unique_lock<std::timed_mutex> pool_lk(pool_mutex);
-                if (pool.size() < pool_max_size) {
-                    pool.emplace_back(clock_type::now(), std::move(new_session));
-                }
+                std::unique_lock<std::timed_mutex> pool_lk(this->pool_mutex_);
+                this->sesson_pool_.emplace_back(clock_type::now(), std::move(new_session));
                 pool_lk.unlock();
 
                 // unblock one waiting thread
-                pool_cv.notify_one();
+                this->pool_cv_.notify_one();
             } catch (const boost::system::system_error& e) {
                 // TODO: log errors ?
             }
