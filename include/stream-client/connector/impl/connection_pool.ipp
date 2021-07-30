@@ -142,15 +142,15 @@ void base_connection_pool<Connector>::watch_pool_routine()
         auto add_session = [this]() {
             try {
                 // getting new session is time consuming operation
-                auto new_session = this->connector_.new_session();
+                auto new_session = connector_.new_session();
 
                 // ensure only single session added at time
-                std::unique_lock<std::timed_mutex> pool_lk(this->pool_mutex_);
-                this->sesson_pool_.emplace_back(clock_type::now(), std::move(new_session));
+                std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_);
+                sesson_pool_.emplace_back(clock_type::now(), std::move(new_session));
                 pool_lk.unlock();
 
                 // unblock one waiting thread
-                this->pool_cv_.notify_one();
+                pool_cv_.notify_one();
             } catch (const boost::system::system_error& e) {
                 // TODO: log errors ?
             }
