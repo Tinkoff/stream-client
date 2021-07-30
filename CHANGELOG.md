@@ -1,3 +1,10 @@
+## 1.1.9 (2021-07-30)
+
+### Features
+
+* connector::base_connection_pool: add try_get_session method
+* connector::base_connection_pool: change global lock in watch_pool_routine with several small locks 
+
 ## 1.1.8 (2021-07-14)
 
 ### Features
