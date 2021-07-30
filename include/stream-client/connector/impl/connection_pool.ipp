@@ -131,13 +131,13 @@ void base_connection_pool<Connector>::watch_pool_routine()
             }
         }
 
-        // pool_current_size may be bigger if someone returned previous session
-        std::size_t vacant_places = (pool_max_size_ > pool_current_size) ? pool_max_size_ - pool_current_size : 0;
-
         // release pool mutex after removing old sessions
         pool_lk.unlock();
 
-        // creating new sessions may be slow and we want add them simultaneously;
+        // pool_current_size may be bigger if someone returned previous session
+        std::size_t vacant_places = (pool_max_size_ > pool_current_size) ? pool_max_size_ - pool_current_size : 0;
+
+        // creating new sessions may be slow and we want to add them simultaneously;
         // that's why we need to sync adding threads and lock pool
         auto add_session = [this]() {
             try {
@@ -164,7 +164,10 @@ void base_connection_pool<Connector>::watch_pool_routine()
             a.join();
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        // stop cpu spooling if nothing has been added
+        if (vacant_places == 0) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+        }
     }
 }
 
