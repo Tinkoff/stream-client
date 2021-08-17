@@ -9,7 +9,7 @@ base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_dur
     : connector_(std::forward<ArgN>(argn)...)
     , pool_max_size_(size)
     , idle_timeout_(idle_timeout)
-    , watch_pool(true)
+    , watch_pool_(true)
 {
     pool_watcher_ = std::thread([this]() { this->watch_pool_routine(); });
 }
@@ -25,7 +25,7 @@ base_connection_pool<Connector>::base_connection_pool(std::size_t size, Arg1&& a
 template <typename Connector>
 base_connection_pool<Connector>::~base_connection_pool()
 {
-    watch_pool = false;
+    watch_pool_.store(false, std::memory_order_release);
     if (pool_watcher_.joinable()) {
         pool_watcher_.join();
     }
@@ -112,7 +112,7 @@ void base_connection_pool<Connector>::watch_pool_routine()
 {
     static const auto lock_timeout = std::chrono::milliseconds(100);
 
-    while (watch_pool) {
+    while (watch_pool_.load(std::memory_order_acquire)) {
         // try to lock pool mutex
         std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
         if (!pool_lk.try_lock_for(lock_timeout)) {
