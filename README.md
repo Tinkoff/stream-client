@@ -1,8 +1,9 @@
 # Stream-client
 
-[![Build](https://travis-ci.com/TinkoffCreditSystems/stream-client.svg?branch=master)](https://travis-ci.com/TinkoffCreditSystems/stream-client)
-[![Language C++](https://img.shields.io/badge/language-c++-blue.svg)](https://isocpp.org)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Language C++](https://img.shields.io/badge/language-c++-blue.svg?logo=c%2B%2B)](https://isocpp.org)
+[![Github releases](https://img.shields.io/github/release/TinkoffCreditSystems/stream-client.svg)](https://github.com/TinkoffCreditSystems/stream-client/releases)
+[![Coverage Status](https://coveralls.io/repos/github/TinkoffCreditSystems/stream-client/badge.svg?branch=develop)](https://coveralls.io/github/TinkoffCreditSystems/stream-client?branch=develop)
+[![License](https://img.shields.io/github/license/TinkoffCreditSystems/stream-client.svg)](./LICENSE)
 
 This is a lightweight, header-only, Boost-based library providing client-side network primitives to easily organize and implement data transmission with remote endpoints.
 
@@ -12,6 +13,7 @@ This library:
 * Supports **TCP**/**UDP**/**SSL**/**HTTP**/**HTTPS** protocols.
 * Uses [sockets](#sockets) with the same interface as boost::asio::ip ones.
 * Allows transparent timeout/deadline control for all operations.
+* Requires boost 1.65+ or 1.66+ if you are planning to use HTTP protocol.
 
 ## Why
 
@@ -178,21 +180,15 @@ This library supposed to be somewhat multi-platform, however, it was tested and 
 
 ### Ubuntu dependencies
 
-We recommend using ubuntu 18.04, since it has boost 1.65 in its' repositories, otherwise, you will need to build and provide a proper boost by yourself.
-
 ```bash
 sudo apt update
-sudo apt install build-essential cmake libboost-all-dev libssl-dev
+sudo apt install build-essential cmake libboost-dev libboost-system-dev libssl-dev
 ```
 
 ### macOS dependencies
 
-Since this library used and tested with boost 1.66, it is recommended to use this version. However, brew doesn't have it, that's why custom formula provided ([boost@1.66.rb](./boost@1.66.rb)) in the repo. If you willing to support a new version, feel free to contribute.
-
 ```bash
-brew install cmake pkg-config icu4c openssl
-brew install -s -v ./boost@1.66.rb --with-icu4c
-brew link --force --overwrite boost@1.66
+brew install cmake pkg-config icu4c openssl boost
 ```
 
 ### Test/Install
@@ -216,9 +212,9 @@ make install
 
 * **CMAKE_BUILD_TYPE** - [build type](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html). `RelWithDebInfo` by default.
 * **BUILD_SHARED_LIBS** - [build shared or static library](https://cmake.org/cmake/help/v3.0/variable/BUILD_SHARED_LIBS.html). `ON` by default.
-* **BUILD_TESTING** - [build tests or not](https://cmake.org/cmake/help/latest/module/CTest.html). `ON` by default
+* **STREAMCLIENT_BUILD_TESTING** - [build tests or not](https://cmake.org/cmake/help/latest/module/CTest.html). `OFF` by default
 * **STREAMCLIENT_BUILD_EXAMPLES** - build library examples or not. `OFF` by default.
-* **STREAMCLIENT_BUNDLED_MODE** - if the library is being built as a part of another project. If this options is set then *BUILD_SHARED_LIBS* forces to be OFF. Defined by `"${PROJECT_SOURCE_DIR}" == "${CMAKE_SOURCE_DIR}"` by default.
+* **STREAMCLIENT_BUILD_DOCS** – build html (sphinx) reference docs. `OFF` by default.
 * **OPENSSL_USE_STATIC_LIBS** - link statically or dynamically against found openssl. If *BUILD_SHARED_LIBS* is `OFF` then this options is set.
 * **OPENSSL_ROOT_DIR** - folder where to look for openssl. Set by pkg-config of brew by default.
 
