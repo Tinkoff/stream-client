@@ -176,7 +176,8 @@ for (auto& t : threads) {
 
 ## How to build
 
-This library supposed to be somewhat multi-platform, however, it was tested and mainly used on ubuntu and macOS. Therefore build instructions are given for only these OSes.
+This library supposed to be somewhat multi-platform, however, it was tested and mainly used on ubuntu and macOS. </br>
+Prefer [out-of-source](https://gitlab.kitware.com/cmake/community/-/wikis/FAQ#what-is-an-out-of-source-build) building.
 
 ### Ubuntu dependencies
 
@@ -191,22 +192,26 @@ sudo apt install build-essential cmake libboost-dev libboost-system-dev libssl-d
 brew install cmake pkg-config icu4c openssl boost
 ```
 
-### Test/Install
-
-Prefer [out-of-source](https://gitlab.kitware.com/cmake/community/-/wikis/FAQ#what-is-an-out-of-source-build) building:
-
+To build:
 ```bash
-mkdir build
-cd build
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-make -j$(nproc)
-make test
+cmake -H. -Bbuild
+cmake --build ./build
 ```
 
-To install the lib (sudo may be required):
+To install (sudo may be required):
 ```bash
-make install
+cmake -H. -Bbuild -DSTREAMCLIENT_BUILD_TESTING=OFF -DSTREAMCLIENT_BUILD_DOCS=OFF -DSTREAMCLIENT_BUILD_EXAMPLES=OFF
+cmake --build ./build --target install
 ```
+
+Or test:
+```bash
+cmake -H. -Bbuild -DSTREAMCLIENT_BUILD_TESTING=ON -DSTREAMCLIENT_BUILD_DOCS=OFF -DSTREAMCLIENT_BUILD_EXAMPLES=OFF
+cmake --build ./build
+cmake -E chdir ./build ctest --output-on-failure
+```
+
+*All these commands assume you are in stream-client root folder*
 
 ### Cmake options
 
