@@ -13,7 +13,7 @@ jobs:
     - name: Install dependencies on ubuntu
       run: |
         sudo apt-get update
-        sudo apt-get install -yq lcov
+        sudo apt-get install -yq lcov libboost-dev libboost-system-dev
     # Make and report coverage
     - name: Collect coverage
       run: .github/workflows/run.sh coverage
