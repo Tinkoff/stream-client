@@ -1,0 +1,28 @@
+@PROJECT_NAME@
+==========
+
+.. image:: https://img.shields.io/badge/language-c++-blue.svg?logo=c%2B%2B
+  :alt: Language C++14
+  :target: https://isocpp.org
+
+.. image:: https://img.shields.io/github/release/TinkoffCreditSystems/stream-client.svg
+  :alt: Gitlab releases
+  :target: @UCONFIG_REPOSITORY_URL@/releases
+
+.. image:: https://coveralls.io/repos/github/TinkoffCreditSystems/stream-client/badge.svg?branch=develop
+  :alt: Coverage status
+  :target: https://coveralls.io/github/TinkoffCreditSystems/stream-client?branch=develop
+
+.. image:: https://img.shields.io/github/license/TinkoffCreditSystems/stream-client.svg
+  :alt: License
+  :target: https://www.apache.org/licenses/LICENSE-2.0
+
+@PROJECT_DESCRIPTION@.
+
+.. toctree::
+   :maxdepth: 2
+
+   @EXHALE_REL_OUTPUT_DIR@/unabridged_api
+   @EXHALE_REL_OUTPUT_DIR@/class_view_hierarchy
+   @EXHALE_REL_OUTPUT_DIR@/file_view_hierarchy
+   genindex

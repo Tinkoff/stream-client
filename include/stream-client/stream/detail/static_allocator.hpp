@@ -12,7 +12,7 @@ class static_pool
 public:
     static static_pool& construct(std::size_t size)
     {
-        auto p = new char[sizeof(static_pool) + size];
+        auto* p = new char[sizeof(static_pool) + size];
         return *(::new (p) static_pool{size});
     }
 
@@ -33,13 +33,13 @@ public:
 
     void* alloc(std::size_t n)
     {
-        auto last = p_ + n;
+        auto* last = p_ + n;
         if (last >= end()) {
             throw std::bad_alloc{};
         }
 
         ++count_;
-        auto p = p_;
+        auto* p = p_;
         p_ = last;
         return p;
     }
@@ -127,12 +127,12 @@ public:
         return static_cast<value_type*>(pool_->alloc(n * sizeof(T)));
     }
 
-    void deallocate(value_type*, size_type)
+    void deallocate(value_type* /*unused*/, size_type /*unused*/)
     {
         pool_->dealloc();
     }
 
-    void deallocate(value_type*)
+    void deallocate(value_type* /*unused*/)
     {
         pool_->dealloc();
     }

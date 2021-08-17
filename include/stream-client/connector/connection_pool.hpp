@@ -2,6 +2,7 @@
 
 #include "connector.hpp"
 
+#include <atomic>
 #include <list>
 
 namespace stream_client {
@@ -204,7 +205,8 @@ public:
      *
      * @returns A stream wrapped in std::unique_ptr or nullptr.
      */
-    inline std::unique_ptr<stream_type> try_get_session(boost::system::error_code& ec, const time_duration_type& timeout)
+    inline std::unique_ptr<stream_type> try_get_session(boost::system::error_code& ec,
+                                                        const time_duration_type& timeout)
     {
         return try_get_session(ec, clock_type::now() + timeout);
     }
@@ -319,7 +321,7 @@ private:
     mutable std::timed_mutex pool_mutex_; ///< @p sesson_pool_ mutex.
     mutable std::condition_variable_any pool_cv_; ///< @p sesson_pool_ condition variable.
 
-    bool watch_pool = true; ///< Flag to stop @p pool_watcher_.
+    std::atomic_bool watch_pool_{false}; ///< Flag to stop @p pool_watcher_.
     std::thread pool_watcher_; ///< Thread to run watch_pool_routine() in.
 };
 
