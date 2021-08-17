@@ -1,0 +1,24 @@
+name: Publish develop
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # Install dependencies
+    - name: Install dependencies on ubuntu
+      run: |
+        sudo apt-get update
+        sudo apt-get install -yq lcov
+    # Make and report coverage
+    - name: Collect coverage
+      run: .github/workflows/run.sh coverage
+    - name: Report coverage
+      uses: coverallsapp/github-action@master
+      with:
+        path-to-lcov: coverage.info
+        github-token: ${{ secrets.GITHUB_TOKEN }}

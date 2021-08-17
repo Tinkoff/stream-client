@@ -1,0 +1,25 @@
+name: Publish master
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  github_pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # Install dependencies
+    - name: Install dependencies on ubuntu
+      run: |
+        sudo apt-get update
+        sudo apt-get install -yq doxygen
+        pip3 install sphinx==3.5.4 breathe==4.29.0 exhale==0.2.3 furo==2021.4.11b34
+    # Make and deploy pages
+    - name: Make pages
+      run: .github/workflows/run.sh docs
+    - name: Deploy pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/docs/html

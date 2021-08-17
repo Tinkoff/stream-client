@@ -205,7 +205,8 @@ public:
      *
      * @returns A stream wrapped in std::unique_ptr or nullptr.
      */
-    inline std::unique_ptr<stream_type> try_get_session(boost::system::error_code& ec, const time_duration_type& timeout)
+    inline std::unique_ptr<stream_type> try_get_session(boost::system::error_code& ec,
+                                                        const time_duration_type& timeout)
     {
         return try_get_session(ec, clock_type::now() + timeout);
     }
