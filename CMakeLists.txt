@@ -3,51 +3,53 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 set(STREAMCLIENT_VERSION_MAJOR "1")
 set(STREAMCLIENT_VERSION_MINOR "1")
 set(STREAMCLIENT_VERSION_RELEASE "9")
+set(STREAMCLIENT_SUMMARY "C++ library")
+set(STREAMCLIENT_REPOSITORY_URL "https://github.com/TinkoffCreditSystems/stream-client")
+set(STREAMCLIENT_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set(STREAMCLIENT_README "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
 set(STREAMCLIENT_VERSION_STRING "${STREAMCLIENT_VERSION_MAJOR}.${STREAMCLIENT_VERSION_MINOR}.${STREAMCLIENT_VERSION_RELEASE}")
-set(STREAMCLIENT_LIB_VERSION ${STREAMCLIENT_VERSION_STRING})
-mark_as_advanced(STREAMCLIENT_VERSION_MAJOR STREAMCLIENT_VERSION_MINOR STREAMCLIENT_VERSION_RELEASE STREAMCLIENT_VERSION_STRING STREAMCLIENT_LIB_VERSION)
 
-project(stream-client VERSION "${STREAMCLIENT_VERSION_STRING}" LANGUAGES CXX)
-include(GNUInstallDirs)
+## Make sure that custom modules are found
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR})
+
+## Declare project
+project("stream-client" LANGUAGES CXX
+                  VERSION "${STREAMCLIENT_VERSION_STRING}"
+                  DESCRIPTION "Lightweight, header-only, Boost-based socket pool library"
+)
+
+##############################################
+# Declare options and project-wide parameters
 
 set(CMAKE_CXX_STANDARD 14) # todo: upgrade to 17
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_UUID_RANDOM_GENERATOR_COMPAT")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unneeded-internal-declaration")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-local-typedef")
 
-# compile in release with debug info mode by default
+## Compile as RelWithDebInfo info by default
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel." FORCE)
 endif()
 
-option(BUILD_SHARED_LIBS "Build shared library" ON)
+option(STREAMCLIENT_BUILD_TESTING "Build included unit-tests" OFF)
+option(STREAMCLIENT_BUILD_DOCS "Build sphinx generated docs" OFF)
 option(STREAMCLIENT_BUILD_EXAMPLES "Build stream-client examples" OFF)
 
-# If streamclient is being bundled in another project, we don't want to
-# install anything.
-if(NOT DEFINED STREAMCLIENT_BUNDLED_MODE)
-  if("${PROJECT_SOURCE_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}")
-    set(STREAMCLIENT_BUNDLED_MODE OFF)
-  else()
-    set(STREAMCLIENT_BUNDLED_MODE ON)
-  endif()
-endif()
-set(STREAMCLIENT_BUNDLED_MODE ${STREAMCLIENT_BUNDLED_MODE} CACHE BOOL "" FORCE)
-mark_as_advanced(STREAMCLIENT_BUNDLED_MODE)
+##############################################
+# Create target and set properties
 
-# Allow people to choose whether to build shared or static libraries
-# via the BUILD_SHARED_LIBS option unless we are in bundled mode, in
-# which case we always use static libraries.
-include(CMakeDependentOption)
-CMAKE_DEPENDENT_OPTION(BUILD_SHARED_LIBS "Build shared libraries" ON "NOT STREAMCLIENT_BUNDLED_MODE" OFF)
+set(STREAMCLIENT_INC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-# libstream-client
-add_library(stream-client INTERFACE)
-add_library(${PROJECT_NAME}::stream-client ALIAS stream-client)
+add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+
+target_include_directories(stream-client
+    INTERFACE
+        $<INSTALL_INTERFACE:include>
+        $<BUILD_INTERFACE:${STREAMCLIENT_INC_DIR}>
+    INTERFACE ${Boost_INCLUDE_DIRS}
+)
 
 if (NOT BUILD_SHARED_LIBS)
     set(OPENSSL_USE_STATIC_LIBS ON)
@@ -61,16 +63,10 @@ if (APPLE AND NOT DEFINED ENV{OPENSSL_ROOT_DIR})
         OUTPUT_STRIP_TRAILING_WHITESPACE)
     endif()
 endif()
+
 find_package(Threads)
 find_package(OpenSSL 1.0 REQUIRED)
 find_package(Boost 1.65 COMPONENTS system REQUIRED)
-
-target_include_directories(stream-client
-    INTERFACE
-        $<INSTALL_INTERFACE:include>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    INTERFACE ${Boost_INCLUDE_DIRS}
-)
 
 target_link_libraries(stream-client INTERFACE OpenSSL::SSL OpenSSL::Crypto)
 target_link_libraries(stream-client INTERFACE Threads::Threads)
@@ -79,51 +75,77 @@ if (NOT BUILD_SHARED_LIBS)
     target_link_libraries(stream-client INTERFACE ${CMAKE_DL_LIBS})
 endif()
 
-if(NOT STREAMCLIENT_BUNDLED_MODE)
-    include(GNUInstallDirs)
+##############################################
+# Installation instructions
 
-    install(TARGETS stream-client
-        EXPORT streamclientTargets
+include(GNUInstallDirs)
+
+## Install targets
+install(TARGETS ${PROJECT_NAME}
+        EXPORT ${PROJECT_NAME}-targets
+        RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
         LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
-        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}")
+        ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+)
 
-    install(DIRECTORY include/stream-client
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+## Install headers
+install(DIRECTORY ${STREAMCLIENT_INC_DIR}/${PROJECT_NAME}
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
 
-    include(CMakePackageConfigHelpers)
+## Configure cmake helpers
+include(CMakePackageConfigHelpers)
+set(STREAMCLIENT_VERSION_CONFIG "${CMAKE_CURRENT_BINARY_DIR}/stream-client-config-version.cmake")
+set(STREAMCLIENT_PROJECT_CONFIG "${CMAKE_CURRENT_BINARY_DIR}/stream-client-config.cmake")
+set(STREAMCLIENT_CMAKE_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/stream-client/")
 
-    set(streamclient_VERSION_CONFIG "${PROJECT_BINARY_DIR}/streamclientConfigVersion.cmake")
-    set(streamclient_PROJECT_CONFIG "${PROJECT_BINARY_DIR}/streamclientConfig.cmake")
-    set(streamclient_CONFIG_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/streamclient/")
-    write_basic_package_version_file(${streamclient_VERSION_CONFIG}
-        VERSION ${STREAMCLIENT_VERSION_STRING}
-        COMPATIBILITY AnyNewerVersion)
-    configure_package_config_file(
-        ${PROJECT_SOURCE_DIR}/streamclientConfig.cmake.in
-        ${streamclient_PROJECT_CONFIG}
-        INSTALL_DESTINATION ${streamclient_CONFIG_INSTALL_DIR})
+write_basic_package_version_file(${STREAMCLIENT_VERSION_CONFIG}
+    VERSION ${STREAMCLIENT_VERSION_STRING}
+    COMPATIBILITY AnyNewerVersion
+)
+configure_package_config_file(${PROJECT_SOURCE_DIR}/stream-client-config.cmake.in
+    ${STREAMCLIENT_PROJECT_CONFIG}
+    INSTALL_DESTINATION ${STREAMCLIENT_CMAKE_INSTALL_DIR}
+)
 
+## Install cmake helpers
+install(FILES ${STREAMCLIENT_PROJECT_CONFIG}
+              ${STREAMCLIENT_VERSION_CONFIG}
+        DESTINATION ${STREAMCLIENT_CMAKE_INSTALL_DIR}
+)
+install(EXPORT ${PROJECT_NAME}-targets
+        DESTINATION ${STREAMCLIENT_CMAKE_INSTALL_DIR}
+        NAMESPACE ${PROJECT_NAME}::
+)
 
-    install(FILES ${streamclient_PROJECT_CONFIG} ${streamclient_VERSION_CONFIG}
-        DESTINATION ${streamclient_CONFIG_INSTALL_DIR})
-    install(EXPORT streamclientTargets
-        DESTINATION ${streamclient_CONFIG_INSTALL_DIR}
-        NAMESPACE ${PROJECT_NAME}::)
-endif(NOT STREAMCLIENT_BUNDLED_MODE)
+##############################################
+# Unit-tests
 
-set(streamclient_TARGETS_CONFIG "${PROJECT_BINARY_DIR}/streamclientTargets.cmake")
-export(EXPORT streamclientTargets
-    FILE ${streamclient_TARGETS_CONFIG}
-    NAMESPACE ${PROJECT_NAME}::)
-
-if (STREAMCLIENT_BUILD_EXAMPLES)
-    add_subdirectory(example)
-endif()
-
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+if(STREAMCLIENT_BUILD_TESTING)
     include(CTest)
+
+    set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+    if(NOT APPLE)
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_CXX_FLAGS} -lgcov")
+    endif()
+
+    add_subdirectory(tests)
 endif()
 
-if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
-    add_subdirectory(test)
+
+##############################################
+# Docs
+
+if(STREAMCLIENT_BUILD_DOCS)
+    add_subdirectory(docs)
+endif()
+
+
+##############################################
+# Examples
+
+if(STREAMCLIENT_BUILD_EXAMPLES)
+    add_subdirectory(docs)
 endif()

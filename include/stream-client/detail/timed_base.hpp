@@ -166,7 +166,7 @@ private:
         timer_->async_wait([this](const boost::system::error_code& ec) { this->check_deadline(ec); });
     }
 
-    void check_deadline(const boost::system::error_code&)
+    void check_deadline(const boost::system::error_code& /*ec*/)
     {
         if (timer_->expires_at() <= clock_type::now()) {
             deadline_actor();

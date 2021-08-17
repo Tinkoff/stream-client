@@ -492,7 +492,7 @@ public:
      */
     inline bool io_timeout_enabled(bool new_mode)
     {
-        return next_layer().io_timeout_enabled(std::move(new_mode));
+        return next_layer().io_timeout_enabled(new_mode);
     }
 
     /// Determine whether the underlying stream is open.

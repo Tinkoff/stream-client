@@ -1,5 +1,8 @@
 #pragma once
 
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/asio/socket_base.hpp>
+
 namespace stream_client {
 
 template <typename Socket>

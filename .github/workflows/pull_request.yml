@@ -1,0 +1,38 @@
+name: Pull request checks
+
+on:
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  build-n-test:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - name: "Ubuntu Latest"
+          os: ubuntu-latest
+        - name: "macOS Latest"
+          os: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    # Install dependencies
+    - name: Install dependencies on ubuntu
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -yq clang-format clang-tidy libboost-dev libboost-system-dev
+    - name: Install dependencies on macos
+      if: runner.os == 'macOS'
+      run: |
+        brew install boost
+        ln -s "$(brew --prefix llvm)/bin/clang-format" "/usr/local/bin/clang-format"
+        ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
+    # Run tests
+    - name: Test
+      run: .github/workflows/run.sh test
+    # Lint code
+    - name: Lint
+      run: .github/workflows/run.sh lint

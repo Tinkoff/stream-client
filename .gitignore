@@ -34,7 +34,12 @@
 # macOS folder view
 **/.DS_Store
 
+# HTML
+*.html
+
 # toolchain env
 .idea/
 .gradle/
 build/
+coverage-build/
+coverage.*
