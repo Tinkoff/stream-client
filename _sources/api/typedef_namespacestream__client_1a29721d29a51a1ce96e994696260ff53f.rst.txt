@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f:
+
+Typedef stream_client::tcp_client
+=================================
+
+- Defined in :ref:`file_stream-client_stream_stream_socket.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::tcp_client

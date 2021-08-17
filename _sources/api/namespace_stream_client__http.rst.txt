@@ -1,0 +1,22 @@
+
+.. _namespace_stream_client__http:
+
+Namespace stream_client::http
+=============================
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1http_1_1base__socket`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1_1http_1ab8dd804aeae001421867a3ddd560a1b9`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7`

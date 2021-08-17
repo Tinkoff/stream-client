@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e:
+
+Typedef stream_client::detail::high_resolution_timed_base
+=========================================================
+
+- Defined in :ref:`file_stream-client_detail_timed_base.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::detail::high_resolution_timed_base

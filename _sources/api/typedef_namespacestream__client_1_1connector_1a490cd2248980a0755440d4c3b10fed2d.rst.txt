@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d:
+
+Typedef stream_client::connector::ssl_connector
+===============================================
+
+- Defined in :ref:`file_stream-client_connector_connector.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::connector::ssl_connector

@@ -1,0 +1,16 @@
+.. _exhale_class_classstream__client_1_1http_1_1base__socket:
+
+Template Class base_socket
+==========================
+
+- Defined in :ref:`file_stream-client_stream_http_socket.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::http::base_socket
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,352 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>Program Listing for File http_socket.hpp - stream-client</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">stream-client</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">stream-client</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="unabridged_api.html">Reference</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="namespace_%403.html">Namespace @3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client.html">Namespace stream_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__connector.html">Namespace stream_client::connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__detail.html">Namespace stream_client::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__http.html">Namespace stream_client::http</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__resolver.html">Namespace stream_client::resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__ssl.html">Namespace stream_client::ssl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream.html">Namespace stream_client::stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream__detail.html">Namespace stream_client::stream::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structstream__client_1_1base__socket_1_1config.html">Struct base_socket::config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connection__pool.html">Template Class base_connection_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connector.html">Template Class base_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1datagram__socket.html">Template Class datagram_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base.html">Template Class timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">Class timed_base::expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1http_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html">Template Class base_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1ssl_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__allocator.html">Template Class static_allocator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__pool.html">Class static_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923.html">Enum ip_family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9.html">Typedef stream_client::connector::http_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1acde8b66f273d3e8741b43ef4e3ceefb1.html">Typedef stream_client::connector::http_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab.html">Typedef stream_client::connector::https_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e.html">Typedef stream_client::connector::https_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d.html">Typedef stream_client::connector::ssl_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aab719516f057f4675ef7d5dd3afc16dc.html">Typedef stream_client::connector::ssl_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a8b4eaa29f9e8c72151ddfb326dc2a269.html">Typedef stream_client::connector::tcp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f.html">Typedef stream_client::connector::tcp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a4b5b6b18348b69d07468b4fbd16904.html">Typedef stream_client::connector::udp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aac34914de40422f5bf4f9132af813d69.html">Typedef stream_client::connector::udp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e.html">Typedef stream_client::detail::high_resolution_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1af46161b047ef3d14e1fe50023a621791.html">Typedef stream_client::detail::steady_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094.html">Typedef stream_client::detail::system_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ab8dd804aeae001421867a3ddd560a1b9.html">Typedef stream_client::http::http_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7.html">Typedef stream_client::http::https_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1a6d00c7cbd60d0019cdee42e6d2c86ca0.html">Typedef stream_client::resolver::tcp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1aa03ef9f4dd9ee7b96a739d388a077e66.html">Typedef stream_client::resolver::udp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1ssl_1a9821ea7df56caf94afe97963c216cb98.html">Typedef stream_client::ssl::ssl_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f.html">Typedef stream_client::tcp_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1ae873f8541c74d6e990024743a07536a4.html">Typedef stream_client::udp_client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_view_hierarchy.html">Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_view_hierarchy.html">File Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="program-listing-for-file-http-socket-hpp">
+<span id="program-listing-file-stream-client-stream-http-socket-hpp"></span><h1>Program Listing for File http_socket.hpp<a class="headerlink" href="#program-listing-for-file-http-socket-hpp" title="Permalink to this headline">¶</a></h1>
+<p>↰ <a class="reference internal" href="file_stream-client_stream_http_socket.hpp.html#file-stream-client-stream-http-socket-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">stream-client/stream/http_socket.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>#pragma once
+
+#include "detail/static_allocator.hpp"
+#include "dgram_socket.hpp"
+#include "ssl_stream_socket.hpp"
+#include "stream_socket.hpp"
+
+#include &lt;boost/beast/core/flat_buffer.hpp&gt;
+#include &lt;boost/beast/http/message.hpp&gt;
+#include &lt;boost/beast/http/parser.hpp&gt;
+#include &lt;boost/beast/http/read.hpp&gt;
+#include &lt;boost/beast/http/string_body.hpp&gt;
+#include &lt;boost/beast/http/write.hpp&gt;
+
+namespace stream_client {
+namespace http {
+
+template &lt;typename Stream&gt;
+class base_socket
+{
+public:
+    static const size_t kHeaderLimit;
+    static const size_t kBodyLimit;
+
+    using allocator_type = ::stream_client::stream::detail::static_allocator&lt;char&gt;;
+    using next_layer_type = typename std::remove_reference&lt;Stream&gt;::type;
+    using protocol_type = typename next_layer_type::protocol_type;
+    using endpoint_type = typename next_layer_type::endpoint_type;
+    using clock_type = typename next_layer_type::clock_type;
+    using time_duration_type = typename next_layer_type::time_duration_type;
+    using time_point_type = typename next_layer_type::time_point_type;
+
+    template &lt;class Arg1, class... ArgN,
+              class = typename std::enable_if&lt;
+                  !std::is_same&lt;typename std::decay&lt;Arg1&gt;::type, base_socket&lt;Stream&gt;&gt;::value&gt;::type&gt;
+    base_socket(Arg1&amp;&amp; arg1, ArgN&amp;&amp;... argn)
+        : stream_(std::forward&lt;Arg1&gt;(arg1), std::forward&lt;ArgN&gt;(argn)...)
+        , buffer_allocator_(kBodyLimit + kHeaderLimit)
+        , buffer_(kBodyLimit + kHeaderLimit, buffer_allocator_)
+    {
+    }
+
+    base_socket(const base_socket&lt;Stream&gt;&amp; other) = delete;
+    base_socket&lt;Stream&gt;&amp; operator=(const base_socket&lt;Stream&gt;&amp; other) = delete;
+    base_socket(base_socket&lt;Stream&gt;&amp;&amp; other) = default;
+    base_socket&lt;Stream&gt;&amp; operator=(base_socket&lt;Stream&gt;&amp;&amp; other) = default;
+
+    virtual ~base_socket() = default;
+
+    template &lt;typename Body, typename Fields&gt;
+    boost::optional&lt;boost::beast::http::response&lt;Body, Fields&gt;&gt;
+    perform(const boost::beast::http::request&lt;Body, Fields&gt;&amp; request, boost::system::error_code&amp; ec,
+            const time_point_type&amp; deadline);
+
+    template &lt;typename Body, typename Fields&gt;
+    inline boost::optional&lt;boost::beast::http::response&lt;Body, Fields&gt;&gt;
+    perform(const boost::beast::http::request&lt;Body, Fields&gt;&amp; request, boost::system::error_code&amp; ec,
+            const time_duration_type&amp; timeout)
+    {
+        return perform(request, ec, clock_type::now() + timeout);
+    }
+
+    template &lt;typename Body, typename Fields&gt;
+    inline boost::optional&lt;boost::beast::http::response&lt;Body, Fields&gt;&gt;
+    perform(const boost::beast::http::request&lt;Body, Fields&gt;&amp; request, boost::system::error_code&amp; ec)
+    {
+        return perform(request, ec, stream_.io_timeout());
+    }
+
+    template &lt;typename Body, typename Fields&gt;
+    inline boost::beast::http::response&lt;Body, Fields&gt; perform(const boost::beast::http::request&lt;Body, Fields&gt;&amp; request)
+    {
+        boost::system::error_code ec;
+        auto response = perform(request, ec);
+        if (ec) {
+            throw boost::system::system_error{ec};
+        }
+        if (!response) {
+            throw boost::system::system_error{boost::asio::error::operation_aborted};
+        }
+        return *response;
+    }
+
+    inline const next_layer_type&amp; next_layer() const
+    {
+        return stream_;
+    }
+
+    inline next_layer_type&amp; next_layer()
+    {
+        return stream_;
+    }
+
+    inline bool is_open() const
+    {
+        return next_layer().is_open();
+    }
+
+protected:
+    template &lt;typename Body, typename Fields&gt;
+    void send_request(const boost::beast::http::request&lt;Body, Fields&gt;&amp; request, boost::system::error_code&amp; ec,
+                      const time_point_type&amp; deadline);
+
+    template &lt;typename Parser, typename DynamicBuffer&gt;
+    void recv_response(Parser&amp; response_parser, DynamicBuffer&amp; buffer, boost::system::error_code&amp; ec,
+                       const time_point_type&amp; deadline);
+
+    template &lt;typename Body, typename Fields&gt;
+    boost::optional&lt;boost::beast::http::response&lt;Body, Fields&gt;&gt; recv_response(boost::system::error_code&amp; ec,
+                                                                              const time_point_type&amp; deadline);
+
+private:
+    Stream stream_;
+    allocator_type buffer_allocator_;
+    boost::beast::basic_flat_buffer&lt;allocator_type&gt; buffer_;
+};
+
+using http_client = base_socket&lt;::stream_client::tcp_client&gt;;
+using https_client = base_socket&lt;::stream_client::ssl::ssl_client&gt;;
+
+} // namespace http
+} // namespace stream_client
+
+#include "impl/http_socket.ipp"
+</pre></div>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; Apache-2.0
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/api/program_listing_file_stream-client_stream_http_socket.hpp.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+    <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

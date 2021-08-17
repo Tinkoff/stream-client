@@ -1,0 +1,570 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Template Class base_resolver" href="classstream__client_1_1resolver_1_1base__resolver.html" /><link rel="prev" title="Class timed_base::expiration" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>Template Class base_socket - stream-client</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">stream-client</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">stream-client</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="unabridged_api.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="namespace_%403.html">Namespace @3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client.html">Namespace stream_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__connector.html">Namespace stream_client::connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__detail.html">Namespace stream_client::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__http.html">Namespace stream_client::http</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__resolver.html">Namespace stream_client::resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__ssl.html">Namespace stream_client::ssl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream.html">Namespace stream_client::stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream__detail.html">Namespace stream_client::stream::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structstream__client_1_1base__socket_1_1config.html">Struct base_socket::config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connection__pool.html">Template Class base_connection_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connector.html">Template Class base_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1datagram__socket.html">Template Class datagram_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base.html">Template Class timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">Class timed_base::expiration</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html">Template Class base_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1ssl_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__allocator.html">Template Class static_allocator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__pool.html">Class static_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923.html">Enum ip_family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9.html">Typedef stream_client::connector::http_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1acde8b66f273d3e8741b43ef4e3ceefb1.html">Typedef stream_client::connector::http_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab.html">Typedef stream_client::connector::https_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e.html">Typedef stream_client::connector::https_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d.html">Typedef stream_client::connector::ssl_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aab719516f057f4675ef7d5dd3afc16dc.html">Typedef stream_client::connector::ssl_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a8b4eaa29f9e8c72151ddfb326dc2a269.html">Typedef stream_client::connector::tcp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f.html">Typedef stream_client::connector::tcp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a4b5b6b18348b69d07468b4fbd16904.html">Typedef stream_client::connector::udp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aac34914de40422f5bf4f9132af813d69.html">Typedef stream_client::connector::udp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e.html">Typedef stream_client::detail::high_resolution_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1af46161b047ef3d14e1fe50023a621791.html">Typedef stream_client::detail::steady_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094.html">Typedef stream_client::detail::system_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ab8dd804aeae001421867a3ddd560a1b9.html">Typedef stream_client::http::http_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7.html">Typedef stream_client::http::https_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1a6d00c7cbd60d0019cdee42e6d2c86ca0.html">Typedef stream_client::resolver::tcp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1aa03ef9f4dd9ee7b96a739d388a077e66.html">Typedef stream_client::resolver::udp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1ssl_1a9821ea7df56caf94afe97963c216cb98.html">Typedef stream_client::ssl::ssl_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f.html">Typedef stream_client::tcp_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1ae873f8541c74d6e990024743a07536a4.html">Typedef stream_client::udp_client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_view_hierarchy.html">Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_view_hierarchy.html">File Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="template-class-base-socket">
+<span id="exhale-class-classstream-client-1-1http-1-1base-socket"></span><h1>Template Class base_socket<a class="headerlink" href="#template-class-base-socket" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_stream-client_stream_http_socket.hpp.html#file-stream-client-stream-http-socket-hpp"><span class="std std-ref">File http_socket.hpp</span></a></p></li>
+</ul>
+<div class="section" id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4I0EN13stream_client4http11base_socketE">
+<span id="_CPPv3I0EN13stream_client4http11base_socketE"></span><span id="_CPPv2I0EN13stream_client4http11base_socketE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Stream</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">http</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">base_socket</span></code><a class="headerlink" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>HTTP stream layer. </p>
+<p>This class wraps usage of boost::beast::http::request_serializer and boost::beast::http::response_parser over Stream. If you want HTTPS use stream_client::ssl::tcp_client type for underlying stream.</p>
+<p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not thread-safe, multi-thread rw access may mess up your data stream and/or timeout handling.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">tparam Stream</dt>
+<dd class="field-odd"><p>Type od underlying stream to use. </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client4http11base_socket14allocator_typeE">
+<span id="_CPPv3N13stream_client4http11base_socket14allocator_typeE"></span><span id="_CPPv2N13stream_client4http11base_socket14allocator_typeE"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a3ae514720dc3dd753cc159ab1f601a7d"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">allocator_type</span></code> <span class="pre">=</span> <span class="pre">::</span><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">stream</span><span class="pre">::</span><span class="pre">detail</span><span class="pre">::</span><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__allocator.html#_CPPv4I0EN13stream_client6stream6detail16static_allocatorE" title="stream_client::stream::detail::static_allocator"><span class="pre">static_allocator</span></a><span class="pre">&lt;</span><span class="pre">char</span><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket14allocator_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client4http11base_socket15next_layer_typeE">
+<span id="_CPPv3N13stream_client4http11base_socket15next_layer_typeE"></span><span id="_CPPv2N13stream_client4http11base_socket15next_layer_typeE"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1af4b9b755734eb0dc3f5c1bb996d0b26c"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">next_layer_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">remove_reference</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">type</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket15next_layer_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client4http11base_socket13protocol_typeE">
+<span id="_CPPv3N13stream_client4http11base_socket13protocol_typeE"></span><span id="_CPPv2N13stream_client4http11base_socket13protocol_typeE"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a3cf74d4313efc89945089c9005cdb9de"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">protocol_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15next_layer_typeE" title="stream_client::http::base_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">protocol_type</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket13protocol_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client4http11base_socket13endpoint_typeE">
+<span id="_CPPv3N13stream_client4http11base_socket13endpoint_typeE"></span><span id="_CPPv2N13stream_client4http11base_socket13endpoint_typeE"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a47b842d6eba21f510a8fa68123936c94"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">endpoint_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15next_layer_typeE" title="stream_client::http::base_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">endpoint_type</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket13endpoint_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client4http11base_socket10clock_typeE">
+<span id="_CPPv3N13stream_client4http11base_socket10clock_typeE"></span><span id="_CPPv2N13stream_client4http11base_socket10clock_typeE"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1ad8466e6ae56badc1298154f7b9f58a2a"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">clock_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15next_layer_typeE" title="stream_client::http::base_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">clock_type</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket10clock_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client4http11base_socket18time_duration_typeE">
+<span id="_CPPv3N13stream_client4http11base_socket18time_duration_typeE"></span><span id="_CPPv2N13stream_client4http11base_socket18time_duration_typeE"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a0a599696dcfcfb84106da7fdde9e653e"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">time_duration_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15next_layer_typeE" title="stream_client::http::base_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">time_duration_type</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket18time_duration_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client4http11base_socket15time_point_typeE">
+<span id="_CPPv3N13stream_client4http11base_socket15time_point_typeE"></span><span id="_CPPv2N13stream_client4http11base_socket15time_point_typeE"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a60fb1f36a0bea35eb0222fa0efdc9147"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">time_point_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15next_layer_typeE" title="stream_client::http::base_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">time_point_type</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket15time_point_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4I0Dp0EN13stream_client4http11base_socket11base_socketERR4Arg1DpRR4ArgN">
+<span id="_CPPv3I0Dp0EN13stream_client4http11base_socket11base_socketERR4Arg1DpRR4ArgN"></span><span id="_CPPv2I0Dp0EN13stream_client4http11base_socket11base_socketERR4Arg1DpRR4ArgN"></span><span class="pre">template&lt;</span><span class="pre">class</span> <code class="sig-name descname"><span class="pre">Arg1</span></code><span class="pre">,</span> <span class="pre">class</span> <span class="pre">...</span><code class="sig-name descname"><span class="pre">ArgN</span></code><span class="pre">,</span> <span class="pre">class</span> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">enable_if</span><span class="pre">&lt;</span><span class="pre">!</span><span class="pre">std</span><span class="pre">::</span><span class="pre">is_same</span><span class="pre">&lt;</span><em class="property"><span class="pre">typename</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">decay</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0Dp0EN13stream_client4http11base_socket11base_socketERR4Arg1DpRR4ArgN" title="stream_client::http::base_socket::base_socket::Arg1"><span class="pre">Arg1</span></a><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">type</span><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I0Dp0EN13stream_client4http11base_socket11base_socketERR4Arg1DpRR4ArgN" title="stream_client::http::base_socket::base_socket"><span class="pre">base_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">value</span><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">type</span><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket_1a1c5e76c162a8ae33a270c3862e730e21"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">base_socket</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0Dp0EN13stream_client4http11base_socket11base_socketERR4Arg1DpRR4ArgN" title="stream_client::http::base_socket::base_socket::Arg1"><span class="pre">Arg1</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">arg1</span></em>, <a class="reference internal" href="#_CPPv4I0Dp0EN13stream_client4http11base_socket11base_socketERR4Arg1DpRR4ArgN" title="stream_client::http::base_socket::base_socket::ArgN"><span class="pre">ArgN</span></a><span class="pre">&amp;</span><span class="pre">&amp;</span><span class="pre">...</span> <em><span class="pre">argn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0Dp0EN13stream_client4http11base_socket11base_socketERR4Arg1DpRR4ArgN" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Parametrized constructor. </p>
+<p>Constructs basic HTTTP stream. This operation blocks until stream is constructed. Passed arguments forwarded to <code class="docutils literal notranslate"><span class="pre">Stream</span></code> constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Arg1</strong> – Type of the first argument. </p></li>
+<li><p><strong>...ArgN</strong> – Types of next arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] arg1</strong> – First argument to pass to <code class="docutils literal notranslate"><span class="pre">Stream</span></code> constructor. </p></li>
+<li><p><strong>[in] ...argn</strong> – Next arguments to pass to <code class="docutils literal notranslate"><span class="pre">Stream</span></code> constructor.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client4http11base_socket11base_socketERK11base_socketI6StreamE">
+<span id="_CPPv3N13stream_client4http11base_socket11base_socketERK11base_socketI6StreamE"></span><span id="_CPPv2N13stream_client4http11base_socket11base_socketERK11base_socketI6StreamE"></span><span id="stream_client::http::base_socket::base_socket__base_socket:Stream:CR"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1ac7f82bb1002ecd58955af3f157052fbb"></span><code class="sig-name descname"><span class="pre">base_socket</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket11base_socketERK11base_socketI6StreamE" title="stream_client::http::base_socket::base_socket"><span class="pre">base_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket11base_socketERK11base_socketI6StreamE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Copy constructor is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client4http11base_socketaSERK11base_socketI6StreamE">
+<span id="_CPPv3N13stream_client4http11base_socketaSERK11base_socketI6StreamE"></span><span id="_CPPv2N13stream_client4http11base_socketaSERK11base_socketI6StreamE"></span><span id="stream_client::http::base_socket::assign-operator__base_socket:Stream:CR"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a489e35707e8bd2cbc4cc3d62a8469732"></span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket"><span class="pre">base_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket"><span class="pre">base_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socketaSERK11base_socketI6StreamE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Copy assignment is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client4http11base_socket11base_socketERR11base_socketI6StreamE">
+<span id="_CPPv3N13stream_client4http11base_socket11base_socketERR11base_socketI6StreamE"></span><span id="_CPPv2N13stream_client4http11base_socket11base_socketERR11base_socketI6StreamE"></span><span id="stream_client::http::base_socket::base_socket__base_socket:Stream:RR"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1ad9af9af0f6d5d34d7e7fd6ff9c7fcfb4"></span><code class="sig-name descname"><span class="pre">base_socket</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket11base_socketERR11base_socketI6StreamE" title="stream_client::http::base_socket::base_socket"><span class="pre">base_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket11base_socketERR11base_socketI6StreamE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Move constructor. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client4http11base_socketaSERR11base_socketI6StreamE">
+<span id="_CPPv3N13stream_client4http11base_socketaSERR11base_socketI6StreamE"></span><span id="_CPPv2N13stream_client4http11base_socketaSERR11base_socketI6StreamE"></span><span id="stream_client::http::base_socket::assign-operator__base_socket:Stream:RR"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a798314b254c1fef7de723237b0d85391"></span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket"><span class="pre">base_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket"><span class="pre">base_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client4http11base_socketE" title="stream_client::http::base_socket::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socketaSERR11base_socketI6StreamE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Move assignment. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client4http11base_socketD0Ev">
+<span id="_CPPv3N13stream_client4http11base_socketD0Ev"></span><span id="_CPPv2N13stream_client4http11base_socketD0Ev"></span><span id="stream_client::http::base_socket::~base_socket"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1aafd3bb8f5ba55c7453434df5f5bf50db"></span><em class="property"><span class="pre">virtual</span></em> <code class="sig-name descname"><span class="pre">~base_socket</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socketD0Ev" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Destructor. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type">
+<span id="_CPPv3I00EN13stream_client4http11base_socket7performERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type"></span><span id="_CPPv2I00EN13stream_client4http11base_socket7performERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Body</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Fields</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket_1a25e8d5dcaa6b7b483acddab4f82e8855"></span><span class="pre">boost</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">response</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::perform::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::perform::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">perform</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">request</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::perform::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::perform::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">request</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15time_point_typeE" title="stream_client::http::base_socket::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Perform HTTP request. </p>
+<p>This function is used to send a request and wait&amp;receive a response until specified deadline is met.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Body</strong> – Type of the body used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>. </p></li>
+<li><p><strong>Fields</strong> – Type of the fields used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] request</strong> – HTTP request to send. </p></li>
+<li><p><strong>[in] deadline</strong> – Expiration time-point. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Received response wrapped in boost::optional or boost::none if an error occurred. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK18time_duration_type">
+<span id="_CPPv3I00EN13stream_client4http11base_socket7performERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK18time_duration_type"></span><span id="_CPPv2I00EN13stream_client4http11base_socket7performERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK18time_duration_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Body</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Fields</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket_1ac1cbef79c9b4dafe3e13e2c424eb5ce9"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">response</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK18time_duration_type" title="stream_client::http::base_socket::perform::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK18time_duration_type" title="stream_client::http::base_socket::perform::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">perform</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">request</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK18time_duration_type" title="stream_client::http::base_socket::perform::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK18time_duration_type" title="stream_client::http::base_socket::perform::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">request</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket18time_duration_typeE" title="stream_client::http::base_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK18time_duration_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Perform HTTP request. </p>
+<p>This function is used to send a request and wait&amp;receive a response within specified time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Body</strong> – Type of the body used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>. </p></li>
+<li><p><strong>Fields</strong> – Type of the fields used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] request</strong> – HTTP request to send. </p></li>
+<li><p><strong>[in] timeout</strong> – Expiration duration. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Received response wrapped in boost::optional or boost::none if an error occurred. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeE">
+<span id="_CPPv3I00EN13stream_client4http11base_socket7performERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeE"></span><span id="_CPPv2I00EN13stream_client4http11base_socket7performERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Body</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Fields</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket_1a7a94673feba910b1f8b8c0124f0dadde"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">response</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeE" title="stream_client::http::base_socket::perform::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeE" title="stream_client::http::base_socket::perform::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">perform</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">request</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeE" title="stream_client::http::base_socket::perform::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeE" title="stream_client::http::base_socket::perform::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">request</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Perform HTTP request. </p>
+<p>This function is used to send a request and wait&amp;receive a response. Timeout for this operation is defined by stream’s I/O default timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Body</strong> – Type of the body used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>. </p></li>
+<li><p><strong>Fields</strong> – Type of the fields used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] request</strong> – HTTP request to send. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Received response wrapped in boost::optional or boost::none if an error occurred. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client4http11base_socket7performEN5boost5beast4http8responseI4Body6FieldsEERKN5boost5beast4http7requestI4Body6FieldsEE">
+<span id="_CPPv3I00EN13stream_client4http11base_socket7performERKN5boost5beast4http7requestI4Body6FieldsEE"></span><span id="_CPPv2I00EN13stream_client4http11base_socket7performERKN5boost5beast4http7requestI4Body6FieldsEE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Body</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Fields</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket_1a17d9df923303e4895ba89bc352f35346"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">response</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost5beast4http8responseI4Body6FieldsEERKN5boost5beast4http7requestI4Body6FieldsEE" title="stream_client::http::base_socket::perform::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost5beast4http8responseI4Body6FieldsEERKN5boost5beast4http7requestI4Body6FieldsEE" title="stream_client::http::base_socket::perform::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">perform</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">request</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost5beast4http8responseI4Body6FieldsEERKN5boost5beast4http7requestI4Body6FieldsEE" title="stream_client::http::base_socket::perform::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost5beast4http8responseI4Body6FieldsEERKN5boost5beast4http7requestI4Body6FieldsEE" title="stream_client::http::base_socket::perform::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">request</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client4http11base_socket7performEN5boost5beast4http8responseI4Body6FieldsEERKN5boost5beast4http7requestI4Body6FieldsEE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Perform HTTP request. </p>
+<p>This function is used to send a request and wait&amp;receive a response. Timeout for this operation is defined by stream’s I/O default timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Body</strong> – Type of the body used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>. </p></li>
+<li><p><strong>Fields</strong> – Type of the fields used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>[in] request</strong> – HTTP request to send.</p>
+</dd>
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Received response. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client4http11base_socket10next_layerEv">
+<span id="_CPPv3NK13stream_client4http11base_socket10next_layerEv"></span><span id="_CPPv2NK13stream_client4http11base_socket10next_layerEv"></span><span id="stream_client::http::base_socket::next_layerC"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a18e9646d9dd22bb020b7c205ccaaae07"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15next_layer_typeE" title="stream_client::http::base_socket::next_layer_type"><span class="pre">next_layer_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">next_layer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client4http11base_socket10next_layerEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a const reference to the underlying stream of type <code class="docutils literal notranslate"><span class="pre">Socket</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This function returns a const reference to the underlying stream. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client4http11base_socket10next_layerEv">
+<span id="_CPPv3N13stream_client4http11base_socket10next_layerEv"></span><span id="_CPPv2N13stream_client4http11base_socket10next_layerEv"></span><span id="stream_client::http::base_socket::next_layer"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1ae2f1edb3a4f2e04d23b1999b3a4eaae1"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15next_layer_typeE" title="stream_client::http::base_socket::next_layer_type"><span class="pre">next_layer_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">next_layer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket10next_layerEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a reference to the underlying stream of type <code class="docutils literal notranslate"><span class="pre">Socket</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This function returns a reference to the underlying stream. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client4http11base_socket7is_openEv">
+<span id="_CPPv3NK13stream_client4http11base_socket7is_openEv"></span><span id="_CPPv2NK13stream_client4http11base_socket7is_openEv"></span><span id="stream_client::http::base_socket::is_openC"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a0a6a518cec073870c9e3c3221b1ec27b"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">is_open</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client4http11base_socket7is_openEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Determine whether the underlying stream is open. </p>
+</dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-attributes">Public Static Attributes</p>
+<dl class="cpp var">
+<dt id="_CPPv4N13stream_client4http11base_socket12kHeaderLimitE">
+<span id="_CPPv3N13stream_client4http11base_socket12kHeaderLimitE"></span><span id="_CPPv2N13stream_client4http11base_socket12kHeaderLimitE"></span><span id="stream_client::http::base_socket::kHeaderLimit__sC"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1ab73085ea75b4644fbbf5534bf8bfbf86"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">const</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">kHeaderLimit</span></code> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">&lt;&lt;</span> <span class="pre">20</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket12kHeaderLimitE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Headers length limit for internal parser. </p>
+</dd></dl>
+<dl class="cpp var">
+<dt id="_CPPv4N13stream_client4http11base_socket10kBodyLimitE">
+<span id="_CPPv3N13stream_client4http11base_socket10kBodyLimitE"></span><span id="_CPPv2N13stream_client4http11base_socket10kBodyLimitE"></span><span id="stream_client::http::base_socket::kBodyLimit__sC"></span><span class="target" id="classstream__client_1_1http_1_1base__socket_1a05d025e054da4cb294d7fb943d4c2990"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">const</span></em> <span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">kBodyLimit</span></code> <span class="pre">=</span> <span class="pre">10</span> <span class="pre">&lt;&lt;</span> <span class="pre">20</span><a class="headerlink" href="#_CPPv4N13stream_client4http11base_socket10kBodyLimitE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Body length limit for internal parser. </p>
+</dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client4http11base_socket12send_requestEvRKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type">
+<span id="_CPPv3I00EN13stream_client4http11base_socket12send_requestERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type"></span><span id="_CPPv2I00EN13stream_client4http11base_socket12send_requestERKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Body</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Fields</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket_1ae47b572efa60a78e85b1049361c00d69"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">send_request</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">request</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket12send_requestEvRKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::send_request::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket12send_requestEvRKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::send_request::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">request</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15time_point_typeE" title="stream_client::http::base_socket::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client4http11base_socket12send_requestEvRKN5boost5beast4http7requestI4Body6FieldsEERN5boost6system10error_codeERK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Send HTTP request. </p>
+<p>This function is used to send a request within defined deadline. Implemented inside as multiple calls of write_some() on the stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Body</strong> – Type of the body used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>. </p></li>
+<li><p><strong>Fields</strong> – Type of the fields used in the <code class="docutils literal notranslate"><span class="pre">request</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] request</strong> – HTTP request to send. </p></li>
+<li><p><strong>[in] deadline</strong> – Expiration time-point. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Received response wrapped in boost::optional or boost::none if an error occurred. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client4http11base_socket13recv_responseEvR6ParserR13DynamicBufferRN5boost6system10error_codeERK15time_point_type">
+<span id="_CPPv3I00EN13stream_client4http11base_socket13recv_responseER6ParserR13DynamicBufferRN5boost6system10error_codeERK15time_point_type"></span><span id="_CPPv2I00EN13stream_client4http11base_socket13recv_responseER6ParserR13DynamicBufferRN5boost6system10error_codeERK15time_point_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Parser</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">DynamicBuffer</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket_1a54d9dfc94fc97862d2dd2631dbf4a6ff"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">recv_response</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket13recv_responseEvR6ParserR13DynamicBufferRN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::recv_response::Parser"><span class="pre">Parser</span></a> <span class="pre">&amp;</span><em><span class="pre">response_parser</span></em>, <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket13recv_responseEvR6ParserR13DynamicBufferRN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::recv_response::DynamicBuffer"><span class="pre">DynamicBuffer</span></a> <span class="pre">&amp;</span><em><span class="pre">buffer</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15time_point_typeE" title="stream_client::http::base_socket::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client4http11base_socket13recv_responseEvR6ParserR13DynamicBufferRN5boost6system10error_codeERK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Receive HTTP response. </p>
+<p>This function is used to fill <code class="docutils literal notranslate"><span class="pre">response_parser</span></code> with received response within defined deadline. Implemented inside as multiple calls of read_some() on the stream.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Parser</strong> – Type of response parse. </p></li>
+<li><p><strong>DynamicBuffer</strong> – Type of the buffer used to store read data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] response_parser</strong> – HTTP request parser to use. </p></li>
+<li><p><strong>[in] buffer</strong> – Buffer for incoming data. </p></li>
+<li><p><strong>[in] deadline</strong> – Expiration time-point. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client4http11base_socket13recv_responseEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERN5boost6system10error_codeERK15time_point_type">
+<span id="_CPPv3I00EN13stream_client4http11base_socket13recv_responseERN5boost6system10error_codeERK15time_point_type"></span><span id="_CPPv2I00EN13stream_client4http11base_socket13recv_responseERN5boost6system10error_codeERK15time_point_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Body</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Fields</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1http_1_1base__socket_1af608711244b730acf81ea12aa8a8ee7d"></span><span class="pre">boost</span><span class="pre">::</span><span class="pre">optional</span><span class="pre">&lt;</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">beast</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><span class="pre">response</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket13recv_responseEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::recv_response::Body"><span class="pre">Body</span></a><span class="pre">,</span> <a class="reference internal" href="#_CPPv4I00EN13stream_client4http11base_socket13recv_responseEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERN5boost6system10error_codeERK15time_point_type" title="stream_client::http::base_socket::recv_response::Fields"><span class="pre">Fields</span></a><span class="pre">&gt;</span><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">recv_response</span></code><span class="sig-paren">(</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client4http11base_socket15time_point_typeE" title="stream_client::http::base_socket::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client4http11base_socket13recv_responseEN5boost8optionalIN5boost5beast4http8responseI4Body6FieldsEEEERN5boost6system10error_codeERK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Receive HTTP response using internal parser. </p>
+<p>Parser uses intenal allocator for fast operations, but it’s limited with <code class="docutils literal notranslate"><span class="pre">kHeaderLimit</span></code> and <code class="docutils literal notranslate"><span class="pre">kBodyLimit</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>Parser</strong> – Type of response parse. </p></li>
+<li><p><strong>DynamicBuffer</strong> – Type of the buffer used to store read data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] deadline</strong> – Expiration time-point. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Received response wrapped in boost::optional or boost::none if an error occurred. </p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+</dd></dl>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="classstream__client_1_1resolver_1_1base__resolver.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Template Class base_resolver</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Class timed_base::expiration</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; Apache-2.0
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/api/classstream__client_1_1http_1_1base__socket.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Template Class base_socket</a><ul>
+<li><a class="reference internal" href="#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+    <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

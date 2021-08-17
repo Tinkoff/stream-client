@@ -1,0 +1,65 @@
+
+.. _file_stream-client_stream_dgram_socket.hpp:
+
+File dgram_socket.hpp
+=====================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_stream>` (``stream-client/stream``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/stream/dgram_socket.hpp``)
+------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_stream_dgram_socket.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``base_socket.hpp`` (:ref:`file_stream-client_stream_base_socket.hpp`)
+
+- ``boost/asio/basic_datagram_socket.hpp``
+
+- ``boost/asio/ip/udp.hpp``
+
+- ``impl/dgram_socket.ipp`` (:ref:`file_stream-client_stream_impl_dgram_socket.ipp`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_stream_http_socket.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1datagram__socket`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1ae873f8541c74d6e990024743a07536a4`
+

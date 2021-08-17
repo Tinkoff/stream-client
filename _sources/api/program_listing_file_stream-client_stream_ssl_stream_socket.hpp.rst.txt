@@ -1,0 +1,257 @@
+
+.. _program_listing_file_stream-client_stream_ssl_stream_socket.hpp:
+
+Program Listing for File ssl_stream_socket.hpp
+==============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_stream-client_stream_ssl_stream_socket.hpp>` (``stream-client/stream/ssl_stream_socket.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include "stream_socket.hpp"
+   
+   #include <boost/asio/ssl/context.hpp>
+   #include <boost/asio/ssl/rfc2818_verification.hpp>
+   #include <boost/asio/ssl/stream.hpp>
+   
+   namespace stream_client {
+   namespace ssl {
+   
+   template <typename Socket>
+   class stream_socket
+   {
+   public:
+       using next_layer_type = typename std::remove_reference<Socket>::type;
+       using protocol_type = typename next_layer_type::protocol_type;
+       using native_handle_type = typename boost::asio::ssl::stream<Socket>::native_handle_type;
+       using lowest_layer_type = typename next_layer_type::lowest_layer_type;
+       using ssl_layer_type = typename boost::asio::ssl::stream<next_layer_type>;
+   
+       using endpoint_type = typename next_layer_type::endpoint_type;
+   
+       using clock_type = typename next_layer_type::clock_type;
+       using time_duration_type = typename next_layer_type::time_duration_type;
+       using time_point_type = typename next_layer_type::time_point_type;
+   
+       using next_layer_config = const typename next_layer_type::config;
+   
+       stream_socket(const endpoint_type& peer_endpoint, time_duration_type connect_timeout,
+                     time_duration_type operation_timeout, const std::string& upstream_host,
+                     bool rfc2818_handshake = true);
+   
+       stream_socket(const stream_socket<Socket>& other) = delete;
+       stream_socket<Socket>& operator=(const stream_socket<Socket>& other) = delete;
+       stream_socket(stream_socket<Socket>&& other) = default;
+       stream_socket<Socket>& operator=(stream_socket<Socket>&& other) = default;
+   
+       virtual ~stream_socket() = default;
+   
+       boost::system::error_code close();
+   
+       inline void close(boost::system::error_code& ec)
+       {
+           ec = close();
+       }
+   
+       template <typename Time>
+       boost::system::error_code handshake(boost::system::error_code& ec, const Time& timeout_or_deadline);
+   
+       template <typename Time>
+       void handshake(const Time& timeout_or_deadline);
+   
+       inline void handshake()
+       {
+           return handshake(connection_timeout());
+       }
+   
+       template <typename ConstBufferSequence>
+       std::size_t send(const ConstBufferSequence& buffers, boost::system::error_code& ec,
+                        const time_point_type& deadline);
+   
+       template <typename ConstBufferSequence>
+       std::size_t send(const ConstBufferSequence& buffers, const time_point_type& deadline);
+   
+       template <typename ConstBufferSequence>
+       inline std::size_t send(const ConstBufferSequence& buffers, boost::system::error_code& ec,
+                               const time_duration_type& timeout)
+       {
+           return send(buffers, ec, clock_type::now() + timeout);
+       }
+       template <typename ConstBufferSequence>
+       inline std::size_t send(const ConstBufferSequence& buffers, const time_duration_type& timeout)
+       {
+           return send(buffers, clock_type::now() + timeout);
+       }
+       template <typename ConstBufferSequence>
+       inline std::size_t send(const ConstBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return send(buffers, ec, clock_type::now() + io_timeout());
+       }
+       template <typename ConstBufferSequence>
+       inline std::size_t send(const ConstBufferSequence& buffers)
+       {
+           return send(buffers, clock_type::now() + io_timeout());
+       }
+   
+       template <typename MutableBufferSequence>
+       std::size_t receive(const MutableBufferSequence& buffers, boost::system::error_code& ec,
+                           const time_point_type& deadline);
+   
+       template <typename MutableBufferSequence>
+       std::size_t receive(const MutableBufferSequence& buffers, const time_point_type& deadline);
+   
+       template <typename MutableBufferSequence>
+       inline std::size_t receive(const MutableBufferSequence& buffers, boost::system::error_code& ec,
+                                  const time_duration_type& timeout)
+       {
+           return receive(buffers, ec, clock_type::now() + timeout);
+       }
+       template <typename MutableBufferSequence>
+       inline std::size_t receive(const MutableBufferSequence& buffers, const time_duration_type& timeout)
+       {
+           return receive(buffers, clock_type::now() + timeout);
+       }
+       template <typename MutableBufferSequence>
+       inline std::size_t receive(const MutableBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return receive(buffers, ec, clock_type::now() + io_timeout());
+       }
+       template <typename MutableBufferSequence>
+       inline std::size_t receive(const MutableBufferSequence& buffers)
+       {
+           return receive(buffers, clock_type::now() + io_timeout());
+       }
+   
+       template <typename ConstBufferSequence, typename Time>
+       std::size_t write_some(const ConstBufferSequence& buffers, boost::system::error_code& ec,
+                              const Time& timeout_or_deadline);
+   
+       template <typename ConstBufferSequence, typename Time>
+       std::size_t write_some(const ConstBufferSequence& buffers, const Time& timeout_or_deadline);
+   
+       template <typename ConstBufferSequence>
+       inline std::size_t write_some(const ConstBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return write_some(buffers, ec, io_timeout());
+       }
+       template <typename ConstBufferSequence>
+       inline std::size_t write_some(const ConstBufferSequence& buffers)
+       {
+           return write_some(buffers, io_timeout());
+       }
+   
+       template <typename MutableBufferSequence, typename Time>
+       std::size_t read_some(const MutableBufferSequence& buffers, boost::system::error_code& ec,
+                             const Time& timeout_or_deadline);
+   
+       template <typename MutableBufferSequence, typename Time>
+       std::size_t read_some(const MutableBufferSequence& buffers, const Time& timeout_or_deadline);
+   
+       template <typename MutableBufferSequence>
+       inline std::size_t read_some(const MutableBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return read_some(buffers, ec, io_timeout());
+       }
+       template <typename MutableBufferSequence>
+       inline std::size_t read_some(const MutableBufferSequence& buffers)
+       {
+           return read_some(buffers, io_timeout());
+       }
+   
+       inline const boost::asio::ssl::context& ssl_context() const
+       {
+           return ssl_context_;
+       }
+   
+       inline boost::asio::ssl::context& ssl_context()
+       {
+           return ssl_context_;
+       }
+   
+       inline const ssl_layer_type& ssl_layer() const
+       {
+           return *ssl_stream_;
+       }
+   
+       inline ssl_layer_type& ssl_layer()
+       {
+           return *ssl_stream_;
+       }
+   
+       inline const next_layer_type& next_layer() const
+       {
+           return ssl_layer().next_layer();
+       }
+   
+       inline next_layer_type& next_layer()
+       {
+           return ssl_layer().next_layer();
+       }
+   
+       inline const lowest_layer_type& lowest_layer() const
+       {
+           return ssl_layer().lowest_layer();
+       }
+   
+       inline lowest_layer_type& lowest_layer()
+       {
+           return ssl_layer().lowest_layer();
+       }
+   
+       inline native_handle_type native_handle()
+       {
+           return ssl_layer().native_handle();
+       }
+   
+       inline const time_duration_type& connection_timeout() const
+       {
+           return next_layer().connection_timeout();
+       }
+   
+       inline const time_duration_type& io_timeout() const
+       {
+           return next_layer().io_timeout();
+       }
+   
+       inline time_duration_type io_timeout(time_duration_type new_io_timeout)
+       {
+           return next_layer().io_timeout(std::move(new_io_timeout));
+       }
+   
+       inline bool io_timeout_enabled() const
+       {
+           return next_layer().io_timeout_enabled();
+       }
+   
+       inline bool io_timeout_enabled(bool new_mode)
+       {
+           return next_layer().io_timeout_enabled(new_mode);
+       }
+   
+       inline bool is_open() const
+       {
+           return next_layer().is_open();
+       }
+   
+   protected:
+       template <typename Time>
+       inline auto scope_expire(const Time& timeout_or_deadline)
+       {
+           return next_layer().scope_expire(timeout_or_deadline);
+       }
+   
+   private:
+       boost::asio::ssl::context ssl_context_; 
+       std::unique_ptr<ssl_layer_type> ssl_stream_; 
+   };
+   
+   using ssl_client = stream_socket<::stream_client::tcp_client>;
+   
+   } // namespace ssl
+   } // namespace stream_client
+   
+   #include "impl/ssl_stream_socket.ipp"

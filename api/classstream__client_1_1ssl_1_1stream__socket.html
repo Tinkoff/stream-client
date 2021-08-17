@@ -1,0 +1,879 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Template Class static_allocator" href="classstream__client_1_1stream_1_1detail_1_1static__allocator.html" /><link rel="prev" title="Template Class base_resolver" href="classstream__client_1_1resolver_1_1base__resolver.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>Template Class stream_socket - stream-client</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">stream-client</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">stream-client</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="unabridged_api.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="namespace_%403.html">Namespace @3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client.html">Namespace stream_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__connector.html">Namespace stream_client::connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__detail.html">Namespace stream_client::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__http.html">Namespace stream_client::http</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__resolver.html">Namespace stream_client::resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__ssl.html">Namespace stream_client::ssl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream.html">Namespace stream_client::stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream__detail.html">Namespace stream_client::stream::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structstream__client_1_1base__socket_1_1config.html">Struct base_socket::config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connection__pool.html">Template Class base_connection_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connector.html">Template Class base_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1datagram__socket.html">Template Class datagram_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base.html">Template Class timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">Class timed_base::expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1http_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html">Template Class base_resolver</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__allocator.html">Template Class static_allocator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__pool.html">Class static_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923.html">Enum ip_family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9.html">Typedef stream_client::connector::http_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1acde8b66f273d3e8741b43ef4e3ceefb1.html">Typedef stream_client::connector::http_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab.html">Typedef stream_client::connector::https_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e.html">Typedef stream_client::connector::https_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d.html">Typedef stream_client::connector::ssl_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aab719516f057f4675ef7d5dd3afc16dc.html">Typedef stream_client::connector::ssl_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a8b4eaa29f9e8c72151ddfb326dc2a269.html">Typedef stream_client::connector::tcp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f.html">Typedef stream_client::connector::tcp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a4b5b6b18348b69d07468b4fbd16904.html">Typedef stream_client::connector::udp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aac34914de40422f5bf4f9132af813d69.html">Typedef stream_client::connector::udp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e.html">Typedef stream_client::detail::high_resolution_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1af46161b047ef3d14e1fe50023a621791.html">Typedef stream_client::detail::steady_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094.html">Typedef stream_client::detail::system_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ab8dd804aeae001421867a3ddd560a1b9.html">Typedef stream_client::http::http_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7.html">Typedef stream_client::http::https_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1a6d00c7cbd60d0019cdee42e6d2c86ca0.html">Typedef stream_client::resolver::tcp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1aa03ef9f4dd9ee7b96a739d388a077e66.html">Typedef stream_client::resolver::udp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1ssl_1a9821ea7df56caf94afe97963c216cb98.html">Typedef stream_client::ssl::ssl_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f.html">Typedef stream_client::tcp_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1ae873f8541c74d6e990024743a07536a4.html">Typedef stream_client::udp_client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_view_hierarchy.html">Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_view_hierarchy.html">File Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="template-class-stream-socket">
+<span id="exhale-class-classstream-client-1-1ssl-1-1stream-socket"></span><h1>Template Class stream_socket<a class="headerlink" href="#template-class-stream-socket" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_stream-client_stream_ssl_stream_socket.hpp.html#file-stream-client-stream-ssl-stream-socket-hpp"><span class="std std-ref">File ssl_stream_socket.hpp</span></a></p></li>
+</ul>
+<div class="section" id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socketE">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socketE"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socketE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Socket</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">ssl</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">stream_socket</span></code><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>SSL stream layer. </p>
+<p>This class wraps usage of boost::asio::ssl::context over boost::asio::ssl::stream&lt;Socket&gt;.</p>
+<p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not thread-safe, multi-thread rw access may mess up your data stream and/or timeout handling.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">tparam Socket</dt>
+<dd class="field-odd"><p>Type of underlying stream socket to use. </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket15next_layer_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket15next_layer_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a78de78ce2c33ef2ade11efd539a5dd8e"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">next_layer_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">remove_reference</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket::Socket"><span class="pre">Socket</span></a><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">type</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket13protocol_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket13protocol_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket13protocol_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1abfc973c28bf55245a95d3af46f476156"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">protocol_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">protocol_type</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket13protocol_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket18native_handle_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket18native_handle_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket18native_handle_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ac5062e122dc1ddb6db0a6c9ed9bc2aff"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">native_handle_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">asio</span><span class="pre">::</span><span class="pre">ssl</span><span class="pre">::</span><span class="pre">stream</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket::Socket"><span class="pre">Socket</span></a><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">native_handle_type</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket18native_handle_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket17lowest_layer_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket17lowest_layer_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket17lowest_layer_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a20412baef48a850616287333ae994d4e"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">lowest_layer_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">lowest_layer_type</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket17lowest_layer_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket14ssl_layer_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket14ssl_layer_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket14ssl_layer_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a70f58338f6cb1e503d96523bbae84212"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">ssl_layer_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">asio</span><span class="pre">::</span><span class="pre">ssl</span><span class="pre">::</span><span class="pre">stream</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket14ssl_layer_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket13endpoint_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket13endpoint_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket13endpoint_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a7188bb4f36d75f22fa7597add07a65a0"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">endpoint_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">endpoint_type</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket13endpoint_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket10clock_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket10clock_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket10clock_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a945e8f653058e6c1a684c0b8f211a5d3"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">clock_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">clock_type</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket10clock_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket18time_duration_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket18time_duration_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ac33b0a5e4e7c1b1666b3b75f516bc902"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">time_duration_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">time_duration_type</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket15time_point_typeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket15time_point_typeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket15time_point_typeE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a17e7f83162e8a343ff5f14672cee39ed"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">time_point_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">time_point_type</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket15time_point_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket17next_layer_configE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket17next_layer_configE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket17next_layer_configE"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a1c195ec7373d7e991534b0ddc9647aff"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">next_layer_config</span></code> <span class="pre">=</span> <em class="property"><span class="pre">const</span></em> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a><span class="pre">::</span><span class="pre">config</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket17next_layer_configE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket13stream_socketERK13endpoint_type18time_duration_type18time_duration_typeRKNSt6stringEb">
+<span id="_CPPv3N13stream_client3ssl13stream_socket13stream_socketERK13endpoint_type18time_duration_type18time_duration_typeRKNSt6stringEb"></span><span id="_CPPv2N13stream_client3ssl13stream_socket13stream_socketERK13endpoint_type18time_duration_type18time_duration_typeRKNSt6stringEb"></span><span id="stream_client::ssl::stream_socket::stream_socket__endpoint_typeCR.time_duration_type.time_duration_type.ssCR.b"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ab9271ed36721c894e617ba0a7557a9c7"></span><code class="sig-name descname"><span class="pre">stream_socket</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket13endpoint_typeE" title="stream_client::ssl::stream_socket::endpoint_type"><span class="pre">endpoint_type</span></a> <span class="pre">&amp;</span><em><span class="pre">peer_endpoint</span></em>, <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <em><span class="pre">connect_timeout</span></em>, <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <em><span class="pre">operation_timeout</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <span class="pre">&amp;</span><em><span class="pre">upstream_host</span></em>, <span class="pre">bool</span> <em><span class="pre">rfc2818_handshake</span></em> <span class="pre">=</span> <span class="pre">true</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket13stream_socketERK13endpoint_type18time_duration_type18time_duration_typeRKNSt6stringEb" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Parametrized constructor. </p>
+<p>Constructs SSL stream connected to <code class="docutils literal notranslate"><span class="pre">peer_endpoint</span></code>. This operation blocks until stream is constructed or <code class="docutils literal notranslate"><span class="pre">connect_timeout</span></code> time elapsed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>[in] peer_endpoint</strong> – Remote endpoint to connect. </p></li>
+<li><p><strong>[in] connect_timeout</strong> – Timeout for connection operation. </p></li>
+<li><p><strong>[in] operation_timeout</strong> – Subsequent I/O operation default timeout. </p></li>
+<li><p><strong>[in] upstream_host</strong> – Hostname to check SSL-cretificate against.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Throws</dt>
+<dd class="field-even"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket13stream_socketERK13stream_socketI6SocketE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket13stream_socketERK13stream_socketI6SocketE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket13stream_socketERK13stream_socketI6SocketE"></span><span id="stream_client::ssl::stream_socket::stream_socket__stream_socket:Socket:CR"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1abec3f2e5654806351f32681c542273d4"></span><code class="sig-name descname"><span class="pre">stream_socket</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket13stream_socketERK13stream_socketI6SocketE" title="stream_client::ssl::stream_socket::stream_socket"><span class="pre">stream_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket::Socket"><span class="pre">Socket</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket13stream_socketERK13stream_socketI6SocketE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Copy constructor is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socketaSERK13stream_socketI6SocketE">
+<span id="_CPPv3N13stream_client3ssl13stream_socketaSERK13stream_socketI6SocketE"></span><span id="_CPPv2N13stream_client3ssl13stream_socketaSERK13stream_socketI6SocketE"></span><span id="stream_client::ssl::stream_socket::assign-operator__stream_socket:Socket:CR"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1aed4288c78c89d351afbec2fba5923145"></span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket"><span class="pre">stream_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket::Socket"><span class="pre">Socket</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket"><span class="pre">stream_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket::Socket"><span class="pre">Socket</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socketaSERK13stream_socketI6SocketE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Copy assignment is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket13stream_socketERR13stream_socketI6SocketE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket13stream_socketERR13stream_socketI6SocketE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket13stream_socketERR13stream_socketI6SocketE"></span><span id="stream_client::ssl::stream_socket::stream_socket__stream_socket:Socket:RR"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a0ca5dd483f414b3c9b3711f655fa67b6"></span><code class="sig-name descname"><span class="pre">stream_socket</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket13stream_socketERR13stream_socketI6SocketE" title="stream_client::ssl::stream_socket::stream_socket"><span class="pre">stream_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket::Socket"><span class="pre">Socket</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket13stream_socketERR13stream_socketI6SocketE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Move constructor. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socketaSERR13stream_socketI6SocketE">
+<span id="_CPPv3N13stream_client3ssl13stream_socketaSERR13stream_socketI6SocketE"></span><span id="_CPPv2N13stream_client3ssl13stream_socketaSERR13stream_socketI6SocketE"></span><span id="stream_client::ssl::stream_socket::assign-operator__stream_socket:Socket:RR"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ac7a252c8a3c8be54050d074f67afa771"></span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket"><span class="pre">stream_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket::Socket"><span class="pre">Socket</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket"><span class="pre">stream_socket</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socketE" title="stream_client::ssl::stream_socket::Socket"><span class="pre">Socket</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socketaSERR13stream_socketI6SocketE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Move assignment. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socketD0Ev">
+<span id="_CPPv3N13stream_client3ssl13stream_socketD0Ev"></span><span id="_CPPv2N13stream_client3ssl13stream_socketD0Ev"></span><span id="stream_client::ssl::stream_socket::~stream_socket"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1aa5eb9e40eb9845e3cbaf10cb16a9693c"></span><em class="property"><span class="pre">virtual</span></em> <code class="sig-name descname"><span class="pre">~stream_socket</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socketD0Ev" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Destructor. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket5closeEv">
+<span id="_CPPv3N13stream_client3ssl13stream_socket5closeEv"></span><span id="_CPPv2N13stream_client3ssl13stream_socket5closeEv"></span><span id="stream_client::ssl::stream_socket::close"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ac715190758626b2d913d928d538793c9"></span><span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket5closeEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Perform SSL shutdown. </p>
+<p>Reception of close_notify constrained with default I/O timeout of <code class="docutils literal notranslate"><span class="pre">next_layer_type</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>What error occurred, if any. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket5closeERN5boost6system10error_codeE">
+<span id="_CPPv3N13stream_client3ssl13stream_socket5closeERN5boost6system10error_codeE"></span><span id="_CPPv2N13stream_client3ssl13stream_socket5closeERN5boost6system10error_codeE"></span><span id="stream_client::ssl::stream_socket::close__boost::system::error_codeR"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a30ddc87e33ae29f7ee80802d8af254dd"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket5closeERN5boost6system10error_codeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Perform SSL shutdown. </p>
+<p>Reception of close_notify constrained with default I/O timeout of <code class="docutils literal notranslate"><span class="pre">next_layer_type</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>[in] ec</strong> – Set to indicate what error occurred, if any. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket9handshakeEN5boost6system10error_codeERN5boost6system10error_codeERK4Time">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket9handshakeERN5boost6system10error_codeERK4Time"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket9handshakeERN5boost6system10error_codeERK4Time"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Time</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a66f3481cf7efb0796b1c55adc22f5535"></span><span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <code class="sig-name descname"><span class="pre">handshake</span></code><span class="sig-paren">(</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket9handshakeEN5boost6system10error_codeERN5boost6system10error_codeERK4Time" title="stream_client::ssl::stream_socket::handshake::Time"><span class="pre">Time</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout_or_deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket9handshakeEN5boost6system10error_codeERN5boost6system10error_codeERK4Time" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Perform SSL handshaking. </p>
+<p>This function is used to perform SSL handshaking on the stream. The call will block until handshaking is complete or an error occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Value of the error occurred, if any (same as <code class="docutils literal notranslate"><span class="pre">ec</span></code>). </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket9handshakeEvRK4Time">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket9handshakeERK4Time"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket9handshakeERK4Time"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Time</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1aac8778ddd7c4224c543e8d399aebb112"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">handshake</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket9handshakeEvRK4Time" title="stream_client::ssl::stream_socket::handshake::Time"><span class="pre">Time</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout_or_deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket9handshakeEvRK4Time" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Perform SSL handshaking. </p>
+<p>This function is used to perform SSL handshaking on the stream. The call will block until handshaking is complete or an error occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration.</p>
+</dd>
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket9handshakeEv">
+<span id="_CPPv3N13stream_client3ssl13stream_socket9handshakeEv"></span><span id="_CPPv2N13stream_client3ssl13stream_socket9handshakeEv"></span><span id="stream_client::ssl::stream_socket::handshake"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ab299b972ad7d92d7ff6f4c435616e342"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">handshake</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket9handshakeEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1ab299b972ad7d92d7ff6f4c435616e342"><span class="std std-ref">handshake()</span></a> using current connection timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK15time_point_type">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRN5boost6system10error_codeERK15time_point_type"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRN5boost6system10error_codeERK15time_point_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a89940d79346826197c96c9c3f5ce058d"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK15time_point_type" title="stream_client::ssl::stream_socket::send::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15time_point_typeE" title="stream_client::ssl::stream_socket::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Send data through the stream. </p>
+<p>The call will block until one of the following conditions is true:</p>
+<p><ul class="simple">
+<li><p>All of the data in the supplied buffers has been written. </p></li>
+<li><p>An error or timeout occurred.</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ConstBufferSequence</strong> – Type of buffers, see boost::asio::buffer. </p></li>
+<li><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] buffers</strong> – One or more buffers containing the data to be written. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The number of bytes transferred. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRK15time_point_type">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRK15time_point_type"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRK15time_point_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ac292f931e337b9a9457cd245a8ad4d0f"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRK15time_point_type" title="stream_client::ssl::stream_socket::send::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15time_point_typeE" title="stream_client::ssl::stream_socket::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Send data through the stream. </p>
+<p>The call will block until one of the following conditions is true:</p>
+<p><ul class="simple">
+<li><p>All of the data in the supplied buffers has been written. </p></li>
+<li><p>An error or timeout occurred.</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ConstBufferSequence</strong> – Type of buffers, see boost::asio::buffer. </p></li>
+<li><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] buffers</strong> – One or more buffers containing the data to be written. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of bytes transferred. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK18time_duration_type">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRN5boost6system10error_codeERK18time_duration_type"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRN5boost6system10error_codeERK18time_duration_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1afceb78288a8915f3298086e29e65e227"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK18time_duration_type" title="stream_client::ssl::stream_socket::send::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK18time_duration_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a89940d79346826197c96c9c3f5ce058d"><span class="std std-ref">send()</span></a> using timeout. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRK18time_duration_type">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRK18time_duration_type"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRK18time_duration_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a156ba076ebc71efa13ab7911ad32e3a3"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRK18time_duration_type" title="stream_client::ssl::stream_socket::send::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRK18time_duration_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a89940d79346826197c96c9c3f5ce058d"><span class="std std-ref">send()</span></a> using timeout. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeE">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRN5boost6system10error_codeE"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequenceRN5boost6system10error_codeE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1abe40b1d420bf4a3d3cd3585b167a4a61"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeE" title="stream_client::ssl::stream_socket::send::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a89940d79346826197c96c9c3f5ce058d"><span class="std std-ref">send()</span></a> using current I/O timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequence">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequence"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket4sendERK19ConstBufferSequence"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ac97c07eb8a6c4205f3faeb5ebda5075c"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">send</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequence" title="stream_client::ssl::stream_socket::send::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket4sendENSt6size_tERK19ConstBufferSequence" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a89940d79346826197c96c9c3f5ce058d"><span class="std std-ref">send()</span></a> using current I/O timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK15time_point_type">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRN5boost6system10error_codeERK15time_point_type"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRN5boost6system10error_codeERK15time_point_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a86af3cf29dd159aac09b06f8708a6e9e"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">receive</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK15time_point_type" title="stream_client::ssl::stream_socket::receive::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15time_point_typeE" title="stream_client::ssl::stream_socket::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Receive data through the stream. </p>
+<p>The call will block until one of the following conditions is true:</p>
+<p><ul class="simple">
+<li><p>The supplied buffers are full. </p></li>
+<li><p>An error or timeout occurred.</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MutableBufferSequence</strong> – Type of buffers, see boost::asio::buffer. </p></li>
+<li><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] buffers</strong> – One or more buffers into which the data will be received. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The number of bytes received. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRK15time_point_type">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRK15time_point_type"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRK15time_point_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ad081a8224f8b25796ee248aebf8fe768"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">receive</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRK15time_point_type" title="stream_client::ssl::stream_socket::receive::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15time_point_typeE" title="stream_client::ssl::stream_socket::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Receive data through the stream. </p>
+<p>The call will block until one of the following conditions is true:</p>
+<p><ul class="simple">
+<li><p>The supplied buffers are full. </p></li>
+<li><p>An error or timeout occurred.</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MutableBufferSequence</strong> – Type of buffers, see boost::asio::buffer. </p></li>
+<li><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] buffers</strong> – One or more buffers into which the data will be received. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of bytes received. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK18time_duration_type">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRN5boost6system10error_codeERK18time_duration_type"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRN5boost6system10error_codeERK18time_duration_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ae0bbf9fb5e75c2f57d51a0a03bc669c6"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">receive</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK18time_duration_type" title="stream_client::ssl::stream_socket::receive::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK18time_duration_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a89940d79346826197c96c9c3f5ce058d"><span class="std std-ref">send()</span></a> using timeout. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRK18time_duration_type">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRK18time_duration_type"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRK18time_duration_type"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a73ae29c5d971e99fa98b30c46b12bb7c"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">receive</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRK18time_duration_type" title="stream_client::ssl::stream_socket::receive::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRK18time_duration_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a89940d79346826197c96c9c3f5ce058d"><span class="std std-ref">send()</span></a> using timeout. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeE">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRN5boost6system10error_codeE"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequenceRN5boost6system10error_codeE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a277635da55dd18f96394d09d88d55e6d"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">receive</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeE" title="stream_client::ssl::stream_socket::receive::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a86af3cf29dd159aac09b06f8708a6e9e"><span class="std std-ref">receive()</span></a> using current I/O timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequence">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequence"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket7receiveERK21MutableBufferSequence"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ab10cfcfee31b5a5863310df39ea4fdd3"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">receive</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequence" title="stream_client::ssl::stream_socket::receive::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket7receiveENSt6size_tERK21MutableBufferSequence" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a86af3cf29dd159aac09b06f8708a6e9e"><span class="std std-ref">receive()</span></a> using current I/O timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK4Time">
+<span id="_CPPv3I00EN13stream_client3ssl13stream_socket10write_someERK19ConstBufferSequenceRN5boost6system10error_codeERK4Time"></span><span id="_CPPv2I00EN13stream_client3ssl13stream_socket10write_someERK19ConstBufferSequenceRN5boost6system10error_codeERK4Time"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Time</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a7ae5780f9eda06224d879e5f09ce877c"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">write_some</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK4Time" title="stream_client::ssl::stream_socket::write_some::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK4Time" title="stream_client::ssl::stream_socket::write_some::Time"><span class="pre">Time</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout_or_deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeERK4Time" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Send some data on the stream. </p>
+<p>The call will block until one or more bytes of the data has been sent successfully, or an until error occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ConstBufferSequence</strong> – Type of buffers, see boost::asio::buffer. </p></li>
+<li><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] buffers</strong> – One or more buffers containing the data to be written. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The number of bytes sent. Returns 0 if an error occurred. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRK4Time">
+<span id="_CPPv3I00EN13stream_client3ssl13stream_socket10write_someERK19ConstBufferSequenceRK4Time"></span><span id="_CPPv2I00EN13stream_client3ssl13stream_socket10write_someERK19ConstBufferSequenceRK4Time"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Time</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a7bf19a82e4557719c8926fb1c8b0a6a2"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">write_some</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRK4Time" title="stream_client::ssl::stream_socket::write_some::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRK4Time" title="stream_client::ssl::stream_socket::write_some::Time"><span class="pre">Time</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout_or_deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRK4Time" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Send some data on the stream. </p>
+<p>The call will block until one or more bytes of the data has been sent successfully, or an until error occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ConstBufferSequence</strong> – Type of buffers, see boost::asio::buffer. </p></li>
+<li><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] buffers</strong> – One or more buffers containing the data to be written. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of bytes sent. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeE">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket10write_someERK19ConstBufferSequenceRN5boost6system10error_codeE"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket10write_someERK19ConstBufferSequenceRN5boost6system10error_codeE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a1ecbbf97d950a9ff8f9e643e1bd61101"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">write_some</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeE" title="stream_client::ssl::stream_socket::write_some::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequenceRN5boost6system10error_codeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a7ae5780f9eda06224d879e5f09ce877c"><span class="std std-ref">write_some()</span></a> using current I/O timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequence">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket10write_someERK19ConstBufferSequence"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket10write_someERK19ConstBufferSequence"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">ConstBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1afb637472805339f82a136535c6ca216a"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">write_some</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequence" title="stream_client::ssl::stream_socket::write_some::ConstBufferSequence"><span class="pre">ConstBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket10write_someENSt6size_tERK19ConstBufferSequence" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a7ae5780f9eda06224d879e5f09ce877c"><span class="std std-ref">write_some()</span></a> using current I/O timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK4Time">
+<span id="_CPPv3I00EN13stream_client3ssl13stream_socket9read_someERK21MutableBufferSequenceRN5boost6system10error_codeERK4Time"></span><span id="_CPPv2I00EN13stream_client3ssl13stream_socket9read_someERK21MutableBufferSequenceRN5boost6system10error_codeERK4Time"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Time</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a825cd43675b15c2d2d22b094b7367845"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">read_some</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK4Time" title="stream_client::ssl::stream_socket::read_some::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK4Time" title="stream_client::ssl::stream_socket::read_some::Time"><span class="pre">Time</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout_or_deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeERK4Time" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Receive some data on the stream. </p>
+<p>The call will block until one or more bytes of data has been received successfully, or until an error occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MutableBufferSequence</strong> – Type of buffers, see boost::asio::buffer. </p></li>
+<li><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] buffers</strong> – One or more buffers into which the data will be received. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The number of bytes received. Returns 0 if an error occurred. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I00EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRK4Time">
+<span id="_CPPv3I00EN13stream_client3ssl13stream_socket9read_someERK21MutableBufferSequenceRK4Time"></span><span id="_CPPv2I00EN13stream_client3ssl13stream_socket9read_someERK21MutableBufferSequenceRK4Time"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">,</span> <span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Time</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a415312b9fe1377ae38375c7b1e56a40f"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">read_some</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRK4Time" title="stream_client::ssl::stream_socket::read_some::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I00EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRK4Time" title="stream_client::ssl::stream_socket::read_some::Time"><span class="pre">Time</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout_or_deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I00EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRK4Time" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Receive some data on the stream. </p>
+<p>The call will block until one or more bytes of data has been received successfully, or until an error occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MutableBufferSequence</strong> – Type of buffers, see boost::asio::buffer. </p></li>
+<li><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>[in] buffers</strong> – One or more buffers into which the data will be received. </p></li>
+<li><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point or duration.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The number of bytes received. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeE">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket9read_someERK21MutableBufferSequenceRN5boost6system10error_codeE"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket9read_someERK21MutableBufferSequenceRN5boost6system10error_codeE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a72e7ef3aa735ca86bfbd99e5381b8c1a"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">read_some</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeE" title="stream_client::ssl::stream_socket::read_some::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em>, <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequenceRN5boost6system10error_codeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a825cd43675b15c2d2d22b094b7367845"><span class="std std-ref">read_some()</span></a> using current I/O timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequence">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket9read_someERK21MutableBufferSequence"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket9read_someERK21MutableBufferSequence"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">MutableBufferSequence</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ad554b4a1bcd1f0c8934f62c124db0ce2"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">size_t</span> <code class="sig-name descname"><span class="pre">read_some</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequence" title="stream_client::ssl::stream_socket::read_some::MutableBufferSequence"><span class="pre">MutableBufferSequence</span></a> <span class="pre">&amp;</span><em><span class="pre">buffers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket9read_someENSt6size_tERK21MutableBufferSequence" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Alias to <a class="reference internal" href="#classstream__client_1_1ssl_1_1stream__socket_1a825cd43675b15c2d2d22b094b7367845"><span class="std std-ref">read_some()</span></a> using current I/O timeout value. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client3ssl13stream_socket11ssl_contextEv">
+<span id="_CPPv3NK13stream_client3ssl13stream_socket11ssl_contextEv"></span><span id="_CPPv2NK13stream_client3ssl13stream_socket11ssl_contextEv"></span><span id="stream_client::ssl::stream_socket::ssl_contextC"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ac9c2e09c5ed66812de39552a0691a9ca"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">asio</span><span class="pre">::</span><span class="pre">ssl</span><span class="pre">::</span><span class="pre">context</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">ssl_context</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client3ssl13stream_socket11ssl_contextEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a const reference to the associated boost::asio::ssl::context. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This function returns a const reference to the ssl context. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket11ssl_contextEv">
+<span id="_CPPv3N13stream_client3ssl13stream_socket11ssl_contextEv"></span><span id="_CPPv2N13stream_client3ssl13stream_socket11ssl_contextEv"></span><span id="stream_client::ssl::stream_socket::ssl_context"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ad61d12891646543fadd9aa9c026c7291"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">asio</span><span class="pre">::</span><span class="pre">ssl</span><span class="pre">::</span><span class="pre">context</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">ssl_context</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket11ssl_contextEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a reference to the associated boost::asio::ssl::context. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This function returns a reference to the ssl context. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client3ssl13stream_socket9ssl_layerEv">
+<span id="_CPPv3NK13stream_client3ssl13stream_socket9ssl_layerEv"></span><span id="_CPPv2NK13stream_client3ssl13stream_socket9ssl_layerEv"></span><span id="stream_client::ssl::stream_socket::ssl_layerC"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a166fc6587cf6c734c6e64116167cb333"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket14ssl_layer_typeE" title="stream_client::ssl::stream_socket::ssl_layer_type"><span class="pre">ssl_layer_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">ssl_layer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client3ssl13stream_socket9ssl_layerEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a const reference to the underlying boost::asio::ssl::stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This function returns a const reference to the underlying boost::asio::ssl::stream. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket9ssl_layerEv">
+<span id="_CPPv3N13stream_client3ssl13stream_socket9ssl_layerEv"></span><span id="_CPPv2N13stream_client3ssl13stream_socket9ssl_layerEv"></span><span id="stream_client::ssl::stream_socket::ssl_layer"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1af9c270e8f138abd955fe7a0486983ccf"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket14ssl_layer_typeE" title="stream_client::ssl::stream_socket::ssl_layer_type"><span class="pre">ssl_layer_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">ssl_layer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket9ssl_layerEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a reference to the underlying boost::asio::ssl::stream. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This function returns a reference to the underlying boost::asio::ssl::stream. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client3ssl13stream_socket10next_layerEv">
+<span id="_CPPv3NK13stream_client3ssl13stream_socket10next_layerEv"></span><span id="_CPPv2NK13stream_client3ssl13stream_socket10next_layerEv"></span><span id="stream_client::ssl::stream_socket::next_layerC"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a70dc98ec1bd80220c1d44aacaf259cb2"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">next_layer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client3ssl13stream_socket10next_layerEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a const reference to the underlying stream of type <code class="docutils literal notranslate"><span class="pre">Socket</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This function returns a const reference to the underlying stream. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket10next_layerEv">
+<span id="_CPPv3N13stream_client3ssl13stream_socket10next_layerEv"></span><span id="_CPPv2N13stream_client3ssl13stream_socket10next_layerEv"></span><span id="stream_client::ssl::stream_socket::next_layer"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a51494b61d142fee2f57f0fd94362f5b1"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket15next_layer_typeE" title="stream_client::ssl::stream_socket::next_layer_type"><span class="pre">next_layer_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">next_layer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket10next_layerEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a reference to the underlying stream of type <code class="docutils literal notranslate"><span class="pre">Socket</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>This function returns a reference to the underlying stream. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client3ssl13stream_socket12lowest_layerEv">
+<span id="_CPPv3NK13stream_client3ssl13stream_socket12lowest_layerEv"></span><span id="_CPPv2NK13stream_client3ssl13stream_socket12lowest_layerEv"></span><span id="stream_client::ssl::stream_socket::lowest_layerC"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a04d5a8acca7de6c8de57a7e9b471fda2"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket17lowest_layer_typeE" title="stream_client::ssl::stream_socket::lowest_layer_type"><span class="pre">lowest_layer_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">lowest_layer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client3ssl13stream_socket12lowest_layerEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a const reference to the lowest layer. </p>
+<p>This function returns a reference to the lowest layer in a stack of layers, basically an instance of boost::asio::basic_stream_socket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A const reference to the lowest layer in the stack of layers. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket12lowest_layerEv">
+<span id="_CPPv3N13stream_client3ssl13stream_socket12lowest_layerEv"></span><span id="_CPPv2N13stream_client3ssl13stream_socket12lowest_layerEv"></span><span id="stream_client::ssl::stream_socket::lowest_layer"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1abb75e3a0fda4f9a06bc9801d1d9d6ca9"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket17lowest_layer_typeE" title="stream_client::ssl::stream_socket::lowest_layer_type"><span class="pre">lowest_layer_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">lowest_layer</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket12lowest_layerEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get a reference to the lowest layer. </p>
+<p>This function returns a reference to the lowest layer in a stack of layers, basically an instance of boost::asio::basic_stream_socket.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A reference to the lowest layer in the stack of layers. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket13native_handleEv">
+<span id="_CPPv3N13stream_client3ssl13stream_socket13native_handleEv"></span><span id="_CPPv2N13stream_client3ssl13stream_socket13native_handleEv"></span><span id="stream_client::ssl::stream_socket::native_handle"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a5c090bd292b39bd4312738668fd41573"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18native_handle_typeE" title="stream_client::ssl::stream_socket::native_handle_type"><span class="pre">native_handle_type</span></a> <code class="sig-name descname"><span class="pre">native_handle</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket13native_handleEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get the underlying implementation in the native type. </p>
+<p>This function may be used to obtain the underlying implementation of the context. This is intended to allow access to context functionality that is not otherwise provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A reference to the lowest layer in the stack of layers. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client3ssl13stream_socket18connection_timeoutEv">
+<span id="_CPPv3NK13stream_client3ssl13stream_socket18connection_timeoutEv"></span><span id="_CPPv2NK13stream_client3ssl13stream_socket18connection_timeoutEv"></span><span id="stream_client::ssl::stream_socket::connection_timeoutC"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a41e1e2a0a0eecf4f9658e6fc2f7c86fa"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">connection_timeout</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client3ssl13stream_socket18connection_timeoutEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get connection timeout. </p>
+<p>This function used to get connection timeout used at construction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A const reference to the connection timeout. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client3ssl13stream_socket10io_timeoutEv">
+<span id="_CPPv3NK13stream_client3ssl13stream_socket10io_timeoutEv"></span><span id="_CPPv2NK13stream_client3ssl13stream_socket10io_timeoutEv"></span><span id="stream_client::ssl::stream_socket::io_timeoutC"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a54d6a8f90ee0e3b101cc5da06000d1df"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">io_timeout</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client3ssl13stream_socket10io_timeoutEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get I/O operations timeout. </p>
+<p>This function used to get current value for I/O timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A const reference to the timeout. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket10io_timeoutE18time_duration_type">
+<span id="_CPPv3N13stream_client3ssl13stream_socket10io_timeoutE18time_duration_type"></span><span id="_CPPv2N13stream_client3ssl13stream_socket10io_timeoutE18time_duration_type"></span><span id="stream_client::ssl::stream_socket::io_timeout__time_duration_type"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a6d1a0e63dec73dc61b163c240dd7823b"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <code class="sig-name descname"><span class="pre">io_timeout</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client3ssl13stream_socket18time_duration_typeE" title="stream_client::ssl::stream_socket::time_duration_type"><span class="pre">time_duration_type</span></a> <em><span class="pre">new_io_timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket10io_timeoutE18time_duration_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Set I/O operations timeout. </p>
+<p>This function used to set new value for I/O timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Previous timeout value. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client3ssl13stream_socket18io_timeout_enabledEv">
+<span id="_CPPv3NK13stream_client3ssl13stream_socket18io_timeout_enabledEv"></span><span id="_CPPv2NK13stream_client3ssl13stream_socket18io_timeout_enabledEv"></span><span id="stream_client::ssl::stream_socket::io_timeout_enabledC"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1abeb5bf950467bd6304c275b4c41d01e0"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">io_timeout_enabled</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client3ssl13stream_socket18io_timeout_enabledEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get current status of I/O timeout. </p>
+<p>This function used to check if I/O timeout enabled or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A boolean state of the timeout. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client3ssl13stream_socket18io_timeout_enabledEb">
+<span id="_CPPv3N13stream_client3ssl13stream_socket18io_timeout_enabledEb"></span><span id="_CPPv2N13stream_client3ssl13stream_socket18io_timeout_enabledEb"></span><span id="stream_client::ssl::stream_socket::io_timeout_enabled__b"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1ab1982783d5525c44de018b258ee3029b"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">io_timeout_enabled</span></code><span class="sig-paren">(</span><span class="pre">bool</span> <em><span class="pre">new_mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client3ssl13stream_socket18io_timeout_enabledEb" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Set current status of I/O timeout. </p>
+<p>This function used to enable or disable I/O timeout. If it’s disabled, rw functions without explicit timeout value will use indefinite timeout (blocking mode),</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Previous state of the timeout. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client3ssl13stream_socket7is_openEv">
+<span id="_CPPv3NK13stream_client3ssl13stream_socket7is_openEv"></span><span id="_CPPv2NK13stream_client3ssl13stream_socket7is_openEv"></span><span id="stream_client::ssl::stream_socket::is_openC"></span><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1aab15ffaa266e87f43d2ebf0c98d50cc6"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">bool</span> <code class="sig-name descname"><span class="pre">is_open</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client3ssl13stream_socket7is_openEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Determine whether the underlying stream is open. </p>
+</dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client3ssl13stream_socket12scope_expireEDaRK4Time">
+<span id="_CPPv3I0EN13stream_client3ssl13stream_socket12scope_expireERK4Time"></span><span id="_CPPv2I0EN13stream_client3ssl13stream_socket12scope_expireERK4Time"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Time</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1ssl_1_1stream__socket_1a6ce53f9bc5750dcbed124659264a136a"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">auto</span> <code class="sig-name descname"><span class="pre">scope_expire</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client3ssl13stream_socket12scope_expireEDaRK4Time" title="stream_client::ssl::stream_socket::scope_expire::Time"><span class="pre">Time</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout_or_deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client3ssl13stream_socket12scope_expireEDaRK4Time" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get RAII handler for timeout control over stream. </p>
+</dd></dl>
+</div>
+</dd></dl>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="classstream__client_1_1stream_1_1detail_1_1static__allocator.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Template Class static_allocator</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="classstream__client_1_1resolver_1_1base__resolver.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Template Class base_resolver</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; Apache-2.0
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/api/classstream__client_1_1ssl_1_1stream__socket.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Template Class stream_socket</a><ul>
+<li><a class="reference internal" href="#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+    <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

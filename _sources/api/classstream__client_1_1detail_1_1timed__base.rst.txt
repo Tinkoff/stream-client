@@ -1,0 +1,39 @@
+.. _exhale_class_classstream__client_1_1detail_1_1timed__base:
+
+Template Class timed_base
+=========================
+
+- Defined in :ref:`file_stream-client_detail_timed_base.hpp`
+
+
+Nested Relationships
+--------------------
+
+
+Nested Types
+************
+
+- :ref:`exhale_class_classstream__client_1_1detail_1_1timed__base_1_1expiration`
+
+
+Inheritance Relationships
+-------------------------
+
+Derived Types
+*************
+
+- ``public stream_client::resolver::base_resolver< protocol_type >`` (:ref:`exhale_class_classstream__client_1_1resolver_1_1base__resolver`)
+- ``public stream_client::base_socket< boost::asio::basic_datagram_socket< Protocol > >`` (:ref:`exhale_class_classstream__client_1_1base__socket`)
+- ``public stream_client::base_socket< boost::asio::basic_stream_socket< Protocol > >`` (:ref:`exhale_class_classstream__client_1_1base__socket`)
+- ``public stream_client::base_socket< Socket >`` (:ref:`exhale_class_classstream__client_1_1base__socket`)
+- ``public stream_client::resolver::base_resolver< Protocol >`` (:ref:`exhale_class_classstream__client_1_1resolver_1_1base__resolver`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::detail::timed_base
+   :members:
+   :protected-members:
+   :undoc-members:

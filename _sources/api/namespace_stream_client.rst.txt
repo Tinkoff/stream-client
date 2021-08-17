@@ -1,0 +1,45 @@
+
+.. _namespace_stream_client:
+
+Namespace stream_client
+=======================
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client__connector`
+
+- :ref:`namespace_stream_client__detail`
+
+- :ref:`namespace_stream_client__http`
+
+- :ref:`namespace_stream_client__resolver`
+
+- :ref:`namespace_stream_client__ssl`
+
+- :ref:`namespace_stream_client__stream`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structstream__client_1_1base__socket_1_1config`
+
+- :ref:`exhale_class_classstream__client_1_1base__socket`
+
+- :ref:`exhale_class_classstream__client_1_1datagram__socket`
+
+- :ref:`exhale_class_classstream__client_1_1stream__socket`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f`
+
+- :ref:`exhale_typedef_namespacestream__client_1ae873f8541c74d6e990024743a07536a4`

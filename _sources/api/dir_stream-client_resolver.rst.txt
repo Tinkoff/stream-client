@@ -1,0 +1,25 @@
+.. _dir_stream-client_resolver:
+
+
+Directory resolver
+==================
+
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client>` (``stream-client``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``stream-client/resolver``
+
+Subdirectories
+--------------
+
+- :ref:`dir_stream-client_resolver_impl`
+
+
+Files
+-----
+
+- :ref:`file_stream-client_resolver_resolver.hpp`
+
+

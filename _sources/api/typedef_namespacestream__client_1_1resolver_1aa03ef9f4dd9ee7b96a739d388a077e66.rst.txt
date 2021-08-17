@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1resolver_1aa03ef9f4dd9ee7b96a739d388a077e66:
+
+Typedef stream_client::resolver::udp_resolver
+=============================================
+
+- Defined in :ref:`file_stream-client_resolver_resolver.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::resolver::udp_resolver

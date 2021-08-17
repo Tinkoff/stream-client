@@ -1,0 +1,157 @@
+
+.. _program_listing_file_stream-client_stream_base_socket.hpp:
+
+Program Listing for File base_socket.hpp
+========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_stream-client_stream_base_socket.hpp>` (``stream-client/stream/base_socket.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include "stream-client/detail/timed_base.hpp"
+   
+   namespace stream_client {
+   
+   template <typename Socket>
+   class base_socket: public detail::steady_timed_base
+   {
+   public:
+       using next_layer_type = Socket;
+       using protocol_type = typename next_layer_type::protocol_type;
+       using lowest_layer_type = typename next_layer_type::lowest_layer_type;
+       using native_handle_type = typename next_layer_type::native_handle_type;
+       using endpoint_type = typename protocol_type::endpoint;
+   
+       struct config
+       {
+           const endpoint_type& peer_endpoint; 
+           time_duration_type connect_timeout; 
+           time_duration_type operation_timeout; 
+       };
+   
+       base_socket(const endpoint_type& peer_endpoint, time_duration_type connect_timeout,
+                   time_duration_type operation_timeout);
+       base_socket(const config& cfg);
+   
+       base_socket(const base_socket<Socket>& other) = delete;
+       base_socket<Socket>& operator=(const base_socket<Socket>& other) = delete;
+       base_socket(base_socket<Socket>&& other) = default;
+       base_socket<Socket>& operator=(base_socket<Socket>&& other) = default;
+   
+       virtual ~base_socket();
+   
+       boost::system::error_code close();
+   
+       inline void close(boost::system::error_code& ec)
+       {
+           ec = close();
+       }
+   
+       template <typename SettableSocketOption>
+       void set_option(const SettableSocketOption& option);
+   
+       template <typename SettableSocketOption>
+       inline boost::system::error_code set_option(const SettableSocketOption& option, boost::system::error_code& ec)
+       {
+           return next_layer().set_option(option, ec);
+       }
+   
+       template <typename GettableSocketOption>
+       void get_option(GettableSocketOption& option) const;
+   
+       template <typename GettableSocketOption>
+       inline boost::system::error_code get_option(GettableSocketOption& option, boost::system::error_code& ec) const
+       {
+           return next_layer().get_option(option, ec);
+       }
+   
+       endpoint_type local_endpoint() const;
+   
+       inline endpoint_type local_endpoint(boost::system::error_code& ec) const
+       {
+           return next_layer().local_endpoint(ec);
+       }
+   
+       endpoint_type remote_endpoint() const;
+   
+       inline endpoint_type remote_endpoint(boost::system::error_code& ec) const
+       {
+           return next_layer().remote_endpoint(ec);
+       }
+   
+       inline const next_layer_type& next_layer() const
+       {
+           return socket_;
+       }
+   
+       inline next_layer_type& next_layer()
+       {
+           return socket_;
+       }
+   
+       inline const lowest_layer_type& lowest_layer() const
+       {
+           return socket_.lowest_layer();
+       }
+   
+       inline lowest_layer_type& lowest_layer()
+       {
+           return socket_.lowest_layer();
+       }
+   
+       inline const time_duration_type& connection_timeout() const
+       {
+           return connection_timeout_;
+       }
+   
+       inline const time_duration_type& io_timeout() const
+       {
+           return io_timeouted_ ? io_operation_timeout_ : kInfiniteDuration;
+       }
+   
+       inline time_duration_type io_timeout(time_duration_type new_io_timeout)
+       {
+           std::swap(io_operation_timeout_, new_io_timeout);
+           return new_io_timeout;
+       }
+   
+       inline bool io_timeout_enabled() const
+       {
+           return io_timeouted_;
+       }
+   
+       inline bool io_timeout_enabled(bool new_mode)
+       {
+           std::swap(io_timeouted_, new_mode);
+           return new_mode;
+       }
+   
+       inline bool is_open() const
+       {
+           return next_layer().is_open();
+       }
+   
+   protected:
+       virtual void deadline_actor() override;
+   
+       template <typename ConstBufferSequence, typename WriteHandler, typename Time>
+       void async_send(const ConstBufferSequence& buffers, const Time& timeout_or_deadline, WriteHandler&& handler,
+                       bool setup_expiration);
+   
+       template <typename MutableBufferSequence, typename ReadHandler, typename Time>
+       void async_receive(const MutableBufferSequence& buffers, const Time& timeout_or_deadline, ReadHandler&& handler,
+                          bool setup_expiration);
+   
+       next_layer_type socket_; 
+       time_duration_type connection_timeout_; 
+       time_duration_type io_operation_timeout_; 
+       bool io_timeouted_; 
+   };
+   
+   } // namespace stream_client
+   
+   #include "impl/base_socket.ipp"

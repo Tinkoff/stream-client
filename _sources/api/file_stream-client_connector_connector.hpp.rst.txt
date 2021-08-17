@@ -1,0 +1,77 @@
+
+.. _file_stream-client_connector_connector.hpp:
+
+File connector.hpp
+==================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_connector>` (``stream-client/connector``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/connector/connector.hpp``)
+------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_connector_connector.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``condition_variable``
+
+- ``impl/connector.ipp`` (:ref:`file_stream-client_connector_impl_connector.ipp`)
+
+- ``mutex``
+
+- ``stream-client/resolver/resolver.hpp`` (:ref:`file_stream-client_resolver_resolver.hpp`)
+
+- ``stream-client/stream/http_socket.hpp`` (:ref:`file_stream-client_stream_http_socket.hpp`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_connector_connection_pool.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__connector`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1connector_1_1base__connector`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a8b4eaa29f9e8c72151ddfb326dc2a269`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a2a4b5b6b18348b69d07468b4fbd16904`
+

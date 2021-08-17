@@ -1,0 +1,16 @@
+.. _exhale_class_classstream__client_1_1stream_1_1detail_1_1static__pool:
+
+Class static_pool
+=================
+
+- Defined in :ref:`file_stream-client_stream_detail_static_allocator.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::stream::detail::static_pool
+   :members:
+   :protected-members:
+   :undoc-members:

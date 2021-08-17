@@ -1,0 +1,25 @@
+.. _exhale_class_classstream__client_1_1resolver_1_1base__resolver:
+
+Template Class base_resolver
+============================
+
+- Defined in :ref:`file_stream-client_resolver_resolver.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public stream_client::detail::timed_base< Clock >`` (:ref:`exhale_class_classstream__client_1_1detail_1_1timed__base`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::resolver::base_resolver
+   :members:
+   :protected-members:
+   :undoc-members:

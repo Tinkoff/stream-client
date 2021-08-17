@@ -1,0 +1,153 @@
+:orphan:
+
+
+Reference
+=========
+
+Directories
+***********
+
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client_connector.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client_connector_impl.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client_detail.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client_resolver.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client_resolver_impl.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client_stream.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client_stream_detail.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_stream-client_stream_impl.rst
+
+Files
+*****
+
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_base_socket.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_impl_base_socket.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_connector_connection_pool.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_connector_impl_connection_pool.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_connector_connector.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_connector_impl_connector.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_dgram_socket.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_impl_dgram_socket.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_http_socket.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_impl_http_socket.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_resolver_resolver.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_resolver_impl_resolver.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_ssl_stream_socket.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_impl_ssl_stream_socket.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_detail_static_allocator.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream-client.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_stream_socket.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_stream_impl_stream_socket.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_detail_timed_base.hpp.rst

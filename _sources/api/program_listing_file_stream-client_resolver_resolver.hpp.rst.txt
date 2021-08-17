@@ -1,0 +1,121 @@
+
+.. _program_listing_file_stream-client_resolver_resolver.hpp:
+
+Program Listing for File resolver.hpp
+=====================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_stream-client_resolver_resolver.hpp>` (``stream-client/resolver/resolver.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include "stream-client/detail/timed_base.hpp"
+   
+   #include <boost/asio/io_service.hpp>
+   #include <boost/asio/ip/basic_resolver.hpp>
+   #include <boost/asio/ip/basic_resolver_iterator.hpp>
+   #include <boost/asio/ip/basic_resolver_query.hpp>
+   #include <boost/asio/ip/tcp.hpp>
+   #include <boost/asio/ip/udp.hpp>
+   #include <boost/optional.hpp>
+   #include <boost/system/error_code.hpp>
+   
+   #include <memory>
+   #include <thread>
+   
+   namespace stream_client {
+   namespace resolver {
+   
+   enum class ip_family
+   {
+       ipv4,
+       ipv6,
+       any
+   };
+   
+   template <typename Protocol>
+   class base_resolver: public ::stream_client::detail::steady_timed_base
+   {
+   public:
+       using protocol_type = typename std::remove_reference<Protocol>::type;
+       using resolver_type = boost::asio::ip::basic_resolver<protocol_type>;
+       using query_type = typename resolver_type::query;
+       using resolve_flags_type = typename query_type::flags;
+       using iterator_type = typename resolver_type::iterator;
+   
+       static const resolve_flags_type kDefaultFlags = resolve_flags_type::address_configured;
+       static const ip_family kDefaultIPFamily = ip_family::any;
+   
+       base_resolver(std::string host, std::string port, time_duration_type resolve_timeout,
+                     ip_family protocol = kDefaultIPFamily, resolve_flags_type resolve_flags = kDefaultFlags);
+   
+       base_resolver(const base_resolver<Protocol>& other) = delete;
+       base_resolver<Protocol>& operator=(const base_resolver<Protocol>& other) = delete;
+       base_resolver(base_resolver<Protocol>&& other) = default;
+       base_resolver<Protocol>& operator=(base_resolver<Protocol>&& other) = default;
+   
+       virtual ~base_resolver() = default;
+   
+       template <typename Time>
+       iterator_type resolve(boost::system::error_code& ec, const Time& timeout_or_deadline);
+   
+       inline iterator_type resolve(boost::system::error_code& ec)
+       {
+           return resolve(ec, resolve_timeout());
+       }
+   
+       inline iterator_type resolve()
+       {
+           boost::system::error_code ec;
+           auto endpoints = resolve(ec);
+           if (ec) {
+               throw boost::system::system_error{ec};
+           }
+           return endpoints;
+       }
+   
+       inline const time_duration_type& resolve_timeout() const
+       {
+           return resolve_timeout_;
+       }
+   
+       inline time_duration_type resolve_timeout(time_duration_type new_resolve_timeout)
+       {
+           std::swap(resolve_timeout_, new_resolve_timeout);
+           return new_resolve_timeout;
+       }
+   
+   private:
+       virtual void deadline_actor() override;
+   
+       template <typename ResolveHandler, typename Time>
+       inline void async_resolve(ResolveHandler&& handler, const Time& timeout_or_deadline)
+       {
+           auto expire = scope_expire(timeout_or_deadline);
+           // clang-format off
+           resolver_.async_resolve(
+               *query_,
+               [e = std::move(expire), h = std::forward<ResolveHandler>(handler)](const boost::system::error_code& error,
+                                                                                  iterator_type iterator)
+               {
+                   h(error, std::move(iterator));
+               }
+           );
+           // clang-format on
+       }
+   
+       resolver_type resolver_; 
+       time_duration_type resolve_timeout_; 
+       std::unique_ptr<query_type> query_; 
+   };
+   
+   using tcp_resolver = base_resolver<boost::asio::ip::tcp>;
+   using udp_resolver = base_resolver<boost::asio::ip::udp>;
+   
+   } // namespace resolver
+   } // namespace stream_client
+   
+   #include "impl/resolver.ipp"

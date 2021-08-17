@@ -1,0 +1,75 @@
+
+.. _file_stream-client_detail_timed_base.hpp:
+
+File timed_base.hpp
+===================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_detail>` (``stream-client/detail``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/detail/timed_base.hpp``)
+----------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_detail_timed_base.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``boost/asio/basic_waitable_timer.hpp``
+
+- ``boost/asio/io_service.hpp``
+
+- ``chrono``
+
+- ``iostream``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_resolver_resolver.hpp`
+
+- :ref:`file_stream-client_stream_base_socket.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__detail`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1detail_1_1timed__base`
+
+- :ref:`exhale_class_classstream__client_1_1detail_1_1timed__base_1_1expiration`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1detail_1af46161b047ef3d14e1fe50023a621791`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094`
+

@@ -1,0 +1,92 @@
+
+.. _file_stream-client_resolver_resolver.hpp:
+
+File resolver.hpp
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_resolver>` (``stream-client/resolver``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/resolver/resolver.hpp``)
+----------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_resolver_resolver.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``boost/asio/io_service.hpp``
+
+- ``boost/asio/ip/basic_resolver.hpp``
+
+- ``boost/asio/ip/basic_resolver_iterator.hpp``
+
+- ``boost/asio/ip/basic_resolver_query.hpp``
+
+- ``boost/asio/ip/tcp.hpp``
+
+- ``boost/asio/ip/udp.hpp``
+
+- ``boost/optional.hpp``
+
+- ``boost/system/error_code.hpp``
+
+- ``impl/resolver.ipp`` (:ref:`file_stream-client_resolver_impl_resolver.ipp`)
+
+- ``memory``
+
+- ``stream-client/detail/timed_base.hpp`` (:ref:`file_stream-client_detail_timed_base.hpp`)
+
+- ``thread``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_connector_connector.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__resolver`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1resolver_1_1base__resolver`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1_1resolver_1a6d00c7cbd60d0019cdee42e6d2c86ca0`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1resolver_1aa03ef9f4dd9ee7b96a739d388a077e66`
+

@@ -1,0 +1,20 @@
+.. _dir_stream-client_resolver_impl:
+
+
+Directory impl
+==============
+
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_resolver>` (``stream-client/resolver``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``stream-client/resolver/impl``
+
+
+Files
+-----
+
+- :ref:`file_stream-client_resolver_impl_resolver.ipp`
+
+

@@ -1,0 +1,16 @@
+.. _exhale_class_classstream__client_1_1connector_1_1base__connection__pool:
+
+Template Class base_connection_pool
+===================================
+
+- Defined in :ref:`file_stream-client_connector_connection_pool.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::connector::base_connection_pool
+   :members:
+   :protected-members:
+   :undoc-members:

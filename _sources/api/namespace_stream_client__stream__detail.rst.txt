@@ -1,0 +1,15 @@
+
+.. _namespace_stream_client__stream__detail:
+
+Namespace stream_client::stream::detail
+=======================================
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1stream_1_1detail_1_1static__allocator`
+
+- :ref:`exhale_class_classstream__client_1_1stream_1_1detail_1_1static__pool`

@@ -1,0 +1,20 @@
+.. _dir_stream-client_stream_detail:
+
+
+Directory detail
+================
+
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_stream>` (``stream-client/stream``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``stream-client/stream/detail``
+
+
+Files
+-----
+
+- :ref:`file_stream-client_stream_detail_static_allocator.hpp`
+
+

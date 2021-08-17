@@ -1,0 +1,22 @@
+.. _exhale_struct_structstream__client_1_1base__socket_1_1config:
+
+Struct base_socket::config
+==========================
+
+- Defined in :ref:`file_stream-client_stream_base_socket.hpp`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classstream__client_1_1base__socket`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: stream_client::base_socket::config
+   :members:
+   :protected-members:
+   :undoc-members:

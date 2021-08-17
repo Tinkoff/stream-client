@@ -1,0 +1,26 @@
+
+.. _namespace_stream_client__detail:
+
+Namespace stream_client::detail
+===============================
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1detail_1_1timed__base`
+
+- :ref:`exhale_class_classstream__client_1_1detail_1_1timed__base_1_1expiration`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1detail_1af46161b047ef3d14e1fe50023a621791`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094`

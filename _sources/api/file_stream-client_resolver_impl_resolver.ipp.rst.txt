@@ -1,0 +1,41 @@
+
+.. _file_stream-client_resolver_impl_resolver.ipp:
+
+File resolver.ipp
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_resolver_impl>` (``stream-client/resolver/impl``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/resolver/impl/resolver.ipp``)
+---------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_resolver_impl_resolver.ipp.rst
+
+
+
+
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_resolver_resolver.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__resolver`
+

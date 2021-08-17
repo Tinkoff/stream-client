@@ -1,0 +1,25 @@
+.. _exhale_class_classstream__client_1_1datagram__socket:
+
+Template Class datagram_socket
+==============================
+
+- Defined in :ref:`file_stream-client_stream_dgram_socket.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public stream_client::base_socket< boost::asio::basic_datagram_socket< Protocol > >`` (:ref:`exhale_class_classstream__client_1_1base__socket`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::datagram_socket
+   :members:
+   :protected-members:
+   :undoc-members:

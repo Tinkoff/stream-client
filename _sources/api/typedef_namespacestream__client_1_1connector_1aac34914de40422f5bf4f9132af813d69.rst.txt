@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1connector_1aac34914de40422f5bf4f9132af813d69:
+
+Typedef stream_client::connector::udp_pool
+==========================================
+
+- Defined in :ref:`file_stream-client_connector_connection_pool.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::connector::udp_pool

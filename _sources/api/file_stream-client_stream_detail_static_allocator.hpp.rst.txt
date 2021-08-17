@@ -1,0 +1,60 @@
+
+.. _file_stream-client_stream_detail_static_allocator.hpp:
+
+File static_allocator.hpp
+=========================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_stream_detail>` (``stream-client/stream/detail``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/stream/detail/static_allocator.hpp``)
+-----------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_stream_detail_static_allocator.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``cstddef``
+
+- ``new``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_stream_http_socket.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__stream`
+
+- :ref:`namespace_stream_client__stream__detail`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1stream_1_1detail_1_1static__allocator`
+
+- :ref:`exhale_class_classstream__client_1_1stream_1_1detail_1_1static__pool`
+

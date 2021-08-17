@@ -1,0 +1,44 @@
+
+.. _file_stream-client_stream-client.hpp:
+
+File stream-client.hpp
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client>` (``stream-client``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/stream-client.hpp``)
+------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_stream-client.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``stream-client/connector/connection_pool.hpp`` (:ref:`file_stream-client_connector_connection_pool.hpp`)
+
+- ``stream-client/connector/connector.hpp`` (:ref:`file_stream-client_connector_connector.hpp`)
+
+- ``stream-client/resolver/resolver.hpp`` (:ref:`file_stream-client_resolver_resolver.hpp`)
+
+- ``stream-client/stream/dgram_socket.hpp`` (:ref:`file_stream-client_stream_dgram_socket.hpp`)
+
+- ``stream-client/stream/http_socket.hpp`` (:ref:`file_stream-client_stream_http_socket.hpp`)
+
+- ``stream-client/stream/ssl_stream_socket.hpp`` (:ref:`file_stream-client_stream_ssl_stream_socket.hpp`)
+
+- ``stream-client/stream/stream_socket.hpp`` (:ref:`file_stream-client_stream_stream_socket.hpp`)
+
+
+
+
+

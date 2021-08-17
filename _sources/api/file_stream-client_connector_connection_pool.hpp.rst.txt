@@ -1,0 +1,69 @@
+
+.. _file_stream-client_connector_connection_pool.hpp:
+
+File connection_pool.hpp
+========================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_connector>` (``stream-client/connector``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/connector/connection_pool.hpp``)
+------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_connector_connection_pool.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``atomic``
+
+- ``connector.hpp`` (:ref:`file_stream-client_connector_connector.hpp`)
+
+- ``impl/connection_pool.ipp`` (:ref:`file_stream-client_connector_impl_connection_pool.ipp`)
+
+- ``list``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__connector`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1connector_1_1base__connection__pool`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1acde8b66f273d3e8741b43ef4e3ceefb1`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1aab719516f057f4675ef7d5dd3afc16dc`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1aac34914de40422f5bf4f9132af813d69`
+

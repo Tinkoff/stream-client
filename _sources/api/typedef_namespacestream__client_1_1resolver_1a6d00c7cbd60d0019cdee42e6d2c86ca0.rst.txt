@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1resolver_1a6d00c7cbd60d0019cdee42e6d2c86ca0:
+
+Typedef stream_client::resolver::tcp_resolver
+=============================================
+
+- Defined in :ref:`file_stream-client_resolver_resolver.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::resolver::tcp_resolver

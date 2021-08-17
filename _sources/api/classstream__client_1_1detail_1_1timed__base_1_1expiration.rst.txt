@@ -1,0 +1,22 @@
+.. _exhale_class_classstream__client_1_1detail_1_1timed__base_1_1expiration:
+
+Class timed_base::expiration
+============================
+
+- Defined in :ref:`file_stream-client_detail_timed_base.hpp`
+
+
+Nested Relationships
+--------------------
+
+This class is a nested type of :ref:`exhale_class_classstream__client_1_1detail_1_1timed__base`.
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::detail::timed_base::expiration
+   :members:
+   :protected-members:
+   :undoc-members:

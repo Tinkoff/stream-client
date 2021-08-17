@@ -1,0 +1,67 @@
+
+.. _file_stream-client_stream_stream_socket.hpp:
+
+File stream_socket.hpp
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_stream>` (``stream-client/stream``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/stream/stream_socket.hpp``)
+-------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_stream_stream_socket.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``base_socket.hpp`` (:ref:`file_stream-client_stream_base_socket.hpp`)
+
+- ``boost/asio/basic_stream_socket.hpp``
+
+- ``boost/asio/ip/tcp.hpp``
+
+- ``impl/stream_socket.ipp`` (:ref:`file_stream-client_stream_impl_stream_socket.ipp`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_stream_ssl_stream_socket.hpp`
+
+- :ref:`file_stream-client_stream_http_socket.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1stream__socket`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f`
+

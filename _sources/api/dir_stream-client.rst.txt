@@ -1,0 +1,24 @@
+.. _dir_stream-client:
+
+
+Directory stream-client
+=======================
+
+
+*Directory path:* ``stream-client``
+
+Subdirectories
+--------------
+
+- :ref:`dir_stream-client_connector`
+- :ref:`dir_stream-client_detail`
+- :ref:`dir_stream-client_resolver`
+- :ref:`dir_stream-client_stream`
+
+
+Files
+-----
+
+- :ref:`file_stream-client_stream-client.hpp`
+
+

@@ -1,0 +1,47 @@
+
+.. _file_stream-client_stream_impl_base_socket.ipp:
+
+File base_socket.ipp
+====================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_stream_impl>` (``stream-client/stream/impl``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/stream/impl/base_socket.ipp``)
+----------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_stream_impl_base_socket.ipp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``boost/asio/ip/tcp.hpp``
+
+- ``boost/asio/socket_base.hpp``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_stream_base_socket.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+

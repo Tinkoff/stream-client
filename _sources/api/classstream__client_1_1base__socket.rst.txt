@@ -1,0 +1,35 @@
+.. _exhale_class_classstream__client_1_1base__socket:
+
+Template Class base_socket
+==========================
+
+- Defined in :ref:`file_stream-client_stream_base_socket.hpp`
+
+
+Nested Relationships
+--------------------
+
+
+Nested Types
+************
+
+- :ref:`exhale_struct_structstream__client_1_1base__socket_1_1config`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public stream_client::detail::timed_base< Clock >`` (:ref:`exhale_class_classstream__client_1_1detail_1_1timed__base`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::base_socket
+   :members:
+   :protected-members:
+   :undoc-members:

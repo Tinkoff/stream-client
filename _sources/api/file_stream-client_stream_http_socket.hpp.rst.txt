@@ -1,0 +1,83 @@
+
+.. _file_stream-client_stream_http_socket.hpp:
+
+File http_socket.hpp
+====================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_stream>` (``stream-client/stream``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/stream/http_socket.hpp``)
+-----------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_stream_http_socket.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``boost/beast/core/flat_buffer.hpp``
+
+- ``boost/beast/http/message.hpp``
+
+- ``boost/beast/http/parser.hpp``
+
+- ``boost/beast/http/read.hpp``
+
+- ``boost/beast/http/string_body.hpp``
+
+- ``boost/beast/http/write.hpp``
+
+- ``detail/static_allocator.hpp`` (:ref:`file_stream-client_stream_detail_static_allocator.hpp`)
+
+- ``dgram_socket.hpp`` (:ref:`file_stream-client_stream_dgram_socket.hpp`)
+
+- ``impl/http_socket.ipp`` (:ref:`file_stream-client_stream_impl_http_socket.ipp`)
+
+- ``ssl_stream_socket.hpp`` (:ref:`file_stream-client_stream_ssl_stream_socket.hpp`)
+
+- ``stream_socket.hpp`` (:ref:`file_stream-client_stream_ssl_stream_socket.hpp`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_connector_connector.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__http`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1http_1_1base__socket`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1_1http_1ab8dd804aeae001421867a3ddd560a1b9`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7`
+

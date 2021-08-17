@@ -1,0 +1,129 @@
+
+.. _program_listing_file_stream-client_stream_stream_socket.hpp:
+
+Program Listing for File stream_socket.hpp
+==========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_stream-client_stream_stream_socket.hpp>` (``stream-client/stream/stream_socket.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include "base_socket.hpp"
+   
+   #include <boost/asio/basic_stream_socket.hpp>
+   #include <boost/asio/ip/tcp.hpp>
+   
+   namespace stream_client {
+   
+   template <typename Protocol>
+   class stream_socket: public base_socket<boost::asio::basic_stream_socket<Protocol>>
+   {
+   public:
+       using base_socket<boost::asio::basic_stream_socket<Protocol>>::base_socket;
+   
+       stream_socket(const stream_socket<Protocol>& other) = delete;
+       stream_socket<Protocol>& operator=(const stream_socket<Protocol>& other) = delete;
+       stream_socket(stream_socket<Protocol>&& other) = default;
+       stream_socket<Protocol>& operator=(stream_socket<Protocol>&& other) = default;
+   
+       virtual ~stream_socket() = default;
+   
+       boost::system::error_code close();
+   
+       template <typename ConstBufferSequence, typename Time>
+       std::size_t send(const ConstBufferSequence& buffers, boost::system::error_code& ec,
+                        const Time& timeout_or_deadline);
+   
+       template <typename ConstBufferSequence, typename Time>
+       std::size_t send(const ConstBufferSequence& buffers, const Time& timeout_or_deadline);
+   
+       template <typename ConstBufferSequence>
+       inline std::size_t send(const ConstBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return send(buffers, ec, this->io_timeout());
+       }
+       template <typename ConstBufferSequence>
+       inline std::size_t send(const ConstBufferSequence& buffers)
+       {
+           return send(buffers, this->io_timeout());
+       }
+   
+       template <typename MutableBufferSequence, typename Time>
+       std::size_t receive(const MutableBufferSequence& buffers, boost::system::error_code& ec,
+                           const Time& timeout_or_deadline);
+   
+       template <typename MutableBufferSequence, typename Time>
+       std::size_t receive(const MutableBufferSequence& buffers, const Time& timeout_or_deadline);
+   
+       template <typename MutableBufferSequence>
+       inline std::size_t receive(const MutableBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return receive(buffers, ec, this->io_timeout());
+       }
+       template <typename MutableBufferSequence>
+       inline std::size_t receive(const MutableBufferSequence& buffers)
+       {
+           return receive(buffers, this->io_timeout());
+       }
+   
+       template <typename ConstBufferSequence, typename Time>
+       std::size_t write_some(const ConstBufferSequence& buffers, boost::system::error_code& ec,
+                              const Time& timeout_or_deadline);
+   
+       template <typename ConstBufferSequence, typename Time>
+       std::size_t write_some(const ConstBufferSequence& buffers, const Time& timeout_or_deadline);
+   
+       template <typename ConstBufferSequence>
+       inline std::size_t write_some(const ConstBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return write_some(buffers, ec, this->io_timeout());
+       }
+       template <typename ConstBufferSequence>
+       inline std::size_t write_some(const ConstBufferSequence& buffers)
+       {
+           return write_some(buffers, this->io_timeout());
+       }
+   
+       template <typename MutableBufferSequence, typename Time>
+       std::size_t read_some(const MutableBufferSequence& buffers, boost::system::error_code& ec,
+                             const Time& timeout_or_deadline);
+   
+       template <typename MutableBufferSequence, typename Time>
+       std::size_t read_some(const MutableBufferSequence& buffers, const Time& timeout_or_deadline);
+   
+       template <typename MutableBufferSequence>
+       inline std::size_t read_some(const MutableBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return read_some(buffers, ec, this->io_timeout());
+       }
+       template <typename MutableBufferSequence>
+       inline std::size_t read_some(const MutableBufferSequence& buffers)
+       {
+           return read_some(buffers, this->io_timeout());
+       }
+   
+   private:
+       template <typename ConstBufferSequence, typename WriteHandler, typename Time>
+       void async_send(const ConstBufferSequence& buffers, const Time& timeout_or_deadline, WriteHandler&& handler,
+                       bool setup_expiration);
+   
+       template <typename MutableBufferSequence, typename ReadHandler, typename Time>
+       void async_receive(const MutableBufferSequence& buffers, const Time& timeout_or_deadline, ReadHandler&& handler,
+                          bool setup_expiration);
+   
+       template <typename ConstBufferSequence, typename WriteHandler, typename Time>
+       void async_write_some(const ConstBufferSequence& buffers, const Time& timeout_or_deadline, WriteHandler&& handler);
+   
+       template <typename MutableBufferSequence, typename ReadHandler, typename Time>
+       void async_read_some(const MutableBufferSequence& buffers, const Time& timeout_or_deadline, ReadHandler&& handler);
+   };
+   
+   using tcp_client = stream_socket<boost::asio::ip::tcp>;
+   
+   } // namespace stream_client
+   
+   #include "impl/stream_socket.ipp"

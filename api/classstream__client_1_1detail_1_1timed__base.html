@@ -1,0 +1,472 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Class timed_base::expiration" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html" /><link rel="prev" title="Template Class datagram_socket" href="classstream__client_1_1datagram__socket.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>Template Class timed_base - stream-client</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">stream-client</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">stream-client</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="unabridged_api.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="namespace_%403.html">Namespace @3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client.html">Namespace stream_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__connector.html">Namespace stream_client::connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__detail.html">Namespace stream_client::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__http.html">Namespace stream_client::http</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__resolver.html">Namespace stream_client::resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__ssl.html">Namespace stream_client::ssl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream.html">Namespace stream_client::stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream__detail.html">Namespace stream_client::stream::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structstream__client_1_1base__socket_1_1config.html">Struct base_socket::config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connection__pool.html">Template Class base_connection_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connector.html">Template Class base_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1datagram__socket.html">Template Class datagram_socket</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Template Class timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">Class timed_base::expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1http_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html">Template Class base_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1ssl_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__allocator.html">Template Class static_allocator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__pool.html">Class static_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923.html">Enum ip_family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9.html">Typedef stream_client::connector::http_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1acde8b66f273d3e8741b43ef4e3ceefb1.html">Typedef stream_client::connector::http_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab.html">Typedef stream_client::connector::https_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e.html">Typedef stream_client::connector::https_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d.html">Typedef stream_client::connector::ssl_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aab719516f057f4675ef7d5dd3afc16dc.html">Typedef stream_client::connector::ssl_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a8b4eaa29f9e8c72151ddfb326dc2a269.html">Typedef stream_client::connector::tcp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f.html">Typedef stream_client::connector::tcp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a4b5b6b18348b69d07468b4fbd16904.html">Typedef stream_client::connector::udp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aac34914de40422f5bf4f9132af813d69.html">Typedef stream_client::connector::udp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e.html">Typedef stream_client::detail::high_resolution_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1af46161b047ef3d14e1fe50023a621791.html">Typedef stream_client::detail::steady_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094.html">Typedef stream_client::detail::system_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ab8dd804aeae001421867a3ddd560a1b9.html">Typedef stream_client::http::http_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7.html">Typedef stream_client::http::https_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1a6d00c7cbd60d0019cdee42e6d2c86ca0.html">Typedef stream_client::resolver::tcp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1aa03ef9f4dd9ee7b96a739d388a077e66.html">Typedef stream_client::resolver::udp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1ssl_1a9821ea7df56caf94afe97963c216cb98.html">Typedef stream_client::ssl::ssl_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f.html">Typedef stream_client::tcp_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1ae873f8541c74d6e990024743a07536a4.html">Typedef stream_client::udp_client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_view_hierarchy.html">Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_view_hierarchy.html">File Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="template-class-timed-base">
+<span id="exhale-class-classstream-client-1-1detail-1-1timed-base"></span><h1>Template Class timed_base<a class="headerlink" href="#template-class-timed-base" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_stream-client_detail_timed_base.hpp.html#file-stream-client-detail-timed-base-hpp"><span class="std std-ref">File timed_base.hpp</span></a></p></li>
+</ul>
+<div class="section" id="nested-relationships">
+<h2>Nested Relationships<a class="headerlink" href="#nested-relationships" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nested-types">
+<h3>Nested Types<a class="headerlink" href="#nested-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html#exhale-class-classstream-client-1-1detail-1-1timed-base-1-1expiration"><span class="std std-ref">Class timed_base::expiration</span></a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="inheritance-relationships">
+<h2>Inheritance Relationships<a class="headerlink" href="#inheritance-relationships" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="derived-types">
+<h3>Derived Types<a class="headerlink" href="#derived-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">stream_client::resolver::base_resolver&lt;</span> <span class="pre">protocol_type</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html#exhale-class-classstream-client-1-1resolver-1-1base-resolver"><span class="std std-ref">Template Class base_resolver</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">stream_client::base_socket&lt;</span> <span class="pre">boost::asio::basic_datagram_socket&lt;</span> <span class="pre">Protocol</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="classstream__client_1_1base__socket.html#exhale-class-classstream-client-1-1base-socket"><span class="std std-ref">Template Class base_socket</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">stream_client::base_socket&lt;</span> <span class="pre">boost::asio::basic_stream_socket&lt;</span> <span class="pre">Protocol</span> <span class="pre">&gt;</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="classstream__client_1_1base__socket.html#exhale-class-classstream-client-1-1base-socket"><span class="std std-ref">Template Class base_socket</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">stream_client::base_socket&lt;</span> <span class="pre">Socket</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="classstream__client_1_1base__socket.html#exhale-class-classstream-client-1-1base-socket"><span class="std std-ref">Template Class base_socket</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">stream_client::resolver::base_resolver&lt;</span> <span class="pre">Protocol</span> <span class="pre">&gt;</span></code> (<a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html#exhale-class-classstream-client-1-1resolver-1-1base-resolver"><span class="std std-ref">Template Class base_resolver</span></a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4I0EN13stream_client6detail10timed_baseE">
+<span id="_CPPv3I0EN13stream_client6detail10timed_baseE"></span><span id="_CPPv2I0EN13stream_client6detail10timed_baseE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Clock</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1detail_1_1timed__base"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">detail</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">timed_base</span></code><a class="headerlink" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Base class with timeout handling. </p>
+<p>This class implements basic setup/reset for internal timer instance. Instances of this class own boost::asio::io_service and boost::asio::basic_waitable_timer via std::unique_ptr. Inherited classes should implement <a class="reference internal" href="#classstream__client_1_1detail_1_1timed__base_1abe0bc76ff6c0ad0243e0fc26e2d1d474"><span class="std std-ref">deadline_actor()</span></a> which is called when timer goes off.</p>
+<p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This class does neither run nor poll its’ io_service, it is up to descendants.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">tparam Clock</dt>
+<dd class="field-odd"><p>type of clock to use, see boost::asio::basic_waitable_timer </p>
+</dd>
+</dl>
+</p>
+<p>Subclassed by <a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html#classstream__client_1_1resolver_1_1base__resolver"><span class="std std-ref">stream_client::resolver::base_resolver&lt; protocol_type &gt;</span></a>, <a class="reference internal" href="classstream__client_1_1base__socket.html#classstream__client_1_1base__socket"><span class="std std-ref">stream_client::base_socket&lt; boost::asio::basic_datagram_socket&lt; Protocol &gt; &gt;</span></a>, <a class="reference internal" href="classstream__client_1_1base__socket.html#classstream__client_1_1base__socket"><span class="std std-ref">stream_client::base_socket&lt; boost::asio::basic_stream_socket&lt; Protocol &gt; &gt;</span></a>, <a class="reference internal" href="classstream__client_1_1base__socket.html#classstream__client_1_1base__socket"><span class="std std-ref">stream_client::base_socket&lt; Socket &gt;</span></a>, <a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html#classstream__client_1_1resolver_1_1base__resolver"><span class="std std-ref">stream_client::resolver::base_resolver&lt; Protocol &gt;</span></a></p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client6detail10timed_base10clock_typeE">
+<span id="_CPPv3N13stream_client6detail10timed_base10clock_typeE"></span><span id="_CPPv2N13stream_client6detail10timed_base10clock_typeE"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a1c52f8d57105e7b874ed6ab0a425f9cd"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">clock_type</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base::Clock"><span class="pre">Clock</span></a><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10clock_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client6detail10timed_base18time_duration_typeE">
+<span id="_CPPv3N13stream_client6detail10timed_base18time_duration_typeE"></span><span id="_CPPv2N13stream_client6detail10timed_base18time_duration_typeE"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a38487510c2a886376db05dccc67ecb90"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">time_duration_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10clock_typeE" title="stream_client::detail::timed_base::clock_type"><span class="pre">clock_type</span></a><span class="pre">::</span><span class="pre">duration</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client6detail10timed_base15time_point_typeE">
+<span id="_CPPv3N13stream_client6detail10timed_base15time_point_typeE"></span><span id="_CPPv2N13stream_client6detail10timed_base15time_point_typeE"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a6a41aab8284642863d9131aaac6f703c"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">time_point_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10clock_typeE" title="stream_client::detail::timed_base::clock_type"><span class="pre">clock_type</span></a><span class="pre">::</span><span class="pre">time_point</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base15time_point_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client6detail10timed_base10timer_typeE">
+<span id="_CPPv3N13stream_client6detail10timed_base10timer_typeE"></span><span id="_CPPv2N13stream_client6detail10timed_base10timer_typeE"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a49fbe45767b0d5bdc855786c9d0da57e"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">timer_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">asio</span><span class="pre">::</span><span class="pre">basic_waitable_timer</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10clock_typeE" title="stream_client::detail::timed_base::clock_type"><span class="pre">clock_type</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10timer_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10timed_baseEv">
+<span id="_CPPv3N13stream_client6detail10timed_base10timed_baseEv"></span><span id="_CPPv2N13stream_client6detail10timed_base10timed_baseEv"></span><span id="stream_client::detail::timed_base::timed_base"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1afd0c66eb59a96b2f627b7bfe26edb309"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">timed_base</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10timed_baseEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Default constructor. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10timed_baseERK10timed_baseI5ClockE">
+<span id="_CPPv3N13stream_client6detail10timed_base10timed_baseERK10timed_baseI5ClockE"></span><span id="_CPPv2N13stream_client6detail10timed_base10timed_baseERK10timed_baseI5ClockE"></span><span id="stream_client::detail::timed_base::timed_base__timed_base:Clock:CR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1aa4fe14666a715ce33394df11482573e0"></span><code class="sig-name descname"><span class="pre">timed_base</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10timed_baseERK10timed_baseI5ClockE" title="stream_client::detail::timed_base::timed_base"><span class="pre">timed_base</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base::Clock"><span class="pre">Clock</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10timed_baseERK10timed_baseI5ClockE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Copy constructor is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_baseaSERK10timed_baseI5ClockE">
+<span id="_CPPv3N13stream_client6detail10timed_baseaSERK10timed_baseI5ClockE"></span><span id="_CPPv2N13stream_client6detail10timed_baseaSERK10timed_baseI5ClockE"></span><span id="stream_client::detail::timed_base::assign-operator__timed_base:Clock:CR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1ae98d857aa1d043ac2c9bbf626a0f543f"></span><a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base"><span class="pre">timed_base</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base::Clock"><span class="pre">Clock</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base"><span class="pre">timed_base</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base::Clock"><span class="pre">Clock</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_baseaSERK10timed_baseI5ClockE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Copy assignment is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10timed_baseERR10timed_baseI5ClockE">
+<span id="_CPPv3N13stream_client6detail10timed_base10timed_baseERR10timed_baseI5ClockE"></span><span id="_CPPv2N13stream_client6detail10timed_base10timed_baseERR10timed_baseI5ClockE"></span><span id="stream_client::detail::timed_base::timed_base__timed_base:Clock:RR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a4b11e7beedf00cd1c322308eb428dd68"></span><code class="sig-name descname"><span class="pre">timed_base</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10timed_baseERR10timed_baseI5ClockE" title="stream_client::detail::timed_base::timed_base"><span class="pre">timed_base</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base::Clock"><span class="pre">Clock</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10timed_baseERR10timed_baseI5ClockE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Move constructor. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_baseaSERR10timed_baseI5ClockE">
+<span id="_CPPv3N13stream_client6detail10timed_baseaSERR10timed_baseI5ClockE"></span><span id="_CPPv2N13stream_client6detail10timed_baseaSERR10timed_baseI5ClockE"></span><span id="stream_client::detail::timed_base::assign-operator__timed_base:Clock:RR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a4d913b00b49c73f96adb3fe1718563e1"></span><a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base"><span class="pre">timed_base</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base"><span class="pre">timed_base</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_baseE" title="stream_client::detail::timed_base::Clock"><span class="pre">Clock</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_baseaSERR10timed_baseI5ClockE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Move assignment. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_baseD0Ev">
+<span id="_CPPv3N13stream_client6detail10timed_baseD0Ev"></span><span id="_CPPv2N13stream_client6detail10timed_baseD0Ev"></span><span id="stream_client::detail::timed_base::~timed_base"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a4f0a8278c2a7264e6562e5ffe6a941dc"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">virtual</span></em> <code class="sig-name descname"><span class="pre">~timed_base</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_baseD0Ev" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Destructor. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base14get_io_serviceEv">
+<span id="_CPPv3N13stream_client6detail10timed_base14get_io_serviceEv"></span><span id="_CPPv2N13stream_client6detail10timed_base14get_io_serviceEv"></span><span id="stream_client::detail::timed_base::get_io_service"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1ae48924c343631a51a2eacf267f164d85"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">asio</span><span class="pre">::</span><span class="pre">io_service</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">get_io_service</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base14get_io_serviceEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Non-const accessor to owned boost::asio::io_service. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client6detail10timed_base14get_io_serviceEv">
+<span id="_CPPv3NK13stream_client6detail10timed_base14get_io_serviceEv"></span><span id="_CPPv2NK13stream_client6detail10timed_base14get_io_serviceEv"></span><span id="stream_client::detail::timed_base::get_io_serviceC"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a615176d5183021e0de4c16e6badbbd4b"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">asio</span><span class="pre">::</span><span class="pre">io_service</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">get_io_service</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client6detail10timed_base14get_io_serviceEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Const accessor to owned boost::asio::io_service. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4I0EN13stream_client6detail10timed_base12scope_expireE10expirationRK4Time">
+<span id="_CPPv3I0EN13stream_client6detail10timed_base12scope_expireERK4Time"></span><span id="_CPPv2I0EN13stream_client6detail10timed_base12scope_expireERK4Time"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Time</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a114633ec6f823c48a28399440bcf404d"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10expirationE" title="stream_client::detail::timed_base::expiration"><span class="pre">expiration</span></a> <code class="sig-name descname"><span class="pre">scope_expire</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client6detail10timed_base12scope_expireE10expirationRK4Time" title="stream_client::detail::timed_base::scope_expire::Time"><span class="pre">Time</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout_or_deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4I0EN13stream_client6detail10timed_base12scope_expireE10expirationRK4Time" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Setup expiration and return its’ handler. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Template Parameters</dt>
+<dd class="field-odd"><p><strong>Time</strong> – Type of <code class="docutils literal notranslate"><span class="pre">timeout_or_deadline</span></code>, either time_duration_type or time_point_type. </p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><p><strong>[in] timeout_or_deadline</strong> – Expiration time-point.</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>expiration RAII-complaint expiration handler - reset timer on destruction </p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-static-attributes">Public Static Attributes</p>
+<dl class="cpp var">
+<dt id="_CPPv4N13stream_client6detail10timed_base17kInfiniteDurationE">
+<span id="_CPPv3N13stream_client6detail10timed_base17kInfiniteDurationE"></span><span id="_CPPv2N13stream_client6detail10timed_base17kInfiniteDurationE"></span><span id="stream_client::detail::timed_base::kInfiniteDuration__time_duration_type"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1aad474fe9323ba85490ab3ec25b793f38"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">constexpr</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="stream_client::detail::timed_base::time_duration_type"><span class="pre">time_duration_type</span></a> <code class="sig-name descname"><span class="pre">kInfiniteDuration</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="stream_client::detail::timed_base::time_duration_type"><span class="pre">time_duration_type</span></a><span class="pre">::</span><span class="pre">max</span><span class="pre">(</span><span class="pre">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base17kInfiniteDurationE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Indefinite duration. </p>
+</dd></dl>
+<dl class="cpp var">
+<dt id="_CPPv4N13stream_client6detail10timed_base13kZeroDurationE">
+<span id="_CPPv3N13stream_client6detail10timed_base13kZeroDurationE"></span><span id="_CPPv2N13stream_client6detail10timed_base13kZeroDurationE"></span><span id="stream_client::detail::timed_base::kZeroDuration__time_duration_type"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a05461ae835c7a68415b324f30c2f4ea3"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">constexpr</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="stream_client::detail::timed_base::time_duration_type"><span class="pre">time_duration_type</span></a> <code class="sig-name descname"><span class="pre">kZeroDuration</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="stream_client::detail::timed_base::time_duration_type"><span class="pre">time_duration_type</span></a><span class="pre">(</span><span class="pre">0</span><span class="pre">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base13kZeroDurationE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Zero span duration. </p>
+</dd></dl>
+<dl class="cpp var">
+<dt id="_CPPv4N13stream_client6detail10timed_base19kDurationResolutionE">
+<span id="_CPPv3N13stream_client6detail10timed_base19kDurationResolutionE"></span><span id="_CPPv2N13stream_client6detail10timed_base19kDurationResolutionE"></span><span id="stream_client::detail::timed_base::kDurationResolution__time_duration_type"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1aad3f86e6e827181337e8ebd89480fa77"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">constexpr</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="stream_client::detail::timed_base::time_duration_type"><span class="pre">time_duration_type</span></a> <code class="sig-name descname"><span class="pre">kDurationResolution</span></code> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="stream_client::detail::timed_base::time_duration_type"><span class="pre">time_duration_type</span></a><span class="pre">(</span><span class="pre">1000</span><span class="pre">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base19kDurationResolutionE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Minimal resolvable duration (anything else may be less than timeout setup overhead) </p>
+</dd></dl>
+<dl class="cpp var">
+<dt id="_CPPv4N13stream_client6detail10timed_base11kMinTimeoutE">
+<span id="_CPPv3N13stream_client6detail10timed_base11kMinTimeoutE"></span><span id="_CPPv2N13stream_client6detail10timed_base11kMinTimeoutE"></span><span id="stream_client::detail::timed_base::kMinTimeout__time_duration_type"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a3bb3548b57e5c28ec3f4cb4985e4ab36"></span><em class="property"><span class="pre">static</span></em> <em class="property"><span class="pre">constexpr</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="stream_client::detail::timed_base::time_duration_type"><span class="pre">time_duration_type</span></a> <code class="sig-name descname"><span class="pre">kMinTimeout</span></code> <span class="pre">=</span> <span class="pre">2</span> <span class="pre">*</span> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base19kDurationResolutionE" title="stream_client::detail::timed_base::kDurationResolution"><span class="pre">kDurationResolution</span></a><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base11kMinTimeoutE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Minimal timeout = 2 x kDurationResolution. </p>
+</dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base14deadline_actorEv">
+<span id="_CPPv3N13stream_client6detail10timed_base14deadline_actorEv"></span><span id="_CPPv2N13stream_client6detail10timed_base14deadline_actorEv"></span><span id="stream_client::detail::timed_base::deadline_actor"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1abe0bc76ff6c0ad0243e0fc26e2d1d474"></span><em class="property"><span class="pre">virtual</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">deadline_actor</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">0</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base14deadline_actorEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>To-be implemented timer handler. Called if timer goes past expiration point. </p>
+</dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-attributes">Protected Attributes</p>
+<dl class="cpp var">
+<dt id="_CPPv4N13stream_client6detail10timed_base15deadline_fired_E">
+<span id="_CPPv3N13stream_client6detail10timed_base15deadline_fired_E"></span><span id="_CPPv2N13stream_client6detail10timed_base15deadline_fired_E"></span><span id="stream_client::detail::timed_base::deadline_fired___b"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1a06c28d3ac5394fa63c3fb76d54935210"></span><span class="pre">bool</span> <code class="sig-name descname"><span class="pre">deadline_fired_</span></code><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base15deadline_fired_E" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Set before <a class="reference internal" href="#classstream__client_1_1detail_1_1timed__base_1abe0bc76ff6c0ad0243e0fc26e2d1d474"><span class="std std-ref">deadline_actor()</span></a> called. </p>
+</dd></dl>
+</div>
+<dl class="cpp class">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expirationE">
+<span id="_CPPv3N13stream_client6detail10timed_base10expirationE"></span><span id="_CPPv2N13stream_client6detail10timed_base10expirationE"></span><span id="stream_client::detail::timed_base::expiration"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration"></span><em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">expiration</span></code><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expirationE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>RAII wrapper to set timer expiration. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expiration10expirationEP10timer_type">
+<span id="_CPPv3N13stream_client6detail10timed_base10expiration10expirationEP10timer_type"></span><span id="_CPPv2N13stream_client6detail10timed_base10expiration10expirationEP10timer_type"></span><span id="stream_client::detail::timed_base::expiration::expiration__timer_typeP"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration_1a2b52b0a97dd024de218b3ce417adf847"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">expiration</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10timer_typeE" title="stream_client::detail::timed_base::timer_type"><span class="pre">timer_type</span></a> <span class="pre">*</span><em><span class="pre">timer</span></em> <span class="pre">=</span> <span class="pre">nullptr</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expiration10expirationEP10timer_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expiration10expirationEP10timer_typeRK18time_duration_type">
+<span id="_CPPv3N13stream_client6detail10timed_base10expiration10expirationEP10timer_typeRK18time_duration_type"></span><span id="_CPPv2N13stream_client6detail10timed_base10expiration10expirationEP10timer_typeRK18time_duration_type"></span><span id="stream_client::detail::timed_base::expiration::expiration__timer_typeP.time_duration_typeCR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration_1a6f383e17d103ded093c20362b48feb60"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">expiration</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10timer_typeE" title="stream_client::detail::timed_base::timer_type"><span class="pre">timer_type</span></a> <span class="pre">*</span><em><span class="pre">timer</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base18time_duration_typeE" title="stream_client::detail::timed_base::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><em><span class="pre">duration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expiration10expirationEP10timer_typeRK18time_duration_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expiration10expirationEP10timer_typeRK15time_point_type">
+<span id="_CPPv3N13stream_client6detail10timed_base10expiration10expirationEP10timer_typeRK15time_point_type"></span><span id="_CPPv2N13stream_client6detail10timed_base10expiration10expirationEP10timer_typeRK15time_point_type"></span><span id="stream_client::detail::timed_base::expiration::expiration__timer_typeP.time_point_typeCR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration_1ab708696f8991e053b6dbee6b4884c018"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">expiration</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10timer_typeE" title="stream_client::detail::timed_base::timer_type"><span class="pre">timer_type</span></a> <span class="pre">*</span><em><span class="pre">timer</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base15time_point_typeE" title="stream_client::detail::timed_base::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expiration10expirationEP10timer_typeRK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expiration10expirationERK10expiration">
+<span id="_CPPv3N13stream_client6detail10timed_base10expiration10expirationERK10expiration"></span><span id="_CPPv2N13stream_client6detail10timed_base10expiration10expirationERK10expiration"></span><span id="stream_client::detail::timed_base::expiration::expiration__expirationCR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration_1af23235655cb515a7a0471512a3984ede"></span><code class="sig-name descname"><span class="pre">expiration</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10expiration10expirationERK10expiration" title="stream_client::detail::timed_base::expiration::expiration"><span class="pre">expiration</span></a> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expiration10expirationERK10expiration" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expiration10expirationERR10expiration">
+<span id="_CPPv3N13stream_client6detail10timed_base10expiration10expirationERR10expiration"></span><span id="_CPPv2N13stream_client6detail10timed_base10expiration10expirationERR10expiration"></span><span id="stream_client::detail::timed_base::expiration::expiration__expirationRR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration_1a2747be7fbca88e2ce9dc1512c4881839"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">expiration</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10expiration10expirationERR10expiration" title="stream_client::detail::timed_base::expiration::expiration"><span class="pre">expiration</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expiration10expirationERR10expiration" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expirationaSERK10expiration">
+<span id="_CPPv3N13stream_client6detail10timed_base10expirationaSERK10expiration"></span><span id="_CPPv2N13stream_client6detail10timed_base10expirationaSERK10expiration"></span><span id="stream_client::detail::timed_base::expiration::assign-operator__expirationCR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration_1a22b30069cd5f0c5d2dbe035a1d638bba"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10expirationE" title="stream_client::detail::timed_base::expiration"><span class="pre">expiration</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10expirationE" title="stream_client::detail::timed_base::expiration"><span class="pre">expiration</span></a> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">default</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expirationaSERK10expiration" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expirationaSERR10expiration">
+<span id="_CPPv3N13stream_client6detail10timed_base10expirationaSERR10expiration"></span><span id="_CPPv2N13stream_client6detail10timed_base10expirationaSERR10expiration"></span><span id="stream_client::detail::timed_base::expiration::assign-operator__expirationRR"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration_1a6e8f4f20c8f99235c5c05bc6d5466bed"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10expirationE" title="stream_client::detail::timed_base::expiration"><span class="pre">expiration</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client6detail10timed_base10expirationE" title="stream_client::detail::timed_base::expiration"><span class="pre">expiration</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">noexcept</span></em><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expirationaSERR10expiration" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client6detail10timed_base10expirationD0Ev">
+<span id="_CPPv3N13stream_client6detail10timed_base10expirationD0Ev"></span><span id="_CPPv2N13stream_client6detail10timed_base10expirationD0Ev"></span><span id="stream_client::detail::timed_base::expiration::~expiration"></span><span class="target" id="classstream__client_1_1detail_1_1timed__base_1_1expiration_1ae1a21903dd87436b39e165db7cba6974"></span><em class="property"><span class="pre">inline</span></em> <code class="sig-name descname"><span class="pre">~expiration</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client6detail10timed_base10expirationD0Ev" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+</div>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Class timed_base::expiration</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="classstream__client_1_1datagram__socket.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Template Class datagram_socket</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; Apache-2.0
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/api/classstream__client_1_1detail_1_1timed__base.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Template Class timed_base</a><ul>
+<li><a class="reference internal" href="#nested-relationships">Nested Relationships</a><ul>
+<li><a class="reference internal" href="#nested-types">Nested Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inheritance-relationships">Inheritance Relationships</a><ul>
+<li><a class="reference internal" href="#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+    <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

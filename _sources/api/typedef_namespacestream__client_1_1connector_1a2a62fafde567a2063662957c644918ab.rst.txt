@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab:
+
+Typedef stream_client::connector::https_connector
+=================================================
+
+- Defined in :ref:`file_stream-client_connector_connector.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::connector::https_connector

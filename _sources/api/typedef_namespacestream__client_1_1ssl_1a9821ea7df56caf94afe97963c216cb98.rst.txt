@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1ssl_1a9821ea7df56caf94afe97963c216cb98:
+
+Typedef stream_client::ssl::ssl_client
+======================================
+
+- Defined in :ref:`file_stream-client_stream_ssl_stream_socket.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::ssl::ssl_client

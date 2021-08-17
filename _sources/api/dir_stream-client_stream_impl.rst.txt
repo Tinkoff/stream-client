@@ -1,0 +1,24 @@
+.. _dir_stream-client_stream_impl:
+
+
+Directory impl
+==============
+
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_stream>` (``stream-client/stream``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``stream-client/stream/impl``
+
+
+Files
+-----
+
+- :ref:`file_stream-client_stream_impl_base_socket.ipp`
+- :ref:`file_stream-client_stream_impl_dgram_socket.ipp`
+- :ref:`file_stream-client_stream_impl_http_socket.ipp`
+- :ref:`file_stream-client_stream_impl_ssl_stream_socket.ipp`
+- :ref:`file_stream-client_stream_impl_stream_socket.ipp`
+
+

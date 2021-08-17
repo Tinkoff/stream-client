@@ -1,0 +1,586 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Template Class datagram_socket" href="classstream__client_1_1datagram__socket.html" /><link rel="prev" title="Template Class base_connection_pool" href="classstream__client_1_1connector_1_1base__connection__pool.html" />
+
+    <meta name="generator" content="sphinx-3.5.4, furo 2021.04.11.beta34"/>
+        <title>Template Class base_connector - stream-client</title>
+      <link rel="stylesheet" href="../_static/styles/furo.css?digest=59ab60ac09ea94ccfe6deddff6d715cce948a6fc">
+    <link rel="stylesheet" href="../_static/pygments.css">
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../_static/pygments_dark.css">
+    
+
+
+<style>
+  :root {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+
+  /* For allowing end-user-specific overrides */
+  .override-light {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-api-overall: #cccccc;
+  --color-api-keyword: #e62569;
+  --color-api-name: #8ee22c;
+  --color-brand-content: #67d8ef;
+  
+  }
+  .override-dark {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+</style><link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css" />
+    <link rel="stylesheet" href="../_static/styles/furo-extensions.css?digest=d391b54134226e4196576da3bdb6dddb7e05ba2b"></head>
+  <body dir="">
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke-width="1.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z"/>
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="feather feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">stream-client</div></a>
+    </div>
+    <div class="header-right">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">stream-client</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html">
+  <input class="sidebar-search" placeholder=Search name="q">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="unabridged_api.html">Reference</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="namespace_%403.html">Namespace @3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client.html">Namespace stream_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__connector.html">Namespace stream_client::connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__detail.html">Namespace stream_client::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__http.html">Namespace stream_client::http</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__resolver.html">Namespace stream_client::resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__ssl.html">Namespace stream_client::ssl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream.html">Namespace stream_client::stream</a></li>
+<li class="toctree-l2"><a class="reference internal" href="namespace_stream_client__stream__detail.html">Namespace stream_client::stream::detail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structstream__client_1_1base__socket_1_1config.html">Struct base_socket::config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connection__pool.html">Template Class base_connection_pool</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Template Class base_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1datagram__socket.html">Template Class datagram_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base.html">Template Class timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">Class timed_base::expiration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1http_1_1base__socket.html">Template Class base_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html">Template Class base_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1ssl_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__allocator.html">Template Class static_allocator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream_1_1detail_1_1static__pool.html">Class static_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1stream__socket.html">Template Class stream_socket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923.html">Enum ip_family</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9.html">Typedef stream_client::connector::http_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1acde8b66f273d3e8741b43ef4e3ceefb1.html">Typedef stream_client::connector::http_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab.html">Typedef stream_client::connector::https_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e.html">Typedef stream_client::connector::https_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d.html">Typedef stream_client::connector::ssl_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aab719516f057f4675ef7d5dd3afc16dc.html">Typedef stream_client::connector::ssl_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a8b4eaa29f9e8c72151ddfb326dc2a269.html">Typedef stream_client::connector::tcp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f.html">Typedef stream_client::connector::tcp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1a2a4b5b6b18348b69d07468b4fbd16904.html">Typedef stream_client::connector::udp_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1connector_1aac34914de40422f5bf4f9132af813d69.html">Typedef stream_client::connector::udp_pool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e.html">Typedef stream_client::detail::high_resolution_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1af46161b047ef3d14e1fe50023a621791.html">Typedef stream_client::detail::steady_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094.html">Typedef stream_client::detail::system_timed_base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ab8dd804aeae001421867a3ddd560a1b9.html">Typedef stream_client::http::http_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7.html">Typedef stream_client::http::https_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1a6d00c7cbd60d0019cdee42e6d2c86ca0.html">Typedef stream_client::resolver::tcp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1resolver_1aa03ef9f4dd9ee7b96a739d388a077e66.html">Typedef stream_client::resolver::udp_resolver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1_1ssl_1a9821ea7df56caf94afe97963c216cb98.html">Typedef stream_client::ssl::ssl_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f.html">Typedef stream_client::tcp_client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typedef_namespacestream__client_1ae873f8541c74d6e990024743a07536a4.html">Typedef stream_client::udp_client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="class_view_hierarchy.html">Class Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_view_hierarchy.html">File Hierarchy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <main class="main">
+    <div class="content">
+      <article role="main">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+        </label>
+        <div class="section" id="template-class-base-connector">
+<span id="exhale-class-classstream-client-1-1connector-1-1base-connector"></span><h1>Template Class base_connector<a class="headerlink" href="#template-class-base-connector" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file_stream-client_connector_connector.hpp.html#file-stream-client-connector-connector-hpp"><span class="std std-ref">File connector.hpp</span></a></p></li>
+</ul>
+<div class="section" id="class-documentation">
+<h2>Class Documentation<a class="headerlink" href="#class-documentation" title="Permalink to this headline">¶</a></h2>
+<dl class="cpp class">
+<dt id="_CPPv4I0EN13stream_client9connector14base_connectorE">
+<span id="_CPPv3I0EN13stream_client9connector14base_connectorE"></span><span id="_CPPv2I0EN13stream_client9connector14base_connectorE"></span><span class="pre">template&lt;</span><span class="pre">typename</span> <code class="sig-name descname"><span class="pre">Stream</span></code><span class="pre">&gt;</span><br/><span class="target" id="classstream__client_1_1connector_1_1base__connector"></span><em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">connector</span><code class="sig-prename descclassname"><span class="pre">::</span></code></code><code class="sig-name descname"><span class="pre">base_connector</span></code><a class="headerlink" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Connector class to obtain new streams (sessions) to desired remote endpoint. </p>
+<p>This class incorporates <a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html#classstream__client_1_1resolver_1_1base__resolver"><span class="std std-ref">stream_client::resolver::base_resolver</span></a> to provide DNS updates. Address to connect will be chosen randomly if DNS resolved into multiple records.</p>
+<p><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Thread-safe. Single instance support concurrent operation.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">tparam Stream</dt>
+<dd class="field-odd"><p>Type of stream to create upon <a class="reference internal" href="#classstream__client_1_1connector_1_1base__connector_1a2290039c5686c437c3715b55c0fe3eb6"><span class="std std-ref">new_session()</span></a> </p>
+</dd>
+</dl>
+</p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-types">Public Types</p>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector11stream_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector11stream_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector11stream_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a273a1b2e3d722fdd325ad5e0c492ddf5"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">stream_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">remove_reference</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span><span class="pre">::</span><span class="pre">type</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector13protocol_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector13protocol_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector13protocol_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a38d5fda3afe72c355ca648cd2b0b3d7e"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">protocol_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">::</span><span class="pre">protocol_type</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector13protocol_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector13endpoint_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector13endpoint_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector13endpoint_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1afe6f6a0f6a8a9c21628ccfc02770bbb6"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">endpoint_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">::</span><span class="pre">endpoint_type</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector13endpoint_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector23endpoint_container_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector23endpoint_container_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector23endpoint_container_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a1c304e878c99d600744c584c5d709cc7"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">endpoint_container_type</span></code> <span class="pre">=</span> <span class="pre">std</span><span class="pre">::</span><span class="pre">vector</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13endpoint_typeE" title="stream_client::connector::base_connector::endpoint_type"><span class="pre">endpoint_type</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector23endpoint_container_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector13resolver_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector13resolver_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector13resolver_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1afe81b5c4d5cdd2d414745d8e8f36fdac"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">resolver_type</span></code> <span class="pre">=</span> <span class="pre">::</span><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">resolver</span><span class="pre">::</span><a class="reference internal" href="classstream__client_1_1resolver_1_1base__resolver.html#_CPPv4I0EN13stream_client8resolver13base_resolverE" title="stream_client::resolver::base_resolver"><span class="pre">base_resolver</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13protocol_typeE" title="stream_client::connector::base_connector::protocol_type"><span class="pre">protocol_type</span></a><span class="pre">&gt;</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector13resolver_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector18resolve_flags_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector18resolve_flags_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector18resolve_flags_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1acae0c6487748ff049b0ddf0b0ec37c3c"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">resolve_flags_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13resolver_typeE" title="stream_client::connector::base_connector::resolver_type"><span class="pre">resolver_type</span></a><span class="pre">::</span><span class="pre">resolve_flags_type</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector18resolve_flags_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector31resolver_endpoint_iterator_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector31resolver_endpoint_iterator_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector31resolver_endpoint_iterator_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a29e7a16efe512f32ee25e51c74d67251"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">resolver_endpoint_iterator_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13resolver_typeE" title="stream_client::connector::base_connector::resolver_type"><span class="pre">resolver_type</span></a><span class="pre">::</span><span class="pre">iterator_type</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector31resolver_endpoint_iterator_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector10clock_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector10clock_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector10clock_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a3bbfa7e1950f6d63f964b82c7200d057"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">clock_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">::</span><span class="pre">clock_type</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector10clock_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector18time_duration_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector18time_duration_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector18time_duration_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a79113dc9f3d250a7101c0b97d36daea8"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">time_duration_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">::</span><span class="pre">time_duration_type</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector18time_duration_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+<dl class="cpp type">
+<dt id="_CPPv4N13stream_client9connector14base_connector15time_point_typeE">
+<span id="_CPPv3N13stream_client9connector14base_connector15time_point_typeE"></span><span id="_CPPv2N13stream_client9connector14base_connector15time_point_typeE"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1afe4f6f871d3820f21572525389a072e5"></span><em class="property"><span class="pre">using</span> </em><code class="sig-name descname"><span class="pre">time_point_type</span></code> <span class="pre">=</span> <em class="property"><span class="pre">typename</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">::</span><span class="pre">time_point_type</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector15time_point_typeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd></dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector14base_connectorERKNSt6stringERKNSt6stringE18time_duration_type18time_duration_type18time_duration_typeN13stream_client8resolver9ip_familyE18resolve_flags_type">
+<span id="_CPPv3N13stream_client9connector14base_connector14base_connectorERKNSt6stringERKNSt6stringE18time_duration_type18time_duration_type18time_duration_typeN13stream_client8resolver9ip_familyE18resolve_flags_type"></span><span id="_CPPv2N13stream_client9connector14base_connector14base_connectorERKNSt6stringERKNSt6stringE18time_duration_type18time_duration_type18time_duration_typeN13stream_client8resolver9ip_familyE18resolve_flags_type"></span><span id="stream_client::connector::base_connector::base_connector__ssCR.ssCR.time_duration_type.time_duration_type.time_duration_type.stream_client::resolver::ip_family.resolve_flags_type"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1aae7f75d766d531d55c9e05267124c7bf"></span><code class="sig-name descname"><span class="pre">base_connector</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <span class="pre">&amp;</span><em><span class="pre">host</span></em>, <em class="property"><span class="pre">const</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <span class="pre">&amp;</span><em><span class="pre">port</span></em>, <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector18time_duration_typeE" title="stream_client::connector::base_connector::time_duration_type"><span class="pre">time_duration_type</span></a> <em><span class="pre">resolve_timeout</span></em>, <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector18time_duration_typeE" title="stream_client::connector::base_connector::time_duration_type"><span class="pre">time_duration_type</span></a> <em><span class="pre">connect_timeout</span></em>, <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector18time_duration_typeE" title="stream_client::connector::base_connector::time_duration_type"><span class="pre">time_duration_type</span></a> <em><span class="pre">operation_timeout</span></em>, <span class="pre">::</span><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">resolver</span><span class="pre">::</span><a class="reference internal" href="enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923.html#_CPPv4N13stream_client8resolver9ip_familyE" title="stream_client::resolver::ip_family"><span class="pre">ip_family</span></a> <em><span class="pre">ip_family</span></em> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13resolver_typeE" title="stream_client::connector::base_connector::resolver_type"><span class="pre">resolver_type</span></a><span class="pre">::</span><span class="pre">kDefaultIPFamily</span>, <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector18resolve_flags_typeE" title="stream_client::connector::base_connector::resolve_flags_type"><span class="pre">resolve_flags_type</span></a> <em><span class="pre">resolve_flags</span></em> <span class="pre">=</span> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13resolver_typeE" title="stream_client::connector::base_connector::resolver_type"><span class="pre">resolver_type</span></a><span class="pre">::</span><span class="pre">kDefaultFlags</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector14base_connectorERKNSt6stringERKNSt6stringE18time_duration_type18time_duration_type18time_duration_typeN13stream_client8resolver9ip_familyE18resolve_flags_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Parametrized constructor. </p>
+<p>Creates connector with desired settings. This operation starts background resolving thread to obtain list of endpoints. Created connector does not establish any connections by itself, to do it use <a class="reference internal" href="#classstream__client_1_1connector_1_1base__connector_1a2290039c5686c437c3715b55c0fe3eb6"><span class="std std-ref">new_session()</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>[in] host</strong> – Remote hostname. </p></li>
+<li><p><strong>[in] port</strong> – Remote port. </p></li>
+<li><p><strong>[in] resolve_timeout</strong> – DNS resolve timeout, used by internal <a class="reference internal" href="#classstream__client_1_1connector_1_1base__connector_1a5e890721e4d0c41900ab433b31fbf93e"><span class="std std-ref">resolve_routine()</span></a>. </p></li>
+<li><p><strong>[in] connect_timeout</strong> – Default timeout for connecting operation, used by <a class="reference internal" href="#classstream__client_1_1connector_1_1base__connector_1a2290039c5686c437c3715b55c0fe3eb6"><span class="std std-ref">new_session()</span></a>. </p></li>
+<li><p><strong>[in] operation_timeout</strong> – Timeout for I/O operations on established sessions. </p></li>
+<li><p><strong>[in] ip_family</strong> – Family of IP protocol to resolve (ipv4, ipv6 or any). </p></li>
+<li><p><strong>[in] resolve_flags</strong> – A set of flags that determine how name resolution should be performed. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector14base_connectorERK14base_connectorI6StreamE">
+<span id="_CPPv3N13stream_client9connector14base_connector14base_connectorERK14base_connectorI6StreamE"></span><span id="_CPPv2N13stream_client9connector14base_connector14base_connectorERK14base_connectorI6StreamE"></span><span id="stream_client::connector::base_connector::base_connector__base_connector:Stream:CR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a8a553897e6ab3eedb3a5b9dfe83ab74f"></span><code class="sig-name descname"><span class="pre">base_connector</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector14base_connectorERK14base_connectorI6StreamE" title="stream_client::connector::base_connector::base_connector"><span class="pre">base_connector</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector14base_connectorERK14base_connectorI6StreamE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Copy constructor is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connectoraSERK14base_connectorI6StreamE">
+<span id="_CPPv3N13stream_client9connector14base_connectoraSERK14base_connectorI6StreamE"></span><span id="_CPPv2N13stream_client9connector14base_connectoraSERK14base_connectorI6StreamE"></span><span id="stream_client::connector::base_connector::assign-operator__base_connector:Stream:CR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a66fcd8f58d86cf135387ee6bc923fe81"></span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector"><span class="pre">base_connector</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector"><span class="pre">base_connector</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connectoraSERK14base_connectorI6StreamE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Copy assignment is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector14base_connectorERR14base_connectorI6StreamE">
+<span id="_CPPv3N13stream_client9connector14base_connector14base_connectorERR14base_connectorI6StreamE"></span><span id="_CPPv2N13stream_client9connector14base_connector14base_connectorERR14base_connectorI6StreamE"></span><span id="stream_client::connector::base_connector::base_connector__base_connector:Stream:RR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1af19d7508cb80d334912ca67e138b3514"></span><code class="sig-name descname"><span class="pre">base_connector</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector14base_connectorERR14base_connectorI6StreamE" title="stream_client::connector::base_connector::base_connector"><span class="pre">base_connector</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector14base_connectorERR14base_connectorI6StreamE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Move constructor is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connectoraSERR14base_connectorI6StreamE">
+<span id="_CPPv3N13stream_client9connector14base_connectoraSERR14base_connectorI6StreamE"></span><span id="_CPPv2N13stream_client9connector14base_connectoraSERR14base_connectorI6StreamE"></span><span id="stream_client::connector::base_connector::assign-operator__base_connector:Stream:RR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a3c4a7427416469e62925d90f8915009b"></span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector"><span class="pre">base_connector</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">operator=</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector"><span class="pre">base_connector</span></a><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4I0EN13stream_client9connector14base_connectorE" title="stream_client::connector::base_connector::Stream"><span class="pre">Stream</span></a><span class="pre">&gt;</span> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">other</span></em><span class="sig-paren">)</span> <span class="pre">=</span> <span class="pre">delete</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connectoraSERR14base_connectorI6StreamE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Move assignment is not permitted. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connectorD0Ev">
+<span id="_CPPv3N13stream_client9connector14base_connectorD0Ev"></span><span id="_CPPv2N13stream_client9connector14base_connectorD0Ev"></span><span id="stream_client::connector::base_connector::~base_connector"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1aea4132104c54aa8be7791226f0b71496"></span><em class="property"><span class="pre">virtual</span></em> <code class="sig-name descname"><span class="pre">~base_connector</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connectorD0Ev" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Destructor. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeERK15time_point_type">
+<span id="_CPPv3N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeERK15time_point_type"></span><span id="_CPPv2N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeERK15time_point_type"></span><span id="stream_client::connector::base_connector::new_session__boost::system::error_codeR.time_point_typeCR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1af8b17ec26810559472f0e30d33902ee1"></span><span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">new_session</span></code><span class="sig-paren">(</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector15time_point_typeE" title="stream_client::connector::base_connector::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">deadline</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeERK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Establish new session. </p>
+<p>Returns new connected stream. The call will block until one of the following conditions is true:</p>
+<p><ul class="simple">
+<li><p>Successfully connected to remote. </p></li>
+<li><p>An error or timeout occurred. In this case internal DNS resolver triggered to update list of endpoints.</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>[in] deadline</strong> – Expiration time-point. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New session wrapped in std::unique_ptr or nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeERK18time_duration_type">
+<span id="_CPPv3N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeERK18time_duration_type"></span><span id="_CPPv2N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeERK18time_duration_type"></span><span id="stream_client::connector::base_connector::new_session__boost::system::error_codeR.time_duration_typeCR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1aead375ae055b97bd86d554986709a18d"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">new_session</span></code><span class="sig-paren">(</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector18time_duration_typeE" title="stream_client::connector::base_connector::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><em><span class="pre">timeout</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeERK18time_duration_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Establish new session. </p>
+<p>Returns new connected stream. The call will block until one of the following conditions is true:</p>
+<p><ul class="simple">
+<li><p>Successfully connected to remote. </p></li>
+<li><p>An error or timeout occurred. In this case internal DNS resolver triggered to update list of endpoints.</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>[in] timeout</strong> – Expiration duration. </p></li>
+<li><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New session wrapped in std::unique_ptr or nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeE">
+<span id="_CPPv3N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeE"></span><span id="_CPPv2N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeE"></span><span id="stream_client::connector::base_connector::new_session__boost::system::error_codeR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1ad32110499fcd7fcd52998493952d8384"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">new_session</span></code><span class="sig-paren">(</span><span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">ec</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector11new_sessionERN5boost6system10error_codeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Establish new session. </p>
+<p>Returns new connected stream. Uses <code class="docutils literal notranslate"><span class="pre">connect_timeout</span></code> passed on construction as timeout value. The call will block until one of the following conditions is true:</p>
+<p><ul class="simple">
+<li><p>Successfully connected to remote. </p></li>
+<li><p>An error or timeout occurred. In this case internal DNS resolver triggered to update list of endpoints.</p></li>
+</ul>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>[out] ec</strong> – Set to indicate what error occurred, if any.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New session wrapped in std::unique_ptr or nullptr. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector11new_sessionEv">
+<span id="_CPPv3N13stream_client9connector14base_connector11new_sessionEv"></span><span id="_CPPv2N13stream_client9connector14base_connector11new_sessionEv"></span><span id="stream_client::connector::base_connector::new_session"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a2290039c5686c437c3715b55c0fe3eb6"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">new_session</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector11new_sessionEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Establish new session. </p>
+<p>Returns new connected stream. Uses <code class="docutils literal notranslate"><span class="pre">connect_timeout</span></code> passed on construction as timeout value. The call will block until one of the following conditions is true:</p>
+<p><ul class="simple">
+<li><p>Successfully connected to remote. </p></li>
+<li><p>An error or timeout occurred. In this case internal DNS resolver triggered to update list of endpoints.</p></li>
+</ul>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A successful call to this function is guaranteed to return valid pointer.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Throws</dt>
+<dd class="field-odd"><p><strong>boost::system::system_error</strong> – Thrown on failure. </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New session wrapped in std::unique_ptr. Guaranteed to return valid pointer. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client9connector14base_connector8get_hostEv">
+<span id="_CPPv3NK13stream_client9connector14base_connector8get_hostEv"></span><span id="_CPPv2NK13stream_client9connector14base_connector8get_hostEv"></span><span id="stream_client::connector::base_connector::get_hostC"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1afee8a149f8ed49a60e99cea16f4c1acc"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <code class="sig-name descname"><span class="pre">get_host</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client9connector14base_connector8get_hostEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get remote hostname. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A string representing remote host. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client9connector14base_connector8get_portEv">
+<span id="_CPPv3NK13stream_client9connector14base_connector8get_portEv"></span><span id="_CPPv2NK13stream_client9connector14base_connector8get_portEv"></span><span id="stream_client::connector::base_connector::get_portC"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a6f1acd4211c24ceca112c89965f093ac"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <code class="sig-name descname"><span class="pre">get_port</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client9connector14base_connector8get_portEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get remote port. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A string representing remote port. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client9connector14base_connector10get_targetEv">
+<span id="_CPPv3NK13stream_client9connector14base_connector10get_targetEv"></span><span id="_CPPv2NK13stream_client9connector14base_connector10get_targetEv"></span><span id="stream_client::connector::base_connector::get_targetC"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a870ae1beba2c214c3fc111d3ef011eb0"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">string</span> <code class="sig-name descname"><span class="pre">get_target</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client9connector14base_connector10get_targetEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get remote target in format ‘host:port’. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A string representing remote endpoint. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client9connector14base_connector19get_resolve_timeoutEv">
+<span id="_CPPv3NK13stream_client9connector14base_connector19get_resolve_timeoutEv"></span><span id="_CPPv2NK13stream_client9connector14base_connector19get_resolve_timeoutEv"></span><span id="stream_client::connector::base_connector::get_resolve_timeoutC"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a58e866aaa1e40e2964ce4029b068b8a1"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector18time_duration_typeE" title="stream_client::connector::base_connector::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">get_resolve_timeout</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client9connector14base_connector19get_resolve_timeoutEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get resolve operations timeout. </p>
+<p>This function used to get current timeout for DNS resolve operations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A const reference to the timeout. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client9connector14base_connector19get_connect_timeoutEv">
+<span id="_CPPv3NK13stream_client9connector14base_connector19get_connect_timeoutEv"></span><span id="_CPPv2NK13stream_client9connector14base_connector19get_connect_timeoutEv"></span><span id="stream_client::connector::base_connector::get_connect_timeoutC"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1adf53f1b14e5cd856bcc77d8fb6405a6b"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector18time_duration_typeE" title="stream_client::connector::base_connector::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">get_connect_timeout</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client9connector14base_connector19get_connect_timeoutEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get connect operations timeout. </p>
+<p>This function used to get current timeout used in <a class="reference internal" href="#classstream__client_1_1connector_1_1base__connector_1a2290039c5686c437c3715b55c0fe3eb6"><span class="std std-ref">new_session()</span></a> by default.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A const reference to the timeout. </p>
+</dd>
+</dl>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client9connector14base_connector21get_operation_timeoutEv">
+<span id="_CPPv3NK13stream_client9connector14base_connector21get_operation_timeoutEv"></span><span id="_CPPv2NK13stream_client9connector14base_connector21get_operation_timeoutEv"></span><span id="stream_client::connector::base_connector::get_operation_timeoutC"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1ae9c609e71faca7a9f13b84624f6da27f"></span><em class="property"><span class="pre">inline</span></em> <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector18time_duration_typeE" title="stream_client::connector::base_connector::time_duration_type"><span class="pre">time_duration_type</span></a> <span class="pre">&amp;</span><code class="sig-name descname"><span class="pre">get_operation_timeout</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client9connector14base_connector21get_operation_timeoutEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Get I/O operations timeout on result streams. </p>
+<p>This function used to get I/O timeout used in new sessions returned by <a class="reference internal" href="#classstream__client_1_1connector_1_1base__connector_1a2290039c5686c437c3715b55c0fe3eb6"><span class="std std-ref">new_session()</span></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A const reference to the timeout. </p>
+</dd>
+</dl>
+</dd></dl>
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-protected-functions">Protected Functions</p>
+<dl class="cpp function">
+<dt id="_CPPv4NK13stream_client9connector14base_connector13connect_untilERK13endpoint_typeRK15time_point_type">
+<span id="_CPPv3NK13stream_client9connector14base_connector13connect_untilERK13endpoint_typeRK15time_point_type"></span><span id="_CPPv2NK13stream_client9connector14base_connector13connect_untilERK13endpoint_typeRK15time_point_type"></span><span id="stream_client::connector::base_connector::connect_until__endpoint_typeCR.time_point_typeCRC"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a69b5906102b05ae7fa5ac011f7a5f60e"></span><em class="property"><span class="pre">virtual</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector11stream_typeE" title="stream_client::connector::base_connector::stream_type"><span class="pre">stream_type</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">connect_until</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13endpoint_typeE" title="stream_client::connector::base_connector::endpoint_type"><span class="pre">endpoint_type</span></a> <span class="pre">&amp;</span><em><span class="pre">peer_endpoint</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector15time_point_typeE" title="stream_client::connector::base_connector::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">until_time</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><a class="headerlink" href="#_CPPv4NK13stream_client9connector14base_connector13connect_untilERK13endpoint_typeRK15time_point_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Try to connect to selected endpoint until deadline is not met. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector15resolve_routineEv">
+<span id="_CPPv3N13stream_client9connector14base_connector15resolve_routineEv"></span><span id="_CPPv2N13stream_client9connector14base_connector15resolve_routineEv"></span><span id="stream_client::connector::base_connector::resolve_routine"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a5e890721e4d0c41900ab433b31fbf93e"></span><span class="pre">void</span> <code class="sig-name descname"><span class="pre">resolve_routine</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector15resolve_routineEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Background routine used to obtain and update remote endpoints. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector16update_endpointsERR31resolver_endpoint_iterator_type">
+<span id="_CPPv3N13stream_client9connector14base_connector16update_endpointsERR31resolver_endpoint_iterator_type"></span><span id="_CPPv2N13stream_client9connector14base_connector16update_endpointsERR31resolver_endpoint_iterator_type"></span><span id="stream_client::connector::base_connector::update_endpoints__resolver_endpoint_iterator_typeRR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a6b979849f1b32bae3d870c67863dbc9f"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">update_endpoints</span></code><span class="sig-paren">(</span><a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector31resolver_endpoint_iterator_typeE" title="stream_client::connector::base_connector::resolver_endpoint_iterator_type"><span class="pre">resolver_endpoint_iterator_type</span></a> <span class="pre">&amp;</span><span class="pre">&amp;</span><em><span class="pre">resolved_endpoints</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector16update_endpointsERR31resolver_endpoint_iterator_type" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Thread-safe setter for <code class="docutils literal notranslate"><span class="pre">endpoints_</span></code>. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector13get_endpointsEv">
+<span id="_CPPv3N13stream_client9connector14base_connector13get_endpointsEv"></span><span id="_CPPv2N13stream_client9connector14base_connector13get_endpointsEv"></span><span id="stream_client::connector::base_connector::get_endpoints"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a7f05ea5db411517831aa757744500e8e"></span><em class="property"><span class="pre">inline</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector23endpoint_container_typeE" title="stream_client::connector::base_connector::endpoint_container_type"><span class="pre">endpoint_container_type</span></a> <code class="sig-name descname"><span class="pre">get_endpoints</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector13get_endpointsEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Thread-safe getter for <code class="docutils literal notranslate"><span class="pre">endpoints_</span></code>. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector17set_resolve_errorERKN5boost6system10error_codeE">
+<span id="_CPPv3N13stream_client9connector14base_connector17set_resolve_errorERKN5boost6system10error_codeE"></span><span id="_CPPv2N13stream_client9connector14base_connector17set_resolve_errorERKN5boost6system10error_codeE"></span><span id="stream_client::connector::base_connector::set_resolve_error__boost::system::error_codeCR"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a76186dd088fe9f267ed30442e6585ba4"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">set_resolve_error</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <span class="pre">&amp;</span><em><span class="pre">err</span></em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector17set_resolve_errorERKN5boost6system10error_codeE" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Thread-safe setter for <code class="docutils literal notranslate"><span class="pre">resolve_error_</span></code>. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector17get_resolve_errorEv">
+<span id="_CPPv3N13stream_client9connector14base_connector17get_resolve_errorEv"></span><span id="_CPPv2N13stream_client9connector14base_connector17get_resolve_errorEv"></span><span id="stream_client::connector::base_connector::get_resolve_error"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1a409112d63161a278362a5f48b39c7d3d"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">boost</span><span class="pre">::</span><span class="pre">system</span><span class="pre">::</span><span class="pre">error_code</span> <code class="sig-name descname"><span class="pre">get_resolve_error</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector17get_resolve_errorEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Thread-safe getter for <code class="docutils literal notranslate"><span class="pre">resolve_error_</span></code>. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector21notify_resolve_neededEv">
+<span id="_CPPv3N13stream_client9connector14base_connector21notify_resolve_neededEv"></span><span id="_CPPv2N13stream_client9connector14base_connector21notify_resolve_neededEv"></span><span id="stream_client::connector::base_connector::notify_resolve_needed"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1ab452ea3f5a3e550fd7dedbaa2bb6a490"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">notify_resolve_needed</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector21notify_resolve_neededEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Trigger <a class="reference internal" href="#classstream__client_1_1connector_1_1base__connector_1a5e890721e4d0c41900ab433b31fbf93e"><span class="std std-ref">resolve_routine()</span></a> to update <code class="docutils literal notranslate"><span class="pre">endpoints_</span></code>. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt id="_CPPv4N13stream_client9connector14base_connector19notify_resolve_doneEv">
+<span id="_CPPv3N13stream_client9connector14base_connector19notify_resolve_doneEv"></span><span id="_CPPv2N13stream_client9connector14base_connector19notify_resolve_doneEv"></span><span id="stream_client::connector::base_connector::notify_resolve_done"></span><span class="target" id="classstream__client_1_1connector_1_1base__connector_1af92e5bde6329c88da1089732abaf6ed3"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">void</span> <code class="sig-name descname"><span class="pre">notify_resolve_done</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N13stream_client9connector14base_connector19notify_resolve_doneEv" title="Permalink to this definition">¶</a><br/></dt>
+<dd><p>Notify from <a class="reference internal" href="#classstream__client_1_1connector_1_1base__connector_1a5e890721e4d0c41900ab433b31fbf93e"><span class="std std-ref">resolve_routine()</span></a> that <code class="docutils literal notranslate"><span class="pre">endpoints_</span></code> updated. </p>
+</dd></dl>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classstream__client_1_1connector_1_1base__connector_1a26644cc320a7018ee08b26c26a5d5a84"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><span class="pre">::</span><span class="pre">stream_client</span><span class="pre">::</span><a class="reference internal" href="typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f.html#_CPPv4N13stream_client10tcp_clientE" title="stream_client::tcp_client"><span class="pre">tcp_client</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">connect_until</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13endpoint_typeE" title="stream_client::connector::base_connector::endpoint_type"><span class="pre">endpoint_type</span></a> <span class="pre">&amp;</span><em><span class="pre">peer_endpoint</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector15time_point_typeE" title="stream_client::connector::base_connector::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">until_time</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classstream__client_1_1connector_1_1base__connector_1a57804b2ad5d323045b87a05d9b754826"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><span class="pre">::</span><span class="pre">stream_client</span><span class="pre">::</span><a class="reference internal" href="typedef_namespacestream__client_1ae873f8541c74d6e990024743a07536a4.html#_CPPv4N13stream_client10udp_clientE" title="stream_client::udp_client"><span class="pre">udp_client</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">connect_until</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13endpoint_typeE" title="stream_client::connector::base_connector::endpoint_type"><span class="pre">endpoint_type</span></a> <span class="pre">&amp;</span><em><span class="pre">peer_endpoint</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector15time_point_typeE" title="stream_client::connector::base_connector::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">until_time</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classstream__client_1_1connector_1_1base__connector_1a35a09761f2d17edbf47a6eac421a8567"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><span class="pre">::</span><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">ssl</span><span class="pre">::</span><a class="reference internal" href="typedef_namespacestream__client_1_1ssl_1a9821ea7df56caf94afe97963c216cb98.html#_CPPv4N13stream_client3ssl10ssl_clientE" title="stream_client::ssl::ssl_client"><span class="pre">ssl_client</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">connect_until</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13endpoint_typeE" title="stream_client::connector::base_connector::endpoint_type"><span class="pre">endpoint_type</span></a> <span class="pre">&amp;</span><em><span class="pre">peer_endpoint</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector15time_point_typeE" title="stream_client::connector::base_connector::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">until_time</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classstream__client_1_1connector_1_1base__connector_1ac79bc85f09f9a261de1e0cc2e889ba09"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><span class="pre">::</span><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ab8dd804aeae001421867a3ddd560a1b9.html#_CPPv4N13stream_client4http11http_clientE" title="stream_client::http::http_client"><span class="pre">http_client</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">connect_until</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13endpoint_typeE" title="stream_client::connector::base_connector::endpoint_type"><span class="pre">endpoint_type</span></a> <span class="pre">&amp;</span><em><span class="pre">peer_endpoint</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector15time_point_typeE" title="stream_client::connector::base_connector::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">until_time</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><br/></dt>
+<dd></dd></dl>
+<dl class="cpp function">
+<dt>
+<span class="target" id="classstream__client_1_1connector_1_1base__connector_1acfeaea2e6427363dd69159a3dea65f33"></span><em class="property"><span class="pre">inline</span></em> <span class="pre">std</span><span class="pre">::</span><span class="pre">unique_ptr</span><span class="pre">&lt;</span><span class="pre">::</span><span class="pre">stream_client</span><span class="pre">::</span><span class="pre">http</span><span class="pre">::</span><a class="reference internal" href="typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7.html#_CPPv4N13stream_client4http12https_clientE" title="stream_client::http::https_client"><span class="pre">https_client</span></a><span class="pre">&gt;</span> <code class="sig-name descname"><span class="pre">connect_until</span></code><span class="sig-paren">(</span><em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector13endpoint_typeE" title="stream_client::connector::base_connector::endpoint_type"><span class="pre">endpoint_type</span></a> <span class="pre">&amp;</span><em><span class="pre">peer_endpoint</span></em>, <em class="property"><span class="pre">const</span></em> <a class="reference internal" href="#_CPPv4N13stream_client9connector14base_connector15time_point_typeE" title="stream_client::connector::base_connector::time_point_type"><span class="pre">time_point_type</span></a> <span class="pre">&amp;</span><em><span class="pre">until_time</span></em><span class="sig-paren">)</span> <em class="property"><span class="pre">const</span></em><br/></dt>
+<dd></dd></dl>
+</div>
+</dd></dl>
+</div>
+</div>
+
+      </article>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="classstream__client_1_1datagram__socket.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Template Class datagram_socket</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="classstream__client_1_1connector_1_1base__connection__pool.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Template Class base_connection_pool</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; Apache-2.0
+            |
+            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
+              and
+              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            |
+            <a class="muted-link" href="../_sources/api/classstream__client_1_1connector_1_1base__connector.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Template Class base_connector</a><ul>
+<li><a class="reference internal" href="#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </main>
+</div>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+    <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/scripts/main.js?digest=e931d09b2a40c1bb82b542effe772014573baf67"></script></body>
+</html>

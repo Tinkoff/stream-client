@@ -1,0 +1,16 @@
+.. _exhale_class_classstream__client_1_1ssl_1_1stream__socket:
+
+Template Class stream_socket
+============================
+
+- Defined in :ref:`file_stream-client_stream_ssl_stream_socket.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::ssl::stream_socket
+   :members:
+   :protected-members:
+   :undoc-members:

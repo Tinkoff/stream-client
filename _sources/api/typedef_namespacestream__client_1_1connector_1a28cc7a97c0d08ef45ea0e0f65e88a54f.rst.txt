@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f:
+
+Typedef stream_client::connector::tcp_pool
+==========================================
+
+- Defined in :ref:`file_stream-client_connector_connection_pool.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::connector::tcp_pool

@@ -1,0 +1,13 @@
+.. _exhale_enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923:
+
+Enum ip_family
+==============
+
+- Defined in :ref:`file_stream-client_resolver_resolver.hpp`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: stream_client::resolver::ip_family

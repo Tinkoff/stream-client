@@ -1,0 +1,13 @@
+
+.. _namespace_stream_client__stream:
+
+Namespace stream_client::stream
+===============================
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client__stream__detail`

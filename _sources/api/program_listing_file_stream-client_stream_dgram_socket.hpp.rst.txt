@@ -1,0 +1,85 @@
+
+.. _program_listing_file_stream-client_stream_dgram_socket.hpp:
+
+Program Listing for File dgram_socket.hpp
+=========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_stream-client_stream_dgram_socket.hpp>` (``stream-client/stream/dgram_socket.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include "base_socket.hpp"
+   
+   #include <boost/asio/basic_datagram_socket.hpp>
+   #include <boost/asio/ip/udp.hpp>
+   
+   namespace stream_client {
+   
+   template <typename Protocol>
+   class datagram_socket: public base_socket<boost::asio::basic_datagram_socket<Protocol>>
+   {
+   public:
+       using base_socket<boost::asio::basic_datagram_socket<Protocol>>::base_socket;
+   
+       datagram_socket(const datagram_socket<Protocol>& other) = delete;
+       datagram_socket<Protocol>& operator=(const datagram_socket<Protocol>& other) = delete;
+       datagram_socket(datagram_socket<Protocol>&& other) = default;
+       datagram_socket<Protocol>& operator=(datagram_socket<Protocol>&& other) = default;
+   
+       virtual ~datagram_socket() = default;
+   
+       template <typename ConstBufferSequence, typename Time>
+       std::size_t send(const ConstBufferSequence& buffers, boost::system::error_code& ec,
+                        const Time& timeout_or_deadline);
+   
+       template <typename ConstBufferSequence, typename Time>
+       std::size_t send(const ConstBufferSequence& buffers, const Time& timeout_or_deadline);
+   
+       template <typename ConstBufferSequence>
+       inline std::size_t send(const ConstBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return send(buffers, ec, this->io_timeout());
+       }
+       template <typename ConstBufferSequence>
+       inline std::size_t send(const ConstBufferSequence& buffers)
+       {
+           return send(buffers, this->io_timeout());
+       }
+   
+       template <typename MutableBufferSequence, typename Time>
+       std::size_t receive(const MutableBufferSequence& buffers, boost::system::error_code& ec,
+                           const Time& timeout_or_deadline);
+   
+       template <typename MutableBufferSequence, typename Time>
+       std::size_t receive(const MutableBufferSequence& buffers, const Time& timeout_or_deadline);
+   
+       template <typename MutableBufferSequence>
+       inline std::size_t receive(const MutableBufferSequence& buffers, boost::system::error_code& ec)
+       {
+           return receive(buffers, ec, this->io_timeout());
+       }
+       template <typename MutableBufferSequence>
+       inline std::size_t receive(const MutableBufferSequence& buffers)
+       {
+           return receive(buffers, this->io_timeout());
+       }
+   
+   private:
+       template <typename ConstBufferSequence, typename WriteHandler, typename Time>
+       void async_send(const ConstBufferSequence& buffers, const Time& timeout_or_deadline, WriteHandler&& handler,
+                       bool setup_expiration);
+   
+       template <typename MutableBufferSequence, typename ReadHandler, typename Time>
+       void async_receive(const MutableBufferSequence& buffers, const Time& timeout_or_deadline, ReadHandler&& handler,
+                          bool setup_expiration);
+   };
+   
+   using udp_client = datagram_socket<boost::asio::ip::udp>;
+   
+   } // namespace stream_client
+   
+   #include "impl/dgram_socket.ipp"

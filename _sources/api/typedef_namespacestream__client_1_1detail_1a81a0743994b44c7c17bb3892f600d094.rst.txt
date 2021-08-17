@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094:
+
+Typedef stream_client::detail::system_timed_base
+================================================
+
+- Defined in :ref:`file_stream-client_detail_timed_base.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::detail::system_timed_base
