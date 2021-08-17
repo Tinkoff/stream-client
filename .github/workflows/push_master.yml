@@ -13,7 +13,7 @@ jobs:
     - name: Install dependencies on ubuntu
       run: |
         sudo apt-get update
-        sudo apt-get install -yq doxygen
+        sudo apt-get install -yq doxygen libboost-dev libboost-system-dev
         pip3 install sphinx==3.5.4 breathe==4.29.0 exhale==0.2.3 furo==2021.4.11b34
     # Make and deploy pages
     - name: Make pages

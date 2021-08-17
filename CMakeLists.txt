@@ -147,5 +147,5 @@ endif()
 # Examples
 
 if(STREAMCLIENT_BUILD_EXAMPLES)
-    add_subdirectory(docs)
+    add_subdirectory(example)
 endif()
