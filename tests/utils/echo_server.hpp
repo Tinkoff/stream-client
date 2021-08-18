@@ -17,6 +17,11 @@ public:
     {
     }
 
+    echo_session(const echo_session<Socket>& other) = delete;
+    echo_session<Socket>& operator=(const echo_session<Socket>& other) = delete;
+    echo_session(echo_session<Socket>&& other) = default;
+    echo_session<Socket>& operator=(echo_session<Socket>&& other) = default;
+
     virtual ~echo_session() = default;
 
 protected:
@@ -345,12 +350,12 @@ public:
         auto future = promise.get_future();
 
         session_threads_.emplace_back(
-            [=](std::promise<Session>&& promise) {
-                std::unique_lock<std::mutex> lk(acceptor_mutex_);
+            [this](std::promise<Session>&& promise) {
+                std::unique_lock<std::mutex> lk(this->acceptor_mutex_);
 
                 auto sock = std::make_shared<boost::asio::ip::tcp::socket>(*this->io_service_);
                 this->acceptor_.accept(*sock);
-                promise.set_value_at_thread_exit(Session(this->io_service_, std::move(sock)));
+                promise.set_value(Session(this->io_service_, std::move(sock)));
             },
             std::move(promise));
 
@@ -422,13 +427,13 @@ public:
         auto future = promise.get_future();
 
         session_threads_.emplace_back(
-            [=](std::promise<ssl_session>&& promise) {
-                std::unique_lock<std::mutex> lk(acceptor_mutex_);
+            [this](std::promise<ssl_session>&& promise) {
+                std::unique_lock<std::mutex> lk(this->acceptor_mutex_);
 
                 auto session = ssl_session(this->io_service_, context_);
                 this->acceptor_.accept(session.get_socket());
                 session.get_ssl_socket().handshake(boost::asio::ssl::stream_base::server);
-                promise.set_value_at_thread_exit(std::move(session));
+                promise.set_value(std::move(session));
             },
             std::move(promise));
 
@@ -472,8 +477,8 @@ public:
         auto future = promise.get_future();
 
         session_threads_.emplace_back(
-            [=](std::promise<udp_session>&& promise) {
-                promise.set_value_at_thread_exit(udp_session(this->io_service_, this->socket_));
+            [this](std::promise<udp_session>&& promise) {
+                promise.set_value(udp_session(this->io_service_, this->socket_));
             },
             std::move(promise));
 
