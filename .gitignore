@@ -41,5 +41,6 @@
 .idea/
 .gradle/
 build/
+build-*/
 coverage-build/
 coverage.*

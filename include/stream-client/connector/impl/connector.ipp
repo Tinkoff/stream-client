@@ -31,14 +31,14 @@ base_connector<Stream>::base_connector(const std::string& host, const std::strin
 {
     resolve_done_ = false;
     resolve_needed_ = true;
-    resolving_thread_running_ = true;
+    resolving_thread_running_.store(true, std::memory_order_release);
     resolving_thread_ = std::thread([this]() { this->resolve_routine(); });
 }
 
 template <typename Stream>
 base_connector<Stream>::~base_connector()
 {
-    resolving_thread_running_ = false;
+    resolving_thread_running_.store(false, std::memory_order_release);
     if (resolving_thread_.joinable()) {
         resolving_thread_.join();
     }
@@ -89,7 +89,7 @@ void base_connector<Stream>::resolve_routine()
 {
     static const auto lock_timeout = std::chrono::milliseconds(100);
 
-    while (resolving_thread_running_) {
+    while (resolving_thread_running_.load(std::memory_order_acquire)) {
         std::unique_lock<std::timed_mutex> resolve_needed_lk(resolve_needed_mutex_, std::defer_lock);
         if (!resolve_needed_lk.try_lock_for(lock_timeout) ||
             !resolve_needed_cv_.wait_for(resolve_needed_lk, lock_timeout, [this] { return resolve_needed_; })) {

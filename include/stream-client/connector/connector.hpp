@@ -3,6 +3,7 @@
 #include "stream-client/resolver/resolver.hpp"
 #include "stream-client/stream/http_socket.hpp"
 
+#include <atomic>
 #include <condition_variable>
 #include <mutex>
 
@@ -277,17 +278,17 @@ private:
     endpoint_container_type endpoints_; ///< Resolved endpoints.
     mutable std::mutex endpoints_mutex_; ///< @p endpoints_ mutex.
 
-    bool resolving_thread_running_ = true; ///< Flag to stop @p resolving_thread_.
+    std::atomic_bool resolving_thread_running_{true}; ///< Flag to stop @p resolving_thread_.
     std::thread resolving_thread_; ///< Thread to run resolve_routine() in.
 
     boost::system::error_code resolve_error_; ///< Error value propagated from @p resolving_thread_.
     mutable std::mutex resolve_error_mutex_; ///< @p resolve_error_ mutex.
 
     /* used to implement waits on update/done events without polling */
-    bool resolve_needed_ = true; ///< Flag to trigger @p resolving_thread_ to reresolve.
+    bool resolve_needed_{true}; ///< Flag to trigger @p resolving_thread_ to reresolve.
     std::timed_mutex resolve_needed_mutex_; ///< @p resolve_needed_ mutex.
     std::condition_variable_any resolve_needed_cv_; ///< @p resolve_needed_ condition variable.
-    bool resolve_done_ = false; ///< Flag to notify that @p resolving_thread_ has done @p endpoints_ update.
+    bool resolve_done_{false}; ///< Flag to notify that @p resolving_thread_ has done @p endpoints_ update.
     std::timed_mutex resolve_done_mutex_; ///< @p resolve_done_ mutex.
     std::condition_variable_any resolve_done_cv_; ///< @p resolve_done_ condition variable.
 };

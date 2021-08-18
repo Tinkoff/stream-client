@@ -12,8 +12,7 @@ TYPED_TEST(ServerEnv, ConnectZeroTimeout)
                       boost::asio::error::timed_out);
 
     const auto elapsed = std::chrono::steady_clock::now() - start_t;
-    EXPECT_TIME_GE(elapsed, std::chrono::milliseconds(0));
-    EXPECT_TIME_LE(elapsed, std::chrono::milliseconds(20));
+    EXPECT_TIME_LE(elapsed, std::chrono::milliseconds(50)); // actual time differs with sanitized builds
 }
 
 TEST_F(TCPServerEnv, ConnectTimeout)
