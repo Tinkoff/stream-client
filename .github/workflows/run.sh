@@ -21,14 +21,16 @@ build() {
 }
 
 build_testing() {
-    if [[ $# -lt 1 ]]; then
-        echo "Build folder is absent"
+    if [[ $# -lt 2 ]]; then
+        echo "Build folder and/or build type are absent"
         return 1
     fi
 
     declare -r folder="$1"
+    declare -r build_type="$2"
 
-    build "$folder" "testing" "-DSTREAMCLIENT_BUILD_TESTING=ON" \
+    build "$folder" "testing" "-DCMAKE_BUILD_TYPE=$build_type" \
+                              "-DSTREAMCLIENT_BUILD_TESTING=ON" \
                               "-DSTREAMCLIENT_BUILD_DOCS=OFF" \
                               "-DSTREAMCLIENT_BUILD_EXAMPLES=OFF" \
                               "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"\
@@ -46,7 +48,10 @@ collect_coverage() {
 }
 
 if [[ "$1" == "test" ]] ; then
-    build_testing "build"
+    build_testing "build-tsan" "Tsan"
+    build_testing "build-asan" "Asan"
+    build_testing "build-ubsan" "Ubsan"
+    build_testing "build" "Debug"
 
 elif [[ "$1" == "coverage" ]] ; then
     build_testing "build"
