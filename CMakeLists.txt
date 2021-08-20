@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 set(STREAMCLIENT_VERSION_MAJOR "1")
 set(STREAMCLIENT_VERSION_MINOR "1")
-set(STREAMCLIENT_VERSION_RELEASE "10")
+set(STREAMCLIENT_VERSION_RELEASE "11")
 set(STREAMCLIENT_SUMMARY "C++ library")
 set(STREAMCLIENT_REPOSITORY_URL "https://github.com/TinkoffCreditSystems/stream-client")
 set(STREAMCLIENT_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
@@ -31,6 +31,30 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "RelWithDebInfo" CACHE STRING "Choose the type of build, options are: Debug Release RelWithDebInfo MinSizeRel." FORCE)
 endif()
+
+# ThreadSanitizer
+set(CMAKE_CXX_FLAGS_TSAN "-fsanitize=thread -g -O1"
+    CACHE STRING "Flags used by the C++ compiler during ThreadSanitizer builds."
+    FORCE
+)
+# AddressSanitize
+set(CMAKE_CXX_FLAGS_ASAN "-fsanitize=address \
+                          -fno-optimize-sibling-calls \
+                          -fsanitize-address-use-after-scope \
+                          -fno-omit-frame-pointer -g -O1"
+    CACHE STRING "Flags used by the C++ compiler during AddressSanitizer builds."
+    FORCE
+)
+# LeakSanitizer
+set(CMAKE_CXX_FLAGS_LSAN "-fsanitize=leak -fno-omit-frame-pointer -g -O1"
+    CACHE STRING "Flags used by the C++ compiler during LeakSanitizer builds."
+    FORCE
+)
+# UndefinedBehaviour
+set(CMAKE_CXX_FLAGS_UBSAN "-fsanitize=undefined"
+    CACHE STRING "Flags used by the C++ compiler during UndefinedBehaviourSanitizer builds."
+    FORCE
+)
 
 option(STREAMCLIENT_BUILD_TESTING "Build included unit-tests" OFF)
 option(STREAMCLIENT_BUILD_DOCS "Build sphinx generated docs" OFF)
@@ -124,11 +148,13 @@ install(EXPORT ${PROJECT_NAME}-targets
 if(STREAMCLIENT_BUILD_TESTING)
     include(CTest)
 
-    set(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
-    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
-    if(NOT APPLE)
-        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_CXX_FLAGS} -lgcov")
+    if(CMAKE_BUILD_TYPE STREQUAL Debug)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fprofile-arcs -ftest-coverage")
+        if(NOT APPLE)
+            set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lgcov")
+        endif()
     endif()
 
     add_subdirectory(tests)
