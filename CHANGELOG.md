@@ -1,3 +1,14 @@
+## 1.1.11 (2021-08-20)
+
+### Bug Fixes
+
+* connector::base_connector: fix UB in dealing with boolean flag
+
+### Misc
+
+* Add thread/address/UB sanitizers build to CI
+
+
 ## 1.1.10 (2021-08-17)
 
 ### Bug Fixes
