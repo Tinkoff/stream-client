@@ -24,6 +24,8 @@ Includes
 --------
 
 
+- ``atomic``
+
 - ``condition_variable``
 
 - ``impl/connector.ipp`` (:ref:`file_stream-client_connector_impl_connector.ipp`)

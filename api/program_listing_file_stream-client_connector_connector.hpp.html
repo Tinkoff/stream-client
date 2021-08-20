@@ -188,6 +188,7 @@
 <span class="cp">#include</span> <span class="cpf">"stream-client/resolver/resolver.hpp"</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">"stream-client/stream/http_socket.hpp"</span><span class="cp"></span>
 
+<span class="cp">#include</span> <span class="cpf">&lt;atomic&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;condition_variable&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
 
@@ -343,17 +344,17 @@
     <span class="n">endpoint_container_type</span> <span class="n">endpoints_</span><span class="p">;</span>
     <span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">endpoints_mutex_</span><span class="p">;</span>
 
-    <span class="kt">bool</span> <span class="n">resolving_thread_running_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">atomic_bool</span> <span class="n">resolving_thread_running_</span><span class="p">{</span><span class="nb">true</span><span class="p">};</span>
     <span class="n">std</span><span class="o">::</span><span class="kr">thread</span> <span class="n">resolving_thread_</span><span class="p">;</span>
 
     <span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">error_code</span> <span class="n">resolve_error_</span><span class="p">;</span>
     <span class="k">mutable</span> <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">resolve_error_mutex_</span><span class="p">;</span>
 
     <span class="cm">/* used to implement waits on update/done events without polling */</span>
-    <span class="kt">bool</span> <span class="n">resolve_needed_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">resolve_needed_</span><span class="p">{</span><span class="nb">true</span><span class="p">};</span>
     <span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span> <span class="n">resolve_needed_mutex_</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">condition_variable_any</span> <span class="n">resolve_needed_cv_</span><span class="p">;</span>
-    <span class="kt">bool</span> <span class="n">resolve_done_</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">resolve_done_</span><span class="p">{</span><span class="nb">false</span><span class="p">};</span>
     <span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span> <span class="n">resolve_done_mutex_</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">condition_variable_any</span> <span class="n">resolve_done_cv_</span><span class="p">;</span>
 <span class="p">};</span>
