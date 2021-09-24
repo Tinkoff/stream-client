@@ -1,3 +1,14 @@
+## 1.1.12 (2021-09-21)
+
+### Bug Fixes
+
+* connector::base_connector: fix resolving thread spooling if attemts failed
+
+### Misc
+
+* Fix github 'lint' action on PRs
+
+
 ## 1.1.11 (2021-08-20)
 
 ### Bug Fixes
