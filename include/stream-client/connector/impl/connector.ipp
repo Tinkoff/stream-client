@@ -101,7 +101,6 @@ void base_connector<Stream>::resolve_routine()
         resolver_endpoint_iterator_type new_endpoints = resolver_.resolve(resolve_ec);
         set_resolve_error(resolve_ec);
         if (resolve_ec) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
             continue;
         }
 
