@@ -51,6 +51,7 @@ if [[ "$1" == "test" ]] ; then
     build_testing "build-tsan" "Tsan"
     build_testing "build-asan" "Asan"
     build_testing "build-ubsan" "Ubsan"
+    build_testing "build" "Debug"
 
 elif [[ "$1" == "coverage" ]] ; then
     build_testing "build" "Debug"
