@@ -7,9 +7,10 @@ TYPED_TEST(PoolServerEnv, PoolConnect)
 {
     using server_session_type = typename TestFixture::session_type;
     using client_pool_type = typename TestFixture::client_pool_type;
+    using protocol_type = typename TestFixture::protocol_type;
     using client_type = typename TestFixture::client_type;
 
-    const size_t pool_size = 1;
+    const size_t pool_size = 10;
     std::vector<std::future<server_session_type>> future_sessions;
     for (size_t i = 0; i < pool_size; ++i) {
         future_sessions.emplace_back(this->server.get_session());
@@ -30,10 +31,9 @@ TYPED_TEST(PoolServerEnv, PoolConnect)
     EXPECT_TRUE(clients_pool->is_connected(error));
     EXPECT_CODE(error, boost::system::errc::success);
 
-    // pool should have a pool_size of different opened sessions
+    // pool should have pool_size of different opened sessions
     std::unordered_set<client_type*> clients;
-    for (size_t i = 0; i < pool_size; ++i) {
-        boost::system::error_code error;
+    for (size_t i = 0; i < pool_size * 5; ++i) {
         auto client_handle = clients_pool->get_session(error);
         ASSERT_CODE(error, boost::system::errc::success);
         EXPECT_TRUE(client_handle->is_open());
@@ -41,7 +41,16 @@ TYPED_TEST(PoolServerEnv, PoolConnect)
         clients.insert(client_handle.get());
         clients_pool->return_session(std::move(client_handle));
     }
-    EXPECT_EQ(clients.size(), pool_size);
+
+    if (typeid(protocol_type) == typeid(boost::asio::ip::udp)) {
+        // udp will have at least one session
+        EXPECT_GE(clients.size(), 1);
+        EXPECT_LE(clients.size(), pool_size);
+    } else {
+        // tcp may overshoot or undershoot with one session
+        EXPECT_GE(clients.size(), pool_size - 1);
+        EXPECT_LE(clients.size(), pool_size + 1);
+    }
 }
 
 int main(int argc, char** argv)
