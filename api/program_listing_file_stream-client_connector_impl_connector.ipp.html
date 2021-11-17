@@ -192,8 +192,8 @@
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">T</span><span class="o">&gt;</span>
 <span class="kt">void</span> <span class="n">shuffle_vector</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">v</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">random_device</span> <span class="n">r_device</span><span class="p">;</span>
-    <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">mt19937</span> <span class="n">r_generator</span><span class="p">(</span><span class="n">r_device</span><span class="p">());</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">random_device</span> <span class="n">r_device</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">mt19937</span> <span class="n">r_generator</span><span class="p">(</span><span class="n">r_device</span><span class="p">());</span>
     <span class="n">std</span><span class="o">::</span><span class="n">shuffle</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">r_generator</span><span class="p">);</span>
 <span class="p">}</span>
 
