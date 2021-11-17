@@ -6,13 +6,9 @@ TYPED_TEST(ServerEnv, ConnectZeroTimeout)
     using client_type = typename TestFixture::client_type;
 
     // zero timeout should return immediately with timeout error
-    const auto start_t = std::chrono::steady_clock::now();
     ASSERT_THROW_CODE(utils::make_client<client_type>(this->server_endpoint, std::chrono::milliseconds(0),
                                                       std::chrono::seconds(0), "localhost"),
                       boost::asio::error::timed_out);
-
-    const auto elapsed = std::chrono::steady_clock::now() - start_t;
-    EXPECT_TIME_LE(elapsed, std::chrono::milliseconds(50)); // actual time differs with sanitized builds
 }
 
 TEST_F(TCPServerEnv, ConnectTimeout)
