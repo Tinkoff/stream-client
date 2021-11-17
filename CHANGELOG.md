@@ -1,3 +1,17 @@
+## 1.1.13 (2021-11-17)
+
+### Bug Fixes
+
+* connector: Fix data race for random generator
+* tests/timeout: Remove time check for zero timeout
+
+### Misc
+
+* change googletest GIT_TAG to main
+* workflow: Explicitly install openssl with brew
+* readme: Add  n.suboch to maintainers list
+
+
 ## 1.1.12 (2021-09-21)
 
 ### Bug Fixes

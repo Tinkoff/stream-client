@@ -231,4 +231,4 @@ Distibuted under **Apache License 2.0** [LICENSE](./LICENSE). You may also obtai
 ## Contacts
 
 Author - i.s.vovk@tinkoff.ru\
-Current maintainer - i.s.vovk@tinkoff.ru
+Current maintainers - i.s.vovk@tinkoff.ru, n.suboch@tinkoff.ru

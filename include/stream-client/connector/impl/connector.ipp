@@ -7,8 +7,8 @@ namespace {
 template <typename T>
 void shuffle_vector(std::vector<T>& v)
 {
-    static std::random_device r_device;
-    static std::mt19937 r_generator(r_device());
+    std::random_device r_device;
+    std::mt19937 r_generator(r_device());
     std::shuffle(v.begin(), v.end(), r_generator);
 }
 
