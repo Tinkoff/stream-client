@@ -228,7 +228,7 @@
     <span class="p">}</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">sesson_pool_</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">pool_cv_</span><span class="p">.</span><span class="n">wait_until</span><span class="p">(</span><span class="n">pool_lk</span><span class="p">,</span> <span class="n">deadline</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]</span> <span class="p">{</span> <span class="k">return</span> <span class="o">!</span><span class="n">sesson_pool_</span><span class="p">.</span><span class="n">empty</span><span class="p">();</span> <span class="p">}))</span> <span class="p">{</span>
         <span class="c1">// session pool is still empty</span>
-        <span class="n">ec</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">asio</span><span class="o">::</span><span class="n">error</span><span class="o">::</span><span class="n">no_descriptors</span><span class="p">;</span>
+        <span class="n">ec</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">asio</span><span class="o">::</span><span class="n">error</span><span class="o">::</span><span class="n">not_found</span><span class="p">;</span>
         <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
     <span class="p">}</span>
 
@@ -249,7 +249,7 @@
     <span class="p">}</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">sesson_pool_</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
         <span class="c1">// session pool is empty</span>
-        <span class="n">ec</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">asio</span><span class="o">::</span><span class="n">error</span><span class="o">::</span><span class="n">no_descriptors</span><span class="p">;</span>
+        <span class="n">ec</span> <span class="o">=</span> <span class="n">boost</span><span class="o">::</span><span class="n">asio</span><span class="o">::</span><span class="n">error</span><span class="o">::</span><span class="n">not_found</span><span class="p">;</span>
         <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span>
     <span class="p">}</span>
 
