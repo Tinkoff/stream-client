@@ -43,7 +43,7 @@ base_connection_pool<Connector>::get_session(boost::system::error_code& ec, cons
     }
     if (sesson_pool_.empty() && !pool_cv_.wait_until(pool_lk, deadline, [this] { return !sesson_pool_.empty(); })) {
         // session pool is still empty
-        ec = boost::asio::error::no_descriptors;
+        ec = boost::asio::error::not_found;
         return nullptr;
     }
 
@@ -64,7 +64,7 @@ base_connection_pool<Connector>::try_get_session(boost::system::error_code& ec, 
     }
     if (sesson_pool_.empty()) {
         // session pool is empty
-        ec = boost::asio::error::no_descriptors;
+        ec = boost::asio::error::not_found;
         return nullptr;
     }
 
