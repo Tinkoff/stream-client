@@ -25,7 +25,7 @@ namespace http {
  * @note Not thread-safe, multi-thread rw access may mess up your data stream
  * and/or timeout handling.
  *
- * @tparam Stream Type od underlying stream to use.
+ * @tparam Stream Type of underlying stream to use.
  */
 template <typename Stream>
 class base_socket
@@ -36,7 +36,7 @@ public:
     /// Body length limit for internal parser
     static const size_t kBodyLimit;
 
-    using allocator_type = ::stream_client::stream::detail::static_allocator<char>;
+    using allocator_type = std::allocator<char>;
     using next_layer_type = typename std::remove_reference<Stream>::type;
     using protocol_type = typename next_layer_type::protocol_type;
     using endpoint_type = typename next_layer_type::endpoint_type;
@@ -62,8 +62,7 @@ public:
                   !std::is_same<typename std::decay<Arg1>::type, base_socket<Stream>>::value>::type>
     base_socket(Arg1&& arg1, ArgN&&... argn)
         : stream_(std::forward<Arg1>(arg1), std::forward<ArgN>(argn)...)
-        , buffer_allocator_(kBodyLimit + kHeaderLimit)
-        , buffer_(kBodyLimit + kHeaderLimit, buffer_allocator_)
+        , buffer_(kBodyLimit + kHeaderLimit)
     {
     }
 
@@ -246,7 +245,6 @@ protected:
 
 private:
     Stream stream_; ///< Stream to perform rw access.
-    allocator_type buffer_allocator_; ///< Allocator used for incoming data.
     boost::beast::basic_flat_buffer<allocator_type> buffer_; ///< Buffer to store incoming data.
 };
 
