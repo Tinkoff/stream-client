@@ -34,7 +34,7 @@ Program Listing for File http_socket.hpp
        static const size_t kHeaderLimit;
        static const size_t kBodyLimit;
    
-       using allocator_type = ::stream_client::stream::detail::static_allocator<char>;
+       using allocator_type = std::allocator<char>;
        using next_layer_type = typename std::remove_reference<Stream>::type;
        using protocol_type = typename next_layer_type::protocol_type;
        using endpoint_type = typename next_layer_type::endpoint_type;
@@ -47,8 +47,7 @@ Program Listing for File http_socket.hpp
                      !std::is_same<typename std::decay<Arg1>::type, base_socket<Stream>>::value>::type>
        base_socket(Arg1&& arg1, ArgN&&... argn)
            : stream_(std::forward<Arg1>(arg1), std::forward<ArgN>(argn)...)
-           , buffer_allocator_(kBodyLimit + kHeaderLimit)
-           , buffer_(kBodyLimit + kHeaderLimit, buffer_allocator_)
+           , buffer_(kBodyLimit + kHeaderLimit)
        {
        }
    
@@ -123,7 +122,6 @@ Program Listing for File http_socket.hpp
    
    private:
        Stream stream_; 
-       allocator_type buffer_allocator_; 
        boost::beast::basic_flat_buffer<allocator_type> buffer_; 
    };
    

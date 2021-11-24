@@ -207,7 +207,7 @@ public:
     static const size_t kHeaderLimit;
     static const size_t kBodyLimit;
 
-    using allocator_type = ::stream_client::stream::detail::static_allocator&lt;char&gt;;
+    using allocator_type = std::allocator&lt;char&gt;;
     using next_layer_type = typename std::remove_reference&lt;Stream&gt;::type;
     using protocol_type = typename next_layer_type::protocol_type;
     using endpoint_type = typename next_layer_type::endpoint_type;
@@ -220,8 +220,7 @@ public:
                   !std::is_same&lt;typename std::decay&lt;Arg1&gt;::type, base_socket&lt;Stream&gt;&gt;::value&gt;::type&gt;
     base_socket(Arg1&amp;&amp; arg1, ArgN&amp;&amp;... argn)
         : stream_(std::forward&lt;Arg1&gt;(arg1), std::forward&lt;ArgN&gt;(argn)...)
-        , buffer_allocator_(kBodyLimit + kHeaderLimit)
-        , buffer_(kBodyLimit + kHeaderLimit, buffer_allocator_)
+        , buffer_(kBodyLimit + kHeaderLimit)
     {
     }
 
@@ -296,7 +295,6 @@ protected:
 
 private:
     Stream stream_;
-    allocator_type buffer_allocator_;
     boost::beast::basic_flat_buffer&lt;allocator_type&gt; buffer_;
 };
 
