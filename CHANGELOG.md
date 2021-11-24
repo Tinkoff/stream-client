@@ -1,8 +1,16 @@
+## 1.2.0 (2021-11-24)
+
+### Features
+
+* http/base_socket: Use dynamic allocator for transfered data
+
+
 ## 1.1.14 (2021-11-23)
 
 ### Bug Fixes
 
 * connection_pool: Fix wrong error message "Too many open descriptors"
+
 
 ## 1.1.13 (2021-11-17)
 
