@@ -8,6 +8,8 @@
 namespace stream_client {
 namespace connector {
 
+typedef void (*log_cb_func)(const std::string& message, boost::system::system_error e);
+
 /**
  * Class to maintain filled pool of connected sockets (sockets).
  *
@@ -32,6 +34,25 @@ public:
     using clock_type = typename connector_type::clock_type;
     using time_duration_type = typename connector_type::time_duration_type;
     using time_point_type = typename connector_type::time_point_type;
+
+    /**
+     * Parametrized constructor.
+     * Constructs pool for desired connector (protocol). Passed @p argn forwarded to @p Connector constructor.
+     * This operation starts background thread to fill the pool with opened sockets,
+     * therefore subsequent get_session() calls may take longer time compared with the state when pool is full.
+     *
+     * @tparam ...ArgN Types of argn.
+     *
+     * @param[in] log_func Function for logging internal messages can call from different threads.
+     * @param[in] size Number of connected sockets to maintain in the pool.
+     *      Note that real number of established connections my be @p size + 1.
+     *      This happens when you pull a stream with get_session() , the pool establishes new one to replace it,
+     *      and later you return pulled stream back with return_session().
+     * @param[in] idle_timeout sessions which are in the pool for a longer time are replaced with new ones.
+     * @param[in] ...argn Arguments to pass to @p Connector constructor.
+     */
+    template <typename... ArgN>
+    base_connection_pool(log_cb_func log_func, std::size_t size, time_duration_type idle_timeout, ArgN&&... argn);
 
     /**
      * Parametrized constructor.
@@ -312,6 +333,7 @@ private:
     /// Background routine used to maintain the pool.
     void watch_pool_routine();
 
+    log_cb_func log_func_ = nullptr;
     connector_type connector_; ///< Underlying connector used to establish sockets.
 
     std::size_t pool_max_size_; ///< Number of stream to keep in the @p sesson_pool_.
