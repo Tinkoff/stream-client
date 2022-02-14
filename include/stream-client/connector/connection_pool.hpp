@@ -8,6 +8,11 @@
 namespace stream_client {
 namespace connector {
 
+template <typename Connector>
+struct reconnection_strategy_greedy;
+template <typename Connector>
+struct reconnection_strategy_conservative;
+
 /**
  * Class to maintain filled pool of connected sockets (sockets).
  *
@@ -21,7 +26,7 @@ namespace connector {
  *
  * @tparam Connector Type of connector to use to create sockets.
  */
-template <typename Connector>
+template <typename Connector, typename ReconnectionStrategy = reconnection_strategy_greedy<Connector> >
 class base_connection_pool
 {
 public:
@@ -222,6 +227,11 @@ public:
     void return_session(std::unique_ptr<stream_type>&& session);
 
     /**
+     * Append the session in the pool.
+     */
+    void append_session(std::unique_ptr<stream_type>&& session);
+
+    /**
      * Check if pool has at least one stream.
      * Waits until @p deadline for pool to become non-empty.
      *
@@ -312,6 +322,7 @@ private:
     /// Background routine used to maintain the pool.
     void watch_pool_routine();
 
+    ReconnectionStrategy reconnection_;
     connector_type connector_; ///< Underlying connector used to establish sockets.
 
     std::size_t pool_max_size_; ///< Number of stream to keep in the @p sesson_pool_.
