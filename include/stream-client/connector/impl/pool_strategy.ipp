@@ -1,10 +1,11 @@
 #pragma once
 
-#include <boost/system/error_code.hpp>
+#include <boost/system/system_error.hpp>
 
 #include <chrono>
 #include <list>
 #include <random>
+#include <thread>
 #include <vector>
 
 namespace stream_client {
