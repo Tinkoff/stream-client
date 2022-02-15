@@ -61,15 +61,14 @@ public:
         std::stringstream ss;
         const auto now = std::chrono::system_clock::now();
         const std::time_t t_c = std::chrono::system_clock::to_time_t(now);
-        ss << std::put_time(std::localtime(&t_c), "%Y-%m-%dT%H:%M:%SZ") << ": " << LEVEL_PREFIX[static_cast<int>(level)] << ": " << location << ": " << message << std::endl;
+        ss << ": " << LEVEL_PREFIX[static_cast<int>(level)] << ": " << location << ": " << message << std::endl;
 
         std::lock_guard<std::mutex> lock(mutex_);
-        *stream << ss.str();
+        *stream << std::put_time(std::localtime(&t_c), "%Y-%m-%dT%H:%M:%SZ") << ss.str();
     }
 
     const log_level level_;
     mutable std::mutex mutex_;
-
 };
 
 } // namespace detail

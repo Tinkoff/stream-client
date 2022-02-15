@@ -10,7 +10,8 @@ namespace stream_client {
 /**
  * Base enum of log log levels
  */
-enum class log_level {
+enum class log_level
+{
     error = 0,
     warning,
     info,
@@ -32,7 +33,8 @@ typedef void (*logger_message_func)(log_level level, const std::string& location
 /**
  * Base class for log events from internals of library
  */
-class log_interface {
+class log_interface
+{
 public:
     virtual ~log_interface() {}
 
