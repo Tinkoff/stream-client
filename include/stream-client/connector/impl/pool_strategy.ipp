@@ -12,8 +12,8 @@ namespace connector {
 
 template <typename Connector>
 struct reconnection_strategy_greedy {
-    template<typename append_session_func_type>
-    bool proceed(Connector& connector, std::size_t vacant_places, append_session_func_type append_func)
+    template<typename AppendSessionFunc>
+    bool proceed(Connector& connector, std::size_t vacant_places, AppendSessionFunc append_func)
     {
         // creating new sessions may be slow and we want to add them simultaneously;
         // that's why we need to sync adding threads and lock pool
@@ -51,8 +51,8 @@ struct reconnection_strategy_conservative {
     {
     }
 
-    template<typename append_session_func_type>
-    bool proceed(Connector& connector, std::size_t vacant_places, append_session_func_type append_func)
+    template<typename AppendSessionFunc>
+    bool proceed(Connector& connector, std::size_t vacant_places, AppendSessionFunc append_func)
     {
         if (clk::now() < wait_until_) {
             return false;

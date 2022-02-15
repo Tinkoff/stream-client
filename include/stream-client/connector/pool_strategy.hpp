@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+
 namespace stream_client {
 namespace connector {
 
@@ -18,10 +20,10 @@ struct reconnection_strategy
      * @param vacant_places Number of required connection to fullfil the pool. Must be greather than 0.
      * @param append_func This function is used to add new one connected session to pool.
      *
-     * @tparam append_session_func_type Callback function to add new session in session pool.
+     * @tparam AppendSessionFunc Callback function to add new session to session pool.
      */
-    template <typename append_session_func_type>
-    bool proceed(Connector& connector, std::size_t vacant_places, append_session_func_type append_func);
+    template <typename AppendSessionFunc>
+    bool proceed(Connector& connector, std::size_t vacant_places, AppendSessionFunc append_func);
 };
 
 template <typename Connector>
