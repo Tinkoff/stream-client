@@ -14,7 +14,20 @@ enum class log_level {
     error = 0,
     warning,
     info,
+    debug,
+    trace,
 };
+
+/**
+ * Message logger function from library for application.
+ *
+ * @param[in] level Level of message, application may use correct it according the location if necessary.
+ * @param[in] location Target of message is used for filter messages from different parts of library.
+ * @param[in] message The body and main reason of message.
+ *
+ * @note It can be from multiple threads, you should worry about sync and not lock this calls.
+ */
+typedef void (*logger_message_func)(log_level level, const std::string& location, const std::string& message);
 
 /**
  * Base class for log events from internals of library
@@ -24,17 +37,21 @@ public:
     virtual ~log_interface() {}
 
     /**
-     * Message from library for application.
-     *
-     * @param[in] level Level of message, application may use correct it according the target if necessary.
-     * @param[in] target Target of message is used for filter messages from different parts of library.
-     * @param[in] message The body and main reason of message.
-     * @param[in] error The error instance if exists.
+     * See logger_message_func description above
      *
      * @note It can be from multiple threads, you should worry about sync and not lock this calls.
      */
-    virtual void message(log_level level, const std::string& target, const std::string& message, const std::runtime_error* error = nullptr) const = 0;
+    virtual void message(log_level level, const std::string& location, const std::string& message) const = 0;
 };
+
+/**
+ * Set logger instance for library
+ *
+ * @param[in] logger Logger interface for usage.
+ *
+ * @note You should do this once when starting the application and the lifetime of the variable till exit.
+ */
+inline void set_logger_instance(const log_interface& logger);
 
 /**
  * Set logger instace for library
@@ -43,13 +60,13 @@ public:
  *
  * @note You should do this once when starting the application and the lifetime of the variable till exit.
  */
-void set_logger(const log_interface& logger);
+inline void set_logger_func(logger_message_func msg_func);
 
 /**
- * Make simple logger of std streams
+ * Make a simple logger using std streams
  */
-std::unique_ptr<log_interface> make_std_streams_logger();
+inline std::unique_ptr<log_interface> make_std_streams_logger(log_level level = log_level::info);
 
 } // namespace stream_client
 
-#include "detail/logger.ipp"
+#include "impl/logger.ipp"

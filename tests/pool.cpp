@@ -56,7 +56,7 @@ TYPED_TEST(PoolServerEnv, PoolConnect)
 int main(int argc, char** argv)
 {
     auto logger = stream_client::make_std_streams_logger();
-    set_logger(*logger);
+    stream_client::set_logger_instance(*logger);
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

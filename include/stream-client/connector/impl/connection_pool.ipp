@@ -4,8 +4,6 @@
 
 namespace stream_client {
 
-using namespace logging;
-
 namespace connector {
 
 template <typename Connector>
@@ -17,6 +15,7 @@ base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_dur
     , idle_timeout_(idle_timeout)
     , watch_pool_(true)
 {
+    LOG_TRACE(log_target_, "create connection pool");
     pool_watcher_ = std::thread([this]() { this->watch_pool_routine(); });
 }
 
@@ -158,8 +157,8 @@ void base_connection_pool<Connector>::watch_pool_routine()
                 // unblock one waiting thread
                 pool_cv_.notify_one();
             } catch (const boost::system::system_error& e) {
-                static const std::string msg = "failed to establish new session";
-                LOG_ERROR(log_target_, msg, e);
+                static const std::string err_failed_new_session = "failed to establish new session: ";
+                LOG_ERROR(log_target_, err_failed_new_session + e.what());
             }
         };
 
