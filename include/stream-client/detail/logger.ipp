@@ -2,6 +2,7 @@
 
 #include <iomanip>
 #include <iostream>
+#include <mutex>
 #include <sstream>
 
 namespace stream_client {
@@ -70,10 +71,13 @@ public:
             ss << ": " << error->what();
         }
         ss << std::endl;
+
+        std::lock_guard<std::mutex> lock(mutex_);
         *stream << ss.str();
     }
 
     std::string level_prefix_[3];
+    mutable std::mutex mutex_;
 };
 
 } // namespace logging
