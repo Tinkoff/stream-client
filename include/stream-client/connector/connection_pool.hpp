@@ -28,7 +28,7 @@ struct reconnection_strategy_conservative;
  * @tparam Connector Type of connector to use to create sockets.
  * @tparam Strategy Type of reconnection strategy there are more information in pool_strategy.hpp.
  */
-template <typename Connector, typename Strategy = reconnection_strategy_greedy<Connector> >
+template <typename Connector, typename Strategy = reconnection_strategy_greedy<Connector>>
 class base_connection_pool
 {
 public:

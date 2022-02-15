@@ -1,6 +1,10 @@
 #pragma once
 
+#include <boost/system/error_code.hpp>
+
+#include <chrono>
 #include <list>
+#include <random>
 #include <vector>
 
 namespace stream_client {
