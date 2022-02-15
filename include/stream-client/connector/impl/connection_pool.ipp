@@ -1,13 +1,18 @@
 #pragma once
 
+#include "stream-client/logger.hpp"
+
 namespace stream_client {
+
+using namespace logging;
+
 namespace connector {
 
 template <typename Connector>
 template <typename... ArgN>
-base_connection_pool<Connector>::base_connection_pool(log_cb_func log_func, std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
-    : log_func_(log_func)
-    , connector_(std::forward<ArgN>(argn)...)
+base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
+    : connector_(std::forward<ArgN>(argn)...)
+    , log_target_("connection_pool " + connector_.get_target())
     , pool_max_size_(size)
     , idle_timeout_(idle_timeout)
     , watch_pool_(true)
@@ -16,17 +21,10 @@ base_connection_pool<Connector>::base_connection_pool(log_cb_func log_func, std:
 }
 
 template <typename Connector>
-template <typename... ArgN>
-base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
-    : base_connection_pool(nullptr, size, idle_timeout, std::forward<ArgN>(argn)...)
-{
-}
-
-template <typename Connector>
 template <typename Arg1, typename... ArgN,
           typename std::enable_if<!std::is_convertible<Arg1, typename Connector::time_duration_type>::value>::type*>
 base_connection_pool<Connector>::base_connection_pool(std::size_t size, Arg1&& arg1, ArgN&&... argn)
-    : base_connection_pool(nullptr, size, time_duration_type::max(), std::forward<Arg1>(arg1), std::forward<ArgN>(argn)...)
+    : base_connection_pool(size, time_duration_type::max(), std::forward<Arg1>(arg1), std::forward<ArgN>(argn)...)
 {
 }
 
@@ -160,9 +158,8 @@ void base_connection_pool<Connector>::watch_pool_routine()
                 // unblock one waiting thread
                 pool_cv_.notify_one();
             } catch (const boost::system::system_error& e) {
-                if (log_func_) {
-                    log_func_("failed to establish new session", e);
-                }
+                static const std::string msg = "failed to establish new session";
+                LOG_ERROR(log_target_, msg, e);
             }
         };
 
