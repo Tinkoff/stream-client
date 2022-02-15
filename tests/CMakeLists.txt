@@ -8,30 +8,38 @@ else()
     set(TETING_TARGET_LOCAL "False")
 endif()
 
-# Download and unpack googletest at configure time
-configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
-execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
-    RESULT_VARIABLE result
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/googletest-download )
-if(result)
-    message(FATAL_ERROR "CMake step for googletest failed: ${result}")
-endif()
-execute_process(COMMAND ${CMAKE_COMMAND} --build .
-    RESULT_VARIABLE result
-    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/googletest-download )
-if(result)
-    message(FATAL_ERROR "Build step for googletest failed: ${result}")
-endif()
+# Locate GTest
+find_package(GTest)
+if(GTest_FOUND)
+    set(EXTRA_LIBS ${GTEST_LIBRARIES})
+else(GTest_FOUND)
+    # Download and unpack googletest at configure time
+    configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
+    execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
+        RESULT_VARIABLE result
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/googletest-download )
+    if(result)
+        message(FATAL_ERROR "CMake step for googletest failed: ${result}")
+    endif()
+    execute_process(COMMAND ${CMAKE_COMMAND} --build .
+        RESULT_VARIABLE result
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/googletest-download )
+    if(result)
+        message(FATAL_ERROR "Build step for googletest failed: ${result}")
+    endif()
 
-# Prevent overriding the parent project's compiler/linker
-# settings on Windows
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    # Prevent overriding the parent project's compiler/linker
+    # settings on Windows
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-# Add googletest directly to our build. This defines
-# the gtest and gtest_main targets.
-add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
-                 ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
-                 EXCLUDE_FROM_ALL)
+    # Add googletest directly to our build. This defines
+    # the gtest and gtest_main targets.
+    add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
+                     ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
+                     EXCLUDE_FROM_ALL)
+
+    set(EXTRA_LIBS gtest_main)
+endif(GTest_FOUND)
 
 set(SSL_CERTS_FOLDER ${CMAKE_CURRENT_BINARY_DIR})
 set(SSL_ROOT_KEY ssl_rootca.key)
@@ -75,7 +83,7 @@ add_definitions(-DSSL_DH_PARAMS="${SSL_CERTS_FOLDER}/${SSL_DH_PARAMS}")
 
 function(add_unit_test name)
     add_executable(${name} ${ARGN})
-    target_link_libraries(${name} ${PROJECT_NAME}::${PROJECT_NAME} gtest_main)
+    target_link_libraries(${name} ${PROJECT_NAME}::${PROJECT_NAME} ${EXTRA_LIBS})
     add_test(NAME ${name} COMMAND $<TARGET_FILE:${name}>)
     if (TETING_TARGET_LOCAL)
         add_dependencies(testing ${name})
