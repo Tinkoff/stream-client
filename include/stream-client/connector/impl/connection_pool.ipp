@@ -3,9 +3,9 @@
 namespace stream_client {
 namespace connector {
 
-template <typename Connector, typename ReconnectionStrategy>
+template <typename Connector, typename Strategy>
 template <typename... ArgN>
-base_connection_pool<Connector, ReconnectionStrategy>::base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
+base_connection_pool<Connector, Strategy>::base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
     : connector_(std::forward<ArgN>(argn)...)
     , pool_max_size_(size)
     , idle_timeout_(idle_timeout)
@@ -14,16 +14,16 @@ base_connection_pool<Connector, ReconnectionStrategy>::base_connection_pool(std:
     pool_watcher_ = std::thread([this]() { this->watch_pool_routine(); });
 }
 
-template <typename Connector, typename ReconnectionStrategy>
+template <typename Connector, typename Strategy>
 template <typename Arg1, typename... ArgN,
           typename std::enable_if<!std::is_convertible<Arg1, typename Connector::time_duration_type>::value>::type*>
-base_connection_pool<Connector, ReconnectionStrategy>::base_connection_pool(std::size_t size, Arg1&& arg1, ArgN&&... argn)
+base_connection_pool<Connector, Strategy>::base_connection_pool(std::size_t size, Arg1&& arg1, ArgN&&... argn)
     : base_connection_pool(size, time_duration_type::max(), std::forward<Arg1>(arg1), std::forward<ArgN>(argn)...)
 {
 }
 
-template <typename Connector, typename ReconnectionStrategy>
-base_connection_pool<Connector, ReconnectionStrategy>::~base_connection_pool()
+template <typename Connector, typename Strategy>
+base_connection_pool<Connector, Strategy>::~base_connection_pool()
 {
     watch_pool_.store(false, std::memory_order_release);
     if (pool_watcher_.joinable()) {
@@ -31,9 +31,9 @@ base_connection_pool<Connector, ReconnectionStrategy>::~base_connection_pool()
     }
 }
 
-template <typename Connector, typename ReconnectionStrategy>
-std::unique_ptr<typename base_connection_pool<Connector, ReconnectionStrategy>::stream_type>
-base_connection_pool<Connector, ReconnectionStrategy>::get_session(boost::system::error_code& ec, const time_point_type& deadline)
+template <typename Connector, typename Strategy>
+std::unique_ptr<typename base_connection_pool<Connector, Strategy>::stream_type>
+base_connection_pool<Connector, Strategy>::get_session(boost::system::error_code& ec, const time_point_type& deadline)
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -52,9 +52,9 @@ base_connection_pool<Connector, ReconnectionStrategy>::get_session(boost::system
     return session;
 }
 
-template <typename Connector, typename ReconnectionStrategy>
-std::unique_ptr<typename base_connection_pool<Connector, ReconnectionStrategy>::stream_type>
-base_connection_pool<Connector, ReconnectionStrategy>::try_get_session(boost::system::error_code& ec, const time_point_type& deadline)
+template <typename Connector, typename Strategy>
+std::unique_ptr<typename base_connection_pool<Connector, Strategy>::stream_type>
+base_connection_pool<Connector, Strategy>::try_get_session(boost::system::error_code& ec, const time_point_type& deadline)
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -73,8 +73,8 @@ base_connection_pool<Connector, ReconnectionStrategy>::try_get_session(boost::sy
     return session;
 }
 
-template <typename Connector, typename ReconnectionStrategy>
-void base_connection_pool<Connector, ReconnectionStrategy>::return_session(std::unique_ptr<stream_type>&& session)
+template <typename Connector, typename Strategy>
+void base_connection_pool<Connector, Strategy>::return_session(std::unique_ptr<stream_type>&& session)
 {
     if (!session || !session->next_layer().is_open()) {
         return;
@@ -91,8 +91,8 @@ void base_connection_pool<Connector, ReconnectionStrategy>::return_session(std::
     pool_cv_.notify_all();
 }
 
-template <typename Connector, typename ReconnectionStrategy>
-void base_connection_pool<Connector, ReconnectionStrategy>::append_session(std::unique_ptr<stream_type>&& session)
+template <typename Connector, typename Strategy>
+void base_connection_pool<Connector, Strategy>::append_session(std::unique_ptr<stream_type>&& session)
 {
     // ensure only single session added at time
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_);
@@ -103,8 +103,8 @@ void base_connection_pool<Connector, ReconnectionStrategy>::append_session(std::
     pool_cv_.notify_one();
 }
 
-template <typename Connector, typename ReconnectionStrategy>
-bool base_connection_pool<Connector, ReconnectionStrategy>::is_connected(boost::system::error_code& ec, const time_point_type& deadline) const
+template <typename Connector, typename Strategy>
+bool base_connection_pool<Connector, Strategy>::is_connected(boost::system::error_code& ec, const time_point_type& deadline) const
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -119,107 +119,8 @@ bool base_connection_pool<Connector, ReconnectionStrategy>::is_connected(boost::
     return true;
 }
 
-template <typename Connector>
-struct reconnection_strategy_greedy {
-    template<typename append_session_func_type>
-    bool proceed(Connector& connector, std::size_t vacant_places, append_session_func_type append_func)
-    {
-        // creating new sessions may be slow and we want to add them simultaneously;
-        // that's why we need to sync adding threads and lock pool
-        auto add_session = [&]() {
-            try {
-                // getting new session is time consuming operation
-                auto new_session = connector.new_session();
-                append_func(std::move(new_session));
-            } catch (const boost::system::system_error& e) {
-                // TODO: log errors ?
-            }
-        };
-
-        std::list<std::thread> adders;
-        for (std::size_t i = 0; i < vacant_places; ++i) {
-            adders.emplace_back(add_session);
-        }
-        for (auto& a : adders) {
-            a.join();
-        }
-
-        return vacant_places > 0;
-    }
-};
-
-static const boost::system::system_error noerr_sys = boost::system::system_error(make_error_code(boost::system::errc::success));
-template <typename Connector>
-struct reconnection_strategy_conservative {
-    typedef std::chrono::steady_clock clk;
-
-    reconnection_strategy_conservative()
-        : r_generator(r_device_())
-    {
-    }
-
-    template<typename append_session_func_type>
-    bool proceed(Connector& connector, std::size_t vacant_places, append_session_func_type append_func)
-    {
-        if (clk::now() < wait_until_) {
-            return false;
-        }
-
-        std::atomic_bool is_added{false};
-
-        // creating new sessions may be slow and we want to add them simultaneously;
-        // that's why we need to sync adding threads and lock pool
-        auto add_session = [&]() {
-            try {
-                // getting new session is time consuming operation
-                auto new_session = connector.new_session();
-                append_func(std::move(new_session));
-                is_added = true;
-            } catch (const boost::system::system_error& e) {
-                // TODO: log errors ?
-            }
-        };
-
-        std::vector<std::thread> adders;
-        const size_t parallel = (vacant_places + 2) / 3 - 1;
-        if (!backoff_ms_ && parallel > 0) {
-            adders.reserve(parallel);
-            for (std::size_t i = 0; i < parallel; ++i) {
-                adders.emplace_back(add_session);
-            }
-        }
-        add_session();
-        for (auto& a : adders) {
-            a.join();
-        }
-
-        if (is_added) {
-            backoff_ms_ = 0;
-            return true;
-        }
-
-        if (!backoff_ms_) {
-            backoff_ms_ = 50;
-        } else {
-            backoff_ms_ *= 3;
-        }
-        const auto rand_val = double(r_generator()) / r_generator.max();
-        backoff_ms_ *= rand_val;
-        backoff_ms_ = std::min(max_ms_, backoff_ms_);
-        wait_until_ = clk::now() + std::chrono::milliseconds(backoff_ms_);
-
-        return false;
-    }
-
-    static constexpr unsigned long max_ms_ = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::seconds(10)).count();
-    clk::time_point wait_until_ = {};
-    unsigned long backoff_ms_ = 0;
-    std::random_device r_device_;
-    std::mt19937 r_generator;
-};
-
-template <typename Connector, typename ReconnectionStrategy>
-void base_connection_pool<Connector, ReconnectionStrategy>::watch_pool_routine()
+template <typename Connector, typename Strategy>
+void base_connection_pool<Connector, Strategy>::watch_pool_routine()
 {
     static const auto lock_timeout = std::chrono::milliseconds(100);
 
