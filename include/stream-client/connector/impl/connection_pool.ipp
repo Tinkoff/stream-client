@@ -5,7 +5,8 @@ namespace connector {
 
 template <typename Connector, typename Strategy>
 template <typename... ArgN>
-base_connection_pool<Connector, Strategy>::base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
+base_connection_pool<Connector, Strategy>::base_connection_pool(std::size_t size, time_duration_type idle_timeout,
+                                                                ArgN&&... argn)
     : connector_(std::forward<ArgN>(argn)...)
     , pool_max_size_(size)
     , idle_timeout_(idle_timeout)
@@ -33,7 +34,8 @@ base_connection_pool<Connector, Strategy>::~base_connection_pool()
 
 template <typename Connector, typename Strategy>
 std::unique_ptr<typename base_connection_pool<Connector, Strategy>::stream_type>
-base_connection_pool<Connector, Strategy>::get_session(boost::system::error_code& ec, const time_point_type& deadline)
+base_connection_pool<Connector, Strategy>::get_session(boost::system::error_code& ec,
+                                                       const time_point_type& deadline)
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -150,9 +152,10 @@ void base_connection_pool<Connector, Strategy>::watch_pool_routine()
         std::size_t vacant_places = (pool_max_size_ > pool_current_size) ? pool_max_size_ - pool_current_size : 0;
 
         if (vacant_places) {
-            const auto need_more = reconnection_.proceed(connector_, vacant_places, [this](std::unique_ptr<stream_type>&& session) {
+            auto append_func = [this](std::unique_ptr<stream_type>&& session) {
                 this->append_session(std::move(session));
-            });
+            };
+            const auto need_more = reconnection_.proceed(connector_, vacant_places, append_func);
             if (need_more) {
                 continue;
             }

@@ -13,8 +13,9 @@ namespace stream_client {
 namespace connector {
 
 template <typename Connector>
-struct reconnection_strategy_greedy {
-    template<typename AppendSessionFunc>
+struct reconnection_strategy_greedy
+{
+    template <typename AppendSessionFunc>
     bool proceed(Connector& connector, std::size_t vacant_places, AppendSessionFunc append_func)
     {
         // creating new sessions may be slow and we want to add them simultaneously;
@@ -41,11 +42,12 @@ struct reconnection_strategy_greedy {
     }
 };
 
-static constexpr unsigned long MAX_BACKOFF_MS = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::seconds(10)).count();
+static constexpr unsigned long MAX_BACKOFF_MS =
+    std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::seconds(10)).count();
 
-static const boost::system::system_error noerr_sys = boost::system::system_error(make_error_code(boost::system::errc::success));
 template <typename Connector>
-struct reconnection_strategy_conservative {
+struct reconnection_strategy_conservative
+{
     typedef std::chrono::steady_clock clk;
 
     reconnection_strategy_conservative()
@@ -53,7 +55,7 @@ struct reconnection_strategy_conservative {
     {
     }
 
-    template<typename AppendSessionFunc>
+    template <typename AppendSessionFunc>
     bool proceed(Connector& connector, std::size_t vacant_places, AppendSessionFunc append_func)
     {
         if (clk::now() < wait_until_) {
