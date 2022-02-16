@@ -3,7 +3,8 @@
 
 #include <unordered_set>
 
-template<typename server_session_type, typename client_pool_type, typename protocol_type, typename client_type, typename Server>
+template <typename server_session_type, typename client_pool_type, typename protocol_type, typename client_type,
+          typename Server>
 void start_pool_test(ServerEnv<Server>& env)
 {
     const size_t pool_size = 10;
@@ -49,7 +50,8 @@ void start_pool_test(ServerEnv<Server>& env)
     }
 }
 
-TYPED_TEST(GreedyConnectorPoolServerEnv, PoolConnect) {
+TYPED_TEST(GreedyPoolServerEnv, PoolConnect)
+{
     using server_session_type = typename TestFixture::session_type;
     using client_pool_type = typename TestFixture::client_pool_type;
     using protocol_type = typename TestFixture::protocol_type;
@@ -57,7 +59,8 @@ TYPED_TEST(GreedyConnectorPoolServerEnv, PoolConnect) {
     start_pool_test<server_session_type, client_pool_type, protocol_type, client_type>(*this);
 }
 
-TYPED_TEST(ConservativeConnectorPoolServerEnv, PoolConnect) {
+TYPED_TEST(ConservativePoolServerEnv, PoolConnect)
+{
     using server_session_type = typename TestFixture::session_type;
     using client_pool_type = typename TestFixture::client_pool_type;
     using protocol_type = typename TestFixture::protocol_type;
