@@ -1,3 +1,16 @@
+## 1.3.0 (2022-02-16)
+
+### Features
+
+* Support pool refill strategy and implement conservative and greedy (default) - (#20)
+
+### Misc
+
+* cmake: Use system googletest library if found
+* cmake: Mute googletest warning
+* workflow: Check .ipp files with clang-format
+
+
 ## 1.2.0 (2021-11-24)
 
 ### Features
