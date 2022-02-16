@@ -90,18 +90,6 @@ void base_connection_pool<Connector, Strategy>::return_session(std::unique_ptr<s
 
     sesson_pool_.emplace_back(clock_type::now(), std::move(session));
     pool_lk.unlock();
-    pool_cv_.notify_all();
-}
-
-template <typename Connector, typename Strategy>
-void base_connection_pool<Connector, Strategy>::append_session(std::unique_ptr<stream_type>&& session)
-{
-    // ensure only single session added at time
-    std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_);
-    sesson_pool_.emplace_back(clock_type::now(), std::move(session));
-    pool_lk.unlock();
-
-    // unblock one waiting thread
     pool_cv_.notify_one();
 }
 
@@ -154,7 +142,7 @@ void base_connection_pool<Connector, Strategy>::watch_pool_routine()
 
         if (vacant_places) {
             auto append_func = [this](std::unique_ptr<stream_type>&& session) {
-                this->append_session(std::move(session));
+                this->return_session(std::move(session));
             };
             const auto need_more = reconnection_.proceed(connector_, vacant_places, append_func);
             if (need_more) {

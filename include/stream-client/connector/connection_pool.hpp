@@ -229,11 +229,6 @@ public:
     void return_session(std::unique_ptr<stream_type>&& session);
 
     /**
-     * Append the session in the pool.
-     */
-    void append_session(std::unique_ptr<stream_type>&& session);
-
-    /**
      * Check if pool has at least one stream.
      * Waits until @p deadline for pool to become non-empty.
      *
