@@ -62,10 +62,9 @@ void cout_logger::message(log_level level, const std::string& location, const st
     std::stringstream ss;
     const auto now = std::chrono::system_clock::now();
     const std::time_t t_c = std::chrono::system_clock::to_time_t(now);
+    std::lock_guard<std::mutex> lock(mutex_);
     ss << std::put_time(std::localtime(&t_c), "%Y-%m-%dT%H:%M:%SZ") << ": " << kLevelPrefixes[static_cast<int>(level)]
        << ": " << location << ": " << message << std::endl;
-
-    std::lock_guard<std::mutex> lock(mutex_);
     std::cout << ss.str();
 }
 
