@@ -1,12 +1,18 @@
 #pragma once
 
 #include "connector.hpp"
+#include "pool_strategy.hpp"
 
 #include <atomic>
 #include <list>
 
 namespace stream_client {
 namespace connector {
+
+template <typename Connector>
+struct reconnection_strategy_greedy;
+template <typename Connector>
+struct reconnection_strategy_conservative;
 
 /**
  * Class to maintain filled pool of connected sockets (sockets).
@@ -20,8 +26,9 @@ namespace connector {
  * @note Thread-safe. Single instance support concurrent operation.
  *
  * @tparam Connector Type of connector to use to create sockets.
+ * @tparam Strategy Type of reconnection strategy there are more information in pool_strategy.hpp.
  */
-template <typename Connector>
+template <typename Connector, typename Strategy = reconnection_strategy_greedy<Connector>>
 class base_connection_pool
 {
 public:
@@ -312,6 +319,7 @@ private:
     /// Background routine used to maintain the pool.
     void watch_pool_routine();
 
+    Strategy reconnection_;
     connector_type connector_; ///< Underlying connector used to establish sockets.
 
     std::size_t pool_max_size_; ///< Number of stream to keep in the @p sesson_pool_.
