@@ -31,7 +31,7 @@ try:
 except ImportError:
     DEVNULL = open(os.devnull, "wb")
 
-DEFAULT_EXTENSIONS = 'cc,cpp,cxx,c++,h,hh,hpp,hxx,h++'
+DEFAULT_EXTENSIONS = 'cc,cpp,cxx,c++,h,hh,hpp,hxx,h++,ipp,i'
 DEFAULT_LINT_IGNORE = '.clang-lint-ignore'
 
 # Use of utf-8 to decode the process output.
