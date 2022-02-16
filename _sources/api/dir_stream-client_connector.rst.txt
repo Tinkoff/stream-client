@@ -22,5 +22,6 @@ Files
 
 - :ref:`file_stream-client_connector_connection_pool.hpp`
 - :ref:`file_stream-client_connector_connector.hpp`
+- :ref:`file_stream-client_connector_pool_strategy.hpp`
 
 

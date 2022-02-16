@@ -1,0 +1,26 @@
+.. _exhale_class_classstream__client_1_1connector_1_1pool__strategy:
+
+Template Class pool_strategy
+============================
+
+- Defined in :ref:`file_stream-client_connector_pool_strategy.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Derived Types
+*************
+
+- ``public stream_client::connector::conservative_strategy< Connector >`` (:ref:`exhale_class_classstream__client_1_1connector_1_1conservative__strategy`)
+- ``public stream_client::connector::greedy_strategy< Connector >`` (:ref:`exhale_class_classstream__client_1_1connector_1_1greedy__strategy`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::connector::pool_strategy
+   :members:
+   :protected-members:
+   :undoc-members:

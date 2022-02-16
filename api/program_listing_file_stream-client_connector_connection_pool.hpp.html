@@ -131,6 +131,9 @@
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1base__socket.html">Template Class base_socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connection__pool.html">Template Class base_connection_pool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connector.html">Template Class base_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1conservative__strategy.html">Template Class conservative_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1greedy__strategy.html">Template Class greedy_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1pool__strategy.html">Template Class pool_strategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1datagram__socket.html">Template Class datagram_socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base.html">Template Class timed_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">Class timed_base::expiration</a></li>
@@ -186,6 +189,7 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
 <span class="cp">#include</span> <span class="cpf">"connector.hpp"</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">"pool_strategy.hpp"</span><span class="cp"></span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;atomic&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;list&gt;</span><span class="cp"></span>
@@ -193,7 +197,7 @@
 <span class="k">namespace</span> <span class="n">stream_client</span> <span class="p">{</span>
 <span class="k">namespace</span> <span class="n">connector</span> <span class="p">{</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span> <span class="o">=</span> <span class="n">greedy_strategy</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;&gt;</span>
 <span class="k">class</span> <span class="nc">base_connection_pool</span>
 <span class="p">{</span>
 <span class="k">public</span><span class="o">:</span>
@@ -304,6 +308,7 @@
 <span class="k">private</span><span class="o">:</span>
     <span class="kt">void</span> <span class="n">watch_pool_routine</span><span class="p">();</span>
 
+    <span class="n">Strategy</span> <span class="n">reconnection_</span><span class="p">;</span>
     <span class="n">connector_type</span> <span class="n">connector_</span><span class="p">;</span>
 
     <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">pool_max_size_</span><span class="p">;</span>

@@ -110,6 +110,16 @@ Files
 .. toctree::
    :maxdepth: 1
 
+   file_stream-client_connector_pool_strategy.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_connector_impl_pool_strategy.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
    file_stream-client_resolver_resolver.hpp.rst
 
 .. toctree::

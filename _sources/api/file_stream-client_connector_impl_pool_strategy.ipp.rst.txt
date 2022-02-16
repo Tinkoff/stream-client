@@ -1,0 +1,59 @@
+
+.. _file_stream-client_connector_impl_pool_strategy.ipp:
+
+File pool_strategy.ipp
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_connector_impl>` (``stream-client/connector/impl``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/connector/impl/pool_strategy.ipp``)
+---------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_connector_impl_pool_strategy.ipp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``atomic``
+
+- ``boost/system/system_error.hpp``
+
+- ``chrono``
+
+- ``list``
+
+- ``random``
+
+- ``thread``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_connector_pool_strategy.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__connector`
+

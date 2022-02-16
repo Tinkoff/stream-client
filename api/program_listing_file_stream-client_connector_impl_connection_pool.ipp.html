@@ -131,6 +131,9 @@
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1base__socket.html">Template Class base_socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connection__pool.html">Template Class base_connection_pool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1base__connector.html">Template Class base_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1conservative__strategy.html">Template Class conservative_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1greedy__strategy.html">Template Class greedy_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1connector_1_1pool__strategy.html">Template Class pool_strategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1datagram__socket.html">Template Class datagram_socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base.html">Template Class timed_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="classstream__client_1_1detail_1_1timed__base_1_1expiration.html">Class timed_base::expiration</a></li>
@@ -188,9 +191,10 @@
 <span class="k">namespace</span> <span class="n">stream_client</span> <span class="p">{</span>
 <span class="k">namespace</span> <span class="n">connector</span> <span class="p">{</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span><span class="o">&gt;</span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span> <span class="n">ArgN</span><span class="o">&gt;</span>
-<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">base_connection_pool</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">time_duration_type</span> <span class="n">idle_timeout</span><span class="p">,</span> <span class="n">ArgN</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">argn</span><span class="p">)</span>
+<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">base_connection_pool</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">time_duration_type</span> <span class="n">idle_timeout</span><span class="p">,</span>
+                                                                <span class="n">ArgN</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">argn</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">connector_</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">ArgN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">argn</span><span class="p">)...)</span>
     <span class="p">,</span> <span class="n">pool_max_size_</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
     <span class="p">,</span> <span class="n">idle_timeout_</span><span class="p">(</span><span class="n">idle_timeout</span><span class="p">)</span>
@@ -199,16 +203,16 @@
     <span class="n">pool_watcher_</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">([</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">watch_pool_routine</span><span class="p">();</span> <span class="p">});</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span><span class="o">&gt;</span>
 <span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Arg1</span><span class="p">,</span> <span class="k">typename</span><span class="p">...</span> <span class="n">ArgN</span><span class="p">,</span>
           <span class="k">typename</span> <span class="n">std</span><span class="o">::</span><span class="n">enable_if</span><span class="o">&lt;!</span><span class="n">std</span><span class="o">::</span><span class="n">is_convertible</span><span class="o">&lt;</span><span class="n">Arg1</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Connector</span><span class="o">::</span><span class="n">time_duration_type</span><span class="o">&gt;::</span><span class="n">value</span><span class="o">&gt;::</span><span class="n">type</span><span class="o">*&gt;</span>
-<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">base_connection_pool</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">Arg1</span><span class="o">&amp;&amp;</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">ArgN</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">argn</span><span class="p">)</span>
+<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">base_connection_pool</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">Arg1</span><span class="o">&amp;&amp;</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">ArgN</span><span class="o">&amp;&amp;</span><span class="p">...</span> <span class="n">argn</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">base_connection_pool</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">time_duration_type</span><span class="o">::</span><span class="n">max</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Arg1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">arg1</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">ArgN</span><span class="o">&gt;</span><span class="p">(</span><span class="n">argn</span><span class="p">)...)</span>
 <span class="p">{</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
-<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::~</span><span class="n">base_connection_pool</span><span class="p">()</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span><span class="o">&gt;</span>
+<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::~</span><span class="n">base_connection_pool</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="n">watch_pool_</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">memory_order_release</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">pool_watcher_</span><span class="p">.</span><span class="n">joinable</span><span class="p">())</span> <span class="p">{</span>
@@ -216,9 +220,9 @@
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">stream_type</span><span class="o">&gt;</span>
-<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">get_session</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">,</span> <span class="k">const</span> <span class="n">time_point_type</span><span class="o">&amp;</span> <span class="n">deadline</span><span class="p">)</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">stream_type</span><span class="o">&gt;</span>
+<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">get_session</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">,</span> <span class="k">const</span> <span class="n">time_point_type</span><span class="o">&amp;</span> <span class="n">deadline</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span><span class="o">&gt;</span> <span class="n">pool_lk</span><span class="p">(</span><span class="n">pool_mutex_</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">defer_lock</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pool_lk</span><span class="p">.</span><span class="n">try_lock_until</span><span class="p">(</span><span class="n">deadline</span><span class="p">))</span> <span class="p">{</span>
@@ -237,9 +241,10 @@
     <span class="k">return</span> <span class="n">session</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
-<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">stream_type</span><span class="o">&gt;</span>
-<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">try_get_session</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">,</span> <span class="k">const</span> <span class="n">time_point_type</span><span class="o">&amp;</span> <span class="n">deadline</span><span class="p">)</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="k">typename</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">stream_type</span><span class="o">&gt;</span>
+<span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">try_get_session</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">,</span>
+                                                           <span class="k">const</span> <span class="n">time_point_type</span><span class="o">&amp;</span> <span class="n">deadline</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span><span class="o">&gt;</span> <span class="n">pool_lk</span><span class="p">(</span><span class="n">pool_mutex_</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">defer_lock</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pool_lk</span><span class="p">.</span><span class="n">try_lock_until</span><span class="p">(</span><span class="n">deadline</span><span class="p">))</span> <span class="p">{</span>
@@ -258,8 +263,8 @@
     <span class="k">return</span> <span class="n">session</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
-<span class="kt">void</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">return_session</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">stream_type</span><span class="o">&gt;&amp;&amp;</span> <span class="n">session</span><span class="p">)</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">return_session</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">stream_type</span><span class="o">&gt;&amp;&amp;</span> <span class="n">session</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">session</span> <span class="o">||</span> <span class="o">!</span><span class="n">session</span><span class="o">-&gt;</span><span class="n">next_layer</span><span class="p">().</span><span class="n">is_open</span><span class="p">())</span> <span class="p">{</span>
         <span class="k">return</span><span class="p">;</span>
@@ -273,11 +278,12 @@
 
     <span class="n">sesson_pool_</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">clock_type</span><span class="o">::</span><span class="n">now</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">session</span><span class="p">));</span>
     <span class="n">pool_lk</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span>
-    <span class="n">pool_cv_</span><span class="p">.</span><span class="n">notify_all</span><span class="p">();</span>
+    <span class="n">pool_cv_</span><span class="p">.</span><span class="n">notify_one</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
-<span class="kt">bool</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">is_connected</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">,</span> <span class="k">const</span> <span class="n">time_point_type</span><span class="o">&amp;</span> <span class="n">deadline</span><span class="p">)</span> <span class="k">const</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span><span class="o">&gt;</span>
+<span class="kt">bool</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">is_connected</span><span class="p">(</span><span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">error_code</span><span class="o">&amp;</span> <span class="n">ec</span><span class="p">,</span>
+                                                             <span class="k">const</span> <span class="n">time_point_type</span><span class="o">&amp;</span> <span class="n">deadline</span><span class="p">)</span> <span class="k">const</span>
 <span class="p">{</span>
     <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span><span class="o">&gt;</span> <span class="n">pool_lk</span><span class="p">(</span><span class="n">pool_mutex_</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">defer_lock</span><span class="p">);</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pool_lk</span><span class="p">.</span><span class="n">try_lock_until</span><span class="p">(</span><span class="n">deadline</span><span class="p">))</span> <span class="p">{</span>
@@ -292,8 +298,8 @@
     <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="o">&gt;</span>
-<span class="kt">void</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="o">&gt;::</span><span class="n">watch_pool_routine</span><span class="p">()</span>
+<span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Connector</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Strategy</span><span class="o">&gt;</span>
+<span class="kt">void</span> <span class="n">base_connection_pool</span><span class="o">&lt;</span><span class="n">Connector</span><span class="p">,</span> <span class="n">Strategy</span><span class="o">&gt;::</span><span class="n">watch_pool_routine</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="k">static</span> <span class="k">const</span> <span class="k">auto</span> <span class="n">lock_timeout</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
 
@@ -322,37 +328,18 @@
         <span class="c1">// pool_current_size may be bigger if someone returned previous session</span>
         <span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">vacant_places</span> <span class="o">=</span> <span class="p">(</span><span class="n">pool_max_size_</span> <span class="o">&gt;</span> <span class="n">pool_current_size</span><span class="p">)</span> <span class="o">?</span> <span class="n">pool_max_size_</span> <span class="o">-</span> <span class="nl">pool_current_size</span> <span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
 
-        <span class="c1">// creating new sessions may be slow and we want to add them simultaneously;</span>
-        <span class="c1">// that's why we need to sync adding threads and lock pool</span>
-        <span class="k">auto</span> <span class="n">add_session</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span>
-            <span class="k">try</span> <span class="p">{</span>
-                <span class="c1">// getting new session is time consuming operation</span>
-                <span class="k">auto</span> <span class="n">new_session</span> <span class="o">=</span> <span class="n">connector_</span><span class="p">.</span><span class="n">new_session</span><span class="p">();</span>
-
-                <span class="c1">// ensure only single session added at time</span>
-                <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">timed_mutex</span><span class="o">&gt;</span> <span class="n">pool_lk</span><span class="p">(</span><span class="n">pool_mutex_</span><span class="p">);</span>
-                <span class="n">sesson_pool_</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">clock_type</span><span class="o">::</span><span class="n">now</span><span class="p">(),</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">new_session</span><span class="p">));</span>
-                <span class="n">pool_lk</span><span class="p">.</span><span class="n">unlock</span><span class="p">();</span>
-
-                <span class="c1">// unblock one waiting thread</span>
-                <span class="n">pool_cv_</span><span class="p">.</span><span class="n">notify_one</span><span class="p">();</span>
-            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">boost</span><span class="o">::</span><span class="n">system</span><span class="o">::</span><span class="n">system_error</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// TODO: log errors ?</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">vacant_places</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">auto</span> <span class="n">append_func</span> <span class="o">=</span> <span class="p">[</span><span class="k">this</span><span class="p">](</span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">stream_type</span><span class="o">&gt;&amp;&amp;</span> <span class="n">session</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">this</span><span class="o">-&gt;</span><span class="n">return_session</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">session</span><span class="p">));</span>
+            <span class="p">};</span>
+            <span class="k">const</span> <span class="k">auto</span> <span class="n">need_more</span> <span class="o">=</span> <span class="n">reconnection_</span><span class="p">.</span><span class="n">refill</span><span class="p">(</span><span class="n">connector_</span><span class="p">,</span> <span class="n">vacant_places</span><span class="p">,</span> <span class="n">append_func</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">need_more</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">continue</span><span class="p">;</span>
             <span class="p">}</span>
-        <span class="p">};</span>
-
-        <span class="n">std</span><span class="o">::</span><span class="n">list</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">&gt;</span> <span class="n">adders</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vacant_places</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">adders</span><span class="p">.</span><span class="n">emplace_back</span><span class="p">(</span><span class="n">add_session</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span> <span class="nl">a</span> <span class="p">:</span> <span class="n">adders</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">a</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
         <span class="p">}</span>
 
         <span class="c1">// stop cpu spooling if nothing has been added</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">vacant_places</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
-        <span class="p">}</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">sleep_for</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 

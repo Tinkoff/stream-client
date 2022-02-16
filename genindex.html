@@ -130,6 +130,9 @@
 <li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1base__socket.html">Template Class base_socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1connector_1_1base__connection__pool.html">Template Class base_connection_pool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1connector_1_1base__connector.html">Template Class base_connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1connector_1_1conservative__strategy.html">Template Class conservative_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1connector_1_1greedy__strategy.html">Template Class greedy_strategy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1connector_1_1pool__strategy.html">Template Class pool_strategy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1datagram__socket.html">Template Class datagram_socket</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1detail_1_1timed__base.html">Template Class timed_base</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api/classstream__client_1_1detail_1_1timed__base_1_1expiration.html">Class timed_base::expiration</a></li>
@@ -250,7 +253,7 @@
 </li>
         <li><a href="api/classstream__client_1_1base__socket.html#_CPPv4N13stream_client11base_socketD0Ev">stream_client::base_socket::~base_socket (C++ function)</a>
 </li>
-        <li><a href="api/classstream__client_1_1connector_1_1base__connection__pool.html#_CPPv4I0EN13stream_client9connector20base_connection_poolE">stream_client::connector::base_connection_pool (C++ class)</a>
+        <li><a href="api/classstream__client_1_1connector_1_1base__connection__pool.html#_CPPv4I00EN13stream_client9connector20base_connection_poolE">stream_client::connector::base_connection_pool (C++ class)</a>
 </li>
         <li><a href="api/classstream__client_1_1connector_1_1base__connection__pool.html#_CPPv4I0Dp_PNSt9enable_ifIXntNSt14is_convertibleI4Arg1N9Connector18time_duration_typeEE5valueEEE4typeEEN13stream_client9connector20base_connection_pool20base_connection_poolENSt6size_tERR4Arg1DpRR4ArgN">stream_client::connector::base_connection_pool::base_connection_pool (C++ function)</a>, <a href="api/classstream__client_1_1connector_1_1base__connection__pool.html#_CPPv4IDpEN13stream_client9connector20base_connection_pool20base_connection_poolENSt6size_tE18time_duration_typeDpRR4ArgN">[1]</a>, <a href="api/classstream__client_1_1connector_1_1base__connection__pool.html#_CPPv4N13stream_client9connector20base_connection_pool20base_connection_poolERK20base_connection_poolI9ConnectorE">[2]</a>, <a href="api/classstream__client_1_1connector_1_1base__connection__pool.html#_CPPv4N13stream_client9connector20base_connection_pool20base_connection_poolERR20base_connection_poolI9ConnectorE">[3]</a>
 </li>
@@ -342,6 +345,46 @@
 </li>
         <li><a href="api/classstream__client_1_1connector_1_1base__connector.html#_CPPv4N13stream_client9connector14base_connectorD0Ev">stream_client::connector::base_connector::~base_connector (C++ function)</a>
 </li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4I0EN13stream_client9connector21conservative_strategyE">stream_client::connector::conservative_strategy (C++ class)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy16append_func_typeE">stream_client::connector::conservative_strategy::append_func_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy10clock_typeE">stream_client::connector::conservative_strategy::clock_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy14connector_typeE">stream_client::connector::conservative_strategy::connector_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy21conservative_strategyEmj">stream_client::connector::conservative_strategy::conservative_strategy (C++ function)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy15kDefaultDelayMsE">stream_client::connector::conservative_strategy::kDefaultDelayMs (C++ member)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy16kDefaultDelayMulE">stream_client::connector::conservative_strategy::kDefaultDelayMul (C++ member)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy13kMaxBackoffMsE">stream_client::connector::conservative_strategy::kMaxBackoffMs (C++ member)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy6refillER14connector_typeNSt6size_tE16append_func_type">stream_client::connector::conservative_strategy::refill (C++ function)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy11stream_typeE">stream_client::connector::conservative_strategy::stream_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy18time_duration_typeE">stream_client::connector::conservative_strategy::time_duration_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategy15time_point_typeE">stream_client::connector::conservative_strategy::time_point_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1conservative__strategy.html#_CPPv4N13stream_client9connector21conservative_strategyD0Ev">stream_client::connector::conservative_strategy::~conservative_strategy (C++ function)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1greedy__strategy.html#_CPPv4I0EN13stream_client9connector15greedy_strategyE">stream_client::connector::greedy_strategy (C++ class)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1greedy__strategy.html#_CPPv4N13stream_client9connector15greedy_strategy16append_func_typeE">stream_client::connector::greedy_strategy::append_func_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1greedy__strategy.html#_CPPv4N13stream_client9connector15greedy_strategy14connector_typeE">stream_client::connector::greedy_strategy::connector_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1greedy__strategy.html#_CPPv4N13stream_client9connector15greedy_strategy15greedy_strategyEv">stream_client::connector::greedy_strategy::greedy_strategy (C++ function)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1greedy__strategy.html#_CPPv4N13stream_client9connector15greedy_strategy6refillER14connector_typeNSt6size_tE16append_func_type">stream_client::connector::greedy_strategy::refill (C++ function)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1greedy__strategy.html#_CPPv4N13stream_client9connector15greedy_strategy11stream_typeE">stream_client::connector::greedy_strategy::stream_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1greedy__strategy.html#_CPPv4N13stream_client9connector15greedy_strategyD0Ev">stream_client::connector::greedy_strategy::~greedy_strategy (C++ function)</a>
+</li>
         <li><a href="api/typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9.html#_CPPv4N13stream_client9connector14http_connectorE">stream_client::connector::http_connector (C++ type)</a>
 </li>
         <li><a href="api/typedef_namespacestream__client_1_1connector_1acde8b66f273d3e8741b43ef4e3ceefb1.html#_CPPv4N13stream_client9connector9http_poolE">stream_client::connector::http_pool (C++ type)</a>
@@ -349,6 +392,18 @@
         <li><a href="api/typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab.html#_CPPv4N13stream_client9connector15https_connectorE">stream_client::connector::https_connector (C++ type)</a>
 </li>
         <li><a href="api/typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e.html#_CPPv4N13stream_client9connector10https_poolE">stream_client::connector::https_pool (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1pool__strategy.html#_CPPv4I0EN13stream_client9connector13pool_strategyE">stream_client::connector::pool_strategy (C++ class)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1pool__strategy.html#_CPPv4N13stream_client9connector13pool_strategy16append_func_typeE">stream_client::connector::pool_strategy::append_func_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1pool__strategy.html#_CPPv4N13stream_client9connector13pool_strategy14connector_typeE">stream_client::connector::pool_strategy::connector_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1pool__strategy.html#_CPPv4N13stream_client9connector13pool_strategy6refillER14connector_typeNSt6size_tE16append_func_type">stream_client::connector::pool_strategy::refill (C++ function)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1pool__strategy.html#_CPPv4N13stream_client9connector13pool_strategy11stream_typeE">stream_client::connector::pool_strategy::stream_type (C++ type)</a>
+</li>
+        <li><a href="api/classstream__client_1_1connector_1_1pool__strategy.html#_CPPv4N13stream_client9connector13pool_strategyD0Ev">stream_client::connector::pool_strategy::~pool_strategy (C++ function)</a>
 </li>
         <li><a href="api/typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d.html#_CPPv4N13stream_client9connector13ssl_connectorE">stream_client::connector::ssl_connector (C++ type)</a>
 </li>
@@ -376,6 +431,8 @@
 </li>
         <li><a href="api/typedef_namespacestream__client_1_1detail_1a0b05d08971e23d576952cf096f34095e.html#_CPPv4N13stream_client6detail26high_resolution_timed_baseE">stream_client::detail::high_resolution_timed_base (C++ type)</a>
 </li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/typedef_namespacestream__client_1_1detail_1af46161b047ef3d14e1fe50023a621791.html#_CPPv4N13stream_client6detail17steady_timed_baseE">stream_client::detail::steady_timed_base (C++ type)</a>
 </li>
         <li><a href="api/typedef_namespacestream__client_1_1detail_1a81a0743994b44c7c17bb3892f600d094.html#_CPPv4N13stream_client6detail17system_timed_baseE">stream_client::detail::system_timed_base (C++ type)</a>
@@ -402,8 +459,6 @@
 </li>
         <li><a href="api/classstream__client_1_1detail_1_1timed__base.html#_CPPv4N13stream_client6detail10timed_base17kInfiniteDurationE">stream_client::detail::timed_base::kInfiniteDuration (C++ member)</a>
 </li>
-    </ul></td>
-    <td style="width: 33%; vertical-align: top;"><ul>
         <li><a href="api/classstream__client_1_1detail_1_1timed__base.html#_CPPv4N13stream_client6detail10timed_base11kMinTimeoutE">stream_client::detail::timed_base::kMinTimeout (C++ member)</a>
 </li>
         <li><a href="api/classstream__client_1_1detail_1_1timed__base.html#_CPPv4N13stream_client6detail10timed_base13kZeroDurationE">stream_client::detail::timed_base::kZeroDuration (C++ member)</a>

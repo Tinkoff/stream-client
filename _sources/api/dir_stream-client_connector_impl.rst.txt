@@ -17,5 +17,6 @@ Files
 
 - :ref:`file_stream-client_connector_impl_connection_pool.ipp`
 - :ref:`file_stream-client_connector_impl_connector.ipp`
+- :ref:`file_stream-client_connector_impl_pool_strategy.ipp`
 
 

@@ -1,0 +1,86 @@
+
+.. _program_listing_file_stream-client_connector_pool_strategy.hpp:
+
+Program Listing for File pool_strategy.hpp
+==========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_stream-client_connector_pool_strategy.hpp>` (``stream-client/connector/pool_strategy.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include <functional>
+   #include <memory>
+   #include <random>
+   #include <type_traits>
+   
+   namespace stream_client {
+   namespace connector {
+   
+   template <typename Connector>
+   class pool_strategy
+   {
+   public:
+       using connector_type = typename std::remove_reference<Connector>::type;
+       using stream_type = typename connector_type::stream_type;
+       using append_func_type = typename std::function<void(std::unique_ptr<stream_type>&& session)>;
+   
+       virtual ~pool_strategy() = default;
+   
+       virtual bool refill(connector_type& connector, std::size_t vacant_places, append_func_type append_func) = 0;
+   };
+   
+   template <typename Connector>
+   class greedy_strategy: public pool_strategy<Connector>
+   {
+   public:
+       using connector_type = typename pool_strategy<Connector>::connector_type;
+       using stream_type = typename pool_strategy<Connector>::stream_type;
+       using append_func_type = typename pool_strategy<Connector>::append_func_type;
+   
+       greedy_strategy() = default;
+   
+       virtual ~greedy_strategy() = default;
+   
+       virtual bool refill(connector_type& connector, std::size_t vacant_places, append_func_type append_func) override;
+   };
+   
+   template <typename Connector>
+   class conservative_strategy: public pool_strategy<Connector>
+   {
+   public:
+       using connector_type = typename pool_strategy<Connector>::connector_type;
+       using stream_type = typename pool_strategy<Connector>::stream_type;
+       using append_func_type = typename pool_strategy<Connector>::append_func_type;
+   
+       using clock_type = typename connector_type::clock_type;
+       using time_duration_type = typename connector_type::time_duration_type;
+       using time_point_type = typename connector_type::time_point_type;
+   
+       static const unsigned long kMaxBackoffMs;
+       static const unsigned long kDefaultDelayMs;
+       static const unsigned long kDefaultDelayMul;
+   
+       conservative_strategy(unsigned long first_delay_ms = kDefaultDelayMs, unsigned delay_multiplier = kDefaultDelayMul);
+   
+       virtual ~conservative_strategy() = default;
+   
+       virtual bool refill(connector_type& connector, std::size_t vacant_places, append_func_type append_func) override;
+   
+   private:
+       time_point_type wait_until_;
+       unsigned long initial_delay_ms_;
+       unsigned long delay_multiplier_;
+       unsigned long current_delay_ms_;
+   
+       std::random_device r_device_;
+       std::mt19937 r_generator_;
+   };
+   
+   } // namespace connector
+   } // namespace stream_client
+   
+   #include "impl/pool_strategy.ipp"

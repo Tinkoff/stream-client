@@ -32,6 +32,8 @@ Includes
 
 - ``list``
 
+- ``pool_strategy.hpp`` (:ref:`file_stream-client_connector_pool_strategy.hpp`)
+
 
 
 

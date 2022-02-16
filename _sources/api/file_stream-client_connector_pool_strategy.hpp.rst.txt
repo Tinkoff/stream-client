@@ -1,0 +1,66 @@
+
+.. _file_stream-client_connector_pool_strategy.hpp:
+
+File pool_strategy.hpp
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_connector>` (``stream-client/connector``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/connector/pool_strategy.hpp``)
+----------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_connector_pool_strategy.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``functional``
+
+- ``impl/pool_strategy.ipp`` (:ref:`file_stream-client_connector_impl_pool_strategy.ipp`)
+
+- ``memory``
+
+- ``random``
+
+- ``type_traits``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_connector_connection_pool.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__connector`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1connector_1_1conservative__strategy`
+
+- :ref:`exhale_class_classstream__client_1_1connector_1_1greedy__strategy`
+
+- :ref:`exhale_class_classstream__client_1_1connector_1_1pool__strategy`
+

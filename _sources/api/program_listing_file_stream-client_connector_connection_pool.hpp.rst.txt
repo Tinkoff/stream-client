@@ -13,6 +13,7 @@ Program Listing for File connection_pool.hpp
    #pragma once
    
    #include "connector.hpp"
+   #include "pool_strategy.hpp"
    
    #include <atomic>
    #include <list>
@@ -20,7 +21,7 @@ Program Listing for File connection_pool.hpp
    namespace stream_client {
    namespace connector {
    
-   template <typename Connector>
+   template <typename Connector, typename Strategy = greedy_strategy<Connector>>
    class base_connection_pool
    {
    public:
@@ -131,6 +132,7 @@ Program Listing for File connection_pool.hpp
    private:
        void watch_pool_routine();
    
+       Strategy reconnection_;
        connector_type connector_; 
    
        std::size_t pool_max_size_; 
