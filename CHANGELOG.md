@@ -1,3 +1,14 @@
+## 1.3.0 (2022-02-16)
+
+### Features
+
+* connector::base_connection_pool: allow to use different connection pool strategy
+
+### Misc
+
+* Use local gtest library for build if exists
+* Lint .ipp files as well
+
 ## 1.2.0 (2021-11-24)
 
 ### Features
