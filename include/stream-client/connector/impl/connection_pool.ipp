@@ -34,8 +34,7 @@ base_connection_pool<Connector, Strategy>::~base_connection_pool()
 
 template <typename Connector, typename Strategy>
 std::unique_ptr<typename base_connection_pool<Connector, Strategy>::stream_type>
-base_connection_pool<Connector, Strategy>::get_session(boost::system::error_code& ec,
-                                                       const time_point_type& deadline)
+base_connection_pool<Connector, Strategy>::get_session(boost::system::error_code& ec, const time_point_type& deadline)
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -56,7 +55,8 @@ base_connection_pool<Connector, Strategy>::get_session(boost::system::error_code
 
 template <typename Connector, typename Strategy>
 std::unique_ptr<typename base_connection_pool<Connector, Strategy>::stream_type>
-base_connection_pool<Connector, Strategy>::try_get_session(boost::system::error_code& ec, const time_point_type& deadline)
+base_connection_pool<Connector, Strategy>::try_get_session(boost::system::error_code& ec,
+                                                           const time_point_type& deadline)
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -106,7 +106,8 @@ void base_connection_pool<Connector, Strategy>::append_session(std::unique_ptr<s
 }
 
 template <typename Connector, typename Strategy>
-bool base_connection_pool<Connector, Strategy>::is_connected(boost::system::error_code& ec, const time_point_type& deadline) const
+bool base_connection_pool<Connector, Strategy>::is_connected(boost::system::error_code& ec,
+                                                             const time_point_type& deadline) const
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
