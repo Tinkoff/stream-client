@@ -7,25 +7,29 @@
 #include <stdexcept>
 #include <string>
 
-/**
- * Internal macro.
- * Cuts filename from the __FILE__.
- */
-#ifndef FNAME
-#define FNAME (strrchr("/" __FILE__, '/') + 1)
-#endif
+constexpr const char* cut_file_name(const char* path)
+{
+    const char* file = path;
+    while (*path) {
+        if (*path++ == '/') {
+            file = path;
+        }
+    }
+    return file;
+}
 
 /**
  * Internal macro.
  * Used to not evaluate LOG_...() arguments if the current level is not enough.
  */
 #ifndef STREAM_LOG_CALL
-#define STREAM_LOG_CALL(level, ...)                                                                   \
-    do {                                                                                              \
-        const auto logger = stream_client::detail::logger_instance();                                 \
-        if (logger && logger->get_level() <= level) {                                                 \
-            logger->message(level, std::string(FNAME) + ":" + std::to_string(__LINE__), __VA_ARGS__); \
-        }                                                                                             \
+#define STREAM_LOG_CALL(level, ...)                                                      \
+    do {                                                                                 \
+        const auto logger = stream_client::detail::logger_instance();                    \
+        if (logger && logger->get_level() <= level) {                                    \
+            const std::string fname = cut_file_name(__FILE__);                           \
+            logger->message(level, fname + ":" + std::to_string(__LINE__), __VA_ARGS__); \
+        }                                                                                \
     } while (0)
 #endif
 
