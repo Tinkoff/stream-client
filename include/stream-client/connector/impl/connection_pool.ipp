@@ -10,12 +10,12 @@ template <typename Connector>
 template <typename... ArgN>
 base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
     : connector_(std::forward<ArgN>(argn)...)
-    , log_target_("connection_pool " + connector_.get_target())
+    , log_target_("connection_pool " + connector_.get_target() + ": ")
     , pool_max_size_(size)
     , idle_timeout_(idle_timeout)
     , watch_pool_(true)
 {
-    LOG_TRACE(log_target_, "create connection pool");
+    STREAM_LOG_TRACE(log_target_ + "create connection pool");
     pool_watcher_ = std::thread([this]() { this->watch_pool_routine(); });
 }
 
@@ -158,7 +158,7 @@ void base_connection_pool<Connector>::watch_pool_routine()
                 pool_cv_.notify_one();
             } catch (const boost::system::system_error& e) {
                 static const std::string err_failed_new_session = "failed to establish new session: ";
-                LOG_ERROR(log_target_, err_failed_new_session + e.what());
+                STREAM_LOG_ERROR(log_target_ + err_failed_new_session + e.what());
             }
         };
 

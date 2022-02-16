@@ -1,73 +1,262 @@
 #pragma once
 
 #include <chrono>
+#include <functional>
 #include <memory>
+#include <mutex>
 #include <stdexcept>
 #include <string>
 
-namespace stream_client {
+/**
+ * Internal macro.
+ * Cuts filename from the __FILE__.
+ */
+#ifndef FNAME
+#define FNAME (strrchr("/" __FILE__, '/') + 1)
+#endif
 
 /**
- * Base enum of log log levels
+ * Internal macro.
+ * Used to not evaluate LOG_...() arguments if the current level is not enough.
  */
-enum class log_level
+#ifndef STREAM_LOG_CALL
+#define STREAM_LOG_CALL(level, ...)                                                                   \
+    do {                                                                                              \
+        const auto logger = stream_client::detail::logger_instance();                                 \
+        if (logger && logger->get_level() <= level) {                                                 \
+            logger->message(level, std::string(FNAME) + ":" + std::to_string(__LINE__), __VA_ARGS__); \
+        }                                                                                             \
+    } while (0)
+#endif
+
+/**
+ * Logs the message if the current log level >= to the ERROR level.
+ *
+ * @note Doesn't construct the message if the current level is less than the ERROR level
+ */
+#ifndef STREAM_LOG_ERROR
+#define STREAM_LOG_ERROR(...) STREAM_LOG_CALL(stream_client::log_level::error, __VA_ARGS__)
+#endif
+
+/**
+ * Logs the message if the current log level >= to the WARN level.
+ *
+ * @note Doesn't construct the message if the current level is less than the WARN level
+ */
+#ifndef STREAM_LOG_WARN
+#define STREAM_LOG_WARN(...) STREAM_LOG_CALL(stream_client::log_level::warning, __VA_ARGS__)
+#endif
+
+/**
+ * Logs the message if the current log level >= to the INFO level.
+ *
+ * @note Doesn't construct the message if the current level is less than the INFO level
+ */
+#ifndef STREAM_LOG_INFO
+#define STREAM_LOG_INFO(...) STREAM_LOG_CALL(stream_client::log_level::info, __VA_ARGS__)
+#endif
+
+/**
+ * Logs the message if the current log level >= to the DEBUG level.
+ *
+ * @note Doesn't construct the message if the current level is less than the DEBUG level
+ */
+#ifndef STREAM_LOG_DEBUG
+#define STREAM_LOG_DEBUG(...) STREAM_LOG_CALL(stream_client::log_level::debug, __VA_ARGS__)
+#endif
+
+/**
+ * Logs the message if the current log level >= to the trace level.
+ *
+ * @note Doesn't construct the message if the current level is less than the trace level
+ */
+#ifndef STREAM_LOG_TRACE
+#define STREAM_LOG_TRACE(...) STREAM_LOG_CALL(stream_client::log_level::trace, __VA_ARGS__)
+#endif
+
+namespace stream_client {
+
+// Forward declaration
+class log_interface;
+
+/**
+ * Base enum of log levels
+ */
+enum class log_level : int
 {
-    error = 0,
-    warning,
-    info,
+    mute = -1,
+    trace = 0,
     debug,
-    trace,
+    info,
+    warning,
+    error,
 };
 
 /**
- * Message logger function from library for application.
+ * Type of the function used to log messages by the library logger.
  *
- * @param[in] level Level of message, application may use correct it according the location if necessary.
- * @param[in] location Target of message is used for filter messages from different parts of library.
+ * @param[in] level Level of the message.
+ * @param[in] location Location of the message. Used for filtering messages from different parts of the library.
  * @param[in] message The body and main reason of message.
  *
- * @note It can be from multiple threads, you should worry about sync and not lock this calls.
+ * @note  Thread-safe.
  */
-typedef void (*logger_message_func)(log_level level, const std::string& location, const std::string& message);
+using log_func_type = std::function<void(log_level level, const std::string& location, const std::string& message)>;
+
+namespace detail {
+
+/// Get/set global logger instance.
+inline std::shared_ptr<log_interface> logger_instance(std::shared_ptr<log_interface> new_logger = nullptr);
+
+} // namespace detail
 
 /**
- * Base class for log events from internals of library
+ * Logger interface used by the library.
  */
 class log_interface
 {
 public:
-    virtual ~log_interface() {}
+    /// Destructor.
+    virtual ~log_interface() = default;
 
     /**
-     * See logger_message_func description above
+     * Set logger level.
      *
-     * @note It can be from multiple threads, you should worry about sync and not lock this calls.
+     * @param[in] level Level to setup.
      */
-    virtual void message(log_level level, const std::string& location, const std::string& message) const = 0;
+    virtual void set_level(log_level level) noexcept = 0;
+
+    /**
+     * Get logger level.
+     *
+     * @returns Actual logger level.
+     */
+    virtual log_level get_level() const noexcept = 0;
+
+    /**
+     * Log @p message produced from @p location with @p level.
+     *
+     * @param[in] level Level of the message.
+     * @param[in] location Location of the message. Used to filter messages from different parts of the library.
+     * @param[in] message The body of the message.
+     *
+     * @note Thread-safe.
+     */
+    virtual void message(log_level level, const std::string& location, const std::string& message) const noexcept = 0;
+};
+
+/// Logger calls passed callback function to log messages.
+class base_logger: public stream_client::log_interface
+{
+public:
+    base_logger(log_level level);
+
+    /// Set logger level.
+    virtual void set_level(log_level level) noexcept override;
+
+    /// Get logger level.
+    virtual log_level get_level() const noexcept override;
+
+private:
+    log_level level_; ///< Logger level.
+};
+
+/// Logger calls passed callback function to log messages.
+class func_logger: public stream_client::base_logger
+{
+public:
+    func_logger(log_level level, stream_client::log_func_type log_func);
+
+    /// Copy constructor.
+    func_logger(const func_logger& other) = default;
+    /// Copy assignment.
+    func_logger& operator=(const func_logger& other) = default;
+    /// Move constructor.
+    func_logger(func_logger&& other) = default;
+    /// Move assignment.
+    func_logger& operator=(func_logger&& other) = default;
+
+    /// Destructor.
+    virtual ~func_logger() = default;
+
+    /// Log arbitrary message.
+    virtual void message(log_level level, const std::string& location,
+                         const std::string& message) const noexcept override;
+
+private:
+    stream_client::log_func_type log_func_; ///< Log function to call.
+};
+
+/// Logger print messages to std::cout with time and level.
+class cout_logger: public stream_client::base_logger
+{
+public:
+    /// Construct std::cout logger with @p level.
+    cout_logger(log_level level = log_level::trace);
+
+    /// Copy constructor.
+    cout_logger(const cout_logger& other) = delete;
+    /// Copy assignment.
+    cout_logger& operator=(const cout_logger& other) = delete;
+    /// Move constructor.
+    cout_logger(cout_logger&& other) = delete;
+    /// Move assignment.
+    cout_logger& operator=(cout_logger&& other) = delete;
+
+    /// Destructor.
+    virtual ~cout_logger() = default;
+
+    /// Log arbitrary message.
+    virtual void message(log_level level, const std::string& location,
+                         const std::string& message) const noexcept override;
+
+private:
+    mutable std::mutex mutex_; ///< Mutex to sync std::cout calls.
 };
 
 /**
- * Set logger instance for library
+ * Set logger for the library.
  *
- * @param[in] logger Logger interface for usage.
+ * @note All set_logger variants overwrite each other. You can either set it via callback or an instance.
  *
- * @note You should do this once when starting the application and the lifetime of the variable till exit.
+ * @param[in] logger Logger instance to use. If nullptr logger will print messages to std::cout up to trace level.
  */
-inline void set_logger_instance(const log_interface& logger);
+inline void set_logger(std::shared_ptr<log_interface> logger);
 
 /**
- * Set logger instace for library
+ * Set log callback for the library.
  *
- * @param[in] logger Logger interface for usage.
+ * @note All set_logger variants overwrite each other. You can either set it via callback or an instance.
  *
- * @note You should do this once when starting the application and the lifetime of the variable till exit.
+ * @param[in] level Logger level to use.
+ * @param[in] log_func Logger function to use.
  */
-inline void set_logger_func(logger_message_func msg_func);
+inline void set_logger(log_level level, stream_client::log_func_type log_func);
 
 /**
- * Make a simple logger using std streams
+ * Set logger level.
+ *
+ * @param[in] level Level to setup.
  */
-inline std::unique_ptr<log_interface> make_std_streams_logger(log_level level = log_level::info);
+inline void set_log_level(log_level level) noexcept;
+
+/**
+ * Get logger level.
+ *
+ * @returns Actual logger level or log_level::MUTE if the current logger is nullptr.
+ */
+inline log_level get_log_level() noexcept;
+
+/**
+ * Log @p message produced from @p location with @p level.
+ *
+ * @param[in] level Level of the message.
+ * @param[in] location Location of the message.
+ * @param[in] message The body of the message.
+ *
+ * @note Thread-safe.
+ */
+inline void log_message(log_level level, const std::string& location, const std::string& message) noexcept;
 
 } // namespace stream_client
 
