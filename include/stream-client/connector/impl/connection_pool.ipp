@@ -6,9 +6,10 @@ namespace stream_client {
 
 namespace connector {
 
-template <typename Connector>
+template <typename Connector, typename Strategy>
 template <typename... ArgN>
-base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_duration_type idle_timeout, ArgN&&... argn)
+base_connection_pool<Connector, Strategy>::base_connection_pool(std::size_t size, time_duration_type idle_timeout,
+                                                                ArgN&&... argn)
     : connector_(std::forward<ArgN>(argn)...)
     , log_target_("connection_pool " + connector_.get_target() + ": ")
     , pool_max_size_(size)
@@ -19,16 +20,16 @@ base_connection_pool<Connector>::base_connection_pool(std::size_t size, time_dur
     pool_watcher_ = std::thread([this]() { this->watch_pool_routine(); });
 }
 
-template <typename Connector>
+template <typename Connector, typename Strategy>
 template <typename Arg1, typename... ArgN,
           typename std::enable_if<!std::is_convertible<Arg1, typename Connector::time_duration_type>::value>::type*>
-base_connection_pool<Connector>::base_connection_pool(std::size_t size, Arg1&& arg1, ArgN&&... argn)
+base_connection_pool<Connector, Strategy>::base_connection_pool(std::size_t size, Arg1&& arg1, ArgN&&... argn)
     : base_connection_pool(size, time_duration_type::max(), std::forward<Arg1>(arg1), std::forward<ArgN>(argn)...)
 {
 }
 
-template <typename Connector>
-base_connection_pool<Connector>::~base_connection_pool()
+template <typename Connector, typename Strategy>
+base_connection_pool<Connector, Strategy>::~base_connection_pool()
 {
     watch_pool_.store(false, std::memory_order_release);
     if (pool_watcher_.joinable()) {
@@ -36,9 +37,9 @@ base_connection_pool<Connector>::~base_connection_pool()
     }
 }
 
-template <typename Connector>
-std::unique_ptr<typename base_connection_pool<Connector>::stream_type>
-base_connection_pool<Connector>::get_session(boost::system::error_code& ec, const time_point_type& deadline)
+template <typename Connector, typename Strategy>
+std::unique_ptr<typename base_connection_pool<Connector, Strategy>::stream_type>
+base_connection_pool<Connector, Strategy>::get_session(boost::system::error_code& ec, const time_point_type& deadline)
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -57,9 +58,10 @@ base_connection_pool<Connector>::get_session(boost::system::error_code& ec, cons
     return session;
 }
 
-template <typename Connector>
-std::unique_ptr<typename base_connection_pool<Connector>::stream_type>
-base_connection_pool<Connector>::try_get_session(boost::system::error_code& ec, const time_point_type& deadline)
+template <typename Connector, typename Strategy>
+std::unique_ptr<typename base_connection_pool<Connector, Strategy>::stream_type>
+base_connection_pool<Connector, Strategy>::try_get_session(boost::system::error_code& ec,
+                                                           const time_point_type& deadline)
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -78,8 +80,8 @@ base_connection_pool<Connector>::try_get_session(boost::system::error_code& ec, 
     return session;
 }
 
-template <typename Connector>
-void base_connection_pool<Connector>::return_session(std::unique_ptr<stream_type>&& session)
+template <typename Connector, typename Strategy>
+void base_connection_pool<Connector, Strategy>::return_session(std::unique_ptr<stream_type>&& session)
 {
     if (!session || !session->next_layer().is_open()) {
         return;
@@ -93,11 +95,12 @@ void base_connection_pool<Connector>::return_session(std::unique_ptr<stream_type
 
     sesson_pool_.emplace_back(clock_type::now(), std::move(session));
     pool_lk.unlock();
-    pool_cv_.notify_all();
+    pool_cv_.notify_one();
 }
 
-template <typename Connector>
-bool base_connection_pool<Connector>::is_connected(boost::system::error_code& ec, const time_point_type& deadline) const
+template <typename Connector, typename Strategy>
+bool base_connection_pool<Connector, Strategy>::is_connected(boost::system::error_code& ec,
+                                                             const time_point_type& deadline) const
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_until(deadline)) {
@@ -112,8 +115,8 @@ bool base_connection_pool<Connector>::is_connected(boost::system::error_code& ec
     return true;
 }
 
-template <typename Connector>
-void base_connection_pool<Connector>::watch_pool_routine()
+template <typename Connector, typename Strategy>
+void base_connection_pool<Connector, Strategy>::watch_pool_routine()
 {
     static const auto lock_timeout = std::chrono::milliseconds(100);
 
@@ -142,38 +145,18 @@ void base_connection_pool<Connector>::watch_pool_routine()
         // pool_current_size may be bigger if someone returned previous session
         std::size_t vacant_places = (pool_max_size_ > pool_current_size) ? pool_max_size_ - pool_current_size : 0;
 
-        // creating new sessions may be slow and we want to add them simultaneously;
-        // that's why we need to sync adding threads and lock pool
-        auto add_session = [this]() {
-            try {
-                // getting new session is time consuming operation
-                auto new_session = connector_.new_session();
-
-                // ensure only single session added at time
-                std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_);
-                sesson_pool_.emplace_back(clock_type::now(), std::move(new_session));
-                pool_lk.unlock();
-
-                // unblock one waiting thread
-                pool_cv_.notify_one();
-            } catch (const boost::system::system_error& e) {
-                static const std::string err_failed_new_session = "failed to establish new session: ";
-                STREAM_LOG_ERROR(log_target_ + err_failed_new_session + e.what());
+        if (vacant_places) {
+            auto append_func = [this](std::unique_ptr<stream_type>&& session) {
+                this->return_session(std::move(session));
+            };
+            const auto need_more = reconnection_.proceed(connector_, vacant_places, append_func);
+            if (need_more) {
+                continue;
             }
-        };
-
-        std::list<std::thread> adders;
-        for (std::size_t i = 0; i < vacant_places; ++i) {
-            adders.emplace_back(add_session);
-        }
-        for (auto& a : adders) {
-            a.join();
         }
 
         // stop cpu spooling if nothing has been added
-        if (vacant_places == 0) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
-        }
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 }
 
