@@ -2,6 +2,7 @@
 
 #include <boost/system/system_error.hpp>
 
+#include <atomic>
 #include <chrono>
 #include <list>
 #include <random>
