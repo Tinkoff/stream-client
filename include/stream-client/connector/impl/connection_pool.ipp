@@ -144,7 +144,7 @@ void base_connection_pool<Connector, Strategy>::watch_pool_routine()
             auto append_func = [this](std::unique_ptr<stream_type>&& session) {
                 this->return_session(std::move(session));
             };
-            const auto need_more = reconnection_.proceed(connector_, vacant_places, append_func);
+            const auto need_more = reconnection_.refill(connector_, vacant_places, append_func);
             if (need_more) {
                 continue;
             }
