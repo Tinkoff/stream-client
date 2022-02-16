@@ -66,7 +66,7 @@ elif [[ "$1" == "docs" ]] ; then
 
 elif [[ "$1" == "lint" ]] ; then
     shift 1
-    ./lint.py --color=always --style=file --build-path=./build --recursive "$@" include/
+    ./lint.py --color=always --style=file --exclude-tidy=*.ipp --build-path=./build --recursive "$@" include/
 
 elif [[ "$1" == "build" ]] ; then
     shift 1

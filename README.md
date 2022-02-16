@@ -2,7 +2,7 @@
 
 [![Language C++](https://img.shields.io/badge/language-c++-blue.svg?logo=c%2B%2B)](https://isocpp.org)
 [![Github releases](https://img.shields.io/github/release/TinkoffCreditSystems/stream-client.svg)](https://github.com/TinkoffCreditSystems/stream-client/releases)
-[![Coverage Status](https://coveralls.io/repos/github/TinkoffCreditSystems/stream-client/badge.svg?branch=develop)](https://coveralls.io/github/TinkoffCreditSystems/stream-client?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/Tinkoff/stream-client/badge.svg?branch=develop)](https://coveralls.io/github/Tinkoff/stream-client?branch=develop)
 [![License](https://img.shields.io/github/license/TinkoffCreditSystems/stream-client.svg)](./LICENSE)
 
 This is a lightweight, header-only, Boost-based library providing client-side network primitives to easily organize and implement data transmission with remote endpoints.
@@ -119,6 +119,11 @@ client->receive(boost::asio::buffer(&recv_data[0], send_data.size()));
 
 Represents container occupied with opened sockets. Uses [connector](#connector) to open new sockets in the background thread which is triggered once there are vacant places in the pool. User can call *get_session()* to obtain a socket from the pool and *return_session()* to give it back.
 
+There are two strategies to refill the pool:
+- greedy (`stream_client::connector::greedy_strategy`). If there are vacant places it will try to fill them with new sessions simultaneously.
+- conservative (`stream_client::connector::conservative_strategy`). Will try to fill up to 2/3 of vacant places in the poll. If failed will back of for some time and retry later. Also, after failures it will create only one new session.
+Both of them are defined in terms of `stream_client::connector::pool_strategy` interface, so you are free to implement new one.
+
 Limitations:
 1. Sockets that are already in the pool are not checked or maintained in any way. Hence, the pool doesn't guarantee that all sockets are opened at an arbitrary point in time due to the complexity of such checks for all supported protocols.
 2. Nothing specific done with sockets upon their return within *return_session()*. Therefore, if they have or will have pending data to read, it will stay there until reading.
@@ -137,6 +142,8 @@ Connection pools:
 * `stream_client::connector::ssl_pool` - pool of `stream_client::ssl::ssl_client` sockets.
 * `stream_client::connector::http_pool` - pool of `stream_client::http::http_client` sockets.
 * `stream_client::connector::https_pool` - pool of `stream_client::http::https_client` sockets.
+
+*All these pools are using `stream_client::connector::greedy_strategy`.*
 
 #### Example
 ```c++

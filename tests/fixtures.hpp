@@ -13,6 +13,7 @@ public:
     using server_type = Server;
     using session_type = typename server_type::session_type;
     using client_type = typename server_type::client_type;
+    using connector_type = typename server_type::connector_type;
     using client_pool_type = typename server_type::client_pool_type;
     using endpoint_type = typename server_type::endpoint_type;
     using protocol_type = typename server_type::protocol_type;
@@ -86,7 +87,24 @@ template <typename Server>
 using TCPUDPConnectedEnv = ConnectedEnv<Server>; // test suite for TCP and UDP
 
 template <typename Server>
-using PoolServerEnv = ServerEnv<Server>; // test suite for TCP and UDP
+class GreedyPoolServerEnv: public ServerEnv<Server>
+{
+public:
+    using connector_type = typename Server::connector_type;
+    using client_pool_type =
+        stream_client::connector::base_connection_pool<connector_type,
+                                                       stream_client::connector::greedy_strategy<connector_type>>;
+};
+
+template <typename Server>
+class ConservativePoolServerEnv: public ServerEnv<Server>
+{
+public:
+    using connector_type = typename Server::connector_type;
+    using client_pool_type =
+        stream_client::connector::base_connection_pool<connector_type,
+                                                       stream_client::connector::conservative_strategy<connector_type>>;
+};
 
 using TCPUDPServerTypes = ::testing::Types<::utils::tcp_server<1>, ::utils::udp_server>;
 using AllServerTypes = ::testing::Types<::utils::tcp_server<1>, ::utils::udp_server, ::utils::ssl_server<1>>;
@@ -94,7 +112,8 @@ using PoolServerTypes =
     ::testing::Types<::utils::tcp_server<boost::asio::ip::tcp::socket::max_connections>, ::utils::udp_server,
                      ::utils::ssl_server<boost::asio::ip::tcp::socket::max_connections>>;
 TYPED_TEST_SUITE(ServerEnv, AllServerTypes);
-TYPED_TEST_SUITE(PoolServerEnv, PoolServerTypes);
+TYPED_TEST_SUITE(ConservativePoolServerEnv, PoolServerTypes);
+TYPED_TEST_SUITE(GreedyPoolServerEnv, PoolServerTypes);
 TYPED_TEST_SUITE(ConnectedEnv, AllServerTypes);
 TYPED_TEST_SUITE(TCPUDPConnectedEnv, TCPUDPServerTypes);
 

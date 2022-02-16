@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 set(STREAMCLIENT_VERSION_MAJOR "1")
-set(STREAMCLIENT_VERSION_MINOR "2")
+set(STREAMCLIENT_VERSION_MINOR "3")
 set(STREAMCLIENT_VERSION_RELEASE "0")
 set(STREAMCLIENT_SUMMARY "C++ library")
 set(STREAMCLIENT_REPOSITORY_URL "https://github.com/TinkoffCreditSystems/stream-client")
@@ -25,7 +25,7 @@ set(CMAKE_CXX_STANDARD 14) # todo: upgrade to 17
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-compound-token-split-by-macro")
 
 ## Compile as RelWithDebInfo info by default
 if(NOT CMAKE_BUILD_TYPE)

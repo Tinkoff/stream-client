@@ -373,6 +373,7 @@ class tcp_server: public tcp_base_server<tcp_session, Backlog>
 {
 public:
     using client_type = ::stream_client::tcp_client;
+    using connector_type = ::stream_client::connector::tcp_connector;
     using client_pool_type = ::stream_client::connector::tcp_pool;
 
     using tcp_base_server<tcp_session, Backlog>::tcp_base_server;
@@ -383,6 +384,7 @@ class http_server: public tcp_base_server<http_session, Backlog>
 {
 public:
     using client_type = ::stream_client::http::http_client;
+    using connector_type = ::stream_client::connector::http_connector;
     using client_pool_type = ::stream_client::connector::http_pool;
 
     using tcp_base_server<http_session, Backlog>::tcp_base_server;
@@ -393,6 +395,7 @@ class ssl_server: public echo_server<ssl_session>
 {
 public:
     using client_type = ::stream_client::ssl::ssl_client;
+    using connector_type = utils::ssl_connector;
     using client_pool_type = ::stream_client::connector::base_connection_pool<utils::ssl_connector>;
 
     ssl_server(const endpoint_type& endpoint)
@@ -451,6 +454,7 @@ class udp_server: public echo_server<udp_session>
 {
 public:
     using client_type = ::stream_client::udp_client;
+    using connector_type = ::stream_client::connector::udp_connector;
     using client_pool_type = ::stream_client::connector::udp_pool;
 
     udp_server(const endpoint_type& endpoint)

@@ -31,7 +31,7 @@ try:
 except ImportError:
     DEVNULL = open(os.devnull, "wb")
 
-DEFAULT_EXTENSIONS = 'cc,cpp,cxx,c++,h,hh,hpp,hxx,h++'
+DEFAULT_EXTENSIONS = 'cc,cpp,cxx,c++,h,hh,hpp,hxx,h++,ipp,i'
 DEFAULT_LINT_IGNORE = '.clang-lint-ignore'
 
 # Use of utf-8 to decode the process output.
@@ -309,6 +309,13 @@ def main():
                         default=[],
                         help='exclude paths matching the given glob-like pattern(s)'
                         ' from recursive search')
+    parser.add_argument('-et',
+                        '--exclude-tidy',
+                        metavar='PATTERN',
+                        action='append',
+                        default=[],
+                        help='exclude paths matching the given glob-like pattern(s)'
+                        ' from clang-tidy analysis')
     parser.add_argument('--style', help='formatting style to apply (LLVM, Google, Chromium, Mozilla, WebKit)')
     parser.add_argument('-p', '--build-path', help='build path', default='./build')
 
@@ -353,16 +360,25 @@ def main():
 
     excludes = excludes_from_file(DEFAULT_LINT_IGNORE)
     excludes.extend(args.exclude)
+    clang_format_files = list_files(args.files,
+                                    recursive=args.recursive,
+                                    exclude=excludes,
+                                    extensions=args.extensions.split(','))
 
-    files = list_files(args.files, recursive=args.recursive, exclude=excludes, extensions=args.extensions.split(','))
+    clang_tidy_excludes = excludes
+    clang_tidy_excludes.extend(args.exclude_tidy)
+    clang_tidy_files = list_files(args.files,
+                                  recursive=args.recursive,
+                                  exclude=clang_tidy_excludes,
+                                  extensions=args.extensions.split(','))
 
-    if not files:
+    if not clang_format_files and not clang_tidy_files:
         return
 
     # execute directly instead of in a pool,
     # less overhead, simpler stacktraces
-    it = itertools.chain((wrap_exceptions(run_clang_format_diff, args, file) for file in files),
-                         (wrap_exceptions(run_clang_tidy, args, file) for file in files))
+    it = itertools.chain((wrap_exceptions(run_clang_format_diff, args, file) for file in clang_format_files),
+                         (wrap_exceptions(run_clang_tidy, args, file) for file in clang_tidy_files))
 
     while True:
         try:

@@ -3,22 +3,19 @@
 
 #include <unordered_set>
 
-TYPED_TEST(PoolServerEnv, PoolConnect)
+template <typename server_session_type, typename client_pool_type, typename protocol_type, typename client_type,
+          typename Server>
+void start_pool_test(ServerEnv<Server>& env)
 {
-    using server_session_type = typename TestFixture::session_type;
-    using client_pool_type = typename TestFixture::client_pool_type;
-    using protocol_type = typename TestFixture::protocol_type;
-    using client_type = typename TestFixture::client_type;
-
     const size_t pool_size = 10;
     std::vector<std::future<server_session_type>> future_sessions;
     for (size_t i = 0; i < pool_size; ++i) {
-        future_sessions.emplace_back(this->server.get_session());
+        future_sessions.emplace_back(env.server.get_session());
     }
 
     std::unique_ptr<client_pool_type> clients_pool;
     ASSERT_NO_THROW({
-        clients_pool = std::make_unique<client_pool_type>(pool_size, this->host, std::to_string(this->port),
+        clients_pool = std::make_unique<client_pool_type>(pool_size, env.host, std::to_string(env.port),
                                                           std::chrono::seconds(1), std::chrono::seconds(1),
                                                           std::chrono::seconds(1));
     });
@@ -51,6 +48,24 @@ TYPED_TEST(PoolServerEnv, PoolConnect)
         EXPECT_GE(clients.size(), pool_size - 1);
         EXPECT_LE(clients.size(), pool_size + 1);
     }
+}
+
+TYPED_TEST(GreedyPoolServerEnv, PoolConnect)
+{
+    using server_session_type = typename TestFixture::session_type;
+    using client_pool_type = typename TestFixture::client_pool_type;
+    using protocol_type = typename TestFixture::protocol_type;
+    using client_type = typename TestFixture::client_type;
+    start_pool_test<server_session_type, client_pool_type, protocol_type, client_type>(*this);
+}
+
+TYPED_TEST(ConservativePoolServerEnv, PoolConnect)
+{
+    using server_session_type = typename TestFixture::session_type;
+    using client_pool_type = typename TestFixture::client_pool_type;
+    using protocol_type = typename TestFixture::protocol_type;
+    using client_type = typename TestFixture::client_type;
+    start_pool_test<server_session_type, client_pool_type, protocol_type, client_type>(*this);
 }
 
 int main(int argc, char** argv)
