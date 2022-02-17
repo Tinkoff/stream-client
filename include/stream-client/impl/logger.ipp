@@ -80,7 +80,7 @@ inline void set_logger(log_level level, stream_client::log_func_type log_func)
     detail::logger_instance(std::make_shared<func_logger>(level, std::move(log_func)));
 }
 
-inline void set_log_level(log_level level) noexcept
+inline void set_log_level(log_level level)
 {
     const auto logger = detail::logger_instance();
     if (logger) {
@@ -88,7 +88,7 @@ inline void set_log_level(log_level level) noexcept
     }
 }
 
-inline log_level get_log_level() noexcept
+inline log_level get_log_level()
 {
     const auto logger = detail::logger_instance();
     if (logger) {

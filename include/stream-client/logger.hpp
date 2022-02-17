@@ -240,14 +240,14 @@ inline void set_logger(log_level level, stream_client::log_func_type log_func);
  *
  * @param[in] level Level to setup.
  */
-inline void set_log_level(log_level level) noexcept;
+inline void set_log_level(log_level level)
 
 /**
  * Get logger level.
  *
  * @returns Actual logger level or log_level::MUTE if the current logger is nullptr.
  */
-inline log_level get_log_level() noexcept;
+inline log_level get_log_level()
 
 /**
  * Log @p message produced from @p location with @p level.
