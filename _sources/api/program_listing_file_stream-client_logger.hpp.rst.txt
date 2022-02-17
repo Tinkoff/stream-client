@@ -1,0 +1,151 @@
+
+.. _program_listing_file_stream-client_logger.hpp:
+
+Program Listing for File logger.hpp
+===================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_stream-client_logger.hpp>` (``stream-client/logger.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   #include <chrono>
+   #include <functional>
+   #include <memory>
+   #include <mutex>
+   #include <stdexcept>
+   #include <string>
+   
+   // TODO: Move to __FILE_NAME__ with gcc 12.1+
+   #define FILE_NAME (__builtin_strrchr("/" __FILE__, '/') + 1)
+   
+   #ifndef STREAM_LOG_CALL
+   #define STREAM_LOG_CALL(level, ...)                                                                       \
+       do {                                                                                                  \
+           const auto logger = stream_client::detail::logger_instance();                                     \
+           if (logger && logger->get_level() <= level) {                                                     \
+               logger->message(level, std::string(FILE_NAME) + ":" + std::to_string(__LINE__), __VA_ARGS__); \
+           }                                                                                                 \
+       } while (0)
+   #endif
+   
+   #ifndef STREAM_LOG_ERROR
+   #define STREAM_LOG_ERROR(...) STREAM_LOG_CALL(stream_client::log_level::error, __VA_ARGS__)
+   #endif
+   
+   #ifndef STREAM_LOG_WARN
+   #define STREAM_LOG_WARN(...) STREAM_LOG_CALL(stream_client::log_level::warning, __VA_ARGS__)
+   #endif
+   
+   #ifndef STREAM_LOG_INFO
+   #define STREAM_LOG_INFO(...) STREAM_LOG_CALL(stream_client::log_level::info, __VA_ARGS__)
+   #endif
+   
+   #ifndef STREAM_LOG_DEBUG
+   #define STREAM_LOG_DEBUG(...) STREAM_LOG_CALL(stream_client::log_level::debug, __VA_ARGS__)
+   #endif
+   
+   #ifndef STREAM_LOG_TRACE
+   #define STREAM_LOG_TRACE(...) STREAM_LOG_CALL(stream_client::log_level::trace, __VA_ARGS__)
+   #endif
+   
+   namespace stream_client {
+   
+   // Forward declaration
+   class log_interface;
+   
+   namespace detail {
+   
+   inline std::shared_ptr<log_interface> logger_instance(std::shared_ptr<log_interface> new_logger = nullptr);
+   
+   } // namespace detail
+   
+   enum class log_level : int
+   {
+       mute = -1,
+       trace = 0,
+       debug,
+       info,
+       warning,
+       error,
+   };
+   
+   using log_func_type = std::function<void(log_level level, const std::string& location, const std::string& message)>;
+   
+   class log_interface
+   {
+   public:
+       virtual ~log_interface() = default;
+   
+       virtual void set_level(log_level level) noexcept = 0;
+   
+       virtual log_level get_level() const noexcept = 0;
+   
+       virtual void message(log_level level, const std::string& location, const std::string& message) const = 0;
+   };
+   
+   class base_logger: public stream_client::log_interface
+   {
+   public:
+       base_logger(log_level level);
+   
+       virtual void set_level(log_level level) noexcept override;
+   
+       virtual log_level get_level() const noexcept override;
+   
+   private:
+       log_level level_; 
+   };
+   
+   class func_logger: public stream_client::base_logger
+   {
+   public:
+       func_logger(log_level level, stream_client::log_func_type log_func);
+   
+       func_logger(const func_logger& other) = default;
+       func_logger& operator=(const func_logger& other) = default;
+       func_logger(func_logger&& other) = default;
+       func_logger& operator=(func_logger&& other) = default;
+   
+       virtual ~func_logger() = default;
+   
+       virtual void message(log_level level, const std::string& location, const std::string& message) const override;
+   
+   private:
+       stream_client::log_func_type log_func_; 
+   };
+   
+   class cout_logger: public stream_client::base_logger
+   {
+   public:
+       cout_logger(log_level level = log_level::trace);
+   
+       cout_logger(const cout_logger& other) = delete;
+       cout_logger& operator=(const cout_logger& other) = delete;
+       cout_logger(cout_logger&& other) = delete;
+       cout_logger& operator=(cout_logger&& other) = delete;
+   
+       virtual ~cout_logger() = default;
+   
+       virtual void message(log_level level, const std::string& location, const std::string& message) const override;
+   
+   private:
+       mutable std::mutex mutex_; 
+   };
+   
+   inline void set_logger(std::shared_ptr<log_interface> logger);
+   
+   inline void set_logger(log_level level, stream_client::log_func_type log_func);
+   
+   inline void set_log_level(log_level level);
+   
+   inline log_level get_log_level();
+   
+   inline void log_message(log_level level, const std::string& location, const std::string& message);
+   
+   } // namespace stream_client
+   
+   #include "impl/logger.ipp"

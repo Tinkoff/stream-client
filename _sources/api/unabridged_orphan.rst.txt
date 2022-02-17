@@ -31,6 +31,11 @@ Directories
 .. toctree::
    :maxdepth: 1
 
+   dir_stream-client_impl.rst
+
+.. toctree::
+   :maxdepth: 1
+
    dir_stream-client_resolver.rst
 
 .. toctree::
@@ -106,6 +111,16 @@ Files
    :maxdepth: 1
 
    file_stream-client_stream_impl_http_socket.ipp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_logger.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_stream-client_impl_logger.ipp.rst
 
 .. toctree::
    :maxdepth: 1

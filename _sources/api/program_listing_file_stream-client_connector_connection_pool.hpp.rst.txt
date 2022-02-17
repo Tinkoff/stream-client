@@ -132,7 +132,8 @@ Program Listing for File connection_pool.hpp
    private:
        void watch_pool_routine();
    
-       Strategy reconnection_;
+       std::string name_; 
+       Strategy reconnection_; 
        connector_type connector_; 
    
        std::size_t pool_max_size_; 
@@ -147,12 +148,17 @@ Program Listing for File connection_pool.hpp
    };
    
    using tcp_pool = base_connection_pool<tcp_connector>;
+   using tcp_conservative_pool = base_connection_pool<tcp_connector, conservative_strategy<tcp_connector>>;
    using udp_pool = base_connection_pool<udp_connector>;
+   using udp_conservative_pool = base_connection_pool<udp_connector, conservative_strategy<udp_connector>>;
    
    using ssl_pool = base_connection_pool<ssl_connector>;
+   using ssl_conservative_pool = base_connection_pool<ssl_connector, conservative_strategy<ssl_connector>>;
    
    using http_pool = base_connection_pool<http_connector>;
+   using http_conservative_pool = base_connection_pool<http_connector, conservative_strategy<http_connector>>;
    using https_pool = base_connection_pool<https_connector>;
+   using https_conservative_pool = base_connection_pool<https_connector, conservative_strategy<https_connector>>;
    
    } // namespace connector
    } // namespace stream_client

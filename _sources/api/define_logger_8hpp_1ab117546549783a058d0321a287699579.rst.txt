@@ -1,0 +1,13 @@
+.. _exhale_define_logger_8hpp_1ab117546549783a058d0321a287699579:
+
+Define FILE_NAME
+================
+
+- Defined in :ref:`file_stream-client_logger.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: FILE_NAME

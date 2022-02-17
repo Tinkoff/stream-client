@@ -27,20 +27,30 @@ Typedefs
 
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9`
 
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a817fa622a45c68b4b89a2c7661e61d74`
+
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1acde8b66f273d3e8741b43ef4e3ceefb1`
 
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1a2a62fafde567a2063662957c644918ab`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1ade1899451e8074ca5f06794cc5f2da01`
 
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e`
 
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d`
 
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a521f53b80ea57cb023de76edae9f0ba5`
+
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1aab719516f057f4675ef7d5dd3afc16dc`
 
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1a8b4eaa29f9e8c72151ddfb326dc2a269`
 
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a3066e16c4026df99a6db2dc0836a4edf`
+
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f`
 
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1a2a4b5b6b18348b69d07468b4fbd16904`
+
+- :ref:`exhale_typedef_namespacestream__client_1_1connector_1a8fc3712f5df247b695ed8145e8cee61f`
 
 - :ref:`exhale_typedef_namespacestream__client_1_1connector_1aac34914de40422f5bf4f9132af813d69`

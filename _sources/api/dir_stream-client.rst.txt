@@ -12,6 +12,7 @@ Subdirectories
 
 - :ref:`dir_stream-client_connector`
 - :ref:`dir_stream-client_detail`
+- :ref:`dir_stream-client_impl`
 - :ref:`dir_stream-client_resolver`
 - :ref:`dir_stream-client_stream`
 
@@ -19,6 +20,7 @@ Subdirectories
 Files
 -----
 
+- :ref:`file_stream-client_logger.hpp`
 - :ref:`file_stream-client_stream-client.hpp`
 
 

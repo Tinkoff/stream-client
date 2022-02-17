@@ -1,0 +1,107 @@
+
+.. _file_stream-client_logger.hpp:
+
+File logger.hpp
+===============
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client>` (``stream-client``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/logger.hpp``)
+-----------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_logger.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``chrono``
+
+- ``functional``
+
+- ``impl/logger.ipp`` (:ref:`file_stream-client_impl_logger.ipp`)
+
+- ``memory``
+
+- ``mutex``
+
+- ``stdexcept``
+
+- ``string``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_connector_impl_pool_strategy.ipp`
+
+- :ref:`file_stream-client_connector_impl_connection_pool.ipp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__detail`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classstream__client_1_1base__logger`
+
+- :ref:`exhale_class_classstream__client_1_1cout__logger`
+
+- :ref:`exhale_class_classstream__client_1_1func__logger`
+
+- :ref:`exhale_class_classstream__client_1_1log__interface`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_namespacestream__client_1a959565b4c9d9639814435848606075a4`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_logger_8hpp_1ab117546549783a058d0321a287699579`
+
+- :ref:`exhale_define_logger_8hpp_1aff5be2dadf5b4e74a8f1f91b1f94e01a`
+
+- :ref:`exhale_define_logger_8hpp_1a0ce9642ba206b59ea754f9846978c875`
+
+- :ref:`exhale_define_logger_8hpp_1a9f5d4dbab70293fab529a05a40b5e4e0`
+
+- :ref:`exhale_define_logger_8hpp_1ab50963a21e16c7269c1289d3f52476cc`
+
+- :ref:`exhale_define_logger_8hpp_1a23e93a399a34521a42561aa085310135`
+
+- :ref:`exhale_define_logger_8hpp_1a89308a8809f68882a600c74ba8058ad0`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespacestream__client_1a0efe6b4444beae75e0aefe3f546260af`
+

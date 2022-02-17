@@ -1,0 +1,13 @@
+.. _exhale_function_namespacestream__client_1aa1a758f15b1e967bda7f5ed042ebccc1:
+
+Function stream_client::set_logger(std::shared_ptr<log_interface>)
+==================================================================
+
+- Defined in :ref:`file_stream-client_impl_logger.ipp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: stream_client::set_logger(std::shared_ptr<log_interface>)

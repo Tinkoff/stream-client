@@ -63,6 +63,11 @@ Classes and Structs
 .. toctree::
    :maxdepth: 1
 
+   classstream__client_1_1base__logger.rst
+
+.. toctree::
+   :maxdepth: 1
+
    classstream__client_1_1base__socket.rst
 
 .. toctree::
@@ -93,6 +98,11 @@ Classes and Structs
 .. toctree::
    :maxdepth: 1
 
+   classstream__client_1_1cout__logger.rst
+
+.. toctree::
+   :maxdepth: 1
+
    classstream__client_1_1datagram__socket.rst
 
 .. toctree::
@@ -108,7 +118,17 @@ Classes and Structs
 .. toctree::
    :maxdepth: 1
 
+   classstream__client_1_1func__logger.rst
+
+.. toctree::
+   :maxdepth: 1
+
    classstream__client_1_1http_1_1base__socket.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classstream__client_1_1log__interface.rst
 
 .. toctree::
    :maxdepth: 1
@@ -142,7 +162,85 @@ Enums
 .. toctree::
    :maxdepth: 1
 
+   enum_namespacestream__client_1a959565b4c9d9639814435848606075a4.rst
+
+.. toctree::
+   :maxdepth: 1
+
    enum_namespacestream__client_1_1resolver_1af59084edea41ab42e475158d9808f923.rst
+
+Functions
+*********
+
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespacestream__client_1_1detail_1aca09408cb481bac054e9c323cc9882ac.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespacestream__client_1a7903ef74f7e2c22cab21cd18fa36b539.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespacestream__client_1aa0c51ea97ae0eed9e3b00e5926bac2cc.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespacestream__client_1a0c0db492bfa0479d7b4e7c41f81e8acd.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespacestream__client_1aa1a758f15b1e967bda7f5ed042ebccc1.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespacestream__client_1a53d1a0935fafd2cf7de3c36e19d381b1.rst
+
+Defines
+*******
+
+
+.. toctree::
+   :maxdepth: 1
+
+   define_logger_8hpp_1ab117546549783a058d0321a287699579.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_logger_8hpp_1aff5be2dadf5b4e74a8f1f91b1f94e01a.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_logger_8hpp_1a0ce9642ba206b59ea754f9846978c875.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_logger_8hpp_1a9f5d4dbab70293fab529a05a40b5e4e0.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_logger_8hpp_1ab50963a21e16c7269c1289d3f52476cc.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_logger_8hpp_1a23e93a399a34521a42561aa085310135.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_logger_8hpp_1a89308a8809f68882a600c74ba8058ad0.rst
 
 Typedefs
 ********
@@ -152,6 +250,11 @@ Typedefs
    :maxdepth: 1
 
    typedef_namespacestream__client_1_1connector_1ac6bc9cb7d2322efb1d9ce5794808f2a9.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespacestream__client_1_1connector_1a817fa622a45c68b4b89a2c7661e61d74.rst
 
 .. toctree::
    :maxdepth: 1
@@ -166,12 +269,22 @@ Typedefs
 .. toctree::
    :maxdepth: 1
 
+   typedef_namespacestream__client_1_1connector_1ade1899451e8074ca5f06794cc5f2da01.rst
+
+.. toctree::
+   :maxdepth: 1
+
    typedef_namespacestream__client_1_1connector_1ae452664eeefbf923fbe745caf3c4d70e.rst
 
 .. toctree::
    :maxdepth: 1
 
    typedef_namespacestream__client_1_1connector_1a490cd2248980a0755440d4c3b10fed2d.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespacestream__client_1_1connector_1a521f53b80ea57cb023de76edae9f0ba5.rst
 
 .. toctree::
    :maxdepth: 1
@@ -186,12 +299,22 @@ Typedefs
 .. toctree::
    :maxdepth: 1
 
+   typedef_namespacestream__client_1_1connector_1a3066e16c4026df99a6db2dc0836a4edf.rst
+
+.. toctree::
+   :maxdepth: 1
+
    typedef_namespacestream__client_1_1connector_1a28cc7a97c0d08ef45ea0e0f65e88a54f.rst
 
 .. toctree::
    :maxdepth: 1
 
    typedef_namespacestream__client_1_1connector_1a2a4b5b6b18348b69d07468b4fbd16904.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespacestream__client_1_1connector_1a8fc3712f5df247b695ed8145e8cee61f.rst
 
 .. toctree::
    :maxdepth: 1
@@ -222,6 +345,11 @@ Typedefs
    :maxdepth: 1
 
    typedef_namespacestream__client_1_1http_1ac29fc22c8c6ad5caec704c4c3583e1f7.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespacestream__client_1a0efe6b4444beae75e0aefe3f546260af.rst
 
 .. toctree::
    :maxdepth: 1

@@ -28,6 +28,8 @@ Includes
 
 - ``stream-client/connector/connector.hpp`` (:ref:`file_stream-client_connector_connector.hpp`)
 
+- ``stream-client/logger.hpp`` (:ref:`file_stream-client_logger.hpp`)
+
 - ``stream-client/resolver/resolver.hpp`` (:ref:`file_stream-client_resolver_resolver.hpp`)
 
 - ``stream-client/stream/dgram_socket.hpp`` (:ref:`file_stream-client_stream_dgram_socket.hpp`)

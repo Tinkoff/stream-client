@@ -1,0 +1,20 @@
+.. _dir_stream-client_impl:
+
+
+Directory impl
+==============
+
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client>` (``stream-client``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``stream-client/impl``
+
+
+Files
+-----
+
+- :ref:`file_stream-client_impl_logger.ipp`
+
+

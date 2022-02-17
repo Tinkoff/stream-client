@@ -1,0 +1,13 @@
+.. _exhale_function_namespacestream__client_1a7903ef74f7e2c22cab21cd18fa36b539:
+
+Function stream_client::get_log_level
+=====================================
+
+- Defined in :ref:`file_stream-client_impl_logger.ipp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: stream_client::get_log_level()

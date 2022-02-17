@@ -20,6 +20,12 @@ Definition (``stream-client/connector/impl/connection_pool.ipp``)
 
 
 
+Includes
+--------
+
+
+- ``stream-client/logger.hpp`` (:ref:`file_stream-client_logger.hpp`)
+
 
 
 Included By

@@ -1,0 +1,13 @@
+.. _exhale_define_logger_8hpp_1a23e93a399a34521a42561aa085310135:
+
+Define STREAM_LOG_TRACE
+=======================
+
+- Defined in :ref:`file_stream-client_logger.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: STREAM_LOG_TRACE

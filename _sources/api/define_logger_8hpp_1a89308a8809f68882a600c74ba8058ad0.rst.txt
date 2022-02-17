@@ -1,0 +1,13 @@
+.. _exhale_define_logger_8hpp_1a89308a8809f68882a600c74ba8058ad0:
+
+Define STREAM_LOG_WARN
+======================
+
+- Defined in :ref:`file_stream-client_logger.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: STREAM_LOG_WARN

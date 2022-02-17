@@ -1,0 +1,13 @@
+.. _exhale_function_namespacestream__client_1_1detail_1aca09408cb481bac054e9c323cc9882ac:
+
+Function stream_client::detail::logger_instance
+===============================================
+
+- Defined in :ref:`file_stream-client_impl_logger.ipp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: stream_client::detail::logger_instance(std::shared_ptr<log_interface>)

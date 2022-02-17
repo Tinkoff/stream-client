@@ -1,0 +1,13 @@
+.. _exhale_function_namespacestream__client_1a53d1a0935fafd2cf7de3c36e19d381b1:
+
+Function stream_client::set_logger(log_level, stream_client::log_func_type)
+===========================================================================
+
+- Defined in :ref:`file_stream-client_impl_logger.ipp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: stream_client::set_logger(log_level, stream_client::log_func_type)

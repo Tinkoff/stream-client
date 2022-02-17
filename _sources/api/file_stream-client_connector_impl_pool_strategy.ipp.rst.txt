@@ -34,6 +34,8 @@ Includes
 
 - ``random``
 
+- ``stream-client/logger.hpp`` (:ref:`file_stream-client_logger.hpp`)
+
 - ``thread``
 
 - ``vector``

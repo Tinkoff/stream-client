@@ -1,0 +1,25 @@
+.. _exhale_class_classstream__client_1_1func__logger:
+
+Class func_logger
+=================
+
+- Defined in :ref:`file_stream-client_logger.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public stream_client::base_logger`` (:ref:`exhale_class_classstream__client_1_1base__logger`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: stream_client::func_logger
+   :members:
+   :protected-members:
+   :undoc-members:

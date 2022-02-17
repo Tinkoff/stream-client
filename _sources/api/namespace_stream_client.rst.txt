@@ -29,16 +29,48 @@ Classes
 
 - :ref:`exhale_struct_structstream__client_1_1base__socket_1_1config`
 
+- :ref:`exhale_class_classstream__client_1_1base__logger`
+
 - :ref:`exhale_class_classstream__client_1_1base__socket`
+
+- :ref:`exhale_class_classstream__client_1_1cout__logger`
 
 - :ref:`exhale_class_classstream__client_1_1datagram__socket`
 
+- :ref:`exhale_class_classstream__client_1_1func__logger`
+
+- :ref:`exhale_class_classstream__client_1_1log__interface`
+
 - :ref:`exhale_class_classstream__client_1_1stream__socket`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_namespacestream__client_1a959565b4c9d9639814435848606075a4`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespacestream__client_1a7903ef74f7e2c22cab21cd18fa36b539`
+
+- :ref:`exhale_function_namespacestream__client_1aa0c51ea97ae0eed9e3b00e5926bac2cc`
+
+- :ref:`exhale_function_namespacestream__client_1a0c0db492bfa0479d7b4e7c41f81e8acd`
+
+- :ref:`exhale_function_namespacestream__client_1aa1a758f15b1e967bda7f5ed042ebccc1`
+
+- :ref:`exhale_function_namespacestream__client_1a53d1a0935fafd2cf7de3c36e19d381b1`
 
 
 Typedefs
 --------
 
+
+- :ref:`exhale_typedef_namespacestream__client_1a0efe6b4444beae75e0aefe3f546260af`
 
 - :ref:`exhale_typedef_namespacestream__client_1a29721d29a51a1ce96e994696260ff53f`
 

@@ -1,0 +1,70 @@
+
+.. _file_stream-client_impl_logger.ipp:
+
+File logger.ipp
+===============
+
+|exhale_lsh| :ref:`Parent directory <dir_stream-client_impl>` (``stream-client/impl``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+Definition (``stream-client/impl/logger.ipp``)
+----------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_stream-client_impl_logger.ipp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``iomanip``
+
+- ``iostream``
+
+- ``mutex``
+
+- ``sstream``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_stream-client_logger.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_stream_client`
+
+- :ref:`namespace_stream_client__detail`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespacestream__client_1_1detail_1aca09408cb481bac054e9c323cc9882ac`
+
+- :ref:`exhale_function_namespacestream__client_1a7903ef74f7e2c22cab21cd18fa36b539`
+
+- :ref:`exhale_function_namespacestream__client_1aa0c51ea97ae0eed9e3b00e5926bac2cc`
+
+- :ref:`exhale_function_namespacestream__client_1a0c0db492bfa0479d7b4e7c41f81e8acd`
+
+- :ref:`exhale_function_namespacestream__client_1aa1a758f15b1e967bda7f5ed042ebccc1`
+
+- :ref:`exhale_function_namespacestream__client_1a53d1a0935fafd2cf7de3c36e19d381b1`
+

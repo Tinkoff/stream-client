@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespacestream__client_1a0efe6b4444beae75e0aefe3f546260af:
+
+Typedef stream_client::log_func_type
+====================================
+
+- Defined in :ref:`file_stream-client_logger.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: stream_client::log_func_type

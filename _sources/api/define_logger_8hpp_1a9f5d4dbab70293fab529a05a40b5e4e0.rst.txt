@@ -1,0 +1,13 @@
+.. _exhale_define_logger_8hpp_1a9f5d4dbab70293fab529a05a40b5e4e0:
+
+Define STREAM_LOG_ERROR
+=======================
+
+- Defined in :ref:`file_stream-client_logger.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: STREAM_LOG_ERROR

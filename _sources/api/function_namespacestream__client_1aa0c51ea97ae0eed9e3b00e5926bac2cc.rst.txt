@@ -1,0 +1,13 @@
+.. _exhale_function_namespacestream__client_1aa0c51ea97ae0eed9e3b00e5926bac2cc:
+
+Function stream_client::log_message
+===================================
+
+- Defined in :ref:`file_stream-client_impl_logger.ipp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: stream_client::log_message(log_level, const std::string&, const std::string&)

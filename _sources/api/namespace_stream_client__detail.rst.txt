@@ -15,6 +15,13 @@ Classes
 - :ref:`exhale_class_classstream__client_1_1detail_1_1timed__base_1_1expiration`
 
 
+Functions
+---------
+
+
+- :ref:`exhale_function_namespacestream__client_1_1detail_1aca09408cb481bac054e9c323cc9882ac`
+
+
 Typedefs
 --------
 

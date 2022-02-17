@@ -12,6 +12,8 @@ Program Listing for File pool_strategy.ipp
 
    #pragma once
    
+   #include "stream-client/logger.hpp"
+   
    #include <boost/system/system_error.hpp>
    
    #include <atomic>
@@ -43,7 +45,7 @@ Program Listing for File pool_strategy.ipp
                auto new_session = connector.new_session();
                append_func(std::move(new_session));
            } catch (const boost::system::system_error& e) {
-               // TODO: log errors ?
+               STREAM_LOG_ERROR("failed to establish new session to " + connector.get_target() + ": " + e.what());
            }
        };
    
@@ -87,7 +89,7 @@ Program Listing for File pool_strategy.ipp
                append_func(std::move(new_session));
                is_added = true;
            } catch (const boost::system::system_error& e) {
-               // TODO: log errors ?
+               STREAM_LOG_ERROR("failed to establish new session to " + connector.get_target() + ": " + e.what());
            }
        };
    

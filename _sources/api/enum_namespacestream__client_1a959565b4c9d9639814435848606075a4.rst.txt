@@ -1,0 +1,13 @@
+.. _exhale_enum_namespacestream__client_1a959565b4c9d9639814435848606075a4:
+
+Enum log_level
+==============
+
+- Defined in :ref:`file_stream-client_logger.hpp`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: stream_client::log_level
