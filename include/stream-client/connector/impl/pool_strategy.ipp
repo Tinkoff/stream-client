@@ -1,5 +1,7 @@
 #pragma once
 
+#include "stream-client/logger.hpp"
+
 #include <boost/system/system_error.hpp>
 
 #include <atomic>
@@ -11,6 +13,12 @@
 
 namespace stream_client {
 namespace connector {
+
+namespace detail {
+
+static const std::string err_failed_new_session = "failed to establish new session: ";
+
+} // namespace detail
 
 template <typename Connector>
 const unsigned long conservative_strategy<Connector>::kMaxBackoffMs = 10000; // 10 seconds maximum delay
@@ -31,7 +39,7 @@ bool greedy_strategy<Connector>::refill(connector_type& connector, std::size_t v
             auto new_session = connector.new_session();
             append_func(std::move(new_session));
         } catch (const boost::system::system_error& e) {
-            // TODO: log errors ?
+            STREAM_LOG_ERROR(detail::err_failed_new_session + e.what());
         }
     };
 
@@ -75,7 +83,7 @@ bool conservative_strategy<Connector>::refill(connector_type& connector, std::si
             append_func(std::move(new_session));
             is_added = true;
         } catch (const boost::system::system_error& e) {
-            // TODO: log errors ?
+            STREAM_LOG_ERROR(detail::err_failed_new_session + e.what());
         }
     };
 

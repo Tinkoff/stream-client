@@ -317,6 +317,8 @@ private:
     Strategy reconnection_;
     connector_type connector_; ///< Underlying connector used to establish sockets.
 
+    const std::string name_; ///< Instance of target for logging.
+
     std::size_t pool_max_size_; ///< Number of stream to keep in the @p sesson_pool_.
     time_duration_type idle_timeout_; ///< Idle timeout for the sessions in the @p sesson_pool_.
     std::list<std::pair<time_point_type, std::unique_ptr<stream_type>>>
