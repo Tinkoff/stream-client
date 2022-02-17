@@ -1,3 +1,10 @@
+## 1.4.0 (2022-02-18)
+
+### Features
+
+* Implement logger facility and support user-defined overriding - (#19)
+
+
 ## 1.3.0 (2022-02-16)
 
 ### Features
