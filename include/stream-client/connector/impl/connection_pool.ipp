@@ -1,5 +1,7 @@
 #pragma once
 
+#include "stream-client/logger.hpp"
+
 namespace stream_client {
 namespace connector {
 
@@ -12,7 +14,9 @@ base_connection_pool<Connector, Strategy>::base_connection_pool(std::size_t size
     , idle_timeout_(idle_timeout)
     , watch_pool_(true)
 {
+    name_ = "connection_pool[" + connector_.get_target() + "](" + std::to_string(pool_max_size_) + ")";
     pool_watcher_ = std::thread([this]() { this->watch_pool_routine(); });
+    STREAM_LOG_TRACE(name_ + " has been created");
 }
 
 template <typename Connector, typename Strategy>

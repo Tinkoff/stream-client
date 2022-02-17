@@ -120,8 +120,9 @@ client->receive(boost::asio::buffer(&recv_data[0], send_data.size()));
 Represents container occupied with opened sockets. Uses [connector](#connector) to open new sockets in the background thread which is triggered once there are vacant places in the pool. User can call *get_session()* to obtain a socket from the pool and *return_session()* to give it back.
 
 There are two strategies to refill the pool:
-- greedy (`stream_client::connector::greedy_strategy`). If there are vacant places it will try to fill them with new sessions simultaneously.
-- conservative (`stream_client::connector::conservative_strategy`). Will try to fill up to 2/3 of vacant places in the poll. If failed will back of for some time and retry later. Also, after failures it will create only one new session.
+- **greedy** (`stream_client::connector::greedy_strategy`). If there are vacant places it will try to fill them with new sessions simultaneously. This is the default one.
+- **conservative** (`stream_client::connector::conservative_strategy`). Will try to fill up to 2/3 of vacant places in the poll. If failed will back of for some time and retry later. Also, after failures it will create only one new session.
+
 Both of them are defined in terms of `stream_client::connector::pool_strategy` interface, so you are free to implement new one.
 
 Limitations:
@@ -143,7 +144,12 @@ Connection pools:
 * `stream_client::connector::http_pool` - pool of `stream_client::http::http_client` sockets.
 * `stream_client::connector::https_pool` - pool of `stream_client::http::https_client` sockets.
 
-*All these pools are using `stream_client::connector::greedy_strategy`.*
+There are also aliases for the same pools but using conservative reconnection strategy:
+* `stream_client::connector::tcp_conservative_pool`
+* `stream_client::connector::udp_conservative_pool`
+* `stream_client::connector::ssl_conservative_pool`
+* `stream_client::connector::http_conservative_pool`
+* `stream_client::connector::https_conservative_pool`
 
 #### Example
 ```c++
@@ -180,6 +186,44 @@ for (auto& t : threads) {
     t.join();
 }
 ```
+
+### Logging
+
+The library uses basic logger interface implemented internally. You can modify logger level using `stream_client::set_log_level()` or `stream_client::get_log_level()` functions.
+
+These levels are supported:
+```cpp
+enum class log_level : int
+{
+    trace = 0,
+    debug,
+    info,
+    warning,
+    error,
+};
+```
+
+By default library prints messages to stdout with decent formatting. If you want to overwrite this behavior you can set you own logger via:
+```cpp
+void stream_client::set_logger(std::shared_ptr<stream_client::log_interface> logger);
+
+void stream_client::set_logger(stream_client::log_level level, stream_client::log_func_type log_func);
+```
+
+Which allows to either overwrite logger instance of use a callback of with proper signature. These types are defines as:
+```cpp
+class log_interface
+{
+public:
+    virtual void set_level(log_level level) noexcept = 0;
+    virtual log_level get_level() const noexcept = 0;
+    virtual void message(log_level level, const std::string& location, const std::string& message) const = 0;
+};
+
+using log_func_type = std::function<void(log_level level, const std::string& location, const std::string& message)>;
+```
+
+For more information please look inside [logger.hpp](./include/stream-client/logger.hpp).
 
 ## How to build
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "stream-client/logger.hpp"
+
 #include <boost/system/system_error.hpp>
 
 #include <atomic>
@@ -31,7 +33,7 @@ bool greedy_strategy<Connector>::refill(connector_type& connector, std::size_t v
             auto new_session = connector.new_session();
             append_func(std::move(new_session));
         } catch (const boost::system::system_error& e) {
-            // TODO: log errors ?
+            STREAM_LOG_ERROR("failed to establish new session to " + connector.get_target() + ": " + e.what());
         }
     };
 
@@ -75,7 +77,7 @@ bool conservative_strategy<Connector>::refill(connector_type& connector, std::si
             append_func(std::move(new_session));
             is_added = true;
         } catch (const boost::system::system_error& e) {
-            // TODO: log errors ?
+            STREAM_LOG_ERROR("failed to establish new session to " + connector.get_target() + ": " + e.what());
         }
     };
 
