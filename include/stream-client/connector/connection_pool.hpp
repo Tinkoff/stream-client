@@ -314,10 +314,9 @@ private:
     /// Background routine used to maintain the pool.
     void watch_pool_routine();
 
-    Strategy reconnection_;
+    std::string name_; ///< Name pf the pool.
+    Strategy reconnection_; ///< Instance of reconnection strategy used to fill the pool.
     connector_type connector_; ///< Underlying connector used to establish sockets.
-
-    const std::string name_; ///< Instance of target for logging.
 
     std::size_t pool_max_size_; ///< Number of stream to keep in the @p sesson_pool_.
     time_duration_type idle_timeout_; ///< Idle timeout for the sessions in the @p sesson_pool_.
@@ -332,16 +331,21 @@ private:
 
 //! Connections pool with sockets over plain TCP protocol.
 using tcp_pool = base_connection_pool<tcp_connector>;
+using tcp_conservative_pool = base_connection_pool<tcp_connector, conservative_strategy<tcp_connector>>;
 //! Connections pool with sockets over plain UDP protocol.
 using udp_pool = base_connection_pool<udp_connector>;
+using udp_conservative_pool = base_connection_pool<udp_connector, conservative_strategy<udp_connector>>;
 
 //! Connections pool with sockets over encrypted TCP protocol.
 using ssl_pool = base_connection_pool<ssl_connector>;
+using ssl_conservative_pool = base_connection_pool<ssl_connector, conservative_strategy<ssl_connector>>;
 
 //! Connections pool with sockets over HTTP protocol.
 using http_pool = base_connection_pool<http_connector>;
+using http_conservative_pool = base_connection_pool<http_connector, conservative_strategy<http_connector>>;
 //! Connections pool with sockets over HTTPS protocol.
 using https_pool = base_connection_pool<https_connector>;
+using https_conservative_pool = base_connection_pool<https_connector, conservative_strategy<https_connector>>;
 
 } // namespace connector
 } // namespace stream_client
