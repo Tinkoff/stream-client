@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 set(STREAMCLIENT_VERSION_MAJOR "1")
-set(STREAMCLIENT_VERSION_MINOR "3")
+set(STREAMCLIENT_VERSION_MINOR "4")
 set(STREAMCLIENT_VERSION_RELEASE "0")
 set(STREAMCLIENT_SUMMARY "C++ library")
 set(STREAMCLIENT_REPOSITORY_URL "https://github.com/TinkoffCreditSystems/stream-client")
