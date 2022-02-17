@@ -9,11 +9,6 @@
 namespace stream_client {
 namespace connector {
 
-template <typename Connector>
-struct reconnection_strategy_greedy;
-template <typename Connector>
-struct reconnection_strategy_conservative;
-
 /**
  * Class to maintain filled pool of connected sockets (sockets).
  *
@@ -26,9 +21,9 @@ struct reconnection_strategy_conservative;
  * @note Thread-safe. Single instance support concurrent operation.
  *
  * @tparam Connector Type of connector to use to create sockets.
- * @tparam Strategy Type of reconnection strategy there are more information in pool_strategy.hpp.
+ * @tparam Strategy Type of reconnection strategy. For more info look in pool_strategy.hpp.
  */
-template <typename Connector, typename Strategy = reconnection_strategy_greedy<Connector>>
+template <typename Connector, typename Strategy = greedy_strategy<Connector>>
 class base_connection_pool
 {
 public:
