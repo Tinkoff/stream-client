@@ -43,9 +43,11 @@ func_logger::func_logger(log_level level, stream_client::log_func_type log_func)
 {
 }
 
-void func_logger::message(log_level level, const std::string& location, const std::string& message) const noexcept
+void func_logger::message(log_level level, const std::string& location, const std::string& message) const
 {
-    log_func_(level, location, message);
+    if (log_func_) {
+        log_func_(level, location, message);
+    }
 }
 
 cout_logger::cout_logger(log_level level)
@@ -53,7 +55,7 @@ cout_logger::cout_logger(log_level level)
 {
 }
 
-void cout_logger::message(log_level level, const std::string& location, const std::string& message) const noexcept
+void cout_logger::message(log_level level, const std::string& location, const std::string& message) const
 {
     static constexpr const char* kLevelPrefixes[] = {
         "TRACE", "DEBUG", "INFO", "WARNING", "ERROR",
@@ -95,7 +97,7 @@ inline log_level get_log_level() noexcept
     return log_level::mute;
 }
 
-inline void log_message(log_level level, const std::string& location, const std::string& message) noexcept
+inline void log_message(log_level level, const std::string& location, const std::string& message)
 {
     const auto logger = detail::logger_instance();
     if (logger) {

@@ -146,7 +146,7 @@ public:
      *
      * @note Thread-safe.
      */
-    virtual void message(log_level level, const std::string& location, const std::string& message) const noexcept = 0;
+    virtual void message(log_level level, const std::string& location, const std::string& message) const = 0;
 };
 
 /// Logger calls passed callback function to log messages.
@@ -184,8 +184,7 @@ public:
     virtual ~func_logger() = default;
 
     /// Log arbitrary message.
-    virtual void message(log_level level, const std::string& location,
-                         const std::string& message) const noexcept override;
+    virtual void message(log_level level, const std::string& location, const std::string& message) const override;
 
 private:
     stream_client::log_func_type log_func_; ///< Log function to call.
@@ -211,8 +210,7 @@ public:
     virtual ~cout_logger() = default;
 
     /// Log arbitrary message.
-    virtual void message(log_level level, const std::string& location,
-                         const std::string& message) const noexcept override;
+    virtual void message(log_level level, const std::string& location, const std::string& message) const override;
 
 private:
     mutable std::mutex mutex_; ///< Mutex to sync std::cout calls.
@@ -260,7 +258,7 @@ inline log_level get_log_level() noexcept;
  *
  * @note Thread-safe.
  */
-inline void log_message(log_level level, const std::string& location, const std::string& message) noexcept;
+inline void log_message(log_level level, const std::string& location, const std::string& message);
 
 } // namespace stream_client
 

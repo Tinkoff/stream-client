@@ -67,8 +67,6 @@ TYPED_TEST(ConservativeConnectorPoolServerEnv, PoolConnect) {
 
 int main(int argc, char** argv)
 {
-    auto logger = std::make_shared<stream_client::cout_logger>();
-    stream_client::set_logger(logger);
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
