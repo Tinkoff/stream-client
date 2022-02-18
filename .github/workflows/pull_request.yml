@@ -1,5 +1,9 @@
 name: Pull request checks
 
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   pull_request:
     branches: [ develop ]
