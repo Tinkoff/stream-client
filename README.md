@@ -5,6 +5,7 @@
 [![Coverage Status](https://codecov.io/gh/Tinkoff/stream-client/branch/develop/graph/badge.svg?token=WN952FH80P)](https://codecov.io/gh/Tinkoff/stream-client)
 [![License](https://img.shields.io/github/license/TinkoffCreditSystems/stream-client.svg)](./LICENSE)
 
+
 This is a lightweight, header-only, Boost-based library providing client-side network primitives to easily organize and implement data transmission with remote endpoints.
 
 This library:
