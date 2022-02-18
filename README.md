@@ -2,7 +2,7 @@
 
 [![Language C++](https://img.shields.io/badge/language-c++-blue.svg?logo=c%2B%2B)](https://isocpp.org)
 [![Github releases](https://img.shields.io/github/release/TinkoffCreditSystems/stream-client.svg)](https://github.com/TinkoffCreditSystems/stream-client/releases)
-[![Coverage Status](https://coveralls.io/repos/github/Tinkoff/stream-client/badge.svg?branch=develop)](https://coveralls.io/github/Tinkoff/stream-client?branch=develop)
+[![Coverage Status](https://codecov.io/gh/Tinkoff/stream-client/branch/develop/graph/badge.svg?token=WN952FH80P)](https://codecov.io/gh/Tinkoff/stream-client)
 [![License](https://img.shields.io/github/license/TinkoffCreditSystems/stream-client.svg)](./LICENSE)
 
 This is a lightweight, header-only, Boost-based library providing client-side network primitives to easily organize and implement data transmission with remote endpoints.
