@@ -6,16 +6,13 @@ on:
 
 jobs:
   build-n-test:
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
+    name: ${{ matrix.os }}-${{ matrix.build-type }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        config:
-        - name: "Ubuntu Latest"
-          os: ubuntu-latest
-        - name: "macOS Latest"
-          os: macos-latest
+        os: [ubuntu-latest, macos-latest]
+        build-type: [Tsan, Asan, Ubsan, Debug]
     steps:
     - uses: actions/checkout@v2
     # Install dependencies
@@ -23,7 +20,7 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt-get update
-        sudo apt-get install -yq clang-format clang-tidy libboost-dev libboost-system-dev
+        sudo apt-get install -yq lcov clang-format clang-tidy libboost-dev libboost-system-dev
     - name: Install dependencies on macos
       if: runner.os == 'macOS'
       run: |
@@ -31,9 +28,24 @@ jobs:
         ln -s "$(brew --prefix llvm)/bin/clang-format" "/usr/local/bin/clang-format"
         ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
         brew install openssl
-    # Run tests
+    # Run tests with proper build type
     - name: Test
-      run: .github/workflows/run.sh test
+      env:
+        BUILD_TYPE: ${{ matrix.build-type }}
+      run: .github/workflows/run.sh test-type $BUILD_TYPE
     # Lint code
     - name: Lint
-      run: .github/workflows/run.sh lint
+      if: matrix.build-type == 'Debug'
+      env:
+        BUILD_TYPE: ${{ matrix.build-type }}
+      run: .github/workflows/run.sh lint build-$BUILD_TYPE
+    # Calculate coverage
+    - name: Collect coverage
+      if: runner.os == 'Linux' && matrix.build-type == 'Debug'
+      run: .github/workflows/run.sh collect-coverage build-Debug
+    # Report coverage
+    - name: Report coverage
+      if: runner.os == 'Linux' && matrix.build-type == 'Debug'
+      uses: codecov/codecov-action@v2
+      with:
+        files: ./coverage.info

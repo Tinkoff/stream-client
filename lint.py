@@ -157,8 +157,8 @@ def run_clang_format_diff(args, file):
     if args.style:
         invocation.extend(['--style', args.style])
 
+    print(" ".join(invocation))
     if args.dry_run:
-        print(" ".join(invocation))
         return [], []
 
     try:
@@ -208,8 +208,8 @@ def run_clang_tidy(args, file):
         invocation.extend(['--fix-errors'])
     invocation.extend([file])
 
+    print(" ".join(invocation))
     if args.dry_run:
-        print(" ".join(invocation))
         return [], []
 
     try:
