@@ -64,7 +64,7 @@ TEST_F(TCPConnectedEnv, SendSetNewTimeout)
     InitData(1 << 20); // arbitrary big chunk of data to cause timeout
 
     // change timeout via io_timeout
-    const auto new_op_timeout = this->op_timeout + std::chrono::milliseconds(123);
+    const auto new_op_timeout = this->op_timeout + std::chrono::milliseconds(50);
     const auto old_op_timeout = this->client_session->io_timeout(new_op_timeout);
     EXPECT_EQ_DURATION(old_op_timeout, this->op_timeout); // old returned
     EXPECT_EQ_DURATION(this->client_session->io_timeout(), new_op_timeout); // new has been set
