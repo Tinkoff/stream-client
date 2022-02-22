@@ -22,40 +22,40 @@ inline std::shared_ptr<log_interface> logger_instance(std::shared_ptr<log_interf
 
 } // namespace detail
 
-base_logger::base_logger(log_level level)
+inline base_logger::base_logger(log_level level)
     : level_(level)
 {
 }
 
-void base_logger::set_level(log_level level) noexcept
+inline void base_logger::set_level(log_level level) noexcept
 {
     level_ = level;
 }
 
-log_level base_logger::get_level() const noexcept
+inline log_level base_logger::get_level() const noexcept
 {
     return level_;
 }
 
-func_logger::func_logger(log_level level, stream_client::log_func_type log_func)
+inline func_logger::func_logger(log_level level, stream_client::log_func_type log_func)
     : base_logger(level)
     , log_func_(log_func)
 {
 }
 
-void func_logger::message(log_level level, const std::string& location, const std::string& message) const
+inline void func_logger::message(log_level level, const std::string& location, const std::string& message) const
 {
     if (log_func_) {
         log_func_(level, location, message);
     }
 }
 
-cout_logger::cout_logger(log_level level)
+inline cout_logger::cout_logger(log_level level)
     : base_logger(level)
 {
 }
 
-void cout_logger::message(log_level level, const std::string& location, const std::string& message) const
+inline void cout_logger::message(log_level level, const std::string& location, const std::string& message) const
 {
     static constexpr const char* kLevelPrefixes[] = {
         "TRACE", "DEBUG", "INFO", "WARNING", "ERROR",
