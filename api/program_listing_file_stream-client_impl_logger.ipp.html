@@ -233,40 +233,40 @@
 
 <span class="p">}</span> <span class="c1">// namespace detail</span>
 
-<span class="n">base_logger</span><span class="o">::</span><span class="n">base_logger</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">)</span>
+<span class="kr">inline</span> <span class="n">base_logger</span><span class="o">::</span><span class="n">base_logger</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">level_</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">base_logger</span><span class="o">::</span><span class="n">set_level</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">)</span> <span class="k">noexcept</span>
+<span class="kr">inline</span> <span class="kt">void</span> <span class="n">base_logger</span><span class="o">::</span><span class="n">set_level</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">)</span> <span class="k">noexcept</span>
 <span class="p">{</span>
     <span class="n">level_</span> <span class="o">=</span> <span class="n">level</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">log_level</span> <span class="n">base_logger</span><span class="o">::</span><span class="n">get_level</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span>
+<span class="kr">inline</span> <span class="n">log_level</span> <span class="n">base_logger</span><span class="o">::</span><span class="n">get_level</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="n">level_</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">func_logger</span><span class="o">::</span><span class="n">func_logger</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">,</span> <span class="n">stream_client</span><span class="o">::</span><span class="n">log_func_type</span> <span class="n">log_func</span><span class="p">)</span>
+<span class="kr">inline</span> <span class="n">func_logger</span><span class="o">::</span><span class="n">func_logger</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">,</span> <span class="n">stream_client</span><span class="o">::</span><span class="n">log_func_type</span> <span class="n">log_func</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">base_logger</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
     <span class="p">,</span> <span class="n">log_func_</span><span class="p">(</span><span class="n">log_func</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">func_logger</span><span class="o">::</span><span class="n">message</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">location</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">message</span><span class="p">)</span> <span class="k">const</span>
+<span class="kr">inline</span> <span class="kt">void</span> <span class="n">func_logger</span><span class="o">::</span><span class="n">message</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">location</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">message</span><span class="p">)</span> <span class="k">const</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">log_func_</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">log_func_</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">cout_logger</span><span class="o">::</span><span class="n">cout_logger</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">)</span>
+<span class="kr">inline</span> <span class="n">cout_logger</span><span class="o">::</span><span class="n">cout_logger</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">)</span>
     <span class="o">:</span> <span class="n">base_logger</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="p">}</span>
 
-<span class="kt">void</span> <span class="n">cout_logger</span><span class="o">::</span><span class="n">message</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">location</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">message</span><span class="p">)</span> <span class="k">const</span>
+<span class="kr">inline</span> <span class="kt">void</span> <span class="n">cout_logger</span><span class="o">::</span><span class="n">message</span><span class="p">(</span><span class="n">log_level</span> <span class="n">level</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">location</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">message</span><span class="p">)</span> <span class="k">const</span>
 <span class="p">{</span>
     <span class="k">static</span> <span class="k">constexpr</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">kLevelPrefixes</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s">"TRACE"</span><span class="p">,</span> <span class="s">"DEBUG"</span><span class="p">,</span> <span class="s">"INFO"</span><span class="p">,</span> <span class="s">"WARNING"</span><span class="p">,</span> <span class="s">"ERROR"</span><span class="p">,</span>

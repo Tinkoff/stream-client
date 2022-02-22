@@ -119,6 +119,8 @@ Program Listing for File pool_strategy.ipp
        const auto rand_val = double(r_generator_()) / r_generator_.max();
        current_delay_ms_ *= rand_val;
        current_delay_ms_ = std::min(kMaxBackoffMs, current_delay_ms_);
+       STREAM_LOG_TRACE("wait for " + std::to_string(current_delay_ms_) + "ms" + " before connect to " +
+                        connector.get_target());
        wait_until_ = clock_type::now() + std::chrono::milliseconds(current_delay_ms_);
    
        return false;
