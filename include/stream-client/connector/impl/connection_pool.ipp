@@ -89,6 +89,7 @@ void base_connection_pool<Connector, Strategy>::return_session(std::unique_ptr<s
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
     if (!pool_lk.try_lock_for(std::chrono::milliseconds(1))) {
         // if we failed to return session in 1ms it's easier to establish new one
+        STREAM_LOG_INFO(name_ + " has dropped alive session due lock contention");
         return;
     }
 
