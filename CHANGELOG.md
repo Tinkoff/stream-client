@@ -1,3 +1,11 @@
+## 1.4.1 (2022-02-22)
+
+### Misc
+
+* improve logging for connection pool and conservative strategy
+* fixed linkage for few translation units;
+
+
 ## 1.4.0 (2022-02-18)
 
 ### Features
