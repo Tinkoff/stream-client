@@ -327,6 +327,9 @@ private:
 
     std::atomic_bool watch_pool_{false}; ///< Flag to stop @p pool_watcher_.
     std::thread pool_watcher_; ///< Thread to run watch_pool_routine() in.
+
+    bool ensure_session(std::unique_lock<std::timed_mutex>& pool_lk, boost::system::error_code& ec,
+                        const time_point_type& deadline) const;
 };
 
 //! Connections pool with sockets over plain TCP protocol.

@@ -28,14 +28,15 @@ jobs:
     - name: Install dependencies on macos
       if: runner.os == 'macOS'
       run: |
-        brew install boost
+        brew install boost llvm openssl
         ln -s "$(brew --prefix llvm)/bin/clang-format" "/usr/local/bin/clang-format"
         ln -s "$(brew --prefix llvm)/bin/clang-tidy" "/usr/local/bin/clang-tidy"
-        brew install openssl
     # Run tests with proper build type
     - name: Test
       env:
         BUILD_TYPE: ${{ matrix.build-type }}
+      # Disbale Tsan on Linux because atomic_thread_fence unsupported by gcc
+      if: runner.os != 'Linux' || matrix.build-type != 'Tsan'
       run: .github/workflows/run.sh test-type $BUILD_TYPE
     # Lint code
     - name: Lint
