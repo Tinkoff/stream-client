@@ -37,18 +37,29 @@ base_connection_pool<Connector, Strategy>::~base_connection_pool()
 }
 
 template <typename Connector, typename Strategy>
+bool base_connection_pool<Connector, Strategy>::ensure_session(std::unique_lock<std::timed_mutex>& pool_lk,
+                                                               boost::system::error_code& ec,
+                                                               const time_point_type& deadline) const
+{
+    if (!pool_lk.try_lock_until(deadline)) {
+        // failed to lock pool_mutex_
+        ec = boost::asio::error::timed_out;
+        return false;
+    }
+    if (!pool_cv_.wait_until(pool_lk, deadline, [this] { return !sesson_pool_.empty(); })) {
+        // session pool is still empty
+        ec = boost::asio::error::not_found;
+        return false;
+    }
+    return true;
+}
+
+template <typename Connector, typename Strategy>
 std::unique_ptr<typename base_connection_pool<Connector, Strategy>::stream_type>
 base_connection_pool<Connector, Strategy>::get_session(boost::system::error_code& ec, const time_point_type& deadline)
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
-    if (!pool_lk.try_lock_until(deadline)) {
-        // failed to lock pool_mutex_
-        ec = boost::asio::error::timed_out;
-        return nullptr;
-    }
-    if (sesson_pool_.empty() && !pool_cv_.wait_until(pool_lk, deadline, [this] { return !sesson_pool_.empty(); })) {
-        // session pool is still empty
-        ec = boost::asio::error::not_found;
+    if (!ensure_session(pool_lk, ec, deadline)) {
         return nullptr;
     }
 
@@ -103,16 +114,7 @@ bool base_connection_pool<Connector, Strategy>::is_connected(boost::system::erro
                                                              const time_point_type& deadline) const
 {
     std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
-    if (!pool_lk.try_lock_until(deadline)) {
-        // failed to lock pool_mutex_
-        ec = boost::asio::error::timed_out;
-        return false;
-    }
-    if (sesson_pool_.empty() && !pool_cv_.wait_until(pool_lk, deadline, [this] { return !sesson_pool_.empty(); })) {
-        // session pool is still empty
-        return false;
-    }
-    return true;
+    return ensure_session(pool_lk, ec, deadline);
 }
 
 template <typename Connector, typename Strategy>
@@ -122,16 +124,16 @@ void base_connection_pool<Connector, Strategy>::watch_pool_routine()
 
     while (watch_pool_.load(std::memory_order_acquire)) {
         // try to lock pool mutex
-        std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, std::defer_lock);
-        if (!pool_lk.try_lock_for(lock_timeout)) {
+        std::unique_lock<std::timed_mutex> pool_lk(pool_mutex_, lock_timeout);
+        if (!pool_lk.owns_lock()) {
             continue;
         }
 
         // remove session which idling past idle_timeout_
         std::size_t pool_current_size = 0;
+        const auto now = clock_type::now();
         for (auto pool_it = sesson_pool_.begin(); pool_it != sesson_pool_.end();) {
-            const auto idle_for = clock_type::now() - pool_it->first;
-            if (idle_for >= idle_timeout_) {
+            if (now - pool_it->first >= idle_timeout_) {
                 pool_it = sesson_pool_.erase(pool_it);
             } else {
                 ++pool_it;

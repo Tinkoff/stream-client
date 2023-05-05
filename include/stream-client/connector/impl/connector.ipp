@@ -90,8 +90,8 @@ void base_connector<Stream>::resolve_routine()
     static const auto lock_timeout = std::chrono::milliseconds(100);
 
     while (resolving_thread_running_.load(std::memory_order_acquire)) {
-        std::unique_lock<std::timed_mutex> resolve_needed_lk(resolve_needed_mutex_, std::defer_lock);
-        if (!resolve_needed_lk.try_lock_for(lock_timeout) ||
+        std::unique_lock<std::timed_mutex> resolve_needed_lk(resolve_needed_mutex_, lock_timeout);
+        if (!resolve_needed_lk.owns_lock() ||
             !resolve_needed_cv_.wait_for(resolve_needed_lk, lock_timeout, [this] { return resolve_needed_; })) {
             continue;
         }
@@ -101,12 +101,14 @@ void base_connector<Stream>::resolve_routine()
         resolver_endpoint_iterator_type new_endpoints = resolver_.resolve(resolve_ec);
         set_resolve_error(resolve_ec);
         if (resolve_ec) {
+            resolve_needed_lk.unlock();
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
             continue;
         }
 
         resolve_needed_ = false;
         update_endpoints(std::move(new_endpoints));
+        resolve_needed_lk.unlock();
         notify_resolve_done();
     }
 }
